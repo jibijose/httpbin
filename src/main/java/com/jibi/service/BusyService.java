@@ -1,4 +1,4 @@
-package com.jibi;
+package com.jibi.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -7,16 +7,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BusyService {
 
-    int percentage;
-    long durationMillis;
-
-    public BusyService(int percentage, long seconds) {
-        this.percentage = percentage;
-        this.durationMillis = seconds * 1000;
-    }
-
-    public void run() {
+    public void run(int percentage, int seconds) {
         long startTime = System.currentTimeMillis();
+        long durationMillis = seconds * 1000;
         try {
             while (System.currentTimeMillis() - startTime < durationMillis) {
                 if (System.currentTimeMillis() % 100 == 0) {
