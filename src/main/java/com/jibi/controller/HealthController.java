@@ -16,3 +16,4 @@ public class HealthController {
     public String health() {
         return "Server time " + new Date().toString();
     }
+}

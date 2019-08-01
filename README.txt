@@ -1,5 +1,6 @@
 git clone https://github.com/jibijose/httpbin
 cd httpbin
+mvn clean package
 
 docker login (login to hub.docker.com)
 
