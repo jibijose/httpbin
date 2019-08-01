@@ -15,7 +15,7 @@ public class CpuController {
     @Autowired
     private BusyService busyService;
 
-    @RequestMapping(value = "/busycpu/{percentage}/{time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/cpu/{percentage}/{time}", method = RequestMethod.GET)
     public void delay(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
         busyService.run(percentage, time);
     }

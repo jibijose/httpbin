@@ -2,10 +2,13 @@ git clone https://github.com/jibijose/httpbin
 cd httpbin
 
 docker login (login to hub.docker.com)
-docker build -t registry.hub.docker.com/jibijose/httpbin:latest .
-docker push registry.hub.docker.com/jibijose/httpbin:latest
+
+docker rmi jibijose/httpbin:latest
+docker build -t jibijose/httpbin:latest .
+docker push jibijose/httpbin:latest
 
 
-# docker run -d -p 8080:8080 registry.hub.docker.com/jibijose/httpbin:latest
+# docker run -d -p 8080:8080 jibijose/httpbin:latest
+# curl -v http://localhost:8080/busycpu/80/300
 # docker stop $(docker ps -aq)
 # docker rm $(docker ps -aq)
