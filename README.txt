@@ -1,5 +1,6 @@
 git clone https://github.com/jibijose/httpbin
 cd httpbin
+mvn clean package
 
 docker login (login to hub.docker.com)
 
@@ -10,5 +11,6 @@ docker push jibijose/httpbin:latest
 
 # docker run -d -p 8080:8080 jibijose/httpbin:latest
 # curl -v http://localhost:8080/busycpu/80/300
+# curl -v http://localhost:8080/health
 # docker stop $(docker ps -aq)
 # docker rm $(docker ps -aq)
