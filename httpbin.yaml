@@ -25,7 +25,7 @@ spec:
   ports:
     - name: http
       port: 8080
-      targetPort: 80
+      targetPort: 8080
   selector:
     app: httpbin
 ---
@@ -46,4 +46,28 @@ spec:
           imagePullPolicy: Always
           name: httpbin
           ports:
-            - containerPort: 80
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 512m
+            limits:
+              memory: 1Gi
+              cpu: 512m
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: httpbin
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: httpbin
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 50
