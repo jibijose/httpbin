@@ -34,7 +34,7 @@ kind: Deployment
 metadata:
   name: httpbin
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - image: registry.hub.docker.com/jibijose/httpbin:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           name: httpbin
           ports:
             - containerPort: 8080
@@ -64,10 +64,14 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: httpbin
-  minReplicas: 1
-  maxReplicas: 10
+  minReplicas: 2
+  maxReplicas: 20
   metrics:
     - type: Resource
       resource:
         name: cpu
+        targetAverageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
         targetAverageUtilization: 50
