@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -13,28 +14,49 @@ public class BusyService {
     private static int SLOTS = 1000;
     private static int CORES = Runtime.getRuntime().availableProcessors();
 
-    private void run(int percentage, int seconds) {
+    public void runInAllProcessors(int percentage, int seconds) {
         ExecutorService executor = Executors.newFixedThreadPool(CORES);
+        log.debug("Running {} percentage for {} seconds in {} processors", percentage, seconds, CORES);
         for (int iCount = 0; iCount < CORES; iCount++) {
-            executor.execute();
+            executor.execute(new BusyProcessor(percentage, seconds));
+        }
+        executor.shutdown();
+        try {
+            executor.awaitTermination(seconds, TimeUnit.SECONDS);
+        } catch (InterruptedException interruptedException) {
+            log.warn("Processor threads not stopped", interruptedException);
         }
     }
 
-    public void runSingleProcessor(int percentage, int seconds) {
-        long runSlotMillis = percentage * seconds * 1000 / SLOTS / 100;
-        long idleSlotMillis = (100 - percentage) * seconds * 1000 / SLOTS / 100;
+    public void runInSingleProcessor(int percentage, int seconds) {
+        new BusyProcessor(percentage, seconds).run();
+    }
 
-        for (int iCount = 0; iCount < SLOTS; iCount++) {
-            long startTime = System.currentTimeMillis();
-            try {
-                while (System.currentTimeMillis() - startTime < runSlotMillis) {
-                    //TODO do little cpu if needed
+    private static class BusyProcessor implements Runnable {
+        private int percentage;
+        private int seconds;
+
+        public BusyProcessor(int percentage, int seconds) {
+            this.percentage = percentage;
+            this.seconds = seconds;
+        }
+
+        @Override
+        public void run() {
+            long runSlotMillis = percentage * seconds * 1000 / SLOTS / 100;
+            long idleSlotMillis = (100 - percentage) * seconds * 1000 / SLOTS / 100;
+
+            for (int iCount = 0; iCount < SLOTS; iCount++) {
+                long startTime = System.currentTimeMillis();
+                try {
+                    while (System.currentTimeMillis() - startTime < runSlotMillis) {
+                        //TODO do little cpu if needed
+                    }
+                    Thread.sleep(idleSlotMillis);
+                } catch (Exception exception) {
+                    log.warn("Thread is interrupted", exception);
                 }
-                Thread.sleep(idleSlotMillis);
-            } catch (Exception exception) {
-                log.warn("Thread is interrupted", exception);
             }
         }
     }
-
 }
