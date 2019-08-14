@@ -1,5 +1,7 @@
+[httpbin](https://httpbin.org)
+==================================
 
-[![Build Status](https://travis-ci.org/ornicar/lila.svg?branch=master)](https://travis-ci.org/ornicar/lila)
+[![Build Status](https://ci.appveyor.com/project/jibijose/branch/master)](https://ci.appveyor.com/project/jibijose/httpbin)
 
 git clone https://github.com/jibijose/httpbin
 cd httpbin
