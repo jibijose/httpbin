@@ -1,3 +1,10 @@
+[httpbin](https://httpbin.org)
+==================================
+
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
+[![Build Status](https://travis-ci.org/jibijose/httpbin.svg?branch=master)](https://ci.appveyor.com/project/jibijose/httpbin)
+
+
 git clone https://github.com/jibijose/httpbin
 cd httpbin
 mvn clean package
