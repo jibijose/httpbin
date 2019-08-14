@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/ornicar/lila.svg?branch=master)](https://travis-ci.org/ornicar/lila)
+
 git clone https://github.com/jibijose/httpbin
 cd httpbin
 mvn clean package
