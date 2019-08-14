@@ -6,7 +6,7 @@ environment:
 install:
   - ps: |
       Add-Type -AssemblyName System.IO.Compression.FileSystem
-      if (!(Test-Path -Path "C:\maven\apache-maven-3.3.3" )) {
+      if (!(Test-Path -Path "C:\maven\apache-maven-3.6.1" )) {
         (new-object System.Net.WebClient).DownloadFile(
           'http://apachemirror.wuchna.com/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.zip',
           'C:\maven-bin.zip'
