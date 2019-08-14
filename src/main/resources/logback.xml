@@ -1,0 +1,31 @@
+<configuration>
+
+    <contextName>WebContext</contextName>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5p | [%thread] [%X{APPNAME}] %logger{5}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${log.file}</file>
+        <encoder>
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} | %-5p | [%thread] [%X{APPNAME}] %logger{5}:%L - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.jibi" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <root>
+        <level value="${logger.root.level:-WARN}"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
