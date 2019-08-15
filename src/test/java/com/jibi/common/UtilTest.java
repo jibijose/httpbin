@@ -40,4 +40,25 @@ public class UtilTest {
         Util.sleepMinutesSilent(1);
     }
 
+    @Test(expected = Test.None.class)
+    public void testCheckNullOrBlankForNullString() {
+        assertEquals("Should return true for null string", true, Util.checkNullOrBlank(null));
+    }
+    @Test(expected = Test.None.class)
+    public void testCheckNullOrBlankForEmptyString() {
+        assertEquals("Should return true for null string", true, Util.checkNullOrBlank(""));
+    }
+    @Test(expected = Test.None.class)
+    public void testCheckNullOrBlankForSpacesString() {
+        assertEquals("Should return true for null string", true, Util.checkNullOrBlank("   "));
+    }
+    @Test(expected = Test.None.class)
+    public void testCheckNullOrBlankForString() {
+        assertEquals("Should return true for null string", true, Util.checkNullOrBlank("anystring"));
+    }
+    @Test(expected = Test.None.class)
+    public void testCheckNullOrBlankForStringWithSpaces() {
+        assertEquals("Should return true for null string", false, Util.checkNullOrBlank("any string"));
+    }
+
 }
