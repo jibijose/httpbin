@@ -6,6 +6,6 @@ language: java
 jdk:
   - oraclejdk8
 
-install: mvn install -qq
+install: mvn install -q -DskipTests=true
 
-script: mvn test -qq
+script: mvn test -q
