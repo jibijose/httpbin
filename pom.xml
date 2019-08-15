@@ -74,6 +74,12 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.eluder.coveralls</groupId>
+            <artifactId>coveralls-maven-plugin</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
 
 
         <dependency>
@@ -113,6 +119,19 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                    <sourceDirectories>
+                        <sourceDirectory>module1/src/main/resources</sourceDirectory>
+                    </sourceDirectories>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
