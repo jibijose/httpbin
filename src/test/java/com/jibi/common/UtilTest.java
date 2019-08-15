@@ -3,11 +3,17 @@ package com.jibi.common;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.mockito.Mockito.anyInt;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.when;
+import static org.powermock.api.mockito.PowerMockito.doNothing;
 
-@RunWith(BlockJUnit4ClassRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Util.class)
 public class UtilTest {
 
     @Test(expected = Test.None.class)
@@ -31,12 +37,16 @@ public class UtilTest {
     }
 
     @Test(expected = Test.None.class)
-    public void testSleepMinutes() {
+    public void testSleepMinutes() throws Exception {
+        mockStatic(Util.class);
+        doNothing().when(Util.class, "sleepMinutesSilent", anyInt());
         Util.sleepMinutes(1);
     }
 
     @Test(expected = Test.None.class)
-    public void testSleepMinutesSilent() {
+    public void testSleepMinutesSilent() throws Exception {
+        mockStatic(Util.class);
+        doNothing().when(Util.class, "sleepMinutesSilent", anyInt());
         Util.sleepMinutesSilent(1);
     }
 
@@ -54,7 +64,7 @@ public class UtilTest {
     }
     @Test(expected = Test.None.class)
     public void testCheckNullOrBlankForString() {
-        assertEquals("Should return true for null string", true, Util.checkNullOrBlank("anystring"));
+        assertEquals("Should return true for null string", false, Util.checkNullOrBlank("anystring"));
     }
     @Test(expected = Test.None.class)
     public void testCheckNullOrBlankForStringWithSpaces() {
