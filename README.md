@@ -5,7 +5,13 @@
 [![Build Status](https://travis-ci.org/jibijose/httpbin.svg?branch=master)](https://ci.appveyor.com/project/jibijose/httpbin)
 [![Coverage Status](http://img.shields.io/coveralls/jibijose/httpbin/master.svg?style=flat-square)](https://coveralls.io/r/jibijose/httpbin?branch=master)
 
-Run locally: $ docker run -p 8080:8080 jibijose/httpbin
+### Requirements
+
+* Java 6 up to 3.x and Java 7 for 4.x onwards.
+* Maven 3.0.0 or newer.
+
+### Run locally
+$ docker run -p 8080:8080 jibijose/httpbin
 
 git clone https://github.com/jibijose/httpbin
 cd httpbin
@@ -32,4 +38,6 @@ docker run -d -p 8080:8080 registry.hub.docker.com/jibijose/httpbin:latest
 
 *************
 TODOs
+upload swagger api public page
 upload to maven central
+junit run parallel
