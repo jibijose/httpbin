@@ -4,6 +4,7 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
 [![Build Status](https://travis-ci.org/jibijose/httpbin.svg?branch=master)](https://ci.appveyor.com/project/jibijose/httpbin)
 
+Run locally: $ docker run -p 8080:8080 jibijose/httpbin
 
 git clone https://github.com/jibijose/httpbin
 cd httpbin
