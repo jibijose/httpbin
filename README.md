@@ -28,3 +28,8 @@ docker exec -it 869fea78e0d7 /bin/bash
 
 
 docker run -d -p 8080:8080 registry.hub.docker.com/jibijose/httpbin:latest
+
+
+*************
+TODOs
+upload to maven central
