@@ -189,38 +189,33 @@
                             <springmvc>true</springmvc>
                             <locations>com.jibi.controller</locations>
                             <schemes>http,https</schemes>
+                            <host>petstore.swagger.wordnik.com</host>
+                            <basePath>/api</basePath>
                             <info>
                                 <title>Java httpbin apis</title>
-                                <description>
-                                    Java httpbin apis
-                                </description>
+                                <version>v1</version>
+                                <description>Java httpbin apis</description>
+                                <termsOfService>https://github.com/jibijose/httpbin</termsOfService>
                                 <contact>
                                     <email>jibijose@yahoo.com</email>
                                     <name>Jibi Jose</name>
                                     <url>https://httpbin.org</url>
                                 </contact>
                                 <version>1.0.0</version>
+                                <license>
+                                    <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+                                    <name>Apache 2.0</name>
+                                </license>
                             </info>
-                            <swaggerApiReader>com.github.kongchen.swagger.docgen.reader.SpringMvcApiReader</swaggerApiReader>
-                            <swaggerExtensions>com.github.kongchen.swagger.docgen.spring.SpringSwaggerExtension</swaggerExtensions>
-                            <modelConverters>io.swagger.validator.BeanValidator</modelConverters>
                             <templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
-                            <outputPath>${basedir}/generated/document.html</outputPath>
-                            <swaggerDirectory>${project.basedir}/docs/swagger</swaggerDirectory>
+                            <outputPath>${basedir}/generated/swagger/swagger.html</outputPath>
+                            <swaggerDirectory>${project.basedir}/generated/swagger</swaggerDirectory>
                             <swaggerFileName>swagger</swaggerFileName>
                             <outputFormats>yaml</outputFormats>
                             <attachSwaggerArtifact>true</attachSwaggerArtifact>
                         </apiSource>
                     </apiSources>
                 </configuration>
-                <dependencies>
-                    <!-- Adding dependency to swagger-hibernate-validations to enable the BeanValidator for model converter -->
-                    <dependency>
-                        <groupId>io.swagger</groupId>
-                        <artifactId>swagger-hibernate-validations</artifactId>
-                        <version>1.5.20</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
