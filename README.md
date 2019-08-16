@@ -8,7 +8,7 @@
 
 ### Requirements
 
-* Java 6 up to 3.x and Java 7 for 4.x onwards.
+* Java 8.x
 * Maven 3.0.0 or newer.
 
 ### Run locally
