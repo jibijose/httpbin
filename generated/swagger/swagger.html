@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<title>API Document</title>
+
+<xmp theme="united" style="display:none;">
+#Java httpbin apis
+
+
+## HTTP | HTTPS://petstore.swagger.wordnik.com/api
+
+
+Java httpbin apis
+
+
+[**Contact the developer**](mailto:jibijose@yahoo.com)
+
+
+**Version** 1.0.0
+
+[**Terms of Service**](https://github.com/jibijose/httpbin)
+
+[**Apache 2.0**](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+
+
+
+
+
+
+
+
+
+# APIs
+
+
+## /cpu/{percentage}/{time}
+
+
+### GET
+
+<a id="cpu"></a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>percentage</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| default    | successful operation |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /delay/{unit}/{time}
+
+
+### GET
+
+<a id="delay"></a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>unit</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| default    | successful operation |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /health
+
+
+### GET
+
+<a id="health">Health api</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+
+
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | successful operation | |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /memory/{bytes}/{time}
+
+
+### GET
+
+<a id="memory"></a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>bytes</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| default    | successful operation |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Definitions
+
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
