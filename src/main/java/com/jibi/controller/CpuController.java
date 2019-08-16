@@ -16,7 +16,7 @@ public class CpuController {
     private BusyService busyService;
 
     @RequestMapping(value = "/cpu/{percentage}/{time}", method = RequestMethod.GET)
-    public void delay(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
+    public void cpu(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
         busyService.runInAllProcessors(percentage, time);
     }
 
