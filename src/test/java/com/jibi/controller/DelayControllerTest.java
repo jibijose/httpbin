@@ -1,7 +1,6 @@
 package com.jibi.controller;
 
 import com.jibi.common.Util;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
