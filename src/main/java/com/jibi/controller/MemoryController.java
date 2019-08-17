@@ -2,6 +2,7 @@ package com.jibi.controller;
 
 import com.jibi.common.StringUtil;
 import com.jibi.common.Util;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import java.util.stream.IntStream;
 
 @RestController
 @Slf4j
+@Api(value = "Memory Api")
 public class MemoryController {
 
     @RequestMapping(value = "/memory/{bytes}/{time}", method = RequestMethod.GET)

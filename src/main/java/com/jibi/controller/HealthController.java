@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 @RestController
-@Api(value = "Health endpoints")
+@Api(value = "Health Api")
 public class HealthController {
 
     @ApiOperation(value = "Health api", response = String.class)

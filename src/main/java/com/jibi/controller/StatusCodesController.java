@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 @RestController
-@Api(value = "Status codes endpoints")
+@Api(value = "Status codes Api")
 public class StatusCodesController {
 
     @ApiOperation(value = "Status code api", response = Void.class)

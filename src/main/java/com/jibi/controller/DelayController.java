@@ -1,6 +1,7 @@
 package com.jibi.controller;
 
 import com.jibi.common.Util;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
+@Api(value = "Delay Api")
 public class DelayController {
 
     @RequestMapping(value = "/delay/{unit}/{time}", method = RequestMethod.GET)
