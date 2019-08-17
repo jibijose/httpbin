@@ -15,14 +15,19 @@ info:
 host: "petstore.swagger.wordnik.com"
 basePath: "/api"
 tags:
-- name: "Health endpoints"
-- name: "Status codes endpoints"
+- name: "Cpu Api"
+- name: "Delay Api"
+- name: "Health Api"
+- name: "Memory Api"
+- name: "Status codes Api"
 schemes:
 - "http"
 - "https"
 paths:
   /cpu/{percentage}/{time}:
     get:
+      tags:
+      - "Cpu Api"
       operationId: "cpu"
       parameters:
       - name: "percentage"
@@ -40,6 +45,8 @@ paths:
           description: "successful operation"
   /delay/{unit}/{time}:
     get:
+      tags:
+      - "Delay Api"
       operationId: "delay"
       parameters:
       - name: "unit"
@@ -57,7 +64,7 @@ paths:
   /health:
     get:
       tags:
-      - "Health endpoints"
+      - "Health Api"
       summary: "Health api"
       description: ""
       operationId: "health"
@@ -69,6 +76,8 @@ paths:
             type: "string"
   /memory/{bytes}/{time}:
     get:
+      tags:
+      - "Memory Api"
       operationId: "memory"
       parameters:
       - name: "bytes"
@@ -87,7 +96,7 @@ paths:
   /status/{code}:
     get:
       tags:
-      - "Status codes endpoints"
+      - "Status codes Api"
       summary: "Status code api"
       description: ""
       operationId: "statusCode"
