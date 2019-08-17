@@ -14,4 +14,9 @@ public class HttpBinApplicationApplicationTest {
     @Test
     public void contextLoads() throws Exception {
     }
+
+    @Test
+    public void testMain() throws Exception {
+        HttpBinApplication.main(new String[] {});
+    }
 }
