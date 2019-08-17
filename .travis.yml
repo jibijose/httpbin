@@ -9,6 +9,6 @@ jdk:
 install:
   - mvn compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn clean package jacoco:report
+  - mvn clean package
 after_success:
   - mvn coveralls:report
