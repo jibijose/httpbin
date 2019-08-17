@@ -29,8 +29,13 @@ docker rmi registry.hub.docker.com/jibijose/httpbin:latest
 rm -rf httpbin
 
 *************
-TODOs
-upload to maven central
-junit run parallel
-host website somewhere
-add gradle support
+TODOs  
+upload to maven central  
+junit run parallel  
+host website somewhere, add external curl checkpoints  
+add gradle support  
+APIS. Cookies, Req/Resp Inspection.  
+hold/release endpoints  
+Network response big file.  
+Image/pdf/excel/doc etc responses  
+
