@@ -16,6 +16,7 @@ host: "petstore.swagger.wordnik.com"
 basePath: "/api"
 tags:
 - name: "Health endpoints"
+- name: "Status codes endpoints"
 schemes:
 - "http"
 - "https"
@@ -80,6 +81,17 @@ paths:
         required: true
         type: "integer"
         format: "int32"
+      responses:
+        default:
+          description: "successful operation"
+  /status/{code}:
+    get:
+      tags:
+      - "Status codes endpoints"
+      summary: "Status code api"
+      description: ""
+      operationId: "statusCode"
+      parameters: []
       responses:
         default:
           description: "successful operation"

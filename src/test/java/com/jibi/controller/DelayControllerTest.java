@@ -54,6 +54,6 @@ public class DelayControllerTest {
     @Test
     public void delay1Wrong() throws Exception {
         ResponseEntity<Void> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/delay/wrong/1", Void.class);
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCodeValue());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
     }
 }
