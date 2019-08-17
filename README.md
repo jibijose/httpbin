@@ -1,4 +1,4 @@
-[Java HttpBin](https://jibijose.github.io)
+[Java HttpBin](https://jibijose.github.io/swagger)
 ==================================
 
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
@@ -30,8 +30,7 @@ rm -rf httpbin
 
 *************
 TODOs
-upload swagger api public page
 upload to maven central
 junit run parallel
-host website somnewhere
-addd gradle support
+host website somewhere
+add gradle support
