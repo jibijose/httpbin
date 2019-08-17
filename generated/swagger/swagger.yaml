@@ -93,6 +93,21 @@ paths:
       responses:
         default:
           description: "successful operation"
+  /status/random/{codes}:
+    get:
+      tags:
+      - "Status codes Api"
+      summary: "Status random code api"
+      description: ""
+      operationId: "statusRandomCodes"
+      parameters:
+      - name: "codes"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "successful operation"
   /status/{code}:
     get:
       tags:
@@ -100,7 +115,12 @@ paths:
       summary: "Status code api"
       description: ""
       operationId: "statusCode"
-      parameters: []
+      parameters:
+      - name: "code"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
       responses:
         default:
           description: "successful operation"
