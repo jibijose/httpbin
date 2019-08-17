@@ -42,3 +42,5 @@ TODOs
 upload swagger api public page
 upload to maven central
 junit run parallel
+host website somnewhere
+addd gradle support
