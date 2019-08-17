@@ -53,8 +53,8 @@ public class BusyService {
                         //TODO do little cpu if needed
                     }
                     Thread.sleep(idleSlotMillis);
-                } catch (Exception exception) {
-                    log.warn("Thread is interrupted", exception);
+                } catch (InterruptedException interruptedException) {
+                    log.warn("Thread is interrupted", interruptedException);
                 }
             }
         }
