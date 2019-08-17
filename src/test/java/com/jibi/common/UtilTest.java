@@ -3,6 +3,7 @@ package com.jibi.common;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -26,27 +27,33 @@ public class UtilTest {
         Util.sleepMillisSilent(10);
     }
 
+    @Test(expected = RuntimeException.class)
+    public void testSleepMillisSilentInterruption() {
+        Thread.currentThread().interrupt();
+        Util.sleepMillisSilent(10);
+    }
+
     @Test(expected = Test.None.class)
     public void testSleepSeconds() {
-        Util.sleepSeconds(2);
+        Util.sleepSeconds(1);
     }
 
     @Test(expected = Test.None.class)
     public void testSleepSecondsSilent() {
-        Util.sleepSecondsSilent(2);
+        Util.sleepSecondsSilent(1);
     }
 
     @Test(expected = Test.None.class)
     public void testSleepMinutes() throws Exception {
-        mockStatic(Util.class);
-        doNothing().when(Util.class, "sleepMinutesSilent", anyInt());
+        PowerMockito.spy(Util.class);
+        doNothing().when(Util.class, "sleepSecondsSilent", anyInt());
         Util.sleepMinutes(1);
     }
 
     @Test(expected = Test.None.class)
     public void testSleepMinutesSilent() throws Exception {
-        mockStatic(Util.class);
-        doNothing().when(Util.class, "sleepMinutesSilent", anyInt());
+        PowerMockito.spy(Util.class);
+        doNothing().when(Util.class, "sleepSecondsSilent", anyInt());
         Util.sleepMinutesSilent(1);
     }
 
