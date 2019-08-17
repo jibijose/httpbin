@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootWebApplicationTest {
+public class HttpBinApplicationApplicationTest {
 
     @Test
     public void contextLoads() throws Exception {

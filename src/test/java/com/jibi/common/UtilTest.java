@@ -61,18 +61,22 @@ public class UtilTest {
     public void testCheckNullOrBlankForNullString() {
         assertEquals("Should return true for null string", true, Util.checkNullOrBlank(null));
     }
+
     @Test(expected = Test.None.class)
     public void testCheckNullOrBlankForEmptyString() {
         assertEquals("Should return true for null string", true, Util.checkNullOrBlank(""));
     }
+
     @Test(expected = Test.None.class)
     public void testCheckNullOrBlankForSpacesString() {
         assertEquals("Should return true for null string", true, Util.checkNullOrBlank("   "));
     }
+
     @Test(expected = Test.None.class)
     public void testCheckNullOrBlankForString() {
         assertEquals("Should return true for null string", false, Util.checkNullOrBlank("anystring"));
     }
+
     @Test(expected = Test.None.class)
     public void testCheckNullOrBlankForStringWithSpaces() {
         assertEquals("Should return true for null string", false, Util.checkNullOrBlank("any string"));

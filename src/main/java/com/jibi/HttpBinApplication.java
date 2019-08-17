@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-public class SpringBootWebApplication {
+public class HttpBinApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootWebApplication.class, args);
+        SpringApplication.run(HttpBinApplication.class, args);
     }
 }
