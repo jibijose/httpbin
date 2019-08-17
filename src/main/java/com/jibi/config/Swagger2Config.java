@@ -25,7 +25,7 @@ public class Swagger2Config {
 
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("httpbin rest apis")
-                .description("Java httpbin apis")
+                .description("Java HttpBin Apis")
                 .contact(new Contact("Jibi Jose", "https://github.com/jibijose/httpbin", "jibijose@yahoo.com"))
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")

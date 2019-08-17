@@ -68,12 +68,16 @@ paths:
       summary: "Health api"
       description: ""
       operationId: "health"
+      produces:
+      - "text/plain"
       parameters: []
       responses:
         200:
-          description: "successful operation"
+          description: "Ok"
           schema:
             type: "string"
+        500:
+          description: "Internal server error"
   /memory/{bytes}/{time}:
     get:
       tags:
@@ -103,24 +107,34 @@ paths:
       parameters:
       - name: "codes"
         in: "path"
+        description: "Comma separated status codes"
         required: true
         type: "string"
       responses:
-        default:
-          description: "successful operation"
+        200:
+          description: "Ok"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal server error"
   /status/{code}:
     get:
       tags:
       - "Status codes Api"
       summary: "Status code api"
-      description: ""
+      description: "Api to respond with the status code in uri"
       operationId: "statusCode"
       parameters:
       - name: "code"
         in: "path"
+        description: "Status code of response"
         required: true
         type: "integer"
         format: "int32"
       responses:
-        default:
-          description: "successful operation"
+        200:
+          description: "Ok"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal server error"

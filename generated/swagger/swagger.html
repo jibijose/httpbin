@@ -241,12 +241,13 @@ Java httpbin apis
 
 #### Response
 
-
+**Content-Type: ** text/plain
 
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | |
+| 200    | Ok | |
+| 500    | Internal server error |  - |
 
 
 
@@ -392,7 +393,7 @@ Java httpbin apis
     <th>codes</th>
     <td>path</td>
     <td>yes</td>
-    <td></td>
+    <td>Comma separated status codes</td>
     <td> - </td>
 
     
@@ -413,7 +414,9 @@ Java httpbin apis
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| default    | successful operation |  - |
+| 200    | Ok |  - |
+| 400    | Bad request |  - |
+| 500    | Internal server error |  - |
 
 
 
@@ -439,7 +442,7 @@ Java httpbin apis
 
 <a id="statusCode">Status code api</a>
 
-
+Api to respond with the status code in uri
 
 
 
@@ -469,7 +472,7 @@ Java httpbin apis
     <th>code</th>
     <td>path</td>
     <td>yes</td>
-    <td></td>
+    <td>Status code of response</td>
     <td> - </td>
 
     
@@ -490,7 +493,9 @@ Java httpbin apis
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| default    | successful operation |  - |
+| 200    | Ok |  - |
+| 400    | Bad request |  - |
+| 500    | Internal server error |  - |
 
 
 
