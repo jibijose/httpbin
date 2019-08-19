@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @Api(value = "Cpu Api")
+@RestController(value = "Cpu Api")
+@RequestMapping("/cpu")
 public class CpuController {
 
     @Autowired
@@ -21,7 +22,7 @@ public class CpuController {
     @ApiOperation(value = "Cpu all processors operation", response = String.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/cpu/all/{percentage}/{time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/all/{percentage}/{time}", method = RequestMethod.GET)
     public void cpuAllProcessors(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
         busyService.runInAllProcessors(percentage, time);
     }
@@ -29,7 +30,7 @@ public class CpuController {
     @ApiOperation(value = "Cpu single processors operation", response = String.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/cpu/single/{percentage}/{time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/single/{percentage}/{time}", method = RequestMethod.GET)
     public void cpuSingleProcessor(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
         busyService.runInSingleProcessor(percentage, time);
     }

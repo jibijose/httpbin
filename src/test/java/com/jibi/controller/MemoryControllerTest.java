@@ -21,7 +21,7 @@ public class MemoryControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void memoryShouldReturnDefaultMessage() throws Exception {
+    public void testMemoryHold() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/memory/1024000/2", Void.class));
     }
 }

@@ -8,11 +8,13 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HealthControllerTest {
+public class RequestControllerTest {
 
     @LocalServerPort
     private int port;
@@ -21,7 +23,7 @@ public class HealthControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testHealth() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/health", String.class));
+    public void testRequestHeaders() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/request/headers", Map.class));
     }
 }

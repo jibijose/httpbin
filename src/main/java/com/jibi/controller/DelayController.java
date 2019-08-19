@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@Slf4j
 @Api(value = "Delay Api")
+@RestController(value = "Delay Api")
+@RequestMapping("/delay")
+@Slf4j
 public class DelayController {
 
     @ApiOperation(value = "Delay constant api", response = Void.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/delay/{unit}/{time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{unit}/{time}", method = RequestMethod.GET)
     public void delayConstant(@PathVariable("unit") String unit, @PathVariable("time") Integer time) {
         if ("millis".equals(unit)) {
             Util.sleepMillisSilent(time);
@@ -37,7 +38,7 @@ public class DelayController {
     @ApiOperation(value = "Delay random api", response = Void.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/delay/random/{unit}/{time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/random/{unit}/{time}", method = RequestMethod.GET)
     public void delayRandom(@PathVariable("unit") String unit, @PathVariable("time") Integer time) {
         delayRandomRange(unit, 0, time);
     }
@@ -45,7 +46,7 @@ public class DelayController {
     @ApiOperation(value = "Delay random range api", response = Void.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/delay/random/{unit}/range/{minTime}/{maxTime}", method = RequestMethod.GET)
+    @RequestMapping(value = "/random/{unit}/range/{minTime}/{maxTime}", method = RequestMethod.GET)
     public void delayRandomRange(@PathVariable("unit") String unit, @PathVariable("time") Integer minTime, @PathVariable("time") Integer maxTime) {
         int time = Util.randomNumber(minTime, maxTime);
         if ("millis".equals(unit)) {

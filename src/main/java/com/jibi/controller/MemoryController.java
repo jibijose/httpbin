@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@Slf4j
 @Api(value = "Memory Api")
+@RestController(value = "Memory Api")
+@RequestMapping("/memory")
+@Slf4j
 public class MemoryController {
 
     @ApiOperation(value = "Memory hold operation", response = String.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/memory/{bytes}/{time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
     public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
 
         String storeString = StringUtil.getRandomString(bytes / 2);

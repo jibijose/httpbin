@@ -1,4 +1,4 @@
-[Java HttpBin](https://jibijose.github.io/swagger)
+[Java HttpBin Api](https://jibijose.github.io/swagger)
 ==================================
 
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
