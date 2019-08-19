@@ -43,3 +43,4 @@ add gradle support
 update jdk11 support  
 XML model response.  
 Swagger Model Beans  
+remove assertJ assert*  
