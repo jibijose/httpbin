@@ -41,3 +41,5 @@ Image/pdf/excel/doc etc responses
 
 add gradle support  
 update jdk11 support  
+XML model response.  
+Swagger Model Beans  
