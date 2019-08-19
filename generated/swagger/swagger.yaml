@@ -19,16 +19,19 @@ tags:
 - name: "Delay Api"
 - name: "Health Api"
 - name: "Memory Api"
+- name: "Request Api"
 - name: "Status codes Api"
 schemes:
 - "http"
 - "https"
 paths:
-  /cpu/{percentage}/{time}:
+  /cpu/all/{percentage}/{time}:
     get:
       tags:
       - "Cpu Api"
-      operationId: "cpu"
+      summary: "Cpu all processors operation"
+      description: ""
+      operationId: "cpuAllProcessors"
       parameters:
       - name: "percentage"
         in: "path"
@@ -41,13 +44,71 @@ paths:
         type: "integer"
         format: "int32"
       responses:
-        default:
-          description: "successful operation"
-  /delay/{unit}/{time}:
+        200:
+          description: "Ok"
+          schema:
+            type: "string"
+        500:
+          description: "Internal server error"
+  /cpu/single/{percentage}/{time}:
+    get:
+      tags:
+      - "Cpu Api"
+      summary: "Cpu single processors operation"
+      description: ""
+      operationId: "cpuSingleProcessor"
+      parameters:
+      - name: "percentage"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "string"
+        500:
+          description: "Internal server error"
+  /delay/random/{unit}/range/{minTime}/{maxTime}:
     get:
       tags:
       - "Delay Api"
-      operationId: "delay"
+      summary: "Delay random range api"
+      description: ""
+      operationId: "delayRandomRange"
+      parameters:
+      - name: "unit"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Ok"
+        500:
+          description: "Internal server error"
+  /delay/random/{unit}/{time}:
+    get:
+      tags:
+      - "Delay Api"
+      summary: "Delay random api"
+      description: ""
+      operationId: "delayRandom"
       parameters:
       - name: "unit"
         in: "path"
@@ -59,8 +120,32 @@ paths:
         type: "integer"
         format: "int32"
       responses:
-        default:
-          description: "successful operation"
+        200:
+          description: "Ok"
+        500:
+          description: "Internal server error"
+  /delay/{unit}/{time}:
+    get:
+      tags:
+      - "Delay Api"
+      summary: "Delay constant api"
+      description: ""
+      operationId: "delayConstant"
+      parameters:
+      - name: "unit"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Ok"
+        500:
+          description: "Internal server error"
   /health:
     get:
       tags:
@@ -82,7 +167,9 @@ paths:
     get:
       tags:
       - "Memory Api"
-      operationId: "memory"
+      summary: "Memory hold operation"
+      description: ""
+      operationId: "memoryHold"
       parameters:
       - name: "bytes"
         in: "path"
@@ -95,8 +182,35 @@ paths:
         type: "integer"
         format: "int32"
       responses:
-        default:
-          description: "successful operation"
+        200:
+          description: "Ok"
+          schema:
+            type: "string"
+        500:
+          description: "Internal server error"
+  /request/headers:
+    get:
+      tags:
+      - "Request Api"
+      summary: "Request headers operation"
+      description: ""
+      operationId: "headers"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "headers"
+        in: "header"
+        required: true
+        type: "object"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+        500:
+          description: "Internal server error"
   /status/random/{codes}:
     get:
       tags:

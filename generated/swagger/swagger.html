@@ -33,12 +33,12 @@ Java httpbin apis
 # APIs
 
 
-## /cpu/{percentage}/{time}
+## /cpu/all/{percentage}/{time}
 
 
 ### GET
 
-<a id="cpu"></a>
+<a id="cpuAllProcessors">Cpu all processors operation</a>
 
 
 
@@ -104,7 +104,8 @@ Java httpbin apis
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| default    | successful operation |  - |
+| 200    | Ok | |
+| 500    | Internal server error |  - |
 
 
 
@@ -123,12 +124,207 @@ Java httpbin apis
 
 
 
-## /delay/{unit}/{time}
+## /cpu/single/{percentage}/{time}
 
 
 ### GET
 
-<a id="delay"></a>
+<a id="cpuSingleProcessor">Cpu single processors operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>percentage</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | |
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /delay/random/{unit}/range/{minTime}/{maxTime}
+
+
+### GET
+
+<a id="delayRandomRange">Delay random range api</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>unit</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok |  - |
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /delay/random/{unit}/{time}
+
+
+### GET
+
+<a id="delayRandom">Delay random api</a>
 
 
 
@@ -194,7 +390,99 @@ Java httpbin apis
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| default    | successful operation |  - |
+| 200    | Ok |  - |
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /delay/{unit}/{time}
+
+
+### GET
+
+<a id="delayConstant">Delay constant api</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>unit</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>time</th>
+    <td>path</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok |  - |
+| 500    | Internal server error |  - |
 
 
 
@@ -271,7 +559,7 @@ Java httpbin apis
 
 ### GET
 
-<a id="memory"></a>
+<a id="memoryHold">Memory hold operation</a>
 
 
 
@@ -337,7 +625,86 @@ Java httpbin apis
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| default    | successful operation |  - |
+| 200    | Ok | |
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /request/headers
+
+
+### GET
+
+<a id="headers">Request headers operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>headers</th>
+    <td>header</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>object </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | |
+| 500    | Internal server error |  - |
 
 
 
