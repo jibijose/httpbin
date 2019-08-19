@@ -1,6 +1,7 @@
 package com.jibi.controller;
 
 import com.jibi.common.Util;
+import net.jcip.annotations.ThreadSafe;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
@@ -24,6 +25,7 @@ import static org.powermock.api.mockito.PowerMockito.doNothing;
 @PowerMockRunnerDelegate(SpringRunner.class)
 @PrepareForTest(Util.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ThreadSafe
 public class DelayControllerTest {
 
     @LocalServerPort

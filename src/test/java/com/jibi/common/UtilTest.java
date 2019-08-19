@@ -1,5 +1,6 @@
 package com.jibi.common;
 
+import net.jcip.annotations.ThreadSafe;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
@@ -17,6 +18,7 @@ import static org.powermock.api.mockito.PowerMockito.doNothing;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Util.class)
+@ThreadSafe
 public class UtilTest {
 
     @Test(expected = Test.None.class)

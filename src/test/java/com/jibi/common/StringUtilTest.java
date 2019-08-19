@@ -3,11 +3,13 @@ package com.jibi.common;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import net.jcip.annotations.ThreadSafe;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
 @RunWith(BlockJUnit4ClassRunner.class)
+@ThreadSafe
 public class StringUtilTest {
 
     @Test
