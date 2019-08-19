@@ -6,6 +6,11 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.util.stream.IntStream;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.anyInt;
 import static org.junit.Assert.assertEquals;
 import static org.powermock.api.mockito.PowerMockito.doNothing;
@@ -79,4 +84,12 @@ public class UtilTest {
         assertEquals("Should return true for null string", false, Util.checkNullOrBlank("any string"));
     }
 
+    @Test(expected = Test.None.class)
+    public void testRandomRange() {
+        IntStream.rangeClosed(1, 100)
+                .forEach(i -> {
+                    int random = Util.randomNumber(3, 5);
+                    assertThat(Util.randomNumber(3, 5), anyOf(is(3), is(4), is(5)));
+                });
+    }
 }

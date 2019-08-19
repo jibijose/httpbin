@@ -33,13 +33,13 @@ public class DelayControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void delay2Seconds() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/seconds/2", Void.class));
+    public void delay2Millis() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/millis/10", Void.class));
     }
 
     @Test
-    public void delay2Millis() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/millis/10", Void.class));
+    public void delay2Seconds() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/seconds/2", Void.class));
     }
 
     @Test
@@ -55,4 +55,53 @@ public class DelayControllerTest {
         ResponseEntity<Void> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/delay/wrong/1", Void.class);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
     }
+
+    @Test
+    public void delayRandom2Millis() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/millis/10", Void.class));
+    }
+
+    @Test
+    public void delayRandom2Seconds() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/seconds/2", Void.class));
+    }
+
+    @Test
+    public void delayRandom1Minutes() throws Exception {
+        PowerMockito.spy(Util.class);
+        doNothing().when(Util.class, "sleepSecondsSilent", anyInt());
+
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/minutes/1", Void.class));
+    }
+
+    @Test
+    public void delayRandom1Wrong() throws Exception {
+        ResponseEntity<Void> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/delay/random/wrong/1", Void.class);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
+    }
+
+    @Test
+    public void delayRandomRange2Millis() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/millis/10/30", Void.class));
+    }
+
+    @Test
+    public void delayRandomRange2Seconds() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/seconds/2/3", Void.class));
+    }
+
+    @Test
+    public void delayRandomRange1Minutes() throws Exception {
+        PowerMockito.spy(Util.class);
+        doNothing().when(Util.class, "sleepSecondsSilent", anyInt());
+
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/minutes/1/2", Void.class));
+    }
+
+    @Test
+    public void delayRandomRange1Wrong() throws Exception {
+        ResponseEntity<Void> responseEntity = restTemplate.getForEntity("http://localhost:" + port + "/delay/random/wrong/range/1/2", Void.class);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
+    }
+
 }

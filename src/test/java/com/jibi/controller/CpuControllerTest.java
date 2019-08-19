@@ -21,7 +21,12 @@ public class CpuControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void healthShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/cpu/20/2", Void.class));
+    public void testCpuAllProcessors() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/cpu/all/20/2", Void.class));
+    }
+
+    @Test
+    public void testCpuSingleProcessor() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/cpu/single/20/2", Void.class));
     }
 }

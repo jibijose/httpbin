@@ -52,4 +52,8 @@ public class Util {
         }
         return false;
     }
+
+    public static int randomNumber(int min, int max) {
+        return min + ((int) Math.round((Math.random()) * (max - min)));
+    }
 }
