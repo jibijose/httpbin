@@ -39,3 +39,5 @@ hold/release endpoints
 Network response big file.  
 Image/pdf/excel/doc etc responses  
 
+add gradle support  
+update jdk11 support  

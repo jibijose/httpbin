@@ -50,7 +50,6 @@ public class BusyService {
                 long startTime = System.currentTimeMillis();
                 try {
                     while (System.currentTimeMillis() - startTime < runSlotMillis) {
-                        //TODO do little cpu if needed
                     }
                     Thread.sleep(idleSlotMillis);
                 } catch (InterruptedException interruptedException) {
