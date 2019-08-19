@@ -33,4 +33,5 @@ TODOs
 upload to maven central
 junit run parallel
 host website somewhere
-add gradle support
+add gradle support  
+update jdk11 support  
