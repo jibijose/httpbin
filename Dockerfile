@@ -6,6 +6,7 @@ RUN apt-get update -qq
 RUN apt-get install maven -y -qq
 
 COPY src /tmp/app/src/
+COPY templates /tmp/app/templates/
 COPY pom.xml /tmp/app/
 RUN mvn -f /tmp/app/pom.xml clean package -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 COPY launch.sh /tmp/app/
