@@ -147,15 +147,95 @@ paths:
           description: "Ok"
         500:
           description: "Internal server error"
+  /file/gif:
+    get:
+      tags:
+      - "File Api"
+      summary: "File gif operation"
+      description: ""
+      operationId: "gif"
+      produces:
+      - "image/gif"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/ico:
+    get:
+      tags:
+      - "File Api"
+      summary: "File ico operation"
+      description: ""
+      operationId: "ico"
+      produces:
+      - "image/vnd.microsoft.icon"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/jpg:
+    get:
+      tags:
+      - "File Api"
+      summary: "File jpg operation"
+      description: ""
+      operationId: "jpg"
+      produces:
+      - "image/jpeg"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /file/png:
     get:
       tags:
       - "File Api"
-      summary: "File image operation"
+      summary: "File png operation"
       description: ""
       operationId: "png"
       produces:
       - "image/png"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/tiff:
+    get:
+      tags:
+      - "File Api"
+      summary: "File tiff operation"
+      description: ""
+      operationId: "tiff"
+      produces:
+      - "image/tiff"
       parameters: []
       responses:
         200:
