@@ -12,11 +12,12 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.wordnik.com"
+host: "www.jibijose.com"
 basePath: "/api"
 tags:
 - name: "Cpu Api"
 - name: "Delay Api"
+- name: "File Api"
 - name: "Health Api"
 - name: "Memory Api"
 - name: "Request Api"
@@ -144,6 +145,26 @@ paths:
       responses:
         200:
           description: "Ok"
+        500:
+          description: "Internal server error"
+  /file/png:
+    get:
+      tags:
+      - "File Api"
+      summary: "File image operation"
+      description: ""
+      operationId: "png"
+      produces:
+      - "image/png"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
         500:
           description: "Internal server error"
   /health:
