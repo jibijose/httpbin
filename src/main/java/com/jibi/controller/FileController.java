@@ -18,6 +18,7 @@ public class FileController {
     private static Map<String, String> FILELOCATION = new HashMap<>();
 
     protected static List<String> IMAGETYPES = Arrays.asList("jpg", "gif", "png", "tiff", "ico");
+    protected static List<String> AUDIOYPES = Arrays.asList("mp3", "wav", "ogg");
 
     protected static List<String> JPGSIZES = Arrays.asList("100KB", "500KB", "1MB", "2.5MB");
     protected static List<String> GIFSIZES = Arrays.asList("500KB", "1MB", "3.5MB");
@@ -60,18 +61,40 @@ public class FileController {
         return fileData;
     }
 
+    private byte[] getFileContent(List<String> fileTypeNames, String fileType) throws IOException {
+        if ("random".equals(fileType)) {
+            int randInt = ThreadLocalRandom.current().nextInt(0, fileTypeNames.size());
+            return getFileContent(fileTypeNames.get(randInt));
+        }
+        return getFileContent(fileType);
+    }
+
+    private byte[] getFileContent(List<String> fileTypeNameSizes, String fileTypeName, String size) throws IOException {
+        if ("random".equals(size)) {
+            int randInt = ThreadLocalRandom.current().nextInt(0, fileTypeNameSizes.size());
+            return getFileContent(fileTypeName + fileTypeNameSizes.get(randInt));
+        }
+        return getFileContent(fileTypeName + size);
+    }
+
     @ApiOperation(value = "File image file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
     @RequestMapping(value = "/image/{fileType}", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_PNG_VALUE, "image/tiff", "image/x-icon"})
     public @ResponseBody
     byte[] imageFileType(@ApiParam(value = "File type", allowableValues = "random, jpg, gif, png, tiff, ico") @PathVariable("fileType") String fileType) throws IOException {
-        if ("random".equals(fileType)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, IMAGETYPES.size());
-            return getFileContent(IMAGETYPES.get(randInt));
-        }
-        return getFileContent(fileType);
+        return getFileContent(IMAGETYPES, fileType);
     }
+
+    @ApiOperation(value = "File audio file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/audio/{fileType}", method = RequestMethod.GET, produces = {"audio/mpeg3", "audio/wav", "audio/ogg"})
+    public @ResponseBody
+    byte[] audioFileType(@ApiParam(value = "File type", allowableValues = "random, mp3, wav, ogg") @PathVariable("fileType") String fileType) throws IOException {
+        return getFileContent(AUDIOYPES, fileType);
+    }
+
 
     @ApiOperation(value = "File image jpg file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
@@ -79,11 +102,7 @@ public class FileController {
     @RequestMapping(value = "/image/jpg/{size}", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
     public @ResponseBody
     byte[] imageJpgSize(@ApiParam(value = "Jpg file size", allowableValues = "random, 100KB, 500KB, 1MB, 2.5MB") @PathVariable("size") String size) throws IOException {
-        if ("random".equals(size)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, JPGSIZES.size());
-            return getFileContent("jpg" + JPGSIZES.get(randInt));
-        }
-        return getFileContent("jpg" + size);
+        return getFileContent(JPGSIZES, "jpg", size);
     }
 
     @ApiOperation(value = "File image gif file operation", response = byte[].class)
@@ -92,11 +111,7 @@ public class FileController {
     @RequestMapping(value = "/image/gif/{size}", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
     public @ResponseBody
     byte[] imageGifSize(@ApiParam(value = "Gif file size", allowableValues = "500KB, 1MB, 3.5MB") @PathVariable("size") String size) throws IOException {
-        if ("random".equals(size)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, GIFSIZES.size());
-            return getFileContent("gif" + GIFSIZES.get(randInt));
-        }
-        return getFileContent("gif" + size);
+        return getFileContent(GIFSIZES, "gif", size);
     }
 
     @ApiOperation(value = "File image png file operation", response = byte[].class)
@@ -105,11 +120,7 @@ public class FileController {
     @RequestMapping(value = "/image/png/{size}", method = RequestMethod.GET, produces = {MediaType.IMAGE_PNG_VALUE})
     public @ResponseBody
     byte[] imagePngSize(@ApiParam(value = "Png file size", allowableValues = "500KB, 1MB, 2MB, 3MB") @PathVariable("size") String size) throws IOException {
-        if ("random".equals(size)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, PNGSIZES.size());
-            return getFileContent("png" + PNGSIZES.get(randInt));
-        }
-        return getFileContent("png" + size);
+        return getFileContent(PNGSIZES, "png", size);
     }
 
     @ApiOperation(value = "File image tiff file operation", response = byte[].class)
@@ -118,11 +129,7 @@ public class FileController {
     @RequestMapping(value = "/image/tiff/{size}", method = RequestMethod.GET, produces = {"image/tiff"})
     public @ResponseBody
     byte[] imageTiffSize(@ApiParam(value = "Tiff file size", allowableValues = "1MB, 5MB, 10MB") @PathVariable("size") String size) throws IOException {
-        if ("random".equals(size)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, TIFFSIZES.size());
-            return getFileContent("tiff" + TIFFSIZES.get(randInt));
-        }
-        return getFileContent("tiff" + size);
+        return getFileContent(TIFFSIZES, "tiff", size);
     }
 
     @ApiOperation(value = "File image ico file operation", response = byte[].class)
@@ -131,11 +138,7 @@ public class FileController {
     @RequestMapping(value = "/image/ico/{size}", method = RequestMethod.GET, produces = {"image/x-icon"})
     public @ResponseBody
     byte[] imageIcoSize(@ApiParam(value = "Ico file size", allowableValues = "400B") @PathVariable("size") String size) throws IOException {
-        if ("random".equals(size)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, ICOSIZES.size());
-            return getFileContent("ico" + ICOSIZES.get(randInt));
-        }
-        return getFileContent("ico" + size);
+        return getFileContent(ICOSIZES, "ico", size);
     }
 
 }
