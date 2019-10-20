@@ -25,11 +25,25 @@ public class FileController {
     private static Map<String, String> FILELOCATION = new HashMap<>();
 
     static {
-        FILELOCATION.put("jpg", "/file/image/jpg/100KB.jpg");
-        FILELOCATION.put("gif", "/file/image/gif/500KB.gif");
-        FILELOCATION.put("png", "/file/image/png/500KB.png");
-        FILELOCATION.put("tiff", "/file/image/tiff/1MB.tiff");
-        FILELOCATION.put("ico", "/file/image/ico/400B.ico");
+        FILELOCATION.put("jpg100KB", "/file/image/jpg/100KB.jpg");
+        FILELOCATION.put("jpg500KB", "/file/image/jpg/500KB.jpg");
+        FILELOCATION.put("jpg1MB", "/file/image/jpg/1MB.jpg");
+        FILELOCATION.put("jpg2.5MB", "/file/image/jpg/2.5MB.jpg");
+
+        FILELOCATION.put("gif500MB", "/file/image/gif/500KB.gif");
+        FILELOCATION.put("gif1MB", "/file/image/gif/1MB.gif");
+        FILELOCATION.put("gif3.5MB", "/file/image/gif/3.5MB.gif");
+
+        FILELOCATION.put("png500KB", "/file/image/png/500KB.png");
+        FILELOCATION.put("png1MB", "/file/image/png/1MB.png");
+        FILELOCATION.put("png2MB", "/file/image/png/2MB.png");
+        FILELOCATION.put("png3MB", "/file/image/png/3MB.png");
+
+        FILELOCATION.put("tiff1MB", "/file/image/tiff/1MB.tiff");
+        FILELOCATION.put("tiff5MB", "/file/image/tiff/5MB.tiff");
+        FILELOCATION.put("tiff10MB", "/file/image/tiff/10MB.tiff");
+
+        FILELOCATION.put("ico400B", "/file/image/ico/400B.ico");
     }
 
     private byte[] getFileContent(String fileType) throws IOException {
@@ -45,7 +59,7 @@ public class FileController {
     @RequestMapping(value = "/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
     public @ResponseBody
     byte[] jpg() throws IOException {
-        return getFileContent("jpg");
+        return getFileContent("jpg100KB");
     }
 
     @ApiOperation(value = "File gif operation", response = byte[].class)
@@ -54,7 +68,7 @@ public class FileController {
     @RequestMapping(value = "/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
     public @ResponseBody
     byte[] gif() throws IOException {
-        return getFileContent("gif");
+        return getFileContent("gif500KB");
     }
 
     @ApiOperation(value = "File png operation", response = byte[].class)
@@ -63,7 +77,7 @@ public class FileController {
     @RequestMapping(value = "/png", method = RequestMethod.GET, produces = {MediaType.IMAGE_PNG_VALUE})
     public @ResponseBody
     byte[] png() throws IOException {
-        return getFileContent("png");
+        return getFileContent("png500KB");
     }
 
     @ApiOperation(value = "File tiff operation", response = byte[].class)
@@ -72,7 +86,7 @@ public class FileController {
     @RequestMapping(value = "/tiff", method = RequestMethod.GET, produces = {"image/tiff"})
     public @ResponseBody
     byte[] tiff() throws IOException {
-        return getFileContent("tiff");
+        return getFileContent("tiff1MB");
     }
 
     @ApiOperation(value = "File ico operation", response = byte[].class)
@@ -81,7 +95,7 @@ public class FileController {
     @RequestMapping(value = "/ico", method = RequestMethod.GET, produces = {"image/vnd.microsoft.icon"})
     public @ResponseBody
     byte[] ico() throws IOException {
-        return getFileContent("ico");
+        return getFileContent("ico400B");
     }
 
 }
