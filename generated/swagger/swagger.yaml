@@ -238,6 +238,50 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
+  /file/document/{fileType}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document file operation"
+      description: ""
+      operationId: "documentFileType"
+      produces:
+      - "application/doc"
+      - "application/excel"
+      - "application/powerpoint"
+      - "application/pdf"
+      - "application/odt"
+      - "application/ods"
+      - "application/odp"
+      - "application/rtf"
+      parameters:
+      - name: "fileType"
+        in: "path"
+        description: "File type"
+        required: true
+        type: "string"
+        enum:
+        - "random"
+        - "doc"
+        - "docx"
+        - "xls"
+        - "xlsx"
+        - "ppt"
+        - "pdf"
+        - "odt"
+        - "ods"
+        - "odp"
+        - "rtf"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /file/image/gif/{size}:
     get:
       tags:

@@ -95,6 +95,15 @@ public class FileController {
         return getFileContent("audio", fileType);
     }
 
+    @ApiOperation(value = "File document file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/{fileType}", method = RequestMethod.GET, produces = {"application/doc", "application/excel", "application/powerpoint", "application/pdf", "application/odt", "application/ods", "application/odp", "application/rtf"})
+    public @ResponseBody
+    byte[] documentFileType(@ApiParam(value = "File type", allowableValues = "random, doc, docx, xls, xlsx, ppt, pdf, odt, ods, odp, rtf") @PathVariable("fileType") String fileType) throws IOException {
+        return getFileContent("document", fileType);
+    }
+
     /************************************************************************************************************************************************/
 
     @ApiOperation(value = "File image jpg file operation", response = byte[].class)
