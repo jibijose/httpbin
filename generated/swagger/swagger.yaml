@@ -177,7 +177,7 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
-  /file/audio/wav/{size}:
+  /file/audio/ogg/{size}:
     get:
       tags:
       - "File Api"
@@ -196,6 +196,36 @@ paths:
         - "1MB"
         - "2MB"
         - "5MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/audio/wav/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File audio wav file operation"
+      description: ""
+      operationId: "audioWavSize"
+      produces:
+      - "audio/wav"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Wav file size"
+        required: true
+        type: "string"
+        enum:
+        - "1MB"
+        - "2MB"
+        - "5MB"
+        - "10MB"
       responses:
         200:
           description: "Ok"
@@ -228,6 +258,296 @@ paths:
         - "mp3"
         - "wav"
         - "ogg"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/doc/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document doc file operation"
+      description: ""
+      operationId: "documentDocSize"
+      produces:
+      - "application/doc"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Doc file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/docx/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document docx file operation"
+      description: ""
+      operationId: "documentDocxSize"
+      produces:
+      - "application/doc"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Docx file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/odp/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document odp file operation"
+      description: ""
+      operationId: "documentOdpSize"
+      produces:
+      - "application/odp"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Odp file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/ods/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document ods file operation"
+      description: ""
+      operationId: "documentOdsSize"
+      produces:
+      - "application/ods"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Ods file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/odt/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document odt file operation"
+      description: ""
+      operationId: "documentOdtSize"
+      produces:
+      - "application/odt"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Odt file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/pdf/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document pdf file operation"
+      description: ""
+      operationId: "documentPdfSize"
+      produces:
+      - "application/pdf"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Pdf file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/ppt/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document ppt file operation"
+      description: ""
+      operationId: "documentPptSize"
+      produces:
+      - "application/ppt"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Ppt file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/rtf/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document rtf file operation"
+      description: ""
+      operationId: "documentRtfSize"
+      produces:
+      - "application/rtf"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Rtf file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/xls/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document xls file operation"
+      description: ""
+      operationId: "documentXlsSize"
+      produces:
+      - "application/xls"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Xls file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/document/xlsx/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File document xlsx file operation"
+      description: ""
+      operationId: "documentXlsxSize"
+      produces:
+      - "application/xls"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Xlsx file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
       responses:
         200:
           description: "Ok"
