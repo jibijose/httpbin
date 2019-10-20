@@ -25,11 +25,11 @@ public class FileController {
     private static Map<String, String> FILELOCATION = new HashMap<>();
 
     static {
-        FILELOCATION.put("jpg", "/file/jpg.jpg");
-        FILELOCATION.put("gif", "/file/gif.gif");
-        FILELOCATION.put("png", "/file/png.png");
-        FILELOCATION.put("tiff", "/file/tiff.tiff");
-        FILELOCATION.put("ico", "/file/ico.ico");
+        FILELOCATION.put("jpg", "/file/image/jpg/100KB.jpg");
+        FILELOCATION.put("gif", "/file/image/gif/500KB.gif");
+        FILELOCATION.put("png", "/file/image/png/500KB.png");
+        FILELOCATION.put("tiff", "/file/image/tiff/1MB.tiff");
+        FILELOCATION.put("ico", "/file/image/ico/400B.ico");
     }
 
     private byte[] getFileContent(String fileType) throws IOException {
