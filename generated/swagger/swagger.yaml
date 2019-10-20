@@ -147,6 +147,97 @@ paths:
           description: "Ok"
         500:
           description: "Internal server error"
+  /file/audio/mp3/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File audio mp3 file operation"
+      description: ""
+      operationId: "audioMp3Size"
+      produces:
+      - "audio/mpeg3"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Mp3 file size"
+        required: true
+        type: "string"
+        enum:
+        - "700KB"
+        - "1MB"
+        - "2MB"
+        - "5MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/audio/wav/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File audio ogg file operation"
+      description: ""
+      operationId: "audioOggSize"
+      produces:
+      - "audio/ogg"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Ogg file size"
+        required: true
+        type: "string"
+        enum:
+        - "1MB"
+        - "2MB"
+        - "5MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/audio/{fileType}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File audio file operation"
+      description: ""
+      operationId: "audioFileType"
+      produces:
+      - "audio/mpeg3"
+      - "audio/wav"
+      - "audio/ogg"
+      parameters:
+      - name: "fileType"
+        in: "path"
+        description: "File type"
+        required: true
+        type: "string"
+        enum:
+        - "random"
+        - "mp3"
+        - "wav"
+        - "ogg"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /file/image/gif/{size}:
     get:
       tags:

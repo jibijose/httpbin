@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -28,59 +26,59 @@ public class FileControllerTest {
 
     @Test
     public void testFileImage() throws Exception {
-        fileTypeTests(FileController.IMAGETYPES, "image");
+        fileTypeTests("image");
     }
 
     @Test
     public void testFileAudio() throws Exception {
-        fileTypeTests(FileController.AUDIOYPES, "audio");
+        fileTypeTests("audio");
     }
 
     /************************************************************************************************************************************************/
 
     @Test
     public void testFileJpgSize() throws Exception {
-        fileTypeSizeTests(FileController.JPGSIZES, "image", "jpg");
+        fileTypeSizeTests("image", "jpg");
     }
 
     @Test
     public void testFileGifSize() throws Exception {
-        fileTypeSizeTests(FileController.GIFSIZES, "image", "gif");
+        fileTypeSizeTests("image", "gif");
     }
 
     @Test
     public void testFilePngSize() throws Exception {
-        fileTypeSizeTests(FileController.PNGSIZES, "image", "png");
+        fileTypeSizeTests("image", "png");
     }
 
     @Test
     public void testFileTiffSize() throws Exception {
-        fileTypeSizeTests(FileController.TIFFSIZES, "image", "tiff");
+        fileTypeSizeTests("image", "tiff");
     }
 
     @Test
     public void testFileIcoSize() throws Exception {
-        fileTypeSizeTests(FileController.ICOSIZES, "image", "ico");
+        fileTypeSizeTests("image", "ico");
     }
 
     /************************************************************************************************************************************************/
 
-    private void fileTypeTests(List<String> fileTypeNames, String fileType) {
-        ResponseEntity<byte[]> responseRandom = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileType + "/" + "random", byte[].class);
+    private void fileTypeTests(String fileGroup) {
+        ResponseEntity<byte[]> responseRandom = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileGroup + "/" + "random", byte[].class);
         assertEquals(responseRandom.getStatusCode(), HttpStatus.OK);
 
-        fileTypeNames.stream().forEach(fileTypeName -> {
-            ResponseEntity<byte[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileType + "/" + fileTypeName, byte[].class);
+        FileController.FILEGROUPTYPES.get(fileGroup).stream().forEach(fileTypeName -> {
+            ResponseEntity<byte[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileGroup + "/" + fileTypeName, byte[].class);
             assertEquals(response.getStatusCode(), HttpStatus.OK);
         });
     }
 
-    private void fileTypeSizeTests(List<String> fileTypeNameSizes, String fileType, String fileTypeName) {
-        ResponseEntity<byte[]> responseRandom = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileType + "/" + fileTypeName + "/" + "random", byte[].class);
+    private void fileTypeSizeTests(String fileGroup, String fileType) {
+        ResponseEntity<byte[]> responseRandom = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileGroup + "/" + fileType + "/" + "random", byte[].class);
         assertEquals(responseRandom.getStatusCode(), HttpStatus.OK);
 
-        fileTypeNameSizes.stream().forEach(size -> {
-            ResponseEntity<byte[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileType + "/" + fileTypeName + "/" + size, byte[].class);
+        FileController.FILETYPESIZES.get(fileType).stream().forEach(size -> {
+            ResponseEntity<byte[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileGroup + "/" + fileType + "/" + size, byte[].class);
             assertEquals(response.getStatusCode(), HttpStatus.OK);
         });
     }
