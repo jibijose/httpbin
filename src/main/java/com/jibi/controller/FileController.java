@@ -26,6 +26,10 @@ public class FileController {
     protected static List<String> TIFFSIZES = Arrays.asList("1MB", "5MB", "10MB");
     protected static List<String> ICOSIZES = Arrays.asList("400B");
 
+    protected static List<String> MP3SIZES = Arrays.asList("700KB", "1MB", "2MB", "5MB");
+    protected static List<String> WAVSIZES = Arrays.asList("1MB", "2MB", "5MB", "10MB");
+    protected static List<String> OGGSIZES = Arrays.asList("1MB", "2MB", "5MB");
+
     static {
         FILELOCATION.put("jpg", "/file/image/jpg/100KB.jpg");
         FILELOCATION.put("jpg100KB", "/file/image/jpg/100KB.jpg");
@@ -52,7 +56,13 @@ public class FileController {
 
         FILELOCATION.put("ico", "/file/image/ico/400B.ico");
         FILELOCATION.put("ico400B", "/file/image/ico/400B.ico");
+
+        FILELOCATION.put("mp3", "/file/audio/mp3/700KB.mp3");
+        FILELOCATION.put("wav", "/file/audio/wav/1MB.wav");
+        FILELOCATION.put("ogg", "/file/audio/ogg/1MB.ogg");
     }
+
+    /************************************************************************************************************************************************/
 
     private byte[] getFileContent(String fileType) throws IOException {
         InputStream in = getClass().getResourceAsStream(FILELOCATION.get(fileType));
@@ -77,6 +87,8 @@ public class FileController {
         return getFileContent(fileTypeName + size);
     }
 
+    /************************************************************************************************************************************************/
+
     @ApiOperation(value = "File image file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
@@ -95,6 +107,7 @@ public class FileController {
         return getFileContent(AUDIOYPES, fileType);
     }
 
+    /************************************************************************************************************************************************/
 
     @ApiOperation(value = "File image jpg file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
@@ -140,5 +153,38 @@ public class FileController {
     byte[] imageIcoSize(@ApiParam(value = "Ico file size", allowableValues = "400B") @PathVariable("size") String size) throws IOException {
         return getFileContent(ICOSIZES, "ico", size);
     }
+
+    /************************************************************************************************************************************************/
+
+    @ApiOperation(value = "File audio mp3 file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/audio/mp3/{size}", method = RequestMethod.GET, produces = {"audio/mpeg3"})
+    public @ResponseBody
+    byte[] audioMp3Size(@ApiParam(value = "Mp3 file size", allowableValues = "700KB, 1MB, 2MB, 5MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent(MP3SIZES, "mp3", size);
+    }
+
+    @ApiOperation(value = "File audio wav file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/audio/wav/{size}", method = RequestMethod.GET, produces = {"audio/wav"})
+    public @ResponseBody
+    byte[] audioWavSize(@ApiParam(value = "Wav file size", allowableValues = "1MB, 2MB, 5MB, 10MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent(WAVSIZES, "wav", size);
+    }
+
+    @ApiOperation(value = "File audio ogg file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/audio/wav/{size}", method = RequestMethod.GET, produces = {"audio/ogg"})
+    public @ResponseBody
+    byte[] audioOggSize(@ApiParam(value = "Ogg file size", allowableValues = "1MB, 2MB, 5MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent(OGGSIZES, "ogg", size);
+    }
+
+    /************************************************************************************************************************************************/
+
+
 
 }

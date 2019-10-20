@@ -24,10 +24,19 @@ public class FileControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    /************************************************************************************************************************************************/
+
     @Test
     public void testFileImage() throws Exception {
         fileTypeTests(FileController.IMAGETYPES, "image");
     }
+
+    @Test
+    public void testFileAudio() throws Exception {
+        fileTypeTests(FileController.AUDIOYPES, "audio");
+    }
+
+    /************************************************************************************************************************************************/
 
     @Test
     public void testFileJpgSize() throws Exception {
@@ -54,6 +63,8 @@ public class FileControllerTest {
         fileTypeSizeTests(FileController.ICOSIZES, "image", "ico");
     }
 
+    /************************************************************************************************************************************************/
+
     private void fileTypeTests(List<String> fileTypeNames, String fileType) {
         ResponseEntity<byte[]> responseRandom = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileType + "/" + "random", byte[].class);
         assertEquals(responseRandom.getStatusCode(), HttpStatus.OK);
@@ -73,5 +84,7 @@ public class FileControllerTest {
             assertEquals(response.getStatusCode(), HttpStatus.OK);
         });
     }
+
+    /************************************************************************************************************************************************/
 
 }
