@@ -219,6 +219,7 @@ paths:
         required: true
         type: "string"
         enum:
+        - "random"
         - "100KB"
         - "500KB"
         - "1MB"
@@ -312,6 +313,7 @@ paths:
         required: true
         type: "string"
         enum:
+        - "random"
         - "jpg"
         - "gif"
         - "png"
