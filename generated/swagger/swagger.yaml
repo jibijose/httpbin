@@ -147,36 +147,25 @@ paths:
           description: "Ok"
         500:
           description: "Internal server error"
-  /file/100KB/jpg:
+  /file/image/gif/{size}:
     get:
       tags:
       - "File Api"
-      summary: "File 100KB jpg operation"
+      summary: "File image gif file operation"
       description: ""
-      operationId: "jpg100KB"
-      produces:
-      - "image/jpeg"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/1MB/gif:
-    get:
-      tags:
-      - "File Api"
-      summary: "File 1MB gif operation"
-      description: ""
-      operationId: "gif1MB"
+      operationId: "imageGifSize"
       produces:
       - "image/gif"
-      parameters: []
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Gif file size"
+        required: true
+        type: "string"
+        enum:
+        - "500KB"
+        - "1MB"
+        - "3.5MB"
       responses:
         200:
           description: "Ok"
@@ -187,16 +176,53 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
-  /file/1MB/jpg:
+  /file/image/ico/{size}:
     get:
       tags:
       - "File Api"
-      summary: "File 1MB jpg operation"
+      summary: "File image ico file operation"
       description: ""
-      operationId: "jpg1MB"
+      operationId: "imageIcoSize"
+      produces:
+      - "image/x-icon"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Ico file size"
+        required: true
+        type: "string"
+        enum:
+        - "400B"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/image/jpg/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File image jpg file operation"
+      description: ""
+      operationId: "imageJpgSize"
       produces:
       - "image/jpeg"
-      parameters: []
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Jpg file size"
+        required: true
+        type: "string"
+        enum:
+        - "100KB"
+        - "500KB"
+        - "1MB"
+        - "2.5MB"
       responses:
         200:
           description: "Ok"
@@ -207,156 +233,26 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
-  /file/2.5MB/jpg:
+  /file/image/png/{size}:
     get:
       tags:
       - "File Api"
-      summary: "File 2.5MB jpg operation"
+      summary: "File image png file operation"
       description: ""
-      operationId: "jpg2p5MB"
-      produces:
-      - "image/jpeg"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/3.5MB/gif:
-    get:
-      tags:
-      - "File Api"
-      summary: "File 3.5MB gif operation"
-      description: ""
-      operationId: "gif3p5MB"
-      produces:
-      - "image/gif"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/500KB/gif:
-    get:
-      tags:
-      - "File Api"
-      summary: "File 500KB gif operation"
-      description: ""
-      operationId: "gif500KB"
-      produces:
-      - "image/gif"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/500KB/jpg:
-    get:
-      tags:
-      - "File Api"
-      summary: "File 500KB jpg operation"
-      description: ""
-      operationId: "jpg500KB"
-      produces:
-      - "image/jpeg"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/gif:
-    get:
-      tags:
-      - "File Api"
-      summary: "File gif operation"
-      description: ""
-      operationId: "gif"
-      produces:
-      - "image/gif"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/ico:
-    get:
-      tags:
-      - "File Api"
-      summary: "File ico operation"
-      description: ""
-      operationId: "ico"
-      produces:
-      - "image/vnd.microsoft.icon"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/jpg:
-    get:
-      tags:
-      - "File Api"
-      summary: "File jpg operation"
-      description: ""
-      operationId: "jpg"
-      produces:
-      - "image/jpeg"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/png:
-    get:
-      tags:
-      - "File Api"
-      summary: "File png operation"
-      description: ""
-      operationId: "png"
+      operationId: "imagePngSize"
       produces:
       - "image/png"
-      parameters: []
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Png file size"
+        required: true
+        type: "string"
+        enum:
+        - "500KB"
+        - "1MB"
+        - "2MB"
+        - "3MB"
       responses:
         200:
           description: "Ok"
@@ -367,16 +263,25 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
-  /file/tiff:
+  /file/image/tiff/{size}:
     get:
       tags:
       - "File Api"
-      summary: "File tiff operation"
+      summary: "File image tiff file operation"
       description: ""
-      operationId: "tiff"
+      operationId: "imageTiffSize"
       produces:
       - "image/tiff"
-      parameters: []
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Tiff file size"
+        required: true
+        type: "string"
+        enum:
+        - "1MB"
+        - "5MB"
+        - "10MB"
       responses:
         200:
           description: "Ok"
@@ -387,24 +292,31 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
-  /file/{fileType}:
+  /file/image/{fileType}:
     get:
       tags:
       - "File Api"
-      summary: "File file operation"
+      summary: "File image file operation"
       description: ""
-      operationId: "file"
+      operationId: "imageFileType"
       produces:
       - "image/jpeg"
       - "image/gif"
+      - "image/png"
+      - "image/tiff"
+      - "image/x-icon"
       parameters:
       - name: "fileType"
         in: "path"
+        description: "File type"
         required: true
         type: "string"
         enum:
         - "jpg"
         - "gif"
+        - "png"
+        - "tiff"
+        - "ico"
       responses:
         200:
           description: "Ok"

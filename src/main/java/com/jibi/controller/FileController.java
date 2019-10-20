@@ -26,19 +26,22 @@ public class FileController {
         FILELOCATION.put("jpg2.5MB", "/file/image/jpg/2.5MB.jpg");
 
         FILELOCATION.put("gif", "/file/image/gif/500KB.gif");
-        FILELOCATION.put("gif500MB", "/file/image/gif/500KB.gif");
+        FILELOCATION.put("gif500KB", "/file/image/gif/500KB.gif");
         FILELOCATION.put("gif1MB", "/file/image/gif/1MB.gif");
         FILELOCATION.put("gif3.5MB", "/file/image/gif/3.5MB.gif");
 
+        FILELOCATION.put("png", "/file/image/png/500KB.png");
         FILELOCATION.put("png500KB", "/file/image/png/500KB.png");
         FILELOCATION.put("png1MB", "/file/image/png/1MB.png");
         FILELOCATION.put("png2MB", "/file/image/png/2MB.png");
         FILELOCATION.put("png3MB", "/file/image/png/3MB.png");
 
+        FILELOCATION.put("tiff", "/file/image/tiff/1MB.tiff");
         FILELOCATION.put("tiff1MB", "/file/image/tiff/1MB.tiff");
         FILELOCATION.put("tiff5MB", "/file/image/tiff/5MB.tiff");
         FILELOCATION.put("tiff10MB", "/file/image/tiff/10MB.tiff");
 
+        FILELOCATION.put("ico", "/file/image/ico/400B.ico");
         FILELOCATION.put("ico400B", "/file/image/ico/400B.ico");
     }
 
@@ -49,121 +52,58 @@ public class FileController {
         return fileData;
     }
 
-    @ApiOperation(value = "File file operation", response = byte[].class)
+    @ApiOperation(value = "File image file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/{fileType}", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_GIF_VALUE})
+    @RequestMapping(value = "/image/{fileType}", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_PNG_VALUE, "image/tiff", "image/x-icon"})
     public @ResponseBody
-    byte[] file(@ApiParam(value = "", allowableValues = "jpg, gif") @PathVariable("fileType") String fileType) throws IOException {
+    byte[] imageFileType(@ApiParam(value = "File type", allowableValues = "jpg, gif, png, tiff, ico") @PathVariable("fileType") String fileType) throws IOException {
         return getFileContent(fileType);
     }
 
-    @ApiOperation(value = "File jpg operation", response = byte[].class)
+    @ApiOperation(value = "File image jpg file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    @RequestMapping(value = "/image/jpg/{size}", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
     public @ResponseBody
-    byte[] jpg() throws IOException {
-        return getFileContent("jpg100KB");
+    byte[] imageJpgSize(@ApiParam(value = "Jpg file size", allowableValues = "100KB, 500KB, 1MB, 2.5MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("jpg" + size);
     }
 
-    @ApiOperation(value = "File 100KB jpg operation", response = byte[].class)
+    @ApiOperation(value = "File image gif file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/100KB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    @RequestMapping(value = "/image/gif/{size}", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
     public @ResponseBody
-    byte[] jpg100KB() throws IOException {
-        return getFileContent("jpg100KB");
+    byte[] imageGifSize(@ApiParam(value = "Gif file size", allowableValues = "500KB, 1MB, 3.5MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("gif" + size);
     }
 
-    @ApiOperation(value = "File 500KB jpg operation", response = byte[].class)
+    @ApiOperation(value = "File image png file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/500KB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    @RequestMapping(value = "/image/png/{size}", method = RequestMethod.GET, produces = {MediaType.IMAGE_PNG_VALUE})
     public @ResponseBody
-    byte[] jpg500KB() throws IOException {
-        return getFileContent("jpg500KB");
+    byte[] imagePngSize(@ApiParam(value = "Png file size", allowableValues = "500KB, 1MB, 2MB, 3MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("png" + size);
     }
 
-    @ApiOperation(value = "File 1MB jpg operation", response = byte[].class)
+    @ApiOperation(value = "File image tiff file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/1MB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    @RequestMapping(value = "/image/tiff/{size}", method = RequestMethod.GET, produces = {"image/tiff"})
     public @ResponseBody
-    byte[] jpg1MB() throws IOException {
-        return getFileContent("jpg1MB");
+    byte[] imageTiffSize(@ApiParam(value = "Tiff file size", allowableValues = "1MB, 5MB, 10MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("tiff" + size);
     }
 
-    @ApiOperation(value = "File 2.5MB jpg operation", response = byte[].class)
+    @ApiOperation(value = "File image ico file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/2.5MB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    @RequestMapping(value = "/image/ico/{size}", method = RequestMethod.GET, produces = {"image/x-icon"})
     public @ResponseBody
-    byte[] jpg2p5MB() throws IOException {
-        return getFileContent("jpg2.5MB");
-    }
-
-    @ApiOperation(value = "File gif operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
-    public @ResponseBody
-    byte[] gif() throws IOException {
-        return getFileContent("gif500KB");
-    }
-
-    @ApiOperation(value = "File 500KB gif operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/500KB/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
-    public @ResponseBody
-    byte[] gif500KB() throws IOException {
-        return getFileContent("gif500KB");
-    }
-
-    @ApiOperation(value = "File 1MB gif operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/1MB/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
-    public @ResponseBody
-    byte[] gif1MB() throws IOException {
-        return getFileContent("gif1MB");
-    }
-
-    @ApiOperation(value = "File 3.5MB gif operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/3.5MB/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
-    public @ResponseBody
-    byte[] gif3p5MB() throws IOException {
-        return getFileContent("gif3.5MB");
-    }
-
-    @ApiOperation(value = "File png operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/png", method = RequestMethod.GET, produces = {MediaType.IMAGE_PNG_VALUE})
-    public @ResponseBody
-    byte[] png() throws IOException {
-        return getFileContent("png500KB");
-    }
-
-    @ApiOperation(value = "File tiff operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/tiff", method = RequestMethod.GET, produces = {"image/tiff"})
-    public @ResponseBody
-    byte[] tiff() throws IOException {
-        return getFileContent("tiff1MB");
-    }
-
-    @ApiOperation(value = "File ico operation", response = byte[].class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/ico", method = RequestMethod.GET, produces = {"image/vnd.microsoft.icon"})
-    public @ResponseBody
-    byte[] ico() throws IOException {
-        return getFileContent("ico400B");
+    byte[] imageIcoSize(@ApiParam(value = "Ico file size", allowableValues = "400B") @PathVariable("size") String size) throws IOException {
+        return getFileContent("ico" + size);
     }
 
 }

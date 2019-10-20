@@ -501,12 +501,12 @@ Java httpbin apis
 
 
 
-## /file/100KB/jpg
+## /file/image/gif/{size}
 
 
 ### GET
 
-<a id="jpg100KB">File 100KB jpg operation</a>
+<a id="imageGifSize">File image gif file operation</a>
 
 
 
@@ -522,61 +522,33 @@ Java httpbin apis
 
 ##### Parameters
 
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
 
 
 
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Gif file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
 
 
-#### Response
-
-**Content-Type: ** image/jpeg
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/1MB/gif
-
-
-### GET
-
-<a id="gif1MB">File 1MB gif operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
+</table>
 
 
 
@@ -607,12 +579,12 @@ Java httpbin apis
 
 
 
-## /file/1MB/jpg
+## /file/image/ico/{size}
 
 
 ### GET
 
-<a id="jpg1MB">File 1MB jpg operation</a>
+<a id="imageIcoSize">File image ico file operation</a>
 
 
 
@@ -628,8 +600,111 @@ Java httpbin apis
 
 ##### Parameters
 
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
 
 
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Ico file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** image/x-icon
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /file/image/jpg/{size}
+
+
+### GET
+
+<a id="imageJpgSize">File image jpg file operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Jpg file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
 
 
 
@@ -660,12 +735,12 @@ Java httpbin apis
 
 
 
-## /file/2.5MB/jpg
+## /file/image/png/{size}
 
 
 ### GET
 
-<a id="jpg2p5MB">File 2.5MB jpg operation</a>
+<a id="imagePngSize">File image png file operation</a>
 
 
 
@@ -681,379 +756,33 @@ Java httpbin apis
 
 ##### Parameters
 
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
 
 
 
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Png file size</td>
+    <td> - </td>
 
+    
+            <td>string </td>
+    
 
-#### Response
+</tr>
 
-**Content-Type: ** image/jpeg
 
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/3.5MB/gif
-
-
-### GET
-
-<a id="gif3p5MB">File 3.5MB gif operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
-
-
-
-#### Response
-
-**Content-Type: ** image/gif
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/500KB/gif
-
-
-### GET
-
-<a id="gif500KB">File 500KB gif operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
-
-
-
-#### Response
-
-**Content-Type: ** image/gif
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/500KB/jpg
-
-
-### GET
-
-<a id="jpg500KB">File 500KB jpg operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
-
-
-
-#### Response
-
-**Content-Type: ** image/jpeg
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/gif
-
-
-### GET
-
-<a id="gif">File gif operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
-
-
-
-#### Response
-
-**Content-Type: ** image/gif
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/ico
-
-
-### GET
-
-<a id="ico">File ico operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
-
-
-
-#### Response
-
-**Content-Type: ** image/vnd.microsoft.icon
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/jpg
-
-
-### GET
-
-<a id="jpg">File jpg operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
-
-
-
-#### Response
-
-**Content-Type: ** image/jpeg
-
-
-| Status Code | Reason      | Response Model |
-|-------------|-------------|----------------|
-| 200    | Ok | Array[<a href=""></a>]|
-| 500    | Internal server error |  - |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## /file/png
-
-
-### GET
-
-<a id="png">File png operation</a>
-
-
-
-
-
-
-
-
-
-#### Request
-
-
-
-##### Parameters
-
-
-
+</table>
 
 
 
@@ -1084,12 +813,12 @@ Java httpbin apis
 
 
 
-## /file/tiff
+## /file/image/tiff/{size}
 
 
 ### GET
 
-<a id="tiff">File tiff operation</a>
+<a id="imageTiffSize">File image tiff file operation</a>
 
 
 
@@ -1105,8 +834,33 @@ Java httpbin apis
 
 ##### Parameters
 
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
 
 
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Tiff file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
 
 
 
@@ -1137,12 +891,12 @@ Java httpbin apis
 
 
 
-## /file/{fileType}
+## /file/image/{fileType}
 
 
 ### GET
 
-<a id="file">File file operation</a>
+<a id="imageFileType">File image file operation</a>
 
 
 
@@ -1174,7 +928,7 @@ Java httpbin apis
     <th>fileType</th>
     <td>path</td>
     <td>yes</td>
-    <td></td>
+    <td>File type</td>
     <td> - </td>
 
     
@@ -1190,7 +944,7 @@ Java httpbin apis
 
 #### Response
 
-**Content-Type: ** image/jpeg, image/gif
+**Content-Type: ** image/jpeg, image/gif, image/png, image/tiff, image/x-icon
 
 
 | Status Code | Reason      | Response Model |
