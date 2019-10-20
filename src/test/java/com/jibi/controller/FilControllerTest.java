@@ -26,6 +26,26 @@ public class FilControllerTest {
     }
 
     @Test
+    public void testFileJpg100KB() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/file/100KB/jpg", byte[].class));
+    }
+
+    @Test
+    public void testFileJpg500KB() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/file/500KB/jpg", byte[].class));
+    }
+
+    @Test
+    public void testFileJpg1MB() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/file/1MB/jpg", byte[].class));
+    }
+
+    @Test
+    public void testFileJpg2p5MB() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/file/2.5MB/jpg", byte[].class));
+    }
+
+    @Test
     public void testFileGif() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/file/gif", byte[].class));
     }

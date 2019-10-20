@@ -62,6 +62,42 @@ public class FileController {
         return getFileContent("jpg100KB");
     }
 
+    @ApiOperation(value = "File 100KB jpg operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/100KB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    public @ResponseBody
+    byte[] jpg100KB() throws IOException {
+        return getFileContent("jpg100KB");
+    }
+
+    @ApiOperation(value = "File 500KB jpg operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/500KB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    public @ResponseBody
+    byte[] jpg500KB() throws IOException {
+        return getFileContent("jpg500KB");
+    }
+
+    @ApiOperation(value = "File 1MB jpg operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/1MB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    public @ResponseBody
+    byte[] jpg1MB() throws IOException {
+        return getFileContent("jpg1MB");
+    }
+
+    @ApiOperation(value = "File 2.5MB jpg operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/2.5MB/jpg", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE})
+    public @ResponseBody
+    byte[] jpg2p5MB() throws IOException {
+        return getFileContent("jpg2.5MB");
+    }
+
     @ApiOperation(value = "File gif operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
