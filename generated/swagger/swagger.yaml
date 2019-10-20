@@ -147,6 +147,146 @@ paths:
           description: "Ok"
         500:
           description: "Internal server error"
+  /file/100KB/jpg:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 100KB jpg operation"
+      description: ""
+      operationId: "jpg100KB"
+      produces:
+      - "image/jpeg"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/1MB/gif:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 1MB gif operation"
+      description: ""
+      operationId: "gif1MB"
+      produces:
+      - "image/gif"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/1MB/jpg:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 1MB jpg operation"
+      description: ""
+      operationId: "jpg1MB"
+      produces:
+      - "image/jpeg"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/2.5MB/jpg:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 2.5MB jpg operation"
+      description: ""
+      operationId: "jpg2p5MB"
+      produces:
+      - "image/jpeg"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/3.5MB/gif:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 3.5MB gif operation"
+      description: ""
+      operationId: "gif3p5MB"
+      produces:
+      - "image/gif"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/500KB/gif:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 500KB gif operation"
+      description: ""
+      operationId: "gif500KB"
+      produces:
+      - "image/gif"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/500KB/jpg:
+    get:
+      tags:
+      - "File Api"
+      summary: "File 500KB jpg operation"
+      description: ""
+      operationId: "jpg500KB"
+      produces:
+      - "image/jpeg"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /file/gif:
     get:
       tags:
@@ -237,6 +377,34 @@ paths:
       produces:
       - "image/tiff"
       parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/{fileType}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File file operation"
+      description: ""
+      operationId: "file"
+      produces:
+      - "image/jpeg"
+      - "image/gif"
+      parameters:
+      - name: "fileType"
+        in: "path"
+        required: true
+        type: "string"
+        enum:
+        - "jpg"
+        - "gif"
       responses:
         200:
           description: "Ok"

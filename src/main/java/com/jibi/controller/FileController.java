@@ -1,15 +1,9 @@
 package com.jibi.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,11 +19,13 @@ public class FileController {
     private static Map<String, String> FILELOCATION = new HashMap<>();
 
     static {
+        FILELOCATION.put("jpg", "/file/image/jpg/100KB.jpg");
         FILELOCATION.put("jpg100KB", "/file/image/jpg/100KB.jpg");
         FILELOCATION.put("jpg500KB", "/file/image/jpg/500KB.jpg");
         FILELOCATION.put("jpg1MB", "/file/image/jpg/1MB.jpg");
         FILELOCATION.put("jpg2.5MB", "/file/image/jpg/2.5MB.jpg");
 
+        FILELOCATION.put("gif", "/file/image/gif/500KB.gif");
         FILELOCATION.put("gif500MB", "/file/image/gif/500KB.gif");
         FILELOCATION.put("gif1MB", "/file/image/gif/1MB.gif");
         FILELOCATION.put("gif3.5MB", "/file/image/gif/3.5MB.gif");
@@ -51,6 +47,15 @@ public class FileController {
         byte[] fileData = IOUtils.toByteArray(in);
         in.close();
         return fileData;
+    }
+
+    @ApiOperation(value = "File file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/{fileType}", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_GIF_VALUE})
+    public @ResponseBody
+    byte[] file(@ApiParam(value = "", allowableValues = "jpg, gif") @PathVariable("fileType") String fileType) throws IOException {
+        return getFileContent(fileType);
     }
 
     @ApiOperation(value = "File jpg operation", response = byte[].class)
@@ -105,6 +110,33 @@ public class FileController {
     public @ResponseBody
     byte[] gif() throws IOException {
         return getFileContent("gif500KB");
+    }
+
+    @ApiOperation(value = "File 500KB gif operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/500KB/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
+    public @ResponseBody
+    byte[] gif500KB() throws IOException {
+        return getFileContent("gif500KB");
+    }
+
+    @ApiOperation(value = "File 1MB gif operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/1MB/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
+    public @ResponseBody
+    byte[] gif1MB() throws IOException {
+        return getFileContent("gif1MB");
+    }
+
+    @ApiOperation(value = "File 3.5MB gif operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/3.5MB/gif", method = RequestMethod.GET, produces = {MediaType.IMAGE_GIF_VALUE})
+    public @ResponseBody
+    byte[] gif3p5MB() throws IOException {
+        return getFileContent("gif3.5MB");
     }
 
     @ApiOperation(value = "File png operation", response = byte[].class)
