@@ -19,6 +19,7 @@ public class FileController {
 
     private static List<String> IMAGETYPES = Arrays.asList("jpg", "gif", "png", "tiff", "ico");
     private static List<String> AUDIOYPES = Arrays.asList("mp3", "wav", "ogg");
+    private static List<String> DOCUMENTYPES = Arrays.asList("doc", "docx", "xls", "xlsx", "ppt", "pdf", "odp", "ods", "odt", "rtf");
 
     private static List<String> JPGSIZES = Arrays.asList("100KB", "500KB", "1MB", "2.5MB");
     private static List<String> GIFSIZES = Arrays.asList("500KB", "1MB", "3.5MB");
@@ -30,18 +31,43 @@ public class FileController {
     private static List<String> WAVSIZES = Arrays.asList("1MB", "2MB", "5MB", "10MB");
     private static List<String> OGGSIZES = Arrays.asList("1MB", "2MB", "5MB");
 
+    private static List<String> DOCSIZES = Arrays.asList("100KB", "500KB", "1MB");
+    private static List<String> DOCXSIZES = Arrays.asList("100KB", "500KB", "1MB");
+    private static List<String> XLSSIZES = Arrays.asList("10KB", "14KB", "20KB", "140KB", "670KB");
+    private static List<String> XLSXSIZES = Arrays.asList("5KB", "7KB", "9KB", "42KB", "184KB");
+    private static List<String> PPTSIZES = Arrays.asList("250KB", "500KB", "1MB");
+    private static List<String> PDFSIZES = Arrays.asList("150KB", "500KB", "1MB");
+    private static List<String> ODPSIZES = Arrays.asList("200KB", "500KB", "1MB");
+    private static List<String> ODSSIZES = Arrays.asList("31KB", "67KB", "94KB", "231KB");
+    private static List<String> ODTSIZES = Arrays.asList("100KB", "500KB", "1MB");
+    private static List<String> RTFSIZES = Arrays.asList("100KB", "300KB", "500KB", "1MB");
+
     static {
         FILEGROUPTYPES.put("image", IMAGETYPES);
         FILEGROUPTYPES.put("audio", AUDIOYPES);
+        FILEGROUPTYPES.put("document", DOCUMENTYPES);
 
         FILETYPESIZES.put("jpg", JPGSIZES);
         FILETYPESIZES.put("gif", GIFSIZES);
         FILETYPESIZES.put("png", PNGSIZES);
         FILETYPESIZES.put("tiff", TIFFSIZES);
         FILETYPESIZES.put("ico", ICOSIZES);
+
         FILETYPESIZES.put("mp3", MP3SIZES);
         FILETYPESIZES.put("wav", WAVSIZES);
         FILETYPESIZES.put("ogg", OGGSIZES);
+
+        FILETYPESIZES.put("doc", DOCSIZES);
+        FILETYPESIZES.put("docx", DOCXSIZES);
+        FILETYPESIZES.put("xls", XLSSIZES);
+        FILETYPESIZES.put("xlsx", XLSXSIZES);
+        FILETYPESIZES.put("ppt", PPTSIZES);
+        FILETYPESIZES.put("pdf", PDFSIZES);
+        FILETYPESIZES.put("odp", ODPSIZES);
+        FILETYPESIZES.put("ods", ODSSIZES);
+        FILETYPESIZES.put("odt", ODTSIZES);
+        FILETYPESIZES.put("rtf", RTFSIZES);
+
     }
 
     /************************************************************************************************************************************************/
@@ -174,10 +200,102 @@ public class FileController {
     @ApiOperation(value = "File audio ogg file operation", response = byte[].class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/audio/wav/{size}", method = RequestMethod.GET, produces = {"audio/ogg"})
+    @RequestMapping(value = "/audio/ogg/{size}", method = RequestMethod.GET, produces = {"audio/ogg"})
     public @ResponseBody
     byte[] audioOggSize(@ApiParam(value = "Ogg file size", allowableValues = "1MB, 2MB, 5MB") @PathVariable("size") String size) throws IOException {
         return getFileContent("audio", "ogg", size);
+    }
+
+    /************************************************************************************************************************************************/
+
+    @ApiOperation(value = "File document doc file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/doc/{size}", method = RequestMethod.GET, produces = {"application/doc"})
+    public @ResponseBody
+    byte[] documentDocSize(@ApiParam(value = "Doc file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "doc", size);
+    }
+
+    @ApiOperation(value = "File document docx file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/docx/{size}", method = RequestMethod.GET, produces = {"application/doc"})
+    public @ResponseBody
+    byte[] documentDocxSize(@ApiParam(value = "Docx file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "docx", size);
+    }
+
+    @ApiOperation(value = "File document xls file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/xls/{size}", method = RequestMethod.GET, produces = {"application/xls"})
+    public @ResponseBody
+    byte[] documentXlsSize(@ApiParam(value = "Xls file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "xls", size);
+    }
+
+    @ApiOperation(value = "File document xlsx file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/xlsx/{size}", method = RequestMethod.GET, produces = {"application/xls"})
+    public @ResponseBody
+    byte[] documentXlsxSize(@ApiParam(value = "Xlsx file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "xlsx", size);
+    }
+
+    @ApiOperation(value = "File document ppt file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/ppt/{size}", method = RequestMethod.GET, produces = {"application/ppt"})
+    public @ResponseBody
+    byte[] documentPptSize(@ApiParam(value = "Ppt file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "ppt", size);
+    }
+
+    @ApiOperation(value = "File document pdf file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/pdf/{size}", method = RequestMethod.GET, produces = {"application/pdf"})
+    public @ResponseBody
+    byte[] documentPdfSize(@ApiParam(value = "Pdf file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "pdf", size);
+    }
+
+    @ApiOperation(value = "File document odp file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/odp/{size}", method = RequestMethod.GET, produces = {"application/odp"})
+    public @ResponseBody
+    byte[] documentOdpSize(@ApiParam(value = "Odp file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "odp", size);
+    }
+
+    @ApiOperation(value = "File document ods file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/ods/{size}", method = RequestMethod.GET, produces = {"application/ods"})
+    public @ResponseBody
+    byte[] documentOdsSize(@ApiParam(value = "Ods file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "ods", size);
+    }
+
+    @ApiOperation(value = "File document odt file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/odt/{size}", method = RequestMethod.GET, produces = {"application/odt"})
+    public @ResponseBody
+    byte[] documentOdtSize(@ApiParam(value = "Odt file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "odt", size);
+    }
+
+    @ApiOperation(value = "File document rtf file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/document/rtf/{size}", method = RequestMethod.GET, produces = {"application/rtf"})
+    public @ResponseBody
+    byte[] documentRtfSize(@ApiParam(value = "Rtf file size", allowableValues = "100KB, 500KB, 1MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("document", "rtf", size);
     }
 
     /************************************************************************************************************************************************/

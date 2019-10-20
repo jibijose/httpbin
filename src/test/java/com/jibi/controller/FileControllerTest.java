@@ -34,6 +34,11 @@ public class FileControllerTest {
         fileTypeTests("audio");
     }
 
+    @Test
+    public void testFileDocument() throws Exception {
+        fileTypeTests("document");
+    }
+
     /************************************************************************************************************************************************/
 
     @Test
@@ -59,6 +64,75 @@ public class FileControllerTest {
     @Test
     public void testFileIcoSize() throws Exception {
         fileTypeSizeTests("image", "ico");
+    }
+
+    /************************************************************************************************************************************************/
+
+    @Test
+    public void testFileMp3Size() throws Exception {
+        fileTypeSizeTests("audio", "mp3");
+    }
+
+    @Test
+    public void testFileWavSize() throws Exception {
+        fileTypeSizeTests("audio", "wav");
+    }
+
+    @Test
+    public void testFileOggSize() throws Exception {
+        fileTypeSizeTests("audio", "ogg");
+    }
+
+    /************************************************************************************************************************************************/
+
+    @Test
+    public void testFileDocSize() throws Exception {
+        fileTypeSizeTests("document", "doc");
+    }
+
+    @Test
+    public void testFileDocxSize() throws Exception {
+        fileTypeSizeTests("document", "docx");
+    }
+
+    @Test
+    public void testFileXlsSize() throws Exception {
+        fileTypeSizeTests("document", "xls");
+    }
+
+    @Test
+    public void testFileXlsxSize() throws Exception {
+        fileTypeSizeTests("document", "xlsx");
+    }
+
+    @Test
+    public void testFilePptSize() throws Exception {
+        fileTypeSizeTests("document", "ppt");
+    }
+
+    @Test
+    public void testFilePdfSize() throws Exception {
+        fileTypeSizeTests("document", "pdf");
+    }
+
+    @Test
+    public void testFileOdpSize() throws Exception {
+        fileTypeSizeTests("document", "odp");
+    }
+
+    @Test
+    public void testFileOdsSize() throws Exception {
+        fileTypeSizeTests("document", "ods");
+    }
+
+    @Test
+    public void testFileOdtSize() throws Exception {
+        fileTypeSizeTests("document", "odt");
+    }
+
+    @Test
+    public void testFileRtfSize() throws Exception {
+        fileTypeSizeTests("document", "rtf");
     }
 
     /************************************************************************************************************************************************/
