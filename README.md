@@ -42,6 +42,9 @@ APIS. Cookies, Req/Resp Inspection.
 hold/release endpoints  
 Network response big file.  
 Image/pdf/excel/doc etc responses  
+System ram/cpu/disk report api
+ram/cpu/disk speed api
+consumer disk speed api.
 
 add gradle support  
 update jdk11 support  
