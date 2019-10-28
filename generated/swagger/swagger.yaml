@@ -149,6 +149,60 @@ paths:
           description: "Ok"
         500:
           description: "Internal server error"
+  /download:
+    get:
+      tags:
+      - "Upload Download Api"
+      summary: "Download api"
+      description: ""
+      operationId: "download"
+      produces:
+      - "text/plain"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /download/{size}:
+    get:
+      tags:
+      - "Upload Download Api"
+      summary: "Download Size api"
+      description: ""
+      operationId: "downloadSize"
+      produces:
+      - "text/plain"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Txt file size"
+        required: true
+        type: "string"
+        enum:
+        - "1B"
+        - "10B"
+        - "100B"
+        - "1KB"
+        - "10KB"
+        - "100KB"
+        - "1MB"
+        - "10MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /file/audio/mp3/{size}:
     get:
       tags:

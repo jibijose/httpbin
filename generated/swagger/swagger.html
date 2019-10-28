@@ -501,6 +501,137 @@ Java httpbin apis
 
 
 
+## /download
+
+
+### GET
+
+<a id="download">Download api</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+
+
+
+
+
+#### Response
+
+**Content-Type: ** text/plain
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /download/{size}
+
+
+### GET
+
+<a id="downloadSize">Download Size api</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Txt file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** text/plain
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## /file/audio/mp3/{size}
 
 
