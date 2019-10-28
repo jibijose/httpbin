@@ -1,9 +1,6 @@
 package com.jibi.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +20,7 @@ public class RequestController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
     @RequestMapping(value = "/headers", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public Map<String, String> headers(@RequestHeader Map<String, String> headers) {
+    public Map<String, String> headers(@ApiParam(value = "Map of headers") @RequestHeader Map<String, String> headers) {
         return headers;
     }
 }

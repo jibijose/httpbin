@@ -1058,6 +1058,7 @@ paths:
       parameters:
       - name: "headers"
         in: "header"
+        description: "Map of headers"
         required: true
         type: "object"
       responses:
