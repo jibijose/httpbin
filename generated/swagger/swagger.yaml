@@ -23,7 +23,7 @@ tags:
 - name: "Request Api"
 - name: "Status codes Api"
 - name: "System information Api"
-- name: "Upload Api"
+- name: "Upload Download Api"
 schemes:
 - "http"
 - "https"
@@ -1065,7 +1065,7 @@ paths:
   /upload:
     post:
       tags:
-      - "Upload Api"
+      - "Upload Download Api"
       summary: "Upload api"
       description: ""
       operationId: "upload"
@@ -1080,6 +1080,8 @@ paths:
         200:
           description: "Ok"
           schema:
-            type: "string"
+            type: "object"
+            additionalProperties:
+              type: "object"
         500:
           description: "Internal server error"
