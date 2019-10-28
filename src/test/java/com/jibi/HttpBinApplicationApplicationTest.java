@@ -15,6 +15,6 @@ public class HttpBinApplicationApplicationTest {
 
     @Test
     public void testMain() throws Exception {
-        HttpBinApplication.main(new String[] {});
+        HttpBinApplication.main(new String[]{});
     }
 }

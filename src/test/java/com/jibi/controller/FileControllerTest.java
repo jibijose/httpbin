@@ -39,6 +39,11 @@ public class FileControllerTest {
         fileTypeTests("document");
     }
 
+    @Test
+    public void testFileOther() throws Exception {
+        fileTypeTests("other");
+    }
+
     /************************************************************************************************************************************************/
 
     @Test
@@ -133,6 +138,28 @@ public class FileControllerTest {
     @Test
     public void testFileRtfSize() throws Exception {
         fileTypeSizeTests("document", "rtf");
+    }
+
+    /************************************************************************************************************************************************/
+
+    @Test
+    public void testFileCsvSize() throws Exception {
+        fileTypeSizeTests("other", "csv");
+    }
+
+    @Test
+    public void testFileHtmlSize() throws Exception {
+        fileTypeSizeTests("other", "html");
+    }
+
+    @Test
+    public void testFileTxtSize() throws Exception {
+        fileTypeSizeTests("other", "txt");
+    }
+
+    @Test
+    public void testFileZipSize() throws Exception {
+        fileTypeSizeTests("other", "zip");
     }
 
     /************************************************************************************************************************************************/

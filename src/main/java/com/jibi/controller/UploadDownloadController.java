@@ -33,7 +33,7 @@ public class UploadDownloadController {
         uploadStatus.put("name", file.getName());
         uploadStatus.put("originalFileName", file.getOriginalFilename());
         uploadStatus.put("size", Long.toString(file.getSize()));
-        if ( file.getSize() == bytes.length ) {
+        if (file.getSize() == bytes.length) {
             uploadStatus.put("status", "success");
         }
 

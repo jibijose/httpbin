@@ -7,6 +7,10 @@ import java.text.NumberFormat;
 @Slf4j
 public class Util {
 
+    private static long KILOBYTES = 1024;
+    private static long MEGABYTES = 1024 * 1024;
+    private static long GIGABYTES = 1024 * 1024 * 1024;
+
     private Util() {
     }
 
@@ -58,10 +62,6 @@ public class Util {
     public static int randomNumber(int min, int max) {
         return min + ((int) Math.round((Math.random()) * (max - min)));
     }
-
-    private static long KILOBYTES = 1024;
-    private static long MEGABYTES = 1024 * 1024;
-    private static long GIGABYTES = 1024 * 1024 * 1024;
 
     public static String getFormattedSize(long memory) {
         NumberFormat format = NumberFormat.getInstance();

@@ -20,6 +20,7 @@ public class FileController {
     private static List<String> IMAGETYPES = Arrays.asList("jpg", "gif", "png", "tiff", "ico");
     private static List<String> AUDIOYPES = Arrays.asList("mp3", "wav", "ogg");
     private static List<String> DOCUMENTYPES = Arrays.asList("doc", "docx", "xls", "xlsx", "ppt", "pdf", "odp", "ods", "odt", "rtf");
+    private static List<String> OTHERTYPES = Arrays.asList("csv", "html", "txt", "zip");
 
     private static List<String> JPGSIZES = Arrays.asList("100KB", "500KB", "1MB", "2.5MB");
     private static List<String> GIFSIZES = Arrays.asList("500KB", "1MB", "3.5MB");
@@ -42,10 +43,16 @@ public class FileController {
     private static List<String> ODTSIZES = Arrays.asList("100KB", "500KB", "1MB");
     private static List<String> RTFSIZES = Arrays.asList("100KB", "300KB", "500KB", "1MB");
 
+    private static List<String> CSVSIZES = Arrays.asList("7KB");
+    private static List<String> HTMLSIZES = Arrays.asList("4KB");
+    private static List<String> TXTSIZES = Arrays.asList("1B", "10B", "100B", "1KB", "10KB", "100KB", "1MB", "10MB");
+    private static List<String> ZIPSIZES = Arrays.asList("2MB", "5MB", "9MB", "10MB");
+
     static {
         FILEGROUPTYPES.put("image", IMAGETYPES);
         FILEGROUPTYPES.put("audio", AUDIOYPES);
         FILEGROUPTYPES.put("document", DOCUMENTYPES);
+        FILEGROUPTYPES.put("other", OTHERTYPES);
 
         FILETYPESIZES.put("jpg", JPGSIZES);
         FILETYPESIZES.put("gif", GIFSIZES);
@@ -68,6 +75,10 @@ public class FileController {
         FILETYPESIZES.put("odt", ODTSIZES);
         FILETYPESIZES.put("rtf", RTFSIZES);
 
+        FILETYPESIZES.put("csv", CSVSIZES);
+        FILETYPESIZES.put("html", HTMLSIZES);
+        FILETYPESIZES.put("txt", TXTSIZES);
+        FILETYPESIZES.put("zip", ZIPSIZES);
     }
 
     /************************************************************************************************************************************************/
@@ -128,6 +139,15 @@ public class FileController {
     public @ResponseBody
     byte[] documentFileType(@ApiParam(value = "File type", allowableValues = "random, doc, docx, xls, xlsx, ppt, pdf, odt, ods, odp, rtf") @PathVariable("fileType") String fileType) throws IOException {
         return getFileContent("document", fileType);
+    }
+
+    @ApiOperation(value = "File other file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/other/{fileType}", method = RequestMethod.GET, produces = {"text/csv", "text/html", "text/plain", "application/zip"})
+    public @ResponseBody
+    byte[] otherFileType(@ApiParam(value = "File type", allowableValues = "csv, html, txt, zip") @PathVariable("fileType") String fileType) throws IOException {
+        return getFileContent("other", fileType);
     }
 
     /************************************************************************************************************************************************/
@@ -298,6 +318,43 @@ public class FileController {
         return getFileContent("document", "rtf", size);
     }
 
+    /************************************************************************************************************************************************/
+
+    @ApiOperation(value = "File other csv file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/other/csv/{size}", method = RequestMethod.GET, produces = {"text/csv"})
+    public @ResponseBody
+    byte[] otherCsvSize(@ApiParam(value = "Csv file size", allowableValues = "7KB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("other", "csv", size);
+    }
+
+    @ApiOperation(value = "File other html file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/other/html/{size}", method = RequestMethod.GET, produces = {"text/html"})
+    public @ResponseBody
+    byte[] otherHtmlSize(@ApiParam(value = "Html file size", allowableValues = "4KB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("other", "html", size);
+    }
+
+    @ApiOperation(value = "File other txt file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/other/txt/{size}", method = RequestMethod.GET, produces = {"text/plain"})
+    public @ResponseBody
+    byte[] otherTxtSize(@ApiParam(value = "Txt file size", allowableValues = "1B, 10B, 100B, 1KB, 10KB, 100KB, 1MB, 10MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("other", "txt", size);
+    }
+
+    @ApiOperation(value = "File other zip file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/other/zip/{size}", method = RequestMethod.GET, produces = {"application/zip"})
+    public @ResponseBody
+    byte[] otherZipSize(@ApiParam(value = "Zip file size", allowableValues = "2MB, 5MB, 9MB, 10MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("other", "zip", size);
+    }
     /************************************************************************************************************************************************/
 
 

@@ -23,6 +23,7 @@ tags:
 - name: "Request Api"
 - name: "Status codes Api"
 - name: "System information Api"
+- name: "Upload Download Api"
 schemes:
 - "http"
 - "https"
@@ -785,6 +786,157 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
+  /file/other/csv/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File other csv file operation"
+      description: ""
+      operationId: "otherCsvSize"
+      produces:
+      - "text/csv"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Csv file size"
+        required: true
+        type: "string"
+        enum:
+        - "7KB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/other/html/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File other html file operation"
+      description: ""
+      operationId: "otherHtmlSize"
+      produces:
+      - "text/html"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Html file size"
+        required: true
+        type: "string"
+        enum:
+        - "4KB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/other/txt/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File other txt file operation"
+      description: ""
+      operationId: "otherTxtSize"
+      produces:
+      - "text/plain"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Txt file size"
+        required: true
+        type: "string"
+        enum:
+        - "1B"
+        - "10B"
+        - "100B"
+        - "1KB"
+        - "10KB"
+        - "100KB"
+        - "1MB"
+        - "10MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/other/zip/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File other zip file operation"
+      description: ""
+      operationId: "otherZipSize"
+      produces:
+      - "application/zip"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Zip file size"
+        required: true
+        type: "string"
+        enum:
+        - "2MB"
+        - "5MB"
+        - "9MB"
+        - "10MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/other/{fileType}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File other file operation"
+      description: ""
+      operationId: "otherFileType"
+      produces:
+      - "text/csv"
+      - "text/html"
+      - "text/plain"
+      - "application/zip"
+      parameters:
+      - name: "fileType"
+        in: "path"
+        description: "File type"
+        required: true
+        type: "string"
+        enum:
+        - "csv"
+        - "html"
+        - "txt"
+        - "zip"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /health:
     get:
       tags:
@@ -908,5 +1060,26 @@ paths:
             type: "object"
             additionalProperties:
               type: "object"
+        500:
+          description: "Internal server error"
+  /upload:
+    post:
+      tags:
+      - "Upload Download Api"
+      summary: "Upload api"
+      description: ""
+      operationId: "upload"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - name: "file"
+        in: "query"
+        required: true
+        type: "ref"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "string"
         500:
           description: "Internal server error"

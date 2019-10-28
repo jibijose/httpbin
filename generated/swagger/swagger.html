@@ -2139,6 +2139,396 @@ Java httpbin apis
 
 
 
+## /file/other/csv/{size}
+
+
+### GET
+
+<a id="otherCsvSize">File other csv file operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Csv file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** text/csv
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /file/other/html/{size}
+
+
+### GET
+
+<a id="otherHtmlSize">File other html file operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Html file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** text/html
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /file/other/txt/{size}
+
+
+### GET
+
+<a id="otherTxtSize">File other txt file operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Txt file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** text/plain
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /file/other/zip/{size}
+
+
+### GET
+
+<a id="otherZipSize">File other zip file operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>size</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>Zip file size</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/zip
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /file/other/{fileType}
+
+
+### GET
+
+<a id="otherFileType">File other file operation</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>fileType</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>File type</td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** text/csv, text/html, text/plain, application/zip
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | Array[<a href=""></a>]|
+| 500    | Internal server error |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## /health
 
 
@@ -2557,6 +2947,87 @@ Api to respond with the status code in uri
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /upload
+
+
+
+
+
+
+### POST
+
+
+<a id="upload">Upload api</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+**Content-Type: ** multipart/form-data
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>file</th>
+    <td>query</td>
+    <td>yes</td>
+    <td></td>
+    <td> - </td>
+
+    
+            <td>ref </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Ok | |
+| 500    | Internal server error |  - |
 
 
 
