@@ -88,15 +88,22 @@ paths:
       parameters:
       - name: "unit"
         in: "path"
+        description: "Unit of time"
         required: true
         type: "string"
-      - name: "time"
+        enum:
+        - "millis"
+        - "seconds"
+        - "minutes"
+      - name: "minTime"
         in: "path"
+        description: "Minimum time"
         required: true
         type: "integer"
         format: "int32"
-      - name: "time"
+      - name: "maxTime"
         in: "path"
+        description: "Maximum time"
         required: true
         type: "integer"
         format: "int32"
@@ -115,10 +122,16 @@ paths:
       parameters:
       - name: "unit"
         in: "path"
+        description: "Unit of time"
         required: true
         type: "string"
+        enum:
+        - "millis"
+        - "seconds"
+        - "minutes"
       - name: "time"
         in: "path"
+        description: "Time"
         required: true
         type: "integer"
         format: "int32"
