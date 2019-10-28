@@ -2,6 +2,8 @@ package com.jibi.common;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.text.NumberFormat;
+
 @Slf4j
 public class Util {
 
@@ -55,5 +57,23 @@ public class Util {
 
     public static int randomNumber(int min, int max) {
         return min + ((int) Math.round((Math.random()) * (max - min)));
+    }
+
+    private static long KILOBYTES = 1024;
+    private static long MEGABYTES = 1024 * 1024;
+    private static long GIGABYTES = 1024 * 1024 * 1024;
+
+    public static String getFormattedSize(long memory) {
+        NumberFormat format = NumberFormat.getInstance();
+        if (memory > GIGABYTES) {
+            return format.format(memory / GIGABYTES) + "GB";
+        }
+        if (memory > MEGABYTES) {
+            return format.format(memory / MEGABYTES) + "MB";
+        }
+        if (memory > KILOBYTES) {
+            return format.format(memory / KILOBYTES) + "KB";
+        }
+        return format.format(memory) + "B";
     }
 }

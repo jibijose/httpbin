@@ -92,4 +92,12 @@ public class UtilTest {
                     assertThat(Util.randomNumber(3, 5), anyOf(is(3), is(4), is(5)));
                 });
     }
+
+    @Test(expected = Test.None.class)
+    public void testFormattedSize() {
+        assertEquals("Should return GB size", "100GB", Util.getFormattedSize(100l * 1024 * 1024 * 1024));
+        assertEquals("Should return MB size", "100MB", Util.getFormattedSize(100l * 1024 * 1024));
+        assertEquals("Should return KB size", "100KB", Util.getFormattedSize(100l * 1024));
+        assertEquals("Should return B size", "100B", Util.getFormattedSize(100l));
+    }
 }

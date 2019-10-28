@@ -22,6 +22,7 @@ tags:
 - name: "Memory Api"
 - name: "Request Api"
 - name: "Status codes Api"
+- name: "System information Api"
 schemes:
 - "http"
 - "https"
@@ -888,5 +889,24 @@ paths:
           description: "Ok"
         400:
           description: "Bad request"
+        500:
+          description: "Internal server error"
+  /system/info:
+    get:
+      tags:
+      - "System information Api"
+      summary: "System information api"
+      description: ""
+      operationId: "systemInfo"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
         500:
           description: "Internal server error"
