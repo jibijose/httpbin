@@ -1,1155 +1,167 @@
----
-swagger: "2.0"
+openapi: "3.0.0"
 info:
-  description: "Java httpbin apis"
-  version: "1.0.0"
-  title: "Java httpbin apis"
-  termsOfService: "https://github.com/jibijose/httpbin"
-  contact:
-    name: "Jibi Jose"
-    url: "https://httpbin.org"
-    email: "jibijose@yahoo.com"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "www.jibijose.com"
-basePath: "/api"
-tags:
-- name: "Cpu Api"
-- name: "Delay Api"
-- name: "File Api"
-- name: "Health Api"
-- name: "Memory Api"
-- name: "Request Api"
-- name: "Status codes Api"
-- name: "System information Api"
-- name: "Upload Download Api"
-schemes:
-- "http"
-- "https"
+  title: Simple API overview
+  version: 2.0.0
 paths:
-  /cpu/all/{percentage}/{time}:
+  /:
     get:
-      tags:
-      - "Cpu Api"
-      summary: "Cpu all processors operation"
-      description: ""
-      operationId: "cpuAllProcessors"
-      parameters:
-      - name: "percentage"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
-      - name: "time"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
+      operationId: listVersionsv2
+      summary: List API versions
       responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "string"
-        500:
-          description: "Internal server error"
-  /cpu/single/{percentage}/{time}:
+        '200':
+          description: |-
+            200 response
+          content:
+            application/json:
+              examples:
+                foo:
+                  value: {
+                    "versions": [
+                    {
+                      "status": "CURRENT",
+                      "updated": "2011-01-21T11:33:21Z",
+                      "id": "v2.0",
+                      "links": [
+                      {
+                        "href": "http://127.0.0.1:8774/v2/",
+                        "rel": "self"
+                      }
+                      ]
+                    },
+                    {
+                      "status": "EXPERIMENTAL",
+                      "updated": "2013-07-23T11:33:21Z",
+                      "id": "v3.0",
+                      "links": [
+                      {
+                        "href": "http://127.0.0.1:8774/v3/",
+                        "rel": "self"
+                      }
+                      ]
+                    }
+                    ]
+                  }
+        '300':
+          description: |-
+            300 response
+          content:
+            application/json:
+              examples:
+                foo:
+                  value: |
+                    {
+                     "versions": [
+                           {
+                             "status": "CURRENT",
+                             "updated": "2011-01-21T11:33:21Z",
+                             "id": "v2.0",
+                             "links": [
+                                 {
+                                     "href": "http://127.0.0.1:8774/v2/",
+                                     "rel": "self"
+                                 }
+                             ]
+                         },
+                         {
+                             "status": "EXPERIMENTAL",
+                             "updated": "2013-07-23T11:33:21Z",
+                             "id": "v3.0",
+                             "links": [
+                                 {
+                                     "href": "http://127.0.0.1:8774/v3/",
+                                     "rel": "self"
+                                 }
+                             ]
+                         }
+                     ]
+                    }
+  /v2:
     get:
-      tags:
-      - "Cpu Api"
-      summary: "Cpu single processors operation"
-      description: ""
-      operationId: "cpuSingleProcessor"
-      parameters:
-      - name: "percentage"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
-      - name: "time"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
+      operationId: getVersionDetailsv2
+      summary: Show API version details
       responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "string"
-        500:
-          description: "Internal server error"
-  /delay/random/{unit}/range/{minTime}/{maxTime}:
-    get:
-      tags:
-      - "Delay Api"
-      summary: "Delay random range api"
-      description: ""
-      operationId: "delayRandomRange"
-      parameters:
-      - name: "unit"
-        in: "path"
-        description: "Unit of time"
-        required: true
-        type: "string"
-        enum:
-        - "millis"
-        - "seconds"
-        - "minutes"
-      - name: "minTime"
-        in: "path"
-        description: "Minimum time"
-        required: true
-        type: "integer"
-        format: "int32"
-      - name: "maxTime"
-        in: "path"
-        description: "Maximum time"
-        required: true
-        type: "integer"
-        format: "int32"
-      responses:
-        200:
-          description: "Ok"
-        500:
-          description: "Internal server error"
-  /delay/random/{unit}/{time}:
-    get:
-      tags:
-      - "Delay Api"
-      summary: "Delay random api"
-      description: ""
-      operationId: "delayRandom"
-      parameters:
-      - name: "unit"
-        in: "path"
-        description: "Unit of time"
-        required: true
-        type: "string"
-        enum:
-        - "millis"
-        - "seconds"
-        - "minutes"
-      - name: "time"
-        in: "path"
-        description: "Time"
-        required: true
-        type: "integer"
-        format: "int32"
-      responses:
-        200:
-          description: "Ok"
-        500:
-          description: "Internal server error"
-  /delay/{unit}/{time}:
-    get:
-      tags:
-      - "Delay Api"
-      summary: "Delay constant api"
-      description: ""
-      operationId: "delayConstant"
-      parameters:
-      - name: "unit"
-        in: "path"
-        required: true
-        type: "string"
-      - name: "time"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
-      responses:
-        200:
-          description: "Ok"
-        500:
-          description: "Internal server error"
-  /download:
-    get:
-      tags:
-      - "Upload Download Api"
-      summary: "Download api"
-      description: ""
-      operationId: "download"
-      produces:
-      - "text/plain"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /download/{size}:
-    get:
-      tags:
-      - "Upload Download Api"
-      summary: "Download Size api"
-      description: ""
-      operationId: "downloadSize"
-      produces:
-      - "text/plain"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Txt file size"
-        required: true
-        type: "string"
-        enum:
-        - "1B"
-        - "10B"
-        - "100B"
-        - "1KB"
-        - "10KB"
-        - "100KB"
-        - "1MB"
-        - "10MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/audio/mp3/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File audio mp3 file operation"
-      description: ""
-      operationId: "audioMp3Size"
-      produces:
-      - "audio/mpeg3"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Mp3 file size"
-        required: true
-        type: "string"
-        enum:
-        - "700KB"
-        - "1MB"
-        - "2MB"
-        - "5MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/audio/ogg/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File audio ogg file operation"
-      description: ""
-      operationId: "audioOggSize"
-      produces:
-      - "audio/ogg"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Ogg file size"
-        required: true
-        type: "string"
-        enum:
-        - "1MB"
-        - "2MB"
-        - "5MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/audio/wav/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File audio wav file operation"
-      description: ""
-      operationId: "audioWavSize"
-      produces:
-      - "audio/wav"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Wav file size"
-        required: true
-        type: "string"
-        enum:
-        - "1MB"
-        - "2MB"
-        - "5MB"
-        - "10MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/audio/{fileType}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File audio file operation"
-      description: ""
-      operationId: "audioFileType"
-      produces:
-      - "audio/mpeg3"
-      - "audio/wav"
-      - "audio/ogg"
-      parameters:
-      - name: "fileType"
-        in: "path"
-        description: "File type"
-        required: true
-        type: "string"
-        enum:
-        - "random"
-        - "mp3"
-        - "wav"
-        - "ogg"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/doc/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document doc file operation"
-      description: ""
-      operationId: "documentDocSize"
-      produces:
-      - "application/doc"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Doc file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/docx/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document docx file operation"
-      description: ""
-      operationId: "documentDocxSize"
-      produces:
-      - "application/doc"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Docx file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/odp/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document odp file operation"
-      description: ""
-      operationId: "documentOdpSize"
-      produces:
-      - "application/odp"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Odp file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/ods/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document ods file operation"
-      description: ""
-      operationId: "documentOdsSize"
-      produces:
-      - "application/ods"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Ods file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/odt/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document odt file operation"
-      description: ""
-      operationId: "documentOdtSize"
-      produces:
-      - "application/odt"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Odt file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/pdf/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document pdf file operation"
-      description: ""
-      operationId: "documentPdfSize"
-      produces:
-      - "application/pdf"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Pdf file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/ppt/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document ppt file operation"
-      description: ""
-      operationId: "documentPptSize"
-      produces:
-      - "application/ppt"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Ppt file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/rtf/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document rtf file operation"
-      description: ""
-      operationId: "documentRtfSize"
-      produces:
-      - "application/rtf"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Rtf file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/xls/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document xls file operation"
-      description: ""
-      operationId: "documentXlsSize"
-      produces:
-      - "application/xls"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Xls file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/xlsx/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document xlsx file operation"
-      description: ""
-      operationId: "documentXlsxSize"
-      produces:
-      - "application/xls"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Xlsx file size"
-        required: true
-        type: "string"
-        enum:
-        - "100KB"
-        - "500KB"
-        - "1MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/document/{fileType}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File document file operation"
-      description: ""
-      operationId: "documentFileType"
-      produces:
-      - "application/doc"
-      - "application/excel"
-      - "application/powerpoint"
-      - "application/pdf"
-      - "application/odt"
-      - "application/ods"
-      - "application/odp"
-      - "application/rtf"
-      parameters:
-      - name: "fileType"
-        in: "path"
-        description: "File type"
-        required: true
-        type: "string"
-        enum:
-        - "random"
-        - "doc"
-        - "docx"
-        - "xls"
-        - "xlsx"
-        - "ppt"
-        - "pdf"
-        - "odt"
-        - "ods"
-        - "odp"
-        - "rtf"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/image/gif/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File image gif file operation"
-      description: ""
-      operationId: "imageGifSize"
-      produces:
-      - "image/gif"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Gif file size"
-        required: true
-        type: "string"
-        enum:
-        - "500KB"
-        - "1MB"
-        - "3.5MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/image/ico/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File image ico file operation"
-      description: ""
-      operationId: "imageIcoSize"
-      produces:
-      - "image/x-icon"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Ico file size"
-        required: true
-        type: "string"
-        enum:
-        - "400B"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/image/jpg/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File image jpg file operation"
-      description: ""
-      operationId: "imageJpgSize"
-      produces:
-      - "image/jpeg"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Jpg file size"
-        required: true
-        type: "string"
-        enum:
-        - "random"
-        - "100KB"
-        - "500KB"
-        - "1MB"
-        - "2.5MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/image/png/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File image png file operation"
-      description: ""
-      operationId: "imagePngSize"
-      produces:
-      - "image/png"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Png file size"
-        required: true
-        type: "string"
-        enum:
-        - "500KB"
-        - "1MB"
-        - "2MB"
-        - "3MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/image/tiff/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File image tiff file operation"
-      description: ""
-      operationId: "imageTiffSize"
-      produces:
-      - "image/tiff"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Tiff file size"
-        required: true
-        type: "string"
-        enum:
-        - "1MB"
-        - "5MB"
-        - "10MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/image/{fileType}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File image file operation"
-      description: ""
-      operationId: "imageFileType"
-      produces:
-      - "image/jpeg"
-      - "image/gif"
-      - "image/png"
-      - "image/tiff"
-      - "image/x-icon"
-      parameters:
-      - name: "fileType"
-        in: "path"
-        description: "File type"
-        required: true
-        type: "string"
-        enum:
-        - "random"
-        - "jpg"
-        - "gif"
-        - "png"
-        - "tiff"
-        - "ico"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/other/csv/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File other csv file operation"
-      description: ""
-      operationId: "otherCsvSize"
-      produces:
-      - "text/csv"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Csv file size"
-        required: true
-        type: "string"
-        enum:
-        - "7KB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/other/html/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File other html file operation"
-      description: ""
-      operationId: "otherHtmlSize"
-      produces:
-      - "text/html"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Html file size"
-        required: true
-        type: "string"
-        enum:
-        - "4KB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/other/txt/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File other txt file operation"
-      description: ""
-      operationId: "otherTxtSize"
-      produces:
-      - "text/plain"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Txt file size"
-        required: true
-        type: "string"
-        enum:
-        - "1B"
-        - "10B"
-        - "100B"
-        - "1KB"
-        - "10KB"
-        - "100KB"
-        - "1MB"
-        - "10MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/other/zip/{size}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File other zip file operation"
-      description: ""
-      operationId: "otherZipSize"
-      produces:
-      - "application/zip"
-      parameters:
-      - name: "size"
-        in: "path"
-        description: "Zip file size"
-        required: true
-        type: "string"
-        enum:
-        - "2MB"
-        - "5MB"
-        - "9MB"
-        - "10MB"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /file/other/{fileType}:
-    get:
-      tags:
-      - "File Api"
-      summary: "File other file operation"
-      description: ""
-      operationId: "otherFileType"
-      produces:
-      - "text/csv"
-      - "text/html"
-      - "text/plain"
-      - "application/zip"
-      parameters:
-      - name: "fileType"
-        in: "path"
-        description: "File type"
-        required: true
-        type: "string"
-        enum:
-        - "csv"
-        - "html"
-        - "txt"
-        - "zip"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-              format: "byte"
-        500:
-          description: "Internal server error"
-  /health:
-    get:
-      tags:
-      - "Health Api"
-      summary: "Health api"
-      description: ""
-      operationId: "health"
-      produces:
-      - "text/plain"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "string"
-        500:
-          description: "Internal server error"
-  /memory/{bytes}/{time}:
-    get:
-      tags:
-      - "Memory Api"
-      summary: "Memory hold operation"
-      description: ""
-      operationId: "memoryHold"
-      parameters:
-      - name: "bytes"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
-      - name: "time"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int32"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "string"
-        500:
-          description: "Internal server error"
-  /request/headers:
-    get:
-      tags:
-      - "Request Api"
-      summary: "Request headers operation"
-      description: ""
-      operationId: "headers"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "headers"
-        in: "header"
-        description: "Map of headers"
-        required: true
-        type: "object"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "object"
-            additionalProperties:
-              type: "object"
-        500:
-          description: "Internal server error"
-  /status/random/{codes}:
-    get:
-      tags:
-      - "Status codes Api"
-      summary: "Status random code api"
-      description: ""
-      operationId: "statusRandomCodes"
-      parameters:
-      - name: "codes"
-        in: "path"
-        description: "Comma separated status codes"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "Ok"
-        400:
-          description: "Bad request"
-        500:
-          description: "Internal server error"
-  /status/{code}:
-    get:
-      tags:
-      - "Status codes Api"
-      summary: "Status code api"
-      description: "Api to respond with the status code in uri"
-      operationId: "statusCode"
-      parameters:
-      - name: "code"
-        in: "path"
-        description: "Status code of response"
-        required: true
-        type: "integer"
-        format: "int32"
-      responses:
-        200:
-          description: "Ok"
-        400:
-          description: "Bad request"
-        500:
-          description: "Internal server error"
-  /system/info:
-    get:
-      tags:
-      - "System information Api"
-      summary: "System information api"
-      description: ""
-      operationId: "systemInfo"
-      produces:
-      - "application/json"
-      parameters: []
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "object"
-            additionalProperties:
-              type: "object"
-        500:
-          description: "Internal server error"
-  /upload:
-    post:
-      tags:
-      - "Upload Download Api"
-      summary: "Upload api"
-      description: ""
-      operationId: "upload"
-      consumes:
-      - "multipart/form-data"
-      parameters:
-      - name: "file"
-        in: "query"
-        required: true
-        type: "ref"
-      responses:
-        200:
-          description: "Ok"
-          schema:
-            type: "object"
-            additionalProperties:
-              type: "object"
-        500:
-          description: "Internal server error"
+        '200':
+          description: |-
+            200 response
+          content:
+            application/json:
+              examples:
+                foo:
+                  value: {
+                    "version": {
+                      "status": "CURRENT",
+                      "updated": "2011-01-21T11:33:21Z",
+                      "media-types": [
+                      {
+                        "base": "application/xml",
+                        "type": "application/vnd.openstack.compute+xml;version=2"
+                      },
+                      {
+                        "base": "application/json",
+                        "type": "application/vnd.openstack.compute+json;version=2"
+                      }
+                      ],
+                      "id": "v2.0",
+                      "links": [
+                      {
+                        "href": "http://127.0.0.1:8774/v2/",
+                        "rel": "self"
+                      },
+                      {
+                        "href": "http://docs.openstack.org/api/openstack-compute/2/os-compute-devguide-2.pdf",
+                        "type": "application/pdf",
+                        "rel": "describedby"
+                      },
+                      {
+                        "href": "http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl",
+                        "type": "application/vnd.sun.wadl+xml",
+                        "rel": "describedby"
+                      },
+                      {
+                        "href": "http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl",
+                        "type": "application/vnd.sun.wadl+xml",
+                        "rel": "describedby"
+                      }
+                      ]
+                    }
+                  }
+        '203':
+          description: |-
+            203 response
+          content:
+            application/json:
+              examples:
+                foo:
+                  value: {
+                    "version": {
+                      "status": "CURRENT",
+                      "updated": "2011-01-21T11:33:21Z",
+                      "media-types": [
+                      {
+                        "base": "application/xml",
+                        "type": "application/vnd.openstack.compute+xml;version=2"
+                      },
+                      {
+                        "base": "application/json",
+                        "type": "application/vnd.openstack.compute+json;version=2"
+                      }
+                      ],
+                      "id": "v2.0",
+                      "links": [
+                      {
+                        "href": "http://23.253.228.211:8774/v2/",
+                        "rel": "self"
+                      },
+                      {
+                        "href": "http://docs.openstack.org/api/openstack-compute/2/os-compute-devguide-2.pdf",
+                        "type": "application/pdf",
+                        "rel": "describedby"
+                      },
+                      {
+                        "href": "http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl",
+                        "type": "application/vnd.sun.wadl+xml",
+                        "rel": "describedby"
+                      }
+                      ]
+                    }
+                  }
