@@ -34,7 +34,7 @@ public class UploadDownloadControllerTest {
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        body.add("file", new ClassPathResource("logback-test.xml"));
+        body.add("file", new ClassPathResource("file/other/txt/10KB.txt"));
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
