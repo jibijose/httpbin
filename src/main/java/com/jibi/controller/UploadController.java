@@ -17,9 +17,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(value = "Upload Download Api")
-@RestController(value = "Upload Download Api")
-public class UploadDownloadController {
+@Api(value = "Upload Api")
+@RestController(value = "Upload Api")
+public class UploadController {
 
     @ApiOperation(value = "Upload api", response = String.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),

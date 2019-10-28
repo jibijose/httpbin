@@ -23,7 +23,7 @@ tags:
 - name: "Request Api"
 - name: "Status codes Api"
 - name: "System information Api"
-- name: "Upload Download Api"
+- name: "Upload Api"
 schemes:
 - "http"
 - "https"
@@ -1065,7 +1065,7 @@ paths:
   /upload:
     post:
       tags:
-      - "Upload Download Api"
+      - "Upload Api"
       summary: "Upload api"
       description: ""
       operationId: "upload"

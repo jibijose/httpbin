@@ -20,7 +20,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UploadDownloadControllerTest {
+public class UploadControllerTest {
 
     @LocalServerPort
     private int port;
