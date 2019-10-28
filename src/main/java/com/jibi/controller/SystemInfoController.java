@@ -40,35 +40,12 @@ public class SystemInfoController {
         return systemInfoMap;
     }
 
-    private double getCpuUsage() {
-        OperatingSystemMXBean operatingSystemMXBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
-        RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
-        int availableProcessors = operatingSystemMXBean.getAvailableProcessors();
-        long prevUpTime = runtimeMXBean.getUptime();
-        long prevProcessCpuTime = operatingSystemMXBean.getProcessCpuTime();
-        double cpuUsage;
-        try {
-            Thread.sleep(500);
-        } catch (Exception ignored) {
-        }
-
-        operatingSystemMXBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
-        long upTime = runtimeMXBean.getUptime();
-        long processCpuTime = operatingSystemMXBean.getProcessCpuTime();
-        long elapsedCpu = processCpuTime - prevProcessCpuTime;
-        long elapsedTime = upTime - prevUpTime;
-
-        cpuUsage = Math.min(99F, elapsedCpu / (elapsedTime * 10000F * availableProcessors));
-        return cpuUsage;
-    }
-
     private Map<String, String> getSystemCpuInfo(Runtime runtime, OperatingSystemMXBean operatingSystemMXBean) {
         Map<String, String> systemInfoCpuMap = new HashMap<>();
         systemInfoCpuMap.put("processCpuLoad", Double.toString(operatingSystemMXBean.getProcessCpuLoad()));
         systemInfoCpuMap.put("processCpuTime", Double.toString(operatingSystemMXBean.getProcessCpuTime()));
         systemInfoCpuMap.put("systemCpuLoad", Double.toString(operatingSystemMXBean.getSystemCpuLoad()));
         systemInfoCpuMap.put("systemLoadAverage", Double.toString(operatingSystemMXBean.getSystemLoadAverage()));
-        //systemInfoCpuMap.put("cpuUsage", Double.toString(getCpuUsage()));
         return systemInfoCpuMap;
     }
 
