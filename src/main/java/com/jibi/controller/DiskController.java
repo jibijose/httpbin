@@ -24,6 +24,8 @@ import java.util.stream.IntStream;
 @RequestMapping("/disk")
 public class DiskController {
 
+    private static byte[] BYTES1MB = null;
+
     @ApiOperation(value = "Disk write api", response = Void.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
@@ -35,7 +37,7 @@ public class DiskController {
         if ("GB".equals(unit)) {
             count = count * 1024;
         }
-        byte[] bytes = getFileContent("1MB");
+        byte[] bytes = getCachedBytes1MB();
         IntStream.range(0, count).forEach(index -> {
             try {
                 writeAndDeleteTempFile(bytes);
@@ -50,7 +52,29 @@ public class DiskController {
             @ApiResponse(code = 500, message = "Internal server error")})
     @RequestMapping(value = "/read/{unit}/{count}", method = RequestMethod.GET, produces = {MediaType.TEXT_PLAIN_VALUE})
     public void read(@PathVariable("unit") String unit, @PathVariable("count") Integer count) {
+        if (!"GB".equals(unit) && !"MB".equals(unit)) {
+            throw new RuntimeException("Unit must be MB or GB");
+        }
+        if ("GB".equals(unit)) {
+            count = count * 1024;
+        }
 
+        IntStream.range(0, count).forEach(index -> {
+            try {
+                byte[] bytes = getFileContent("1MB");
+            } catch (IOException ioException) {
+                throw new RuntimeException("Read failed", ioException);
+            }
+        });
+    }
+
+    private byte[] getCachedBytes1MB() throws IOException {
+        if ( BYTES1MB == null ) {
+            synchronized (this) {
+                BYTES1MB = getFileContent("1MB");
+            }
+        }
+        return BYTES1MB;
     }
 
     private byte[] getFileContent(String size) throws IOException {

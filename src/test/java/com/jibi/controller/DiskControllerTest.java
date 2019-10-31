@@ -44,4 +44,18 @@ public class DiskControllerTest {
         MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
+    @Test
+    public void testRead() throws Exception {
+        ResponseEntity<String> response = null;
+
+        response = this.restTemplate.getForEntity("http://localhost:" + port + "/disk/read/MB/1", String.class);
+        MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
+
+        response = this.restTemplate.getForEntity("http://localhost:" + port + "/disk/read/GB/0", String.class);
+        MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
+
+        response = this.restTemplate.getForEntity("http://localhost:" + port + "/disk/read/TB/1", String.class);
+        MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.INTERNAL_SERVER_ERROR));
+    }
+
 }

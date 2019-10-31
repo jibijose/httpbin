@@ -12,6 +12,7 @@ import java.io.IOException;
 import static org.powermock.api.mockito.PowerMockito.spy;
 import static org.powermock.api.mockito.PowerMockito.doThrow;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.same;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(DiskController.class)
@@ -29,6 +30,13 @@ public class DiskControllerPowerMockTest {
         doThrow(new IOException()).when(diskController, "writeAndDeleteTempFile", any(byte[].class));
 
         diskController.write("MB", 1);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testReadException() throws Exception {
+        doThrow(new IOException()).when(diskController, "getFileContent", same("1MB"));
+
+        diskController.read("MB", 1);
     }
 
 }
