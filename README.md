@@ -44,7 +44,10 @@ Network response big file.
 Image/pdf/excel/doc etc responses  
 System ram/cpu/disk report api
 ram/cpu/disk speed api
-consumer disk speed api.
+consumer disk speed api.  
+Open Api Spec 3.0 
+Java api web page
+add @log lombok.
 
 add gradle support  
 update jdk11 support  

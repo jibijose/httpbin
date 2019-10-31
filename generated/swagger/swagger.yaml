@@ -17,6 +17,7 @@ basePath: "/api"
 tags:
 - name: "Cpu Api"
 - name: "Delay Api"
+- name: "Disk Api"
 - name: "File Api"
 - name: "Health Api"
 - name: "Memory Api"
@@ -153,6 +154,54 @@ paths:
         required: true
         type: "string"
       - name: "time"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Ok"
+        500:
+          description: "Internal server error"
+  /disk/read/{unit}/{count}:
+    get:
+      tags:
+      - "Disk Api"
+      summary: "Disk read api"
+      description: ""
+      operationId: "read"
+      produces:
+      - "text/plain"
+      parameters:
+      - name: "unit"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "count"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Ok"
+        500:
+          description: "Internal server error"
+  /disk/write/{unit}/{count}:
+    get:
+      tags:
+      - "Disk Api"
+      summary: "Disk write api"
+      description: ""
+      operationId: "write"
+      produces:
+      - "text/plain"
+      parameters:
+      - name: "unit"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "count"
         in: "path"
         required: true
         type: "integer"
