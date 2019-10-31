@@ -26,7 +26,7 @@
         <java.version>1.8</java.version>
         <slf4j.version>1.7.25</slf4j.version>
         <swagger.version>2.9.2</swagger.version>
-        <powermock.version>2.0.2</powermock.version>
+        <powermock.version>2.0.4</powermock.version>
         <jacoco.version>0.8.4</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
