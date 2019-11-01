@@ -3,6 +3,7 @@ package com.jibi.common;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -17,6 +18,7 @@ import static org.powermock.api.mockito.PowerMockito.doNothing;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Util.class)
+@PowerMockIgnore({"com.sun.org.apache.xalan.*", "com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "org.w3c.*"})
 public class UtilTest {
 
     @Test(expected = Test.None.class)
