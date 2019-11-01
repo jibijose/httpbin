@@ -1,4 +1,4 @@
-FROM openjdk:8u232-jdk-slim
+FROM openjdk:8u141-jdk-slim
 LABEL maintainer="jibijose@yahoo.com"
 EXPOSE 8080
 
