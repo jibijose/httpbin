@@ -18,67 +18,81 @@ public class FileController {
     protected static Map<String, List<String>> FILETYPESIZES = new HashMap<>();
 
     private static List<String> IMAGETYPES = Arrays.asList("jpg", "gif", "png", "tiff", "ico");
+    private static List<String> VIDEOTYPES = Arrays.asList("avi", "mov", "mp4", "ogg", "wmv");
     private static List<String> AUDIOYPES = Arrays.asList("mp3", "wav", "ogg");
     private static List<String> DOCUMENTYPES = Arrays.asList("doc", "docx", "xls", "xlsx", "ppt", "pdf", "odp", "ods", "odt", "rtf");
     private static List<String> OTHERTYPES = Arrays.asList("csv", "html", "txt", "zip");
 
-    private static List<String> JPGSIZES = Arrays.asList("100KB", "500KB", "1MB", "2.5MB");
-    private static List<String> GIFSIZES = Arrays.asList("500KB", "1MB", "3.5MB");
-    private static List<String> PNGSIZES = Arrays.asList("500KB", "1MB", "2MB", "3MB");
-    private static List<String> TIFFSIZES = Arrays.asList("1MB", "5MB", "10MB");
-    private static List<String> ICOSIZES = Arrays.asList("400B");
+    private static List<String> IMAGEJPGSIZES = Arrays.asList("100KB", "500KB", "1MB", "2.5MB");
+    private static List<String> IMAGEGIFSIZES = Arrays.asList("500KB", "1MB", "3.5MB");
+    private static List<String> IMAGEPNGSIZES = Arrays.asList("500KB", "1MB", "2MB", "3MB");
+    private static List<String> IMAGETIFFSIZES = Arrays.asList("1MB", "5MB", "10MB");
+    private static List<String> IMAGEICOSIZES = Arrays.asList("400B");
 
-    private static List<String> MP3SIZES = Arrays.asList("700KB", "1MB", "2MB", "5MB");
-    private static List<String> WAVSIZES = Arrays.asList("1MB", "2MB", "5MB", "10MB");
-    private static List<String> OGGSIZES = Arrays.asList("1MB", "2MB", "5MB");
+    private static List<String> VIDEOAVISIZES = Arrays.asList("750KB", "800KB", "1.5MB", "2.3MB");
+    private static List<String> VIDEOMOVSIZES = Arrays.asList("700KB", "800KB", "1.4MB", "2.2MB");
+    private static List<String> VIDEOMP4SIZES = Arrays.asList("1.5MB", "3MB", "10MB", "18MB");
+    private static List<String> VIDEOOGGSIZES = Arrays.asList("1.7MB", "2.7MB", "11.4MB", "13.3MB");
+    private static List<String> VIDEOWMVSIZES = Arrays.asList("1.2MB", "1.6MB", "4.9MB", "9.3MB");
 
-    private static List<String> DOCSIZES = Arrays.asList("100KB", "500KB", "1MB");
-    private static List<String> DOCXSIZES = Arrays.asList("100KB", "500KB", "1MB");
-    private static List<String> XLSSIZES = Arrays.asList("10KB", "14KB", "20KB", "140KB", "670KB");
-    private static List<String> XLSXSIZES = Arrays.asList("5KB", "7KB", "9KB", "42KB", "184KB");
-    private static List<String> PPTSIZES = Arrays.asList("250KB", "500KB", "1MB");
-    private static List<String> PDFSIZES = Arrays.asList("150KB", "500KB", "1MB");
-    private static List<String> ODPSIZES = Arrays.asList("200KB", "500KB", "1MB");
-    private static List<String> ODSSIZES = Arrays.asList("31KB", "67KB", "94KB", "231KB");
-    private static List<String> ODTSIZES = Arrays.asList("100KB", "500KB", "1MB");
-    private static List<String> RTFSIZES = Arrays.asList("100KB", "300KB", "500KB", "1MB");
+    private static List<String> AUDIOMP3SIZES = Arrays.asList("700KB", "1MB", "2MB", "5MB");
+    private static List<String> AUDIOWAVSIZES = Arrays.asList("1MB", "2MB", "5MB", "10MB");
+    private static List<String> AUDIOOGGSIZES = Arrays.asList("1MB", "2MB", "5MB");
 
-    private static List<String> CSVSIZES = Arrays.asList("7KB");
-    private static List<String> HTMLSIZES = Arrays.asList("4KB");
-    private static List<String> TXTSIZES = Arrays.asList("1B", "10B", "100B", "1KB", "10KB", "100KB", "1MB", "10MB");
-    private static List<String> ZIPSIZES = Arrays.asList("2MB", "5MB", "9MB", "10MB");
+    private static List<String> DOCUMENTDOCSIZES = Arrays.asList("100KB", "500KB", "1MB");
+    private static List<String> DOCUMENTDOCXSIZES = Arrays.asList("100KB", "500KB", "1MB");
+    private static List<String> DOCUMENTXLSSIZES = Arrays.asList("10KB", "14KB", "20KB", "140KB", "670KB");
+    private static List<String> DOCUMENTXLSXSIZES = Arrays.asList("5KB", "7KB", "9KB", "42KB", "184KB");
+    private static List<String> DOCUMENTPPTSIZES = Arrays.asList("250KB", "500KB", "1MB");
+    private static List<String> DOCUMENTPDFSIZES = Arrays.asList("150KB", "500KB", "1MB");
+    private static List<String> DOCUMENTODPSIZES = Arrays.asList("200KB", "500KB", "1MB");
+    private static List<String> DOCUMENTODSSIZES = Arrays.asList("31KB", "67KB", "94KB", "231KB");
+    private static List<String> DOCUMENTODTSIZES = Arrays.asList("100KB", "500KB", "1MB");
+    private static List<String> DOCUMENTRTFSIZES = Arrays.asList("100KB", "300KB", "500KB", "1MB");
+
+    private static List<String> OTHERCSVSIZES = Arrays.asList("7KB");
+    private static List<String> OTHERHTMLSIZES = Arrays.asList("4KB");
+    private static List<String> OTHERTXTSIZES = Arrays.asList("1B", "10B", "100B", "1KB", "10KB", "100KB", "1MB", "10MB");
+    private static List<String> OTHERZIPSIZES = Arrays.asList("2MB", "5MB", "9MB", "10MB");
 
     static {
         FILEGROUPTYPES.put("image", IMAGETYPES);
+        FILEGROUPTYPES.put("video", VIDEOTYPES);
         FILEGROUPTYPES.put("audio", AUDIOYPES);
         FILEGROUPTYPES.put("document", DOCUMENTYPES);
         FILEGROUPTYPES.put("other", OTHERTYPES);
 
-        FILETYPESIZES.put("jpg", JPGSIZES);
-        FILETYPESIZES.put("gif", GIFSIZES);
-        FILETYPESIZES.put("png", PNGSIZES);
-        FILETYPESIZES.put("tiff", TIFFSIZES);
-        FILETYPESIZES.put("ico", ICOSIZES);
+        FILETYPESIZES.put("image_jpg", IMAGEJPGSIZES);
+        FILETYPESIZES.put("image_gif", IMAGEGIFSIZES);
+        FILETYPESIZES.put("image_png", IMAGEPNGSIZES);
+        FILETYPESIZES.put("image_tiff", IMAGETIFFSIZES);
+        FILETYPESIZES.put("image_ico", IMAGEICOSIZES);
 
-        FILETYPESIZES.put("mp3", MP3SIZES);
-        FILETYPESIZES.put("wav", WAVSIZES);
-        FILETYPESIZES.put("ogg", OGGSIZES);
+        FILETYPESIZES.put("video_avi", VIDEOAVISIZES);
+        FILETYPESIZES.put("video_mov", VIDEOMOVSIZES);
+        FILETYPESIZES.put("video_mp4", VIDEOMP4SIZES);
+        FILETYPESIZES.put("video_ogg", VIDEOOGGSIZES);
+        FILETYPESIZES.put("video_wmv", VIDEOWMVSIZES);
 
-        FILETYPESIZES.put("doc", DOCSIZES);
-        FILETYPESIZES.put("docx", DOCXSIZES);
-        FILETYPESIZES.put("xls", XLSSIZES);
-        FILETYPESIZES.put("xlsx", XLSXSIZES);
-        FILETYPESIZES.put("ppt", PPTSIZES);
-        FILETYPESIZES.put("pdf", PDFSIZES);
-        FILETYPESIZES.put("odp", ODPSIZES);
-        FILETYPESIZES.put("ods", ODSSIZES);
-        FILETYPESIZES.put("odt", ODTSIZES);
-        FILETYPESIZES.put("rtf", RTFSIZES);
+        FILETYPESIZES.put("audio_mp3", AUDIOMP3SIZES);
+        FILETYPESIZES.put("audio_wav", AUDIOWAVSIZES);
+        FILETYPESIZES.put("audio_ogg", AUDIOOGGSIZES);
 
-        FILETYPESIZES.put("csv", CSVSIZES);
-        FILETYPESIZES.put("html", HTMLSIZES);
-        FILETYPESIZES.put("txt", TXTSIZES);
-        FILETYPESIZES.put("zip", ZIPSIZES);
+        FILETYPESIZES.put("document_doc", DOCUMENTDOCSIZES);
+        FILETYPESIZES.put("document_docx", DOCUMENTDOCXSIZES);
+        FILETYPESIZES.put("document_xls", DOCUMENTXLSSIZES);
+        FILETYPESIZES.put("document_xlsx", DOCUMENTXLSXSIZES);
+        FILETYPESIZES.put("document_ppt", DOCUMENTPPTSIZES);
+        FILETYPESIZES.put("document_pdf", DOCUMENTPDFSIZES);
+        FILETYPESIZES.put("document_odp", DOCUMENTODPSIZES);
+        FILETYPESIZES.put("document_ods", DOCUMENTODSSIZES);
+        FILETYPESIZES.put("document_odt", DOCUMENTODTSIZES);
+        FILETYPESIZES.put("document_rtf", DOCUMENTRTFSIZES);
+
+        FILETYPESIZES.put("other_csv", OTHERCSVSIZES);
+        FILETYPESIZES.put("other_html", OTHERHTMLSIZES);
+        FILETYPESIZES.put("other_txt", OTHERTXTSIZES);
+        FILETYPESIZES.put("other_zip", OTHERZIPSIZES);
     }
 
     /************************************************************************************************************************************************/
@@ -98,16 +112,16 @@ public class FileController {
         }
 
         String size = null;
-        int randInt = ThreadLocalRandom.current().nextInt(0, FILETYPESIZES.get(fileType).size());
-        size = FILETYPESIZES.get(fileType).get(randInt);
+        int randInt = ThreadLocalRandom.current().nextInt(0, FILETYPESIZES.get(fileGroup + "_" + fileType).size());
+        size = FILETYPESIZES.get(fileGroup + "_" + fileType).get(randInt);
 
         return getFileContentInternal(fileGroup, fileType, size);
     }
 
     private byte[] getFileContent(String fileGroup, String fileTypeName, String size) throws IOException {
         if ("random".equals(size)) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, FILETYPESIZES.get(fileTypeName).size());
-            size = FILETYPESIZES.get(fileTypeName).get(randInt);
+            int randInt = ThreadLocalRandom.current().nextInt(0, FILETYPESIZES.get(fileGroup + "_" + fileTypeName).size());
+            size = FILETYPESIZES.get(fileGroup + "_" + fileTypeName).get(randInt);
         }
         return getFileContentInternal(fileGroup, fileTypeName, size);
     }
@@ -121,6 +135,15 @@ public class FileController {
     public @ResponseBody
     byte[] imageFileType(@ApiParam(value = "File type", allowableValues = "random, jpg, gif, png, tiff, ico") @PathVariable("fileType") String fileType) throws IOException {
         return getFileContent("image", fileType);
+    }
+
+    @ApiOperation(value = "File video file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/video/{fileType}", method = RequestMethod.GET, produces = {"video/avi", "video/mov", "video/mp4", "video/ogg", "video/wmv"})
+    public @ResponseBody
+    byte[] videoFileType(@ApiParam(value = "File type", allowableValues = "avi, mov, mp4, png, ogg, wmv") @PathVariable("fileType") String fileType) throws IOException {
+        return getFileContent("video", fileType);
     }
 
     @ApiOperation(value = "File audio file operation", response = byte[].class)
@@ -195,6 +218,53 @@ public class FileController {
     public @ResponseBody
     byte[] imageIcoSize(@ApiParam(value = "Ico file size", allowableValues = "400B") @PathVariable("size") String size) throws IOException {
         return getFileContent("image", "ico", size);
+    }
+
+    /************************************************************************************************************************************************/
+
+    @ApiOperation(value = "File video avi file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/video/avi/{size}", method = RequestMethod.GET, produces = {"video/avi"})
+    public @ResponseBody
+    byte[] videoAviSize(@ApiParam(value = "Avi file size", allowableValues = "random, 750KB, 800KB, 1.5MB, 2.3MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("video", "avi", size);
+    }
+
+    @ApiOperation(value = "File video mov file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/video/mov/{size}", method = RequestMethod.GET, produces = {"video/mov"})
+    public @ResponseBody
+    byte[] videoMovSize(@ApiParam(value = "Mov file size", allowableValues = "700KB, 800KB, 1.4MB, 2.2MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("video", "mov", size);
+    }
+
+    @ApiOperation(value = "File video mp4 file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/video/mp4/{size}", method = RequestMethod.GET, produces = {"video/mp4"})
+    public @ResponseBody
+    byte[] videoMp4Size(@ApiParam(value = "Mp4 file size", allowableValues = "1.5MB, 3MB, 10MB, 18MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("video", "mp4", size);
+    }
+
+    @ApiOperation(value = "File video ogg file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/video/ogg/{size}", method = RequestMethod.GET, produces = {"video/ogg"})
+    public @ResponseBody
+    byte[] videoOggSize(@ApiParam(value = "Ogg file size", allowableValues = "1.7MB, 2.7MB, 11.4MB, 13.3MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("video", "ogg", size);
+    }
+
+    @ApiOperation(value = "File video wmv file operation", response = byte[].class)
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 500, message = "Internal server error")})
+    @RequestMapping(value = "/video/wmv/{size}", method = RequestMethod.GET, produces = {"video/wmv"})
+    public @ResponseBody
+    byte[] videoWmvSize(@ApiParam(value = "Wmv file size", allowableValues = "1.2MB, 1.6MB, 4.9MB, 9.3MB") @PathVariable("size") String size) throws IOException {
+        return getFileContent("video", "wmv", size);
     }
 
     /************************************************************************************************************************************************/

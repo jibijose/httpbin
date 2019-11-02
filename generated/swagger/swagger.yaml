@@ -1053,6 +1053,193 @@ paths:
               format: "byte"
         500:
           description: "Internal server error"
+  /file/video/avi/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File video avi file operation"
+      description: ""
+      operationId: "videoAviSize"
+      produces:
+      - "video/avi"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Avi file size"
+        required: true
+        type: "string"
+        enum:
+        - "random"
+        - "750KB"
+        - "800KB"
+        - "1.5MB"
+        - "2.3MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/video/mov/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File video mov file operation"
+      description: ""
+      operationId: "videoMovSize"
+      produces:
+      - "video/mov"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Mov file size"
+        required: true
+        type: "string"
+        enum:
+        - "700KB"
+        - "800KB"
+        - "1.4MB"
+        - "2.2MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/video/mp4/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File video mp4 file operation"
+      description: ""
+      operationId: "videoMp4Size"
+      produces:
+      - "video/mp4"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Mp4 file size"
+        required: true
+        type: "string"
+        enum:
+        - "1.5MB"
+        - "3MB"
+        - "10MB"
+        - "18MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/video/ogg/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File video ogg file operation"
+      description: ""
+      operationId: "videoOggSize"
+      produces:
+      - "video/ogg"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Ogg file size"
+        required: true
+        type: "string"
+        enum:
+        - "1.7MB"
+        - "2.7MB"
+        - "11.4MB"
+        - "13.3MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/video/wmv/{size}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File video wmv file operation"
+      description: ""
+      operationId: "videoWmvSize"
+      produces:
+      - "video/wmv"
+      parameters:
+      - name: "size"
+        in: "path"
+        description: "Wmv file size"
+        required: true
+        type: "string"
+        enum:
+        - "1.2MB"
+        - "1.6MB"
+        - "4.9MB"
+        - "9.3MB"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
+  /file/video/{fileType}:
+    get:
+      tags:
+      - "File Api"
+      summary: "File video file operation"
+      description: ""
+      operationId: "videoFileType"
+      produces:
+      - "video/avi"
+      - "video/mov"
+      - "video/mp4"
+      - "video/ogg"
+      - "video/wmv"
+      parameters:
+      - name: "fileType"
+        in: "path"
+        description: "File type"
+        required: true
+        type: "string"
+        enum:
+        - "avi"
+        - "mov"
+        - "mp4"
+        - "png"
+        - "ogg"
+        - "wmv"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "byte"
+        500:
+          description: "Internal server error"
   /health:
     get:
       tags:

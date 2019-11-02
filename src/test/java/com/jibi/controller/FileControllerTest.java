@@ -30,6 +30,11 @@ public class FileControllerTest {
     }
 
     @Test
+    public void testFileVideo() throws Exception {
+        fileTypeTests("video");
+    }
+
+    @Test
     public void testFileAudio() throws Exception {
         fileTypeTests("audio");
     }
@@ -47,118 +52,145 @@ public class FileControllerTest {
     /************************************************************************************************************************************************/
 
     @Test
-    public void testFileJpgSize() throws Exception {
+    public void testFileImageJpgSize() throws Exception {
         fileTypeSizeTests("image", "jpg");
     }
 
     @Test
-    public void testFileGifSize() throws Exception {
+    public void testFileImageGifSize() throws Exception {
         fileTypeSizeTests("image", "gif");
     }
 
     @Test
-    public void testFilePngSize() throws Exception {
+    public void testFileImagePngSize() throws Exception {
         fileTypeSizeTests("image", "png");
     }
 
     @Test
-    public void testFileTiffSize() throws Exception {
+    public void testFileImageTiffSize() throws Exception {
         fileTypeSizeTests("image", "tiff");
     }
 
     @Test
-    public void testFileIcoSize() throws Exception {
+    public void testFileImageIcoSize() throws Exception {
         fileTypeSizeTests("image", "ico");
     }
 
     /************************************************************************************************************************************************/
 
     @Test
-    public void testFileMp3Size() throws Exception {
+    public void testFileVideoAviSize() throws Exception {
+        fileTypeSizeTests("video", "avi");
+    }
+
+    @Test
+    public void testFileVideoMovSize() throws Exception {
+        fileTypeSizeTests("video", "mov");
+    }
+
+    @Test
+    public void testFileVideoMp4Size() throws Exception {
+        fileTypeSizeTests("video", "mp4");
+    }
+
+    @Test
+    public void testFileVideoOggSize() throws Exception {
+        fileTypeSizeTests("video", "ogg");
+    }
+
+    @Test
+    public void testFileVideoWmvSize() throws Exception {
+        fileTypeSizeTests("video", "wmv");
+    }
+
+    /************************************************************************************************************************************************/
+
+    @Test
+    public void testFileAudioMp3Size() throws Exception {
         fileTypeSizeTests("audio", "mp3");
     }
 
     @Test
-    public void testFileWavSize() throws Exception {
+    public void testFileAudioWavSize() throws Exception {
         fileTypeSizeTests("audio", "wav");
     }
 
     @Test
-    public void testFileOggSize() throws Exception {
+    public void testFileAudioOggSize() throws Exception {
         fileTypeSizeTests("audio", "ogg");
     }
 
     /************************************************************************************************************************************************/
 
     @Test
-    public void testFileDocSize() throws Exception {
+    public void testFileDocumentDocSize() throws Exception {
         fileTypeSizeTests("document", "doc");
     }
 
     @Test
-    public void testFileDocxSize() throws Exception {
+    public void testFileDocumentDocxSize() throws Exception {
         fileTypeSizeTests("document", "docx");
     }
 
     @Test
-    public void testFileXlsSize() throws Exception {
+    public void testFileDocumentXlsSize() throws Exception {
         fileTypeSizeTests("document", "xls");
     }
 
     @Test
-    public void testFileXlsxSize() throws Exception {
+    public void testFileDocumentXlsxSize() throws Exception {
         fileTypeSizeTests("document", "xlsx");
     }
 
     @Test
-    public void testFilePptSize() throws Exception {
+    public void testFileDocumentPptSize() throws Exception {
         fileTypeSizeTests("document", "ppt");
     }
 
     @Test
-    public void testFilePdfSize() throws Exception {
+    public void testFileDocumentPdfSize() throws Exception {
         fileTypeSizeTests("document", "pdf");
     }
 
     @Test
-    public void testFileOdpSize() throws Exception {
+    public void testFileDocumentOdpSize() throws Exception {
         fileTypeSizeTests("document", "odp");
     }
 
     @Test
-    public void testFileOdsSize() throws Exception {
+    public void testFileDocumentOdsSize() throws Exception {
         fileTypeSizeTests("document", "ods");
     }
 
     @Test
-    public void testFileOdtSize() throws Exception {
+    public void testFileDocumentOdtSize() throws Exception {
         fileTypeSizeTests("document", "odt");
     }
 
     @Test
-    public void testFileRtfSize() throws Exception {
+    public void testFileDocumentRtfSize() throws Exception {
         fileTypeSizeTests("document", "rtf");
     }
 
     /************************************************************************************************************************************************/
 
     @Test
-    public void testFileCsvSize() throws Exception {
+    public void testFileOtherCsvSize() throws Exception {
         fileTypeSizeTests("other", "csv");
     }
 
     @Test
-    public void testFileHtmlSize() throws Exception {
+    public void testFileOtherHtmlSize() throws Exception {
         fileTypeSizeTests("other", "html");
     }
 
     @Test
-    public void testFileTxtSize() throws Exception {
+    public void testFileOtherTxtSize() throws Exception {
         fileTypeSizeTests("other", "txt");
     }
 
     @Test
-    public void testFileZipSize() throws Exception {
+    public void testFileOtherZipSize() throws Exception {
         fileTypeSizeTests("other", "zip");
     }
 
@@ -178,7 +210,7 @@ public class FileControllerTest {
         ResponseEntity<byte[]> responseRandom = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileGroup + "/" + fileType + "/" + "random", byte[].class);
         assertEquals(responseRandom.getStatusCode(), HttpStatus.OK);
 
-        FileController.FILETYPESIZES.get(fileType).stream().forEach(size -> {
+        FileController.FILETYPESIZES.get(fileGroup + "_" + fileType).stream().forEach(size -> {
             ResponseEntity<byte[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/file/" + fileGroup + "/" + fileType + "/" + size, byte[].class);
             assertEquals(response.getStatusCode(), HttpStatus.OK);
         });
