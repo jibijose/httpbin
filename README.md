@@ -54,3 +54,17 @@ update jdk11 support
 XML model response.  
 Swagger Model Beans  
 remove assertJ assert*  
+
+***************   
+#### OpenShift   
+https://console-openshift-console.apps.us-east-1.starter.openshift-online.com/console/command-line
+oc login --token=TOKEN --server=https://api.us-east-1.starter.openshift-online.com:6443
+oc config view
+
+oc get projects
+oc project httpbin
+
+oc apply -f openshift.yaml
+
+oc get svc
+oc get pods
