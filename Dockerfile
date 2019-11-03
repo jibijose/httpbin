@@ -14,11 +14,8 @@ COPY src /tmp/app/src/
 COPY templates /tmp/app/templates/
 COPY pom.xml /tmp/app/
 RUN /opt/maven/bin/mvn -f /tmp/app/pom.xml clean package -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
-COPY launch.sh /tmp/app/
 
 RUN mkdir /service
-RUN cp /tmp/app/launch.sh /service
-RUN chmod 755 /service/launch.sh
 RUN cp /tmp/app/target/httpbin-*.*.*.jar /service/app.jar
 
 RUN rm -rf /tmp/app
@@ -26,4 +23,4 @@ RUN rm -rf ~/.m2
 RUN apt-get remove maven -y -qq
 RUN rm -rf /opt/maven
 
-ENTRYPOINT ["/service/launch.sh"]
+ENTRYPOINT ["java -jar /service/app.jar"]
