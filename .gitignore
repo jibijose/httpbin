@@ -7,3 +7,6 @@ jacoco.exec
 .project
 .settings
 .classpath
+
+oc.exe
+kubectl.exe
