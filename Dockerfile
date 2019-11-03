@@ -20,7 +20,6 @@ RUN cp /tmp/app/target/httpbin-*.*.*.jar /service/app.jar
 
 RUN rm -rf /tmp/app
 RUN rm -rf ~/.m2
-RUN apt-get remove maven -y -qq
 RUN rm -rf /opt/maven
 
-ENTRYPOINT ["java -jar /service/app.jar"]
+ENTRYPOINT ["java", "-jar", "/service/app.jar"]
