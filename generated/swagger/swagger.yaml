@@ -12,8 +12,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "www.jibijose.com"
-basePath: "/api"
+host: "a03e2976afe0c11e9b28f12963f50b82-477664170.us-east-1.elb.amazonaws.com"
 tags:
 - name: "Cpu Api"
 - name: "Delay Api"
@@ -27,7 +26,6 @@ tags:
 - name: "Upload Download Api"
 schemes:
 - "http"
-- "https"
 paths:
   /cpu/all/{percentage}/{time}:
     get:

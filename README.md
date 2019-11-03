@@ -36,7 +36,7 @@ rm -rf httpbin
 ### TODOs  
 upload to maven central  
 junit run parallel  
-host website somewhere, add external curl checkpoints  
+add external curl checkpoints  
 add gradle support  
 APIS. Cookies, Req/Resp Inspection.  
 hold/release endpoints  
