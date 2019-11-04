@@ -14,34 +14,27 @@
 
 * Java 8.x
 * Maven 3.0.0 or newer.
+* docker optional
 
 ### Run locally
-docker run -p 8080:8080 jibijose/httpbin  
-docker run -d -p 8080:8080 registry.hub.docker.com/jibijose/httpbin:latest
+./scripts/dockerRun.sh   
 
 ### Build locally
-git clone https://github.com/jibijose/httpbin  
-cd httpbin  
-mvn clean package  
-docker build -t jibijose/httpbin:latest .  
+./scripts/dockerBuild.sh   
 
 ### Cleanup
-docker stop $(docker ps -aq)  
-docker rm $(docker ps -aq)  
-docker rmi jibijose/httpin:latest  
-docker rmi registry.hub.docker.com/jibijose/httpbin:latest  
-rm -rf httpbin
+./scripts/ckeanup.sh  
 
 *************
 ### TODOs  
 upload to maven central  
 junit run parallel  
 add external curl checkpoints  
+https://assertible.com/blog/testing-an-api-using-swagger    
 add gradle support  
 APIS. Cookies, Req/Resp Inspection.  
 hold/release endpoints  
-Network response big file.  
-Image/pdf/excel/doc etc responses  
+Network response big file.   
 System ram/cpu/disk report api
 ram/cpu/disk speed api
 consumer disk speed api.  
