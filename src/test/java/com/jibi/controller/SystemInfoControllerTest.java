@@ -1,16 +1,16 @@
 package com.jibi.controller;
 
+import com.jibi.model.SystemInfoModel;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -24,6 +24,12 @@ public class SystemInfoControllerTest {
 
     @Test
     public void testSystemInfo() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/system/info", Map.class));
+        ResponseEntity<SystemInfoModel> response = this.restTemplate.getForEntity("http://localhost:" + port + "/system/info", SystemInfoModel.class);
+        Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
+
+        Assert.assertNotNull(response.getBody().getCpu());
+        Assert.assertNotNull(response.getBody().getOs());
+        Assert.assertNotNull(response.getBody().getMemory());
+        Assert.assertNotNull(response.getBody().getDisks());
     }
 }

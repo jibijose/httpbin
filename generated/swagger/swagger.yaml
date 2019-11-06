@@ -1359,9 +1359,7 @@ paths:
         200:
           description: "Ok"
           schema:
-            type: "object"
-            additionalProperties:
-              type: "object"
+            $ref: "#/definitions/SystemInfoModel"
         500:
           description: "Internal server error"
   /upload:
@@ -1388,6 +1386,32 @@ paths:
         500:
           description: "Internal server error"
 definitions:
+  CpuInfoModel:
+    type: "object"
+    properties:
+      processCpuLoad:
+        type: "string"
+      processCpuTime:
+        type: "string"
+      systemCpuLoad:
+        type: "string"
+      systemLoadAverage:
+        type: "string"
+  DiskInfoModel:
+    type: "object"
+    properties:
+      freeSpace:
+        type: "string"
+      freeSpaceFormatted:
+        type: "string"
+      usableSpace:
+        type: "string"
+      usableSpaceFormatted:
+        type: "string"
+      totalSpace:
+        type: "string"
+      totalSpaceFormatted:
+        type: "string"
   HealthModel:
     type: "object"
     properties:
@@ -1396,3 +1420,46 @@ definitions:
       date:
         type: "string"
         format: "date-time"
+  MemoryInfoModel:
+    type: "object"
+    properties:
+      freeBytes:
+        type: "string"
+      freeFormatted:
+        type: "string"
+      allocatedBytes:
+        type: "string"
+      allocatedFormatted:
+        type: "string"
+      maxBytes:
+        type: "string"
+      maxFormatted:
+        type: "string"
+      usedBytes:
+        type: "string"
+      usedFormatted:
+        type: "string"
+  OsInfoModel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      version:
+        type: "string"
+      arch:
+        type: "string"
+      processors:
+        type: "string"
+  SystemInfoModel:
+    type: "object"
+    properties:
+      cpu:
+        $ref: "#/definitions/CpuInfoModel"
+      os:
+        $ref: "#/definitions/OsInfoModel"
+      memory:
+        $ref: "#/definitions/MemoryInfoModel"
+      disks:
+        type: "object"
+        additionalProperties:
+          $ref: "#/definitions/DiskInfoModel"
