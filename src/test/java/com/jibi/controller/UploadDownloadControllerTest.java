@@ -1,6 +1,7 @@
 package com.jibi.controller;
 
 
+import com.jibi.model.UploadInfoModel;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,10 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -43,8 +41,10 @@ public class UploadDownloadControllerTest {
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
-        ResponseEntity<Map> response = this.restTemplate.postForEntity("http://localhost:" + port + "/upload", requestEntity, Map.class);
-        Assert.assertEquals("Status should be success", "success", response.getBody().get("status"));
+        ResponseEntity<UploadInfoModel> response = this.restTemplate.postForEntity("http://localhost:" + port + "/upload", requestEntity, UploadInfoModel.class);
+        Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
+        Assert.assertNotNull(response.getBody());
+        Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
     }
 
     @Test

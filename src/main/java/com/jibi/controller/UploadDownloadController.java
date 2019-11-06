@@ -1,5 +1,6 @@
 package com.jibi.controller;
 
+import com.jibi.model.UploadInfoModel;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -19,23 +20,23 @@ public class UploadDownloadController {
     @Autowired
     private FileController fileController;
 
-    @ApiOperation(value = "Upload api", response = Map.class)
+    @ApiOperation(value = "Upload api", response = UploadInfoModel.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
     @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Map<String, String> upload(@RequestParam("file") MultipartFile file) throws IOException {
-        Map<String, String> uploadStatus = new HashMap<>();
+    public UploadInfoModel upload(@RequestParam("file") MultipartFile file) throws IOException {
+        UploadInfoModel uploadInfoModel = new UploadInfoModel();
         byte[] bytes = file.getBytes();
-        uploadStatus.put("uploadedBytesLength", Integer.toString(bytes.length));
-        uploadStatus.put("contentType", file.getContentType());
-        uploadStatus.put("name", file.getName());
-        uploadStatus.put("originalFileName", file.getOriginalFilename());
-        uploadStatus.put("size", Long.toString(file.getSize()));
+        uploadInfoModel.setUploadedBytesLength(Integer.toString(bytes.length));
+        uploadInfoModel.setContentType(file.getContentType());
+        uploadInfoModel.setName(file.getName());
+        uploadInfoModel.setOriginalFileName(file.getOriginalFilename());
+        uploadInfoModel.setSize(Long.toString(file.getSize()));
         if (file.getSize() == bytes.length) {
-            uploadStatus.put("status", "success");
+            uploadInfoModel.setStatus("success");
         }
 
-        return uploadStatus;
+        return uploadInfoModel;
     }
 
     @ApiOperation(value = "Download api", response = byte[].class)

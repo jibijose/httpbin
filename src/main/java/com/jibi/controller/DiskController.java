@@ -69,7 +69,7 @@ public class DiskController {
     }
 
     private byte[] getCachedBytes1MB() throws IOException {
-        if ( BYTES1MB == null ) {
+        if (BYTES1MB == null) {
             synchronized (this) {
                 BYTES1MB = getFileContent("1MB");
             }

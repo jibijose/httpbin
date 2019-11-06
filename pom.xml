@@ -30,8 +30,10 @@
         <powermock.version>2.0.4</powermock.version>
         <junit.version>4.12</junit.version>
         <jacoco.version>0.8.4</jacoco.version>
-        <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
-        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+        <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
+        </jacoco.it.execution.data.file>
+        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
+        </jacoco.ut.execution.data.file>
     </properties>
 
     <dependencies>
