@@ -1246,13 +1246,13 @@ paths:
       description: ""
       operationId: "health"
       produces:
-      - "text/plain"
+      - "application/json"
       parameters: []
       responses:
         200:
           description: "Ok"
           schema:
-            type: "string"
+            $ref: "#/definitions/HealthModel"
         500:
           description: "Internal server error"
   /memory/{bytes}/{time}:
@@ -1387,3 +1387,12 @@ paths:
               type: "object"
         500:
           description: "Internal server error"
+definitions:
+  HealthModel:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      date:
+        type: "string"
+        format: "date-time"

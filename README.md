@@ -46,7 +46,6 @@ update jdk11 support
     https://www.bountysource.com/issues/57222279-power-mock-is-not-working-with-jdk-9-getting-initializationerror-powermocktest-java-lang-reflect-invocationtargetexception
 XML model response.  
 Swagger Model Beans  
-remove assertJ assert*  
 
 ***************   
 #### OpenShift   
