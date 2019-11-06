@@ -39,12 +39,8 @@ System ram/cpu/disk report api
 ram/cpu/disk speed api
 consumer disk speed api.  
 Open Api Spec 3.0   
-Java api web page  
-add @log lombok.  
+Java api web page   
 Date Apis. add delete days/weeks/months/years    
-update jdk11 support  
-    https://www.bountysource.com/issues/57222279-power-mock-is-not-working-with-jdk-9-getting-initializationerror-powermocktest-java-lang-reflect-invocationtargetexception
-XML model response.  
 
 ***************   
 #### OpenShift   
