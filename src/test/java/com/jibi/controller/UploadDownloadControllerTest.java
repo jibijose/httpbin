@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.util.Map;
+import java.util.Arrays;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.AnyOf.anyOf;
@@ -32,8 +32,9 @@ public class UploadDownloadControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testUpload() throws Exception {
+    public void testUploadJson() throws Exception {
         HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
@@ -43,6 +44,25 @@ public class UploadDownloadControllerTest {
 
         ResponseEntity<UploadInfoModel> response = this.restTemplate.postForEntity("http://localhost:" + port + "/upload", requestEntity, UploadInfoModel.class);
         Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals("Content type should be json", MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
+        Assert.assertNotNull(response.getBody());
+        Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
+    }
+
+    @Test
+    public void testUploadXml() throws Exception {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+        body.add("file", new ClassPathResource("file/other/txt/10KB.txt"));
+
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+
+        ResponseEntity<UploadInfoModel> response = this.restTemplate.postForEntity("http://localhost:" + port + "/upload", requestEntity, UploadInfoModel.class);
+        Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals("Content type should be xml", MediaType.APPLICATION_XML, response.getHeaders().getContentType());
         Assert.assertNotNull(response.getBody());
         Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
     }

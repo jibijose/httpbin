@@ -1,6 +1,5 @@
 package com.jibi.model;
 
-import com.jibi.common.StringUtil;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -26,7 +26,7 @@ public class SystemInfoController {
     @ApiOperation(value = "System information api", response = SystemInfoModel.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public SystemInfoModel systemInfo() {
         Runtime runtime = Runtime.getRuntime();
         OperatingSystemMXBean operatingSystemMXBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
@@ -92,6 +92,7 @@ public class SystemInfoController {
             diskInfoModel.setTotalSpace(Long.toString(totalSpace));
             diskInfoModel.setTotalSpaceFormatted(getFormattedSize(totalSpace));
 
+            filePath = filePath.replace('/', 'S');
             diskModels.put(filePath, diskInfoModel);
         }
         return diskModels;

@@ -1247,6 +1247,7 @@ paths:
       operationId: "health"
       produces:
       - "application/json"
+      - "application/xml"
       parameters: []
       responses:
         200:
@@ -1354,6 +1355,7 @@ paths:
       operationId: "systemInfo"
       produces:
       - "application/json"
+      - "application/xml"
       parameters: []
       responses:
         200:
@@ -1371,6 +1373,9 @@ paths:
       operationId: "upload"
       consumes:
       - "multipart/form-data"
+      produces:
+      - "application/json"
+      - "application/xml"
       parameters:
       - name: "file"
         in: "query"

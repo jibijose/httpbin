@@ -23,7 +23,7 @@ public class UploadDownloadController {
     @ApiOperation(value = "Upload api", response = UploadInfoModel.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
             @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public UploadInfoModel upload(@RequestParam("file") MultipartFile file) throws IOException {
         UploadInfoModel uploadInfoModel = new UploadInfoModel();
         byte[] bytes = file.getBytes();
