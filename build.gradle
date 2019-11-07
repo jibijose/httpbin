@@ -1,26 +1,24 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
 
-group = 'org.springframework'
-version = '0.1.0'
-
-description = """"""
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-
+group = 'com.jibi'
+version = '1.0.0'
+description = 'Java httpbin'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 repositories {
-
-    maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
 }
+
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.2.0.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version:'2.2.0.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version:'2.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context-support', version:'4.2.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-aop', version:'4.2.4.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.6'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version:'1.18.6'
@@ -32,11 +30,13 @@ dependencies {
     compile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version:'2.10.0'
 
-    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.2.0.RELEASE') {
-        exclude(module: 'commons-logging')
-    }
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
     testCompile group: 'org.powermock', name: 'powermock-core', version:'2.0.4'
     testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version:'2.0.4'
     testCompile group: 'org.powermock', name: 'powermock-module-junit4', version:'2.0.4'
     testCompile group: 'org.hamcrest', name: 'hamcrest-core', version:'2.2'
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -34,8 +34,6 @@ https://assertible.com/blog/testing-an-api-using-swagger
 add gradle support  
 APIS. Cookies, Req/Resp Inspection.  
 hold/release endpoints  
-Network response big file.   
-System ram/cpu/disk report api
 ram/cpu/disk speed api
 consumer disk speed api.  
 Open Api Spec 3.0   

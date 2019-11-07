@@ -8,6 +8,7 @@
     <artifactId>httpbin</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <description>Java httpbin</description>
 
     <name>httpbin</name>
     <url>https://jibijose.github.io/swagger</url>
