@@ -25,7 +25,7 @@ import static org.powermock.api.mockito.PowerMockito.doNothing;
 @PowerMockRunnerDelegate(SpringRunner.class)
 @PrepareForTest(Util.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@PowerMockIgnore({"com.sun.org.apache.xalan.*", "com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "org.w3c.*"})
+@PowerMockIgnore({"com.sun.org.apache.xalan.*", "com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "org.w3c.*", "javax.management.*"})
 public class DelayControllerTest {
 
     @LocalServerPort
@@ -84,12 +84,13 @@ public class DelayControllerTest {
 
     @Test
     public void testDelayRandomRange2Millis() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/millis/10/30", Void.class));
+        ResponseEntity<Void> responseEntity = this.restTemplate.getForEntity("http://localhost:" + port + "/delay/random/millis/range/10/30", Void.class);
+        assertEquals("Http status should be ok", HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
     public void testDelayRandomRange2Seconds() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/seconds/2/3", Void.class));
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/seconds/range/2/3", Void.class));
     }
 
     @Test
@@ -97,7 +98,7 @@ public class DelayControllerTest {
         PowerMockito.spy(Util.class);
         doNothing().when(Util.class, "sleepSecondsSilent", anyInt());
 
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/minutes/1/2", Void.class));
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/delay/random/minutes/range/1/2", Void.class));
     }
 
     @Test
