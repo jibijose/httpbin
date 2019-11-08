@@ -18,7 +18,6 @@ import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 @Api(value = "System information Api")
 @RestController(value = "System information Api")
@@ -36,15 +35,10 @@ public class SystemInfoController {
         SystemInfoModel systemInfoModel = new SystemInfoModel();
 
         systemInfoModel.setCpu(getSystemCpuInfo(runtime, operatingSystemMXBean));
-        log.info(systemInfoModel.getCpu().toString());
         systemInfoModel.setOs(getSystemOsInfo(runtime));
-        log.info(systemInfoModel.getOs().toString());
         systemInfoModel.setMemory(getSystemMemoryInfo(runtime));
-        log.info(systemInfoModel.getMemory().toString());
         systemInfoModel.setDisks(getSystemDiskInfo(runtime));
-        log.info(systemInfoModel.getDisks().toString());
 
-        log.debug(systemInfoModel.toString());
         return systemInfoModel;
     }
 
