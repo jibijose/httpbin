@@ -12,6 +12,7 @@ install:
 script:
   - ./mvnw clean
   - ./mvnw pmd:check pmd:cpd-check
+  - .mvnw checkstyle:check
   - ./mvnw package
 after_success:
   - ./mvnw coveralls:report

@@ -33,6 +33,7 @@ build:
 before_build:
   - mvnw clean -B
   - mvnw pmd:check pmd:cpd-check -B
+  - mvnw checkstyle:check -B
 build_script:
   - gradlew -i assemble
   - mvnw package -B
