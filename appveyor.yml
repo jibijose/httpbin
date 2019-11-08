@@ -23,6 +23,8 @@ cache:
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
+build:
+  parallel: true
 build_script:
   - ./mvnw clean package -B
 #---------------------------------#

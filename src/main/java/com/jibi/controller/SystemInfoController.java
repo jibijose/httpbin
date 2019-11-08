@@ -18,6 +18,7 @@ import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Api(value = "System information Api")
 @RestController(value = "System information Api")
@@ -99,8 +100,12 @@ public class SystemInfoController {
             diskInfoModel.setTotalSpace(Long.toString(totalSpace));
             diskInfoModel.setTotalSpaceFormatted(getFormattedSize(totalSpace));
 
+            log.info(filePath);
             filePath = filePath.replaceAll("/", "FS");
+            log.info(filePath);
             filePath = filePath.replaceAll("\\\\", "BS");
+            log.info(filePath);
+            filePath = Integer.toString(new Random().nextInt());
             diskModels.put(filePath, diskInfoModel);
         }
         return diskModels;
