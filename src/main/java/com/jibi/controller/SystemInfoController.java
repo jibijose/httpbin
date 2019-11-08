@@ -99,7 +99,8 @@ public class SystemInfoController {
             diskInfoModel.setTotalSpace(Long.toString(totalSpace));
             diskInfoModel.setTotalSpaceFormatted(getFormattedSize(totalSpace));
 
-            filePath = filePath.replace('/', 'S');
+            filePath = filePath.replaceAll("/", "FS");
+            filePath = filePath.replaceAll("\\\\", "BS");
             diskModels.put(filePath, diskInfoModel);
         }
         return diskModels;
