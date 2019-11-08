@@ -15,11 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/health")
 public class HealthController {
 
-    @ApiOperation(value = "Health api", response = HealthModel.class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public HealthModel health() {
-        return new HealthModel();
+  @ApiOperation(value = "Health api", response = HealthModel.class)
+  @ApiResponses(
+    value = {
+      @ApiResponse(code = 200, message = "Ok"),
+      @ApiResponse(code = 500, message = "Internal server error")
     }
+  )
+  @RequestMapping(
+    method = RequestMethod.GET,
+    produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+  )
+  public HealthModel health() {
+    return new HealthModel();
+  }
 }

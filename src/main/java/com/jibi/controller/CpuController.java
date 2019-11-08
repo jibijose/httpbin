@@ -16,23 +16,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cpu")
 public class CpuController {
 
-    @Autowired
-    private BusyService busyService;
+  @Autowired private BusyService busyService;
 
-    @ApiOperation(value = "Cpu all processors operation", response = String.class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/all/{percentage}/{time}", method = RequestMethod.GET)
-    public void cpuAllProcessors(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
-        busyService.runInAllProcessors(percentage, time);
+  @ApiOperation(value = "Cpu all processors operation", response = String.class)
+  @ApiResponses(
+    value = {
+      @ApiResponse(code = 200, message = "Ok"),
+      @ApiResponse(code = 500, message = "Internal server error")
     }
+  )
+  @RequestMapping(value = "/all/{percentage}/{time}", method = RequestMethod.GET)
+  public void cpuAllProcessors(
+      @PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
+    busyService.runInAllProcessors(percentage, time);
+  }
 
-    @ApiOperation(value = "Cpu single processors operation", response = String.class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/single/{percentage}/{time}", method = RequestMethod.GET)
-    public void cpuSingleProcessor(@PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
-        busyService.runInSingleProcessor(percentage, time);
+  @ApiOperation(value = "Cpu single processors operation", response = String.class)
+  @ApiResponses(
+    value = {
+      @ApiResponse(code = 200, message = "Ok"),
+      @ApiResponse(code = 500, message = "Internal server error")
     }
-
+  )
+  @RequestMapping(value = "/single/{percentage}/{time}", method = RequestMethod.GET)
+  public void cpuSingleProcessor(
+      @PathVariable("percentage") Integer percentage, @PathVariable("time") Integer time) {
+    busyService.runInSingleProcessor(percentage, time);
+  }
 }

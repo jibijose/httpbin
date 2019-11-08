@@ -32,6 +32,7 @@ build:
   parallel: false
 before_build:
   - mvnw clean -B
+  - mvnw fmt:check -B
   - mvnw pmd:check pmd:cpd-check -B
   - mvnw checkstyle:check -B
 build_script:

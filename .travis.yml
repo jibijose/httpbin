@@ -11,6 +11,7 @@ install:
   - ./mvnw clean compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
   - ./mvnw clean
+  - ./mvnw fmt:check
   - ./mvnw pmd:check pmd:cpd-check
   - .mvnw checkstyle:check
   - ./mvnw package

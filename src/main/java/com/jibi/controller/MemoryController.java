@@ -18,14 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class MemoryController {
 
-    @ApiOperation(value = "Memory hold operation", response = String.class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
-            @ApiResponse(code = 500, message = "Internal server error")})
-    @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
-    public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
-
-        String storeString = StringUtil.getRandomString(bytes / 2);
-        Util.sleepMillisSilent(time * 1000);
-        log.trace("Kept string of length {} in memory for {} seconds", storeString.length(), time);
+  @ApiOperation(value = "Memory hold operation", response = String.class)
+  @ApiResponses(
+    value = {
+      @ApiResponse(code = 200, message = "Ok"),
+      @ApiResponse(code = 500, message = "Internal server error")
     }
+  )
+  @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
+  public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
+
+    String storeString = StringUtil.getRandomString(bytes / 2);
+    Util.sleepMillisSilent(time * 1000);
+    log.trace("Kept string of length {} in memory for {} seconds", storeString.length(), time);
+  }
 }
