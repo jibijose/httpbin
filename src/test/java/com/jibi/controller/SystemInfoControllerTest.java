@@ -40,6 +40,7 @@ public class SystemInfoControllerTest {
         Assert.assertNotNull(response.getBody().getDisks());
     }
 
+    /*
     @Test
     public void testSystemInfoXml() throws Exception {
         HttpHeaders headers = new HttpHeaders();
@@ -55,4 +56,5 @@ public class SystemInfoControllerTest {
         Assert.assertNotNull(response.getBody().getMemory());
         Assert.assertNotNull(response.getBody().getDisks());
     }
+    */
 }
