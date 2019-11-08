@@ -105,7 +105,7 @@ public class SystemInfoController {
             log.info(filePath);
             //filePath = filePath.replaceAll("\\\\", "BS");
             log.info(filePath);
-            filePath = Integer.toString(new Random().nextInt());
+            filePath = "S" +  Integer.toString(new Random().nextInt());
             diskModels.put(filePath, diskInfoModel);
         }
         return diskModels;
