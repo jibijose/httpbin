@@ -101,11 +101,15 @@ public class SystemInfoController {
             diskInfoModel.setTotalSpaceFormatted(getFormattedSize(totalSpace));
 
             log.info(filePath);
-            //filePath = filePath.replaceAll("/", "FS");
+            filePath = filePath.replaceAll("/", "Fs");
             log.info(filePath);
-            //filePath = filePath.replaceAll("\\\\", "BS");
+            filePath = filePath.replaceAll(":", "Cn");
             log.info(filePath);
-            filePath = "S" +  Integer.toString(new Random().nextInt());
+            filePath = filePath.replaceAll("=", "Eq");
+            log.info(filePath);
+            filePath = filePath.replaceAll("\\\\", "Bs");
+            log.info(filePath);
+            //filePath = "S" +  Integer.toString(new Random().nextInt());
             diskModels.put(filePath, diskInfoModel);
         }
         return diskModels;
