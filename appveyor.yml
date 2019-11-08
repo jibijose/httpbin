@@ -13,22 +13,29 @@ environment:
   matrix:
     - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
     - JAVA_HOME: C:\Program Files\Java\jdk11
-install:
-  - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=512m -Xmx1g
-  - cmd: SET JAVA_OPTS=-XX:MaxPermSize=512m -Xmx1g
-  - cmd: mvn --version
-  - cmd: java -version
+matrix:
+  fast_finish: true
 cache:
   - C:\Users\appveyor\.m2\ -> pom.xml
+  - C:\Users\appveyor\.gradle
+install:
+  - SET PATH=%PATH%;.
+  - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=512m -Xmx1g
+  - cmd: SET JAVA_OPTS=-XX:MaxPermSize=512m -Xmx1g
+  - cmd: gradlew --version
+  - cmd: mvnw --version
+  - cmd: java -version
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
 build:
   parallel: false
 build_script:
-  - ./mvnw clean package -B
+  - gradlew -i assemble
+  - mvnw clean package -B
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
 test_script:
-  - ./mvnw clean install -B
+  - gradlew -i -S check
+  - mvnw clean install -B
