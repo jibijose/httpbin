@@ -38,6 +38,8 @@ consumer disk speed api.
 Open Api Spec 3.0   
 Java api web page   
 Date Apis. add delete days/weeks/months/years    
+https://github.com/gregswindle/maven-code-quality-pom#437-mvn-pmdcheck   
+
 
 ***************   
 #### OpenShift   

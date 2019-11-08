@@ -45,4 +45,6 @@ after_build:
 #---------------------------------#
 test_script:
   - gradlew -i -S check
-  - mvnw test -B
+  - mvnw test verify -B
+after_test:
+  - mvnw site

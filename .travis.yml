@@ -13,7 +13,7 @@ script:
   - ./mvnw clean
   - ./mvnw fmt:check
   - ./mvnw pmd:check pmd:cpd-check
-  - .mvnw checkstyle:check
+  - ./mvnw checkstyle:check
   - ./mvnw package
   - ./mvnw findbugs:check
 after_success:
