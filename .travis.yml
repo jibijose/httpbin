@@ -10,6 +10,6 @@ jdk:
 install:
   - ./mvnw compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - ./mvnw clean package
+  - ./mvnw clean pmd:check package
 after_success:
   - ./mvnw coveralls:report

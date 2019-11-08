@@ -25,7 +25,6 @@ public class MemoryController {
     public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
 
         String storeString = StringUtil.getRandomString(bytes / 2);
-        long startTime = System.currentTimeMillis();
         Util.sleepMillisSilent(time * 1000);
         log.trace("Kept string of length {} in memory for {} seconds", storeString.length(), time);
     }

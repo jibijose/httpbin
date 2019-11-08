@@ -34,15 +34,15 @@ public class SystemInfoController {
         OperatingSystemMXBean operatingSystemMXBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
         SystemInfoModel systemInfoModel = new SystemInfoModel();
 
-        systemInfoModel.setCpu(getSystemCpuInfo(runtime, operatingSystemMXBean));
+        systemInfoModel.setCpu(getSystemCpuInfo(operatingSystemMXBean));
         systemInfoModel.setOs(getSystemOsInfo(runtime));
         systemInfoModel.setMemory(getSystemMemoryInfo(runtime));
-        systemInfoModel.setDisks(getSystemDiskInfo(runtime));
+        systemInfoModel.setDisks(getSystemDiskInfo());
 
         return systemInfoModel;
     }
 
-    private SystemInfoModel.CpuInfoModel getSystemCpuInfo(Runtime runtime, OperatingSystemMXBean operatingSystemMXBean) {
+    private SystemInfoModel.CpuInfoModel getSystemCpuInfo(OperatingSystemMXBean operatingSystemMXBean) {
         SystemInfoModel.CpuInfoModel cpuInfoModel = new SystemInfoModel.CpuInfoModel();
         cpuInfoModel.setProcessCpuLoad(Double.toString(operatingSystemMXBean.getProcessCpuLoad()));
         cpuInfoModel.setProcessCpuTime(Double.toString(operatingSystemMXBean.getProcessCpuTime()));
@@ -77,7 +77,7 @@ public class SystemInfoController {
         return memoryInfoModel;
     }
 
-    private Map<String, SystemInfoModel.DiskInfoModel> getSystemDiskInfo(Runtime runtime) {
+    private Map<String, SystemInfoModel.DiskInfoModel> getSystemDiskInfo() {
         Map<String, SystemInfoModel.DiskInfoModel> diskModels = new HashMap<>();
         File[] disks = File.listRoots();
         for (File file : disks) {

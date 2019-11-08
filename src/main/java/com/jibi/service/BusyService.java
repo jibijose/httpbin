@@ -49,7 +49,9 @@ public class BusyService {
             for (int iCount = 0; iCount < SLOTS; iCount++) {
                 long startTime = System.currentTimeMillis();
                 try {
-                    while (System.currentTimeMillis() - startTime < runSlotMillis) {
+                    long diffTime = System.currentTimeMillis() - startTime;
+                    while (diffTime < runSlotMillis) {
+                        diffTime = System.currentTimeMillis() - startTime;
                     }
                     Thread.sleep(idleSlotMillis);
                 } catch (InterruptedException interruptedException) {

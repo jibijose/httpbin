@@ -30,12 +30,15 @@ install:
 #---------------------------------#
 build:
   parallel: false
+before_build:
+  - mvnw clean -B
+  - mvnw pmd:check
 build_script:
   - gradlew -i assemble
-  - mvnw clean package -B
+  - mvnw package -B
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
 test_script:
   - gradlew -i -S check
-  - mvnw clean install -B
+  - mvnw test -B
