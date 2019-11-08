@@ -101,9 +101,9 @@ public class SystemInfoController {
             diskInfoModel.setTotalSpaceFormatted(getFormattedSize(totalSpace));
 
             log.info(filePath);
-            filePath = filePath.replaceAll("/", "FS");
+            //filePath = filePath.replaceAll("/", "FS");
             log.info(filePath);
-            filePath = filePath.replaceAll("\\\\", "BS");
+            //filePath = filePath.replaceAll("\\\\", "BS");
             log.info(filePath);
             filePath = Integer.toString(new Random().nextInt());
             diskModels.put(filePath, diskInfoModel);
