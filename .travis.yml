@@ -16,5 +16,6 @@ script:
   - ./mvnw checkstyle:check
   - ./mvnw package
   - ./mvnw findbugs:check
+  - ./mvnw site
 after_success:
   - ./mvnw coveralls:report
