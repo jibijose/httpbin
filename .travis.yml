@@ -8,8 +8,10 @@ jdk:
   - openjdk11
 
 install:
-  - ./mvnw compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - ./mvnw clean compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - ./mvnw clean pmd:check package
+  - ./mvnw clean
+  - ./mvnw pmd:check pmd:cpd-check
+  - ./mvnw package
 after_success:
   - ./mvnw coveralls:report
