@@ -17,11 +17,10 @@ matrix:
   fast_finish: true
 cache:
   - C:\Users\appveyor\.m2\ -> pom.xml
-  - C:\Users\appveyor\.gradle
 install:
   - SET PATH=%PATH%;.
-  - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=512m -Xmx1g
-  - cmd: SET JAVA_OPTS=-XX:MaxPermSize=512m -Xmx1g
+  - cmd: SET MAVEN_OPTS=-Xmx1g
+  - cmd: SET JAVA_OPTS=-Xmx1g
   - cmd: gradlew --version
   - cmd: mvnw --version
   - cmd: java -version
