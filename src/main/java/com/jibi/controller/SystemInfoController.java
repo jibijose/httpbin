@@ -102,14 +102,10 @@ public class SystemInfoController {
 
             log.info(filePath);
             filePath = filePath.replaceAll("/", "Fs");
-            log.info(filePath);
             filePath = filePath.replaceAll(":", "Cn");
-            log.info(filePath);
             filePath = filePath.replaceAll("=", "Eq");
-            log.info(filePath);
             filePath = filePath.replaceAll("\\\\", "Bs");
             log.info(filePath);
-            //filePath = "S" +  Integer.toString(new Random().nextInt());
             diskModels.put(filePath, diskInfoModel);
         }
         return diskModels;
