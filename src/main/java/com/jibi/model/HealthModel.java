@@ -15,4 +15,12 @@ public class HealthModel {
         status = "up";
         date = new Date();
     }
+
+    public Date getDate() {
+        return new Date(this.date.getTime());
+    }
+
+    public void setDate(Date date) {
+        this.date = new Date(date.getTime());
+    }
 }

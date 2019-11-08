@@ -14,8 +14,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @RestController(value = "File Api")
 @RequestMapping("/file")
 public class FileController {
-    protected static Map<String, List<String>> FILEGROUPTYPES = new HashMap<>();
-    protected static Map<String, List<String>> FILETYPESIZES = new HashMap<>();
+    final static Map<String, List<String>> FILEGROUPTYPES = new HashMap<>();
+    final static Map<String, List<String>> FILETYPESIZES = new HashMap<>();
 
     private static List<String> IMAGETYPES = Arrays.asList("jpg", "gif", "png", "tiff", "ico");
     private static List<String> VIDEOTYPES = Arrays.asList("avi", "mov", "mp4", "ogg", "wmv");
@@ -98,10 +98,10 @@ public class FileController {
     /************************************************************************************************************************************************/
 
     private byte[] getFileContentInternal(String fileGroup, String fileType, String size) throws IOException {
-        InputStream in = getClass().getResourceAsStream("/file/" + fileGroup + "/" + fileType + "/" + size + "." + fileType);
-        byte[] fileData = IOUtils.toByteArray(in);
-        in.close();
-        return fileData;
+        try(InputStream in = getClass().getResourceAsStream("/file/" + fileGroup + "/" + fileType + "/" + size + "." + fileType)) {
+            byte[] fileData = IOUtils.toByteArray(in);
+            return fileData;
+        }
     }
 
     private byte[] getFileContent(String fileGroup, String fileType) throws IOException {

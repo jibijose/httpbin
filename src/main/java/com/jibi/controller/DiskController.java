@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
@@ -21,9 +22,10 @@ import java.util.stream.IntStream;
 @Api(value = "Disk Api")
 @RestController(value = "Disk Api")
 @RequestMapping("/disk")
+@Slf4j
 public class DiskController {
 
-    private static byte[] BYTES1MB = null;
+    private static volatile byte[] BYTES1MB = null;
 
     @ApiOperation(value = "Disk write api", response = Void.class)
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Ok"),
@@ -77,10 +79,10 @@ public class DiskController {
     }
 
     private byte[] getFileContent(String size) throws IOException {
-        InputStream in = getClass().getResourceAsStream("/file/other/txt/" + size + ".txt");
-        byte[] fileData = IOUtils.toByteArray(in);
-        in.close();
-        return fileData;
+        try (InputStream in = getClass().getResourceAsStream("/file/other/txt/" + size + ".txt")) {
+            byte[] fileData = IOUtils.toByteArray(in);
+            return fileData;
+        }
     }
 
     private void writeAndDeleteTempFile(byte[] bytes) throws IOException {
@@ -90,7 +92,8 @@ public class DiskController {
             FileUtils.writeByteArrayToFile(file, bytes);
         } finally {
             if (file != null) {
-                file.delete();
+                boolean deleteStatus = file.delete();
+                log.trace("File {} delete status is {}", file, deleteStatus);
             }
         }
     }

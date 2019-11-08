@@ -37,6 +37,8 @@ before_build:
 build_script:
   - gradlew -i assemble
   - mvnw package -B
+after_build:
+  - mvnw findbugs:check -B
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#

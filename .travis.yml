@@ -14,5 +14,6 @@ script:
   - ./mvnw pmd:check pmd:cpd-check
   - .mvnw checkstyle:check
   - ./mvnw package
+  - ./mvnw findbugs:check
 after_success:
   - ./mvnw coveralls:report
