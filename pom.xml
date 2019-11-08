@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jibi</groupId>
@@ -12,6 +12,58 @@
 
     <name>httpbin</name>
     <url>https://jibijose.github.io/swagger</url>
+    <inceptionYear>2019</inceptionYear>
+    <organization>
+        <name>httpbin</name>
+        <url>https://github.com/jibijose/httpbin</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>LICENSE</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Jibi Jose</name>
+            <url>https://github.com/jibijose</url>
+            <id>jibijose</id>
+            <email>jibijose@yahoo.com</email>
+            <timezone>UTC+05:30</timezone>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://github.com/jibijose/httpbin</url>
+        <connection>scm:git:https://github.com/jibijose/httpbin</connection>
+        <developerConnection>scm:git:https://github.com/jibijose/httpbin</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>${project.url}/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>travis-ci</system>
+        <url>https://travis-ci.org/jibijose/httpbin</url>
+    </ciManagement>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

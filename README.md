@@ -31,7 +31,6 @@ upload to maven central
 junit run parallel  
 add external curl checkpoints  
 https://assertible.com/blog/testing-an-api-using-swagger    
-add gradle support  
 APIS. Cookies, Req/Resp Inspection.  
 hold/release endpoints  
 ram/cpu/disk speed api
