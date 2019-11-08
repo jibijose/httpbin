@@ -17,7 +17,7 @@ matrix:
   fast_finish: true
 cache:
   - C:\Users\appveyor\.m2\ -> pom.xml
-  - C:\Users\appveyor\.gradle -> build.gradle,gradle/*,gradle.properties
+  - C:\Users\appveyor\.gradle -> build.gradle,gradle/wrapper/gradle-wrapper.properties,gradle.properties
 install:
   - SET PATH=%PATH%;.
   - cmd: SET MAVEN_OPTS=-Xmx1g
