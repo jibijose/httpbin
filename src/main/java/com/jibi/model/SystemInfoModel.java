@@ -1,12 +1,16 @@
 package com.jibi.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Map;
 
 @Setter
 @Getter
+@ToString
+@EqualsAndHashCode
 public class SystemInfoModel {
 
     private CpuInfoModel cpu;
@@ -16,6 +20,8 @@ public class SystemInfoModel {
 
     @Setter
     @Getter
+    @ToString
+    @EqualsAndHashCode
     public static class CpuInfoModel {
         private String processCpuLoad;
         private String processCpuTime;
@@ -25,6 +31,8 @@ public class SystemInfoModel {
 
     @Setter
     @Getter
+    @ToString
+    @EqualsAndHashCode
     public static class OsInfoModel {
         private String name;
         private String version;
@@ -34,6 +42,8 @@ public class SystemInfoModel {
 
     @Setter
     @Getter
+    @ToString
+    @EqualsAndHashCode
     public static class MemoryInfoModel {
         private String freeBytes;
         private String freeFormatted;
@@ -47,6 +57,8 @@ public class SystemInfoModel {
 
     @Setter
     @Getter
+    @ToString
+    @EqualsAndHashCode
     public static class DiskInfoModel {
         private String freeSpace;
         private String freeSpaceFormatted;

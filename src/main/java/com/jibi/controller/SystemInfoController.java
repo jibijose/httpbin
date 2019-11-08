@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import java.util.Map;
 @Api(value = "System information Api")
 @RestController(value = "System information Api")
 @RequestMapping("/system/info")
+@Slf4j
 public class SystemInfoController {
 
     @ApiOperation(value = "System information api", response = SystemInfoModel.class)
@@ -33,10 +35,15 @@ public class SystemInfoController {
         SystemInfoModel systemInfoModel = new SystemInfoModel();
 
         systemInfoModel.setCpu(getSystemCpuInfo(runtime, operatingSystemMXBean));
+        log.info(systemInfoModel.getCpu().toString());
         systemInfoModel.setOs(getSystemOsInfo(runtime));
+        log.info(systemInfoModel.getOs().toString());
         systemInfoModel.setMemory(getSystemMemoryInfo(runtime));
+        log.info(systemInfoModel.getMemory().toString());
         systemInfoModel.setDisks(getSystemDiskInfo(runtime));
+        log.info(systemInfoModel.getDisks().toString());
 
+        log.debug(systemInfoModel.toString());
         return systemInfoModel;
     }
 
