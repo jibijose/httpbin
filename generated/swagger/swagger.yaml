@@ -1295,7 +1295,6 @@ paths:
         in: "header"
         description: "Map of headers"
         required: true
-        type: "object"
       responses:
         200:
           description: "Ok"
@@ -1380,7 +1379,6 @@ paths:
       - name: "file"
         in: "query"
         required: true
-        type: "ref"
       responses:
         200:
           description: "Ok"
