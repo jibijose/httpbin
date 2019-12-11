@@ -20,11 +20,10 @@ public class MemoryController {
 
   @ApiOperation(value = "Memory hold operation", response = String.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
   public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
 

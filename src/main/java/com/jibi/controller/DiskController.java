@@ -28,16 +28,14 @@ public class DiskController {
 
   @ApiOperation(value = "Disk write api", response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/write/{unit}/{count}",
-    method = RequestMethod.GET,
-    produces = {MediaType.TEXT_PLAIN_VALUE}
-  )
+      value = "/write/{unit}/{count}",
+      method = RequestMethod.GET,
+      produces = {MediaType.TEXT_PLAIN_VALUE})
   public void write(@PathVariable("unit") String unit, @PathVariable("count") Integer count)
       throws IOException {
     if (!"GB".equals(unit) && !"MB".equals(unit)) {
@@ -60,16 +58,14 @@ public class DiskController {
 
   @ApiOperation(value = "Disk read api", response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/read/{unit}/{count}",
-    method = RequestMethod.GET,
-    produces = {MediaType.TEXT_PLAIN_VALUE}
-  )
+      value = "/read/{unit}/{count}",
+      method = RequestMethod.GET,
+      produces = {MediaType.TEXT_PLAIN_VALUE})
   public void read(@PathVariable("unit") String unit, @PathVariable("count") Integer count) {
     if (!"GB".equals(unit) && !"MB".equals(unit)) {
       throw new RuntimeException("Unit must be MB or GB");

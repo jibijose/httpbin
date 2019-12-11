@@ -144,22 +144,20 @@ public class FileController {
    */
   @ApiOperation(value = "File image file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/image/{fileType}",
-    method = RequestMethod.GET,
-    produces = {
-      MediaType.IMAGE_JPEG_VALUE,
-      MediaType.IMAGE_GIF_VALUE,
-      MediaType.IMAGE_PNG_VALUE,
-      "image/tiff",
-      "image/x-icon"
-    }
-  )
+      value = "/image/{fileType}",
+      method = RequestMethod.GET,
+      produces = {
+        MediaType.IMAGE_JPEG_VALUE,
+        MediaType.IMAGE_GIF_VALUE,
+        MediaType.IMAGE_PNG_VALUE,
+        "image/tiff",
+        "image/x-icon"
+      })
   public @ResponseBody byte[] imageFileType(
       @ApiParam(value = "File type", allowableValues = "random, jpg, gif, png, tiff, ico")
           @PathVariable("fileType")
@@ -170,16 +168,14 @@ public class FileController {
 
   @ApiOperation(value = "File video file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/video/{fileType}",
-    method = RequestMethod.GET,
-    produces = {"video/avi", "video/mov", "video/mp4", "video/ogg", "video/wmv"}
-  )
+      value = "/video/{fileType}",
+      method = RequestMethod.GET,
+      produces = {"video/avi", "video/mov", "video/mp4", "video/ogg", "video/wmv"})
   public @ResponseBody byte[] videoFileType(
       @ApiParam(value = "File type", allowableValues = "avi, mov, mp4, png, ogg, wmv")
           @PathVariable("fileType")
@@ -190,16 +186,14 @@ public class FileController {
 
   @ApiOperation(value = "File audio file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/audio/{fileType}",
-    method = RequestMethod.GET,
-    produces = {"audio/mpeg3", "audio/wav", "audio/ogg"}
-  )
+      value = "/audio/{fileType}",
+      method = RequestMethod.GET,
+      produces = {"audio/mpeg3", "audio/wav", "audio/ogg"})
   public @ResponseBody byte[] audioFileType(
       @ApiParam(value = "File type", allowableValues = "random, mp3, wav, ogg")
           @PathVariable("fileType")
@@ -210,30 +204,27 @@ public class FileController {
 
   @ApiOperation(value = "File document file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/{fileType}",
-    method = RequestMethod.GET,
-    produces = {
-      "application/doc",
-      "application/excel",
-      "application/powerpoint",
-      "application/pdf",
-      "application/odt",
-      "application/ods",
-      "application/odp",
-      "application/rtf"
-    }
-  )
+      value = "/document/{fileType}",
+      method = RequestMethod.GET,
+      produces = {
+        "application/doc",
+        "application/excel",
+        "application/powerpoint",
+        "application/pdf",
+        "application/odt",
+        "application/ods",
+        "application/odp",
+        "application/rtf"
+      })
   public @ResponseBody byte[] documentFileType(
       @ApiParam(
-            value = "File type",
-            allowableValues = "random, doc, docx, xls, xlsx, ppt, pdf, odt, ods, odp, rtf"
-          )
+              value = "File type",
+              allowableValues = "random, doc, docx, xls, xlsx, ppt, pdf, odt, ods, odp, rtf")
           @PathVariable("fileType")
           String fileType)
       throws IOException {
@@ -242,16 +233,14 @@ public class FileController {
 
   @ApiOperation(value = "File other file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/other/{fileType}",
-    method = RequestMethod.GET,
-    produces = {"text/csv", "text/html", "text/plain", "application/zip"}
-  )
+      value = "/other/{fileType}",
+      method = RequestMethod.GET,
+      produces = {"text/csv", "text/html", "text/plain", "application/zip"})
   public @ResponseBody byte[] otherFileType(
       @ApiParam(value = "File type", allowableValues = "csv, html, txt, zip")
           @PathVariable("fileType")
@@ -265,16 +254,14 @@ public class FileController {
    */
   @ApiOperation(value = "File image jpg file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/image/jpg/{size}",
-    method = RequestMethod.GET,
-    produces = {MediaType.IMAGE_JPEG_VALUE}
-  )
+      value = "/image/jpg/{size}",
+      method = RequestMethod.GET,
+      produces = {MediaType.IMAGE_JPEG_VALUE})
   public @ResponseBody byte[] imageJpgSize(
       @ApiParam(value = "Jpg file size", allowableValues = "random, 100KB, 500KB, 1MB, 2.5MB")
           @PathVariable("size")
@@ -285,16 +272,14 @@ public class FileController {
 
   @ApiOperation(value = "File image gif file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/image/gif/{size}",
-    method = RequestMethod.GET,
-    produces = {MediaType.IMAGE_GIF_VALUE}
-  )
+      value = "/image/gif/{size}",
+      method = RequestMethod.GET,
+      produces = {MediaType.IMAGE_GIF_VALUE})
   public @ResponseBody byte[] imageGifSize(
       @ApiParam(value = "Gif file size", allowableValues = "500KB, 1MB, 3.5MB")
           @PathVariable("size")
@@ -305,16 +290,14 @@ public class FileController {
 
   @ApiOperation(value = "File image png file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/image/png/{size}",
-    method = RequestMethod.GET,
-    produces = {MediaType.IMAGE_PNG_VALUE}
-  )
+      value = "/image/png/{size}",
+      method = RequestMethod.GET,
+      produces = {MediaType.IMAGE_PNG_VALUE})
   public @ResponseBody byte[] imagePngSize(
       @ApiParam(value = "Png file size", allowableValues = "500KB, 1MB, 2MB, 3MB")
           @PathVariable("size")
@@ -325,16 +308,14 @@ public class FileController {
 
   @ApiOperation(value = "File image tiff file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/image/tiff/{size}",
-    method = RequestMethod.GET,
-    produces = {"image/tiff"}
-  )
+      value = "/image/tiff/{size}",
+      method = RequestMethod.GET,
+      produces = {"image/tiff"})
   public @ResponseBody byte[] imageTiffSize(
       @ApiParam(value = "Tiff file size", allowableValues = "1MB, 5MB, 10MB") @PathVariable("size")
           String size)
@@ -344,16 +325,14 @@ public class FileController {
 
   @ApiOperation(value = "File image ico file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/image/ico/{size}",
-    method = RequestMethod.GET,
-    produces = {"image/x-icon"}
-  )
+      value = "/image/ico/{size}",
+      method = RequestMethod.GET,
+      produces = {"image/x-icon"})
   public @ResponseBody byte[] imageIcoSize(
       @ApiParam(value = "Ico file size", allowableValues = "400B") @PathVariable("size")
           String size)
@@ -366,16 +345,14 @@ public class FileController {
    */
   @ApiOperation(value = "File video avi file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/video/avi/{size}",
-    method = RequestMethod.GET,
-    produces = {"video/avi"}
-  )
+      value = "/video/avi/{size}",
+      method = RequestMethod.GET,
+      produces = {"video/avi"})
   public @ResponseBody byte[] videoAviSize(
       @ApiParam(value = "Avi file size", allowableValues = "random, 750KB, 800KB, 1.5MB, 2.3MB")
           @PathVariable("size")
@@ -386,16 +363,14 @@ public class FileController {
 
   @ApiOperation(value = "File video mov file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/video/mov/{size}",
-    method = RequestMethod.GET,
-    produces = {"video/mov"}
-  )
+      value = "/video/mov/{size}",
+      method = RequestMethod.GET,
+      produces = {"video/mov"})
   public @ResponseBody byte[] videoMovSize(
       @ApiParam(value = "Mov file size", allowableValues = "700KB, 800KB, 1.4MB, 2.2MB")
           @PathVariable("size")
@@ -406,16 +381,14 @@ public class FileController {
 
   @ApiOperation(value = "File video mp4 file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/video/mp4/{size}",
-    method = RequestMethod.GET,
-    produces = {"video/mp4"}
-  )
+      value = "/video/mp4/{size}",
+      method = RequestMethod.GET,
+      produces = {"video/mp4"})
   public @ResponseBody byte[] videoMp4Size(
       @ApiParam(value = "Mp4 file size", allowableValues = "1.5MB, 3MB, 10MB, 18MB")
           @PathVariable("size")
@@ -426,16 +399,14 @@ public class FileController {
 
   @ApiOperation(value = "File video ogg file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/video/ogg/{size}",
-    method = RequestMethod.GET,
-    produces = {"video/ogg"}
-  )
+      value = "/video/ogg/{size}",
+      method = RequestMethod.GET,
+      produces = {"video/ogg"})
   public @ResponseBody byte[] videoOggSize(
       @ApiParam(value = "Ogg file size", allowableValues = "1.7MB, 2.7MB, 11.4MB, 13.3MB")
           @PathVariable("size")
@@ -446,16 +417,14 @@ public class FileController {
 
   @ApiOperation(value = "File video wmv file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/video/wmv/{size}",
-    method = RequestMethod.GET,
-    produces = {"video/wmv"}
-  )
+      value = "/video/wmv/{size}",
+      method = RequestMethod.GET,
+      produces = {"video/wmv"})
   public @ResponseBody byte[] videoWmvSize(
       @ApiParam(value = "Wmv file size", allowableValues = "1.2MB, 1.6MB, 4.9MB, 9.3MB")
           @PathVariable("size")
@@ -469,16 +438,14 @@ public class FileController {
    */
   @ApiOperation(value = "File audio mp3 file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/audio/mp3/{size}",
-    method = RequestMethod.GET,
-    produces = {"audio/mpeg3"}
-  )
+      value = "/audio/mp3/{size}",
+      method = RequestMethod.GET,
+      produces = {"audio/mpeg3"})
   public @ResponseBody byte[] audioMp3Size(
       @ApiParam(value = "Mp3 file size", allowableValues = "700KB, 1MB, 2MB, 5MB")
           @PathVariable("size")
@@ -489,16 +456,14 @@ public class FileController {
 
   @ApiOperation(value = "File audio wav file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/audio/wav/{size}",
-    method = RequestMethod.GET,
-    produces = {"audio/wav"}
-  )
+      value = "/audio/wav/{size}",
+      method = RequestMethod.GET,
+      produces = {"audio/wav"})
   public @ResponseBody byte[] audioWavSize(
       @ApiParam(value = "Wav file size", allowableValues = "1MB, 2MB, 5MB, 10MB")
           @PathVariable("size")
@@ -509,16 +474,14 @@ public class FileController {
 
   @ApiOperation(value = "File audio ogg file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/audio/ogg/{size}",
-    method = RequestMethod.GET,
-    produces = {"audio/ogg"}
-  )
+      value = "/audio/ogg/{size}",
+      method = RequestMethod.GET,
+      produces = {"audio/ogg"})
   public @ResponseBody byte[] audioOggSize(
       @ApiParam(value = "Ogg file size", allowableValues = "1MB, 2MB, 5MB") @PathVariable("size")
           String size)
@@ -531,16 +494,14 @@ public class FileController {
    */
   @ApiOperation(value = "File document doc file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/doc/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/doc"}
-  )
+      value = "/document/doc/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/doc"})
   public @ResponseBody byte[] documentDocSize(
       @ApiParam(value = "Doc file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -551,16 +512,14 @@ public class FileController {
 
   @ApiOperation(value = "File document docx file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/docx/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/doc"}
-  )
+      value = "/document/docx/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/doc"})
   public @ResponseBody byte[] documentDocxSize(
       @ApiParam(value = "Docx file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -571,16 +530,14 @@ public class FileController {
 
   @ApiOperation(value = "File document xls file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/xls/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/xls"}
-  )
+      value = "/document/xls/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/xls"})
   public @ResponseBody byte[] documentXlsSize(
       @ApiParam(value = "Xls file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -591,16 +548,14 @@ public class FileController {
 
   @ApiOperation(value = "File document xlsx file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/xlsx/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/xls"}
-  )
+      value = "/document/xlsx/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/xls"})
   public @ResponseBody byte[] documentXlsxSize(
       @ApiParam(value = "Xlsx file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -611,16 +566,14 @@ public class FileController {
 
   @ApiOperation(value = "File document ppt file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/ppt/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/ppt"}
-  )
+      value = "/document/ppt/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/ppt"})
   public @ResponseBody byte[] documentPptSize(
       @ApiParam(value = "Ppt file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -631,16 +584,14 @@ public class FileController {
 
   @ApiOperation(value = "File document pdf file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/pdf/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/pdf"}
-  )
+      value = "/document/pdf/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/pdf"})
   public @ResponseBody byte[] documentPdfSize(
       @ApiParam(value = "Pdf file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -651,16 +602,14 @@ public class FileController {
 
   @ApiOperation(value = "File document odp file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/odp/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/odp"}
-  )
+      value = "/document/odp/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/odp"})
   public @ResponseBody byte[] documentOdpSize(
       @ApiParam(value = "Odp file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -671,16 +620,14 @@ public class FileController {
 
   @ApiOperation(value = "File document ods file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/ods/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/ods"}
-  )
+      value = "/document/ods/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/ods"})
   public @ResponseBody byte[] documentOdsSize(
       @ApiParam(value = "Ods file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -691,16 +638,14 @@ public class FileController {
 
   @ApiOperation(value = "File document odt file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/odt/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/odt"}
-  )
+      value = "/document/odt/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/odt"})
   public @ResponseBody byte[] documentOdtSize(
       @ApiParam(value = "Odt file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -711,16 +656,14 @@ public class FileController {
 
   @ApiOperation(value = "File document rtf file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/document/rtf/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/rtf"}
-  )
+      value = "/document/rtf/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/rtf"})
   public @ResponseBody byte[] documentRtfSize(
       @ApiParam(value = "Rtf file size", allowableValues = "100KB, 500KB, 1MB")
           @PathVariable("size")
@@ -734,16 +677,14 @@ public class FileController {
    */
   @ApiOperation(value = "File other csv file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/other/csv/{size}",
-    method = RequestMethod.GET,
-    produces = {"text/csv"}
-  )
+      value = "/other/csv/{size}",
+      method = RequestMethod.GET,
+      produces = {"text/csv"})
   public @ResponseBody byte[] otherCsvSize(
       @ApiParam(value = "Csv file size", allowableValues = "7KB") @PathVariable("size") String size)
       throws IOException {
@@ -752,16 +693,14 @@ public class FileController {
 
   @ApiOperation(value = "File other html file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/other/html/{size}",
-    method = RequestMethod.GET,
-    produces = {"text/html"}
-  )
+      value = "/other/html/{size}",
+      method = RequestMethod.GET,
+      produces = {"text/html"})
   public @ResponseBody byte[] otherHtmlSize(
       @ApiParam(value = "Html file size", allowableValues = "4KB") @PathVariable("size")
           String size)
@@ -771,21 +710,18 @@ public class FileController {
 
   @ApiOperation(value = "File other txt file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/other/txt/{size}",
-    method = RequestMethod.GET,
-    produces = {"text/plain"}
-  )
+      value = "/other/txt/{size}",
+      method = RequestMethod.GET,
+      produces = {"text/plain"})
   public @ResponseBody byte[] otherTxtSize(
       @ApiParam(
-            value = "Txt file size",
-            allowableValues = "1B, 10B, 100B, 1KB, 10KB, 100KB, 1MB, 10MB"
-          )
+              value = "Txt file size",
+              allowableValues = "1B, 10B, 100B, 1KB, 10KB, 100KB, 1MB, 10MB")
           @PathVariable("size")
           String size)
       throws IOException {
@@ -794,16 +730,14 @@ public class FileController {
 
   @ApiOperation(value = "File other zip file operation", response = byte[].class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/other/zip/{size}",
-    method = RequestMethod.GET,
-    produces = {"application/zip"}
-  )
+      value = "/other/zip/{size}",
+      method = RequestMethod.GET,
+      produces = {"application/zip"})
   public @ResponseBody byte[] otherZipSize(
       @ApiParam(value = "Zip file size", allowableValues = "2MB, 5MB, 9MB, 10MB")
           @PathVariable("size")

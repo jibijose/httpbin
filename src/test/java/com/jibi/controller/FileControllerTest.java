@@ -207,9 +207,7 @@ public class FileControllerTest {
             "http://localhost:" + port + "/file/" + fileGroup + "/" + "random", byte[].class);
     assertEquals(responseRandom.getStatusCode(), HttpStatus.OK);
 
-    FileController.FILEGROUPTYPES
-        .get(fileGroup)
-        .stream()
+    FileController.FILEGROUPTYPES.get(fileGroup).stream()
         .forEach(
             fileTypeName -> {
               ResponseEntity<byte[]> response =
@@ -227,9 +225,7 @@ public class FileControllerTest {
             byte[].class);
     assertEquals(responseRandom.getStatusCode(), HttpStatus.OK);
 
-    FileController.FILETYPESIZES
-        .get(fileGroup + "_" + fileType)
-        .stream()
+    FileController.FILETYPESIZES.get(fileGroup + "_" + fileType).stream()
         .forEach(
             size -> {
               ResponseEntity<byte[]> response =

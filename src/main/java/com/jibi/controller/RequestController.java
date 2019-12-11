@@ -15,16 +15,14 @@ public class RequestController {
 
   @ApiOperation(value = "Request headers operation", response = Map.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    value = "/headers",
-    method = RequestMethod.GET,
-    produces = {MediaType.APPLICATION_JSON_VALUE}
-  )
+      value = "/headers",
+      method = RequestMethod.GET,
+      produces = {MediaType.APPLICATION_JSON_VALUE})
   public Map<String, String> headers(
       @ApiParam(value = "Map of headers") @RequestHeader Map<String, String> headers) {
     return headers;

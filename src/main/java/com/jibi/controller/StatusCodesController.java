@@ -19,17 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class StatusCodesController {
 
   @ApiOperation(
-    value = "Status code api",
-    notes = "Api to respond with the status code in uri",
-    response = Void.class
-  )
+      value = "Status code api",
+      notes = "Api to respond with the status code in uri",
+      response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 400, message = "Bad request"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 400, message = "Bad request"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(value = "/{code}", method = RequestMethod.GET)
   public ResponseEntity<Void> statusCode(
       @ApiParam(value = "Status code of response", required = true) @PathVariable("code")
@@ -40,12 +38,11 @@ public class StatusCodesController {
 
   @ApiOperation(value = "Status random code api", response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 400, message = "Bad request"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 400, message = "Bad request"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(value = "/random/{codes}", method = RequestMethod.GET)
   public ResponseEntity<Void> statusRandomCodes(
       @ApiParam(value = "Comma separated status codes", required = true) @PathVariable("codes")

@@ -26,15 +26,13 @@ public class SystemInfoController {
 
   @ApiOperation(value = "System information api", response = SystemInfoModel.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(
-    method = RequestMethod.GET,
-    produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
-  )
+      method = RequestMethod.GET,
+      produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
   public SystemInfoModel systemInfo() {
     Runtime runtime = Runtime.getRuntime();
     OperatingSystemMXBean operatingSystemMXBean =
