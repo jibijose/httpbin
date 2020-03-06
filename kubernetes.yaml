@@ -1,47 +1,9 @@
-# Copyright 2017 Istio Authors
-#
-#   Licensed under the Apache License, Version 2.0 (the "License");
-#   you may not use this file except in compliance with the License.
-#   You may obtain a copy of the License at
-#
-#       http://www.apache.org/licenses/LICENSE-2.0
-#
-#   Unless required by applicable law or agreed to in writing, software
-#   distributed under the License is distributed on an "AS IS" BASIS,
-#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#   See the License for the specific language governing permissions and
-#   limitations under the License.
-
-##################################################################################################
-# httpbin service
-##################################################################################################
-apiVersion: v1
-kind: Service
-metadata:
-  name: httpbin
-  namespace: httpbin
-  labels:
-    app: httpbin
-spec:
-  ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-  selector:
-    app: httpbin
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: httpbin
-  namespace: httpbin
 spec:
-  replicas: 2
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
@@ -54,79 +16,39 @@ spec:
           name: httpbin
           ports:
             - containerPort: 8080
-              name: app-port
-          resources:
-            requests:
-              memory: 256Mi
-              cpu: 256m
-            limits:
-              memory: 1Gi
-              cpu: 512m
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: app-port
-              scheme: HTTP
-            failureThreshold: 5
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
-            timeoutSeconds: 1
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: app-port
-              scheme: HTTP
-            failureThreshold: 5
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
-            timeoutSeconds: 1
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          volumeMounts:
-            - mountPath: /var/log
-              name: log-volume
-        - image: redis
-          imagePullPolicy: IfNotPresent
-          name: redis
-          ports:
-            - containerPort: 6379
-              name: redis
-              protocol: TCP
-          resources:
-            requests:
-              memory: 512Mi
-              cpu: 256m
-            limits:
-              memory: 1Gi
-              cpu: 512m
-          volumeMounts:
-            - mountPath: /splunk/logs/
-              name: log-volume
-              readOnly: true
-      volumes:
-        - name: log-volume
-          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin
+  labels:
+    app: httpbin
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: httpbin
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: httpbin
-  namespace: httpbin
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: httpbin
-  minReplicas: 2
-  maxReplicas: 20
+  minReplicas: 1
+  maxReplicas: 2
   metrics:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 50
+        targetAverageUtilization: 75
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: 50
+        targetAverageUtilization: 75
