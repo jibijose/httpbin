@@ -1,14 +1,14 @@
 FROM openjdk:8u232-jdk-slim
-LABEL maintainer="jibijose@yahoo.com"
+LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 
 RUN apt-get update -qq
 
 RUN apt-get install wget -y -qq
-RUN wget http://apachemirror.wuchna.com/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz --quiet -O /opt/apache-maven-3.6.2-bin.tar.gz
-RUN tar -xvzf /opt/apache-maven-3.6.2-bin.tar.gz -C /opt
-RUN rm -rf /opt/apache-maven-3.6.2-bin.tar.gz
-RUN mv /opt/apache-maven-3.6.2 /opt/maven
+RUN wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz --quiet -O /opt/apache-maven-3.6.3-bin.tar.gz
+RUN tar -xvzf /opt/apache-maven-3.6.3-bin.tar.gz -C /opt
+RUN rm -rf /opt/apache-maven-3.6.3-bin.tar.gz
+RUN mv /opt/apache-maven-3.6.3 /opt/maven
 
 COPY src /tmp/app/src/
 COPY templates /tmp/app/templates/
