@@ -1,4 +1,4 @@
-FROM openjdk:8u232-jdk-slim
+FROM openjdk:8u242-jdk-slim
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 
@@ -22,4 +22,4 @@ RUN rm -rf /tmp/app
 RUN rm -rf ~/.m2
 RUN rm -rf /opt/maven
 
-ENTRYPOINT ["java", "-jar", "/service/app.jar"]
+ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:MaxRAMFraction=1",  "-XX:+UseG1GC", "-XX:GCTimeRatio=19", "-XX:MinHeapFreeRatio=10", "-XX:MaxHeapFreeRatio=10", "-jar", "/service/app.jar"]
