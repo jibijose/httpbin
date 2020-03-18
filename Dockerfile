@@ -12,7 +12,8 @@ RUN mv /opt/apache-maven-3.6.3 /opt/maven
 
 RUN apt-get install sudo -y -qq
 RUN groupadd -g 999 appgroup
-RUN useradd -r -s /bin/bash -u 999 -g appgroup -m appuser -p ''
+#RUN ["useradd", "-r", "-s", "/bin/bash", "-u", "999", "-g", "appgroup", "-m", "appuser", "-p", "\"$(openssl apppassword -1 appuser)\""]
+RUN useradd -r -s /bin/bash -u 999 -g appgroup -m appuser -p "$(openssl passwd -1 appuser)"
 RUN usermod -aG sudo appuser
 
 COPY src /tmp/app/src/
