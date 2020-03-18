@@ -1,6 +1,4 @@
 FROM openjdk:8u242-jdk-slim AS builder
-LABEL maintainer=jibijose@yahoo.com
-EXPOSE 8080
 
 ARG MVN_VERSION=3.6.3
 
@@ -17,8 +15,13 @@ COPY pom.xml /tmp/app/
 RUN /opt/maven/bin/mvn -f /tmp/app/pom.xml clean package -DskipTests -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
 
-FROM openjdk:8u242-jdk-slim as package
+FROM openjdk:8u242-jdk-slim as packager
+LABEL maintainer=jibijose@yahoo.com
+EXPOSE 8080
+
 COPY --from=builder /tmp/app/target/httpbin-*.*.*.jar /service/app.jar
+
+ENV MAXRAMFRACTION=1
 
 RUN apt-get update -qq && \
     apt-get install sudo -y -qq && \
@@ -27,4 +30,5 @@ RUN apt-get update -qq && \
     usermod -aG sudo appuser
 
 USER appuser
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:MaxRAMFraction=1",  "-XX:+UseG1GC", "-XX:GCTimeRatio=19", "-XX:MinHeapFreeRatio=10", "-XX:MaxHeapFreeRatio=10", "-jar", "/service/app.jar"]
+#ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:MaxRAMFraction=1",  "-XX:+UseG1GC", "-XX:GCTimeRatio=19", "-XX:MinHeapFreeRatio=10", "-XX:MaxHeapFreeRatio=10", "-jar", "/service/app.jar"]
+ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC -XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=10 -jar /service/app.jar 
