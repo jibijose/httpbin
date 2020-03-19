@@ -15,7 +15,7 @@ COPY pom.xml /tmp/app/
 RUN /opt/maven/bin/mvn -f /tmp/app/pom.xml clean package -DskipTests -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
 
-FROM openjdk:11.0-jdk-slim as packager
+FROM openjdk:11.0-jdk-slim AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 
@@ -25,6 +25,8 @@ COPY --from=builder /tmp/app/target/httpbin-*.*.*.jar /service/app.jar
 
 RUN apt-get update -qq && \
     apt-get install sudo -y -qq && \
+    apt-get install curl -y -qq && \
+    apt-get install procps -y -qq && \
     groupadd -g 1000 appgroup && \
     useradd -r -s /bin/bash -u 1000 -g appgroup -m appuser -p "$(openssl passwd -1 appuser)" && \
     usermod -aG sudo appuser
