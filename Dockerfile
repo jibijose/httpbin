@@ -22,6 +22,7 @@ EXPOSE 8080
 COPY --from=builder /tmp/app/target/httpbin-*.*.*.jar /service/app.jar
 
 ENV MAXRAMFRACTION=1
+ENV GCTIMERATIO=2
 
 RUN apt-get update -qq && \
     apt-get install sudo -y -qq && \
@@ -32,4 +33,6 @@ RUN apt-get update -qq && \
     usermod -aG sudo appuser
 
 USER appuser
-ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC -XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -jar /service/app.jar
+#ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC "-XX:GCTimeRatio=${GCTIMERATIO}" -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -jar /service/app.jar
+ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 "-XX:GCTimeRatio=${GCTIMERATIO}" -jar /service/app.jar
+

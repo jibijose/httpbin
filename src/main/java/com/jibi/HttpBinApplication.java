@@ -19,12 +19,10 @@ public class HttpBinApplication {
   @Scheduled(cron = "0 */1 * * * ?")
   public void perform() throws Exception {
     log.error("Invoking System GC");
-    System.out.println("Doing");
     try {
-      System.gc();
-      System.out.println("Done");
+      // System.gc();
       log.info("Invoked System GC");
-    } catch(Exception exception) {
+    } catch (Exception exception) {
       log.warn("Errored System GC", exception);
     }
   }
