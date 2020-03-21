@@ -23,7 +23,7 @@ COPY --from=builder /tmp/app/target/httpbin-*.*.*.jar /service/app.jar
 
 ENV MAXRAMFRACTION=1
 ENV GCTIMERATIO=2
-ENV COMMAND="java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
+ENV COMMAND "java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
 
 RUN apt-get update -qq && \
     apt-get install sudo -y -qq && \
@@ -36,4 +36,4 @@ RUN apt-get update -qq && \
 USER appuser
 #ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC "-XX:GCTimeRatio=${GCTIMERATIO}" -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -jar /service/app.jar
 #ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 "-XX:GCTimeRatio=${GCTIMERATIO}" -jar /service/app.jar
-ENTRYPOINT "$COMMAND"
+ENTRYPOINT ${COMMAND}
