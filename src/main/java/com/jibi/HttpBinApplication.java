@@ -16,11 +16,11 @@ public class HttpBinApplication {
     log.debug("Ending httpbin application");
   }
 
-  @Scheduled(cron = "0 */1 * * * ?")
+  @Scheduled(cron = "0 */5 * * * ?")
   public void perform() throws Exception {
     log.error("Invoking System GC");
     try {
-      // System.gc();
+      System.gc();
       log.info("Invoked System GC");
     } catch (Exception exception) {
       log.warn("Errored System GC", exception);
