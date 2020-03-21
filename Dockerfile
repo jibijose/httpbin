@@ -35,4 +35,4 @@ RUN apt-get update -qq && \
 USER appuser
 #ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC "-XX:GCTimeRatio=${GCTIMERATIO}" -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -jar /service/app.jar
 ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 "-XX:GCTimeRatio=${GCTIMERATIO}" -jar /service/app.jar
-
+###
