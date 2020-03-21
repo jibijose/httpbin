@@ -6,7 +6,7 @@ RUN apt-get update -qq && \
     apt-get install wget -y -qq && \
     wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
     tar -xzf /opt/apache-maven-${MVN_VERSION}-bin.tar.gz -C /opt && \
-    mv /opt/apache-maven-${MVN_VERSION} /opt/maven
+    mv /opt/apache-maven-${MVN_VERS ION} /opt/maven
 
 COPY src /tmp/app/src/
 COPY templates /tmp/app/templates/
@@ -34,5 +34,5 @@ RUN apt-get update -qq && \
 
 USER appuser
 #ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC "-XX:GCTimeRatio=${GCTIMERATIO}" -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -jar /service/app.jar
-ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 "-XX:GCTimeRatio=${GCTIMERATIO}" -jar /service/app.jar
+ENTRYPOINT java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap "-XX:MaxRAMFraction=${MAXRAMFRACTION}" -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 "-XX:GCTimeRatio=${GCTIMERATIO}" -jar /service/app.jar
 
