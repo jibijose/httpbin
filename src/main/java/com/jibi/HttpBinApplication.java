@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 @Slf4j
@@ -15,4 +16,14 @@ public class HttpBinApplication {
     log.debug("Ending httpbin application");
   }
 
+  @Scheduled(cron = "0 */1 * * * ?")
+  public void perform() throws Exception {
+    log.debug("Invoking System GC");
+    try {
+      System.gc();
+      log.info("Invoked System GC");
+    } catch (Exception exception) {
+      log.warn("Error System GC", exception);
+    }
+  }
 }
