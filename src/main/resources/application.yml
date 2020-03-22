@@ -3,3 +3,8 @@ application:
 
 schedule:
   gc: 0 */1 * * * ?
+
+logger:
+  appender:
+    file:
+      dir: /var/log1

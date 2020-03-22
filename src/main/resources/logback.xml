@@ -1,16 +1,21 @@
 <configuration>
-
     <contextName>WebContext</contextName>
     <property name="BASE_PATH" value="/var/log" />
     <property name="FILE_NAME" value="logFile" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${logging.appender.console.level:-DEBUG}</level>
+        </filter>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5p | [%thread] [%X{APPNAME}] %logger{5}:%L - %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${logging.appender.file.level:-OFF}</level>
+        </filter>
         <file>${BASE_PATH}/${FILE_NAME}.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5p | [%thread] [%X{APPNAME}] %logger{5}:%L - %msg%n</pattern>
@@ -22,17 +27,17 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="com.jibi" level="debug" additivity="false">
+    <logger name="com.jibi" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE "/>
+        <appender-ref ref="FILE"/>
     </logger>
 
-    <appender name="STDOUT" class="ch.qos.logback.classic.AsyncAppender" level="OFF">
+    <appender name="STDOUT" class="ch.qos.logback.classic.AsyncAppender" >
         <appender-ref ref="CONSOLE" />
         <queueSize>10000</queueSize>
         <discardingThreshold>0</discardingThreshold>
     </appender>
-    <appender name="STDFILE" class="ch.qos.logback.classic.AsyncAppender" level="OFF">
+    <appender name="STDFILE" class="ch.qos.logback.classic.AsyncAppender" >
         <appender-ref ref="FILE" />
         <queueSize>10000</queueSize>
         <discardingThreshold>0</discardingThreshold>
