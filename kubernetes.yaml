@@ -16,11 +16,17 @@ spec:
           name: httpbin
           ports:
             - containerPort: 8080
+              name: app-port
           env:
             - name: MAXRAMFRACTION
               value: "1"
             - name: GCTIMERATIO
               value: "2"
+            - name: COMMAND
+              #value: "java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
+              #value: "java -Xms500m -Xmx750m -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
+              #value: "java -Xms128m -Xmx768m -jar /service/app.jar"
+              value: "java -Xms128m -Xmx768m -XX:+UseSerialGC -XX:MaxHeapFreeRatio=20 -XX:MinHeapFreeRatio=10 -Dlogging.appender.console.level=OFF -Dlogging.appender.file.level=DEBUG -jar /service/app.jar"
           resources:
             requests:
               memory: 1Gi
@@ -28,6 +34,12 @@ spec:
             limits:
               memory: 1Gi
               cpu: 512m
+          volumeMounts:
+            - mountPath: /var/log
+              name: log-volume
+      volumes:
+        - name: log-volume
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
@@ -56,6 +68,12 @@ spec:
   minReplicas: 1
   maxReplicas: 10
   metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
     - type: Resource
       resource:
         name: memory
