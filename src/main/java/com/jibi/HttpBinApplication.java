@@ -17,7 +17,7 @@ public class HttpBinApplication {
   }
 
   @Scheduled(cron = "0 */1 * * * ?")
-  public void perform() throws Exception {
+  public void performGCSchedule() throws Exception {
     log.debug("Invoking System GC");
     try {
       System.gc();
