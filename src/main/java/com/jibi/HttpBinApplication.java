@@ -13,10 +13,10 @@ public class HttpBinApplication {
   public static void main(String[] args) {
     log.debug("Starting httpbin application");
     SpringApplication.run(HttpBinApplication.class, args);
-    log.debug("Ending httpbin application");
+    log.debug("Started httpbin application");
   }
 
-  @Scheduled(cron = "0 */1 * * * ?")
+  @Scheduled(cron = "${schedule.gc}")
   public void performGCSchedule() throws Exception {
     log.debug("Invoking System GC");
     try {
