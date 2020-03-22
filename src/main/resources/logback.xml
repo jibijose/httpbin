@@ -37,7 +37,7 @@
         <queueSize>10000</queueSize>
         <discardingThreshold>0</discardingThreshold>
     </appender>
-    <appender name="STDFILE" class="ch.qos.logback.classic.AsyncAppender" >
+    <appender name="FILELOG" class="ch.qos.logback.classic.AsyncAppender" >
         <appender-ref ref="FILE" />
         <queueSize>10000</queueSize>
         <discardingThreshold>0</discardingThreshold>
@@ -46,7 +46,7 @@
     <root>
         <level value="${logger.root.level:-WARN}"/>
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="STDFILE"/>
+        <appender-ref ref="FILELOG"/>
     </root>
 
 </configuration>
