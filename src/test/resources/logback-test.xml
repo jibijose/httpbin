@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.jibi" level="debug" additivity="false">
+    <logger name="com.jibi" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 
