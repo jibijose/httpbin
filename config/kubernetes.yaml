@@ -1,0 +1,82 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: httpbin
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: httpbin
+        version: v1
+    spec:
+      containers:
+        - image: registry.hub.docker.com/jibijose/httpbin:branch-jdk8-java-memory-down-scaling
+          imagePullPolicy: Always
+          name: httpbin
+          ports:
+            - containerPort: 8080
+              name: app-port
+          env:
+            - name: MAXRAMFRACTION
+              value: "1"
+            - name: GCTIMERATIO
+              value: "2"
+            - name: COMMAND
+              #value: "java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
+              #value: "java -Xms500m -Xmx750m -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
+              #value: "java -Xms128m -Xmx768m -jar /service/app.jar"
+              value: "java -Xms128m -Xmx768m -XX:+UseSerialGC -XX:MaxHeapFreeRatio=20 -XX:MinHeapFreeRatio=10 -Dlogging.appender.console.level=OFF -Dlogging.appender.file.level=DEBUG -jar /service/app.jar"
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 128m
+            limits:
+              memory: 1Gi
+              cpu: 512m
+          volumeMounts:
+            - mountPath: /var/log
+              name: log-volume
+      volumes:
+        - name: log-volume
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin
+  labels:
+    app: httpbin
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: httpbin
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: httpbin
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: httpbin
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 50
