@@ -368,7 +368,7 @@
                 </executions>
                 <configuration>
                     <spotbugsXmlOutputDirectory>target/spotbugs</spotbugsXmlOutputDirectory>
-                    <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                    <excludeFilterFile>config/spotbugs-exclude.xml</excludeFilterFile>
                 </configuration>
             </plugin>
             <plugin>
@@ -449,7 +449,7 @@
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.basepom.maven</groupId>
