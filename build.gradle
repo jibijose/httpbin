@@ -35,6 +35,8 @@ dependencies {
     testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version:'2.0.4'
     testCompile group: 'org.powermock', name: 'powermock-module-junit4', version:'2.0.4'
     testCompile group: 'org.hamcrest', name: 'hamcrest-core', version:'2.2'
+    testCompile group: 'com.github.stefanbirkner', name: 'system-rules', version:'1.19.0'
+    testCompile group: 'org.awaitility', name: 'awaitility', version:'4.0.2s'
 }
 
 test {

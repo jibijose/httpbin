@@ -80,7 +80,7 @@
         <swagger.version>2.9.2</swagger.version>
         <hamcrest.version>2.2</hamcrest.version>
         <powermock.version>2.0.4</powermock.version>
-        <junit.version>4.13-rc-2</junit.version>
+        <junit.version>4.13</junit.version>
         <lombok.version>1.18.10</lombok.version>
         <jacoco.version>0.8.5</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
