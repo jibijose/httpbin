@@ -32,7 +32,7 @@ COPY --from=builder /tmp/app.jar /service/app.jar
 #    apt-get install sudo -y -qq > /dev/null && \
 #    apt-get install curl -y -qq > /dev/null && \
 #    apt-get install procps -y -qq > /dev/null && \
-#    groupadd -g 1000 appgroup && \
+RUN  groupadd -g 1000 appgroup && \
     useradd -r -s /bin/bash -u 1000 -g appgroup -m appuser -p "$(openssl passwd -1 appuser)" && \
     usermod -aG sudo appuser
 
