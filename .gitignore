@@ -10,6 +10,9 @@ jacoco.exec
 .project
 .settings
 .classpath
+pom.xml.*
 
 oc.exe
 kubectl.exe
+
+release.properties

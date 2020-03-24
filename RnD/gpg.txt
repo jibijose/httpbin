@@ -1,0 +1,5 @@
+
+gpg --import PublicKeyGPA.asc
+gpg --list-keys
+gpg --import PrivateKeyGPA.asc
+gpg --list-secret-keys
