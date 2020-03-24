@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jibi</groupId>
@@ -46,7 +45,7 @@
         <url>https://github.com/jibijose/httpbin</url>
         <connection>scm:git:https://github.com/jibijose/httpbin.git</connection>
         <developerConnection>scm:git:https://github.com/jibijose/httpbin.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>httpbin-1.0.0-SNAPSHOT</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
@@ -79,7 +78,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.2.RELEASE</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <properties>
@@ -323,7 +322,7 @@
                             <locations>com.jibi.controller</locations>
                             <schemes>http</schemes>
                             <host>a03e2976afe0c11e9b28f12963f50b82-477664170.us-east-1.elb.amazonaws.com</host>
-                            <basePath></basePath>
+                            <basePath />
                             <info>
                                 <title>Java httpbin apis</title>
                                 <version>v1</version>
