@@ -11,25 +11,20 @@ spec:
         version: v1
     spec:
       containers:
-        - image: registry.hub.docker.com/jibijose/httpbin:branch-jdk8-java-memory-down-scaling
+        - image: registry.hub.docker.com/jibijose/httpbin:jdk8-latest
           imagePullPolicy: Always
           name: httpbin
           ports:
             - containerPort: 8080
               name: app-port
           env:
-            - name: MAXRAMFRACTION
-              value: "1"
-            - name: GCTIMERATIO
-              value: "2"
-            - name: COMMAND
-              #value: "java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
-              #value: "java -Xms500m -Xmx750m -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
-              #value: "java -Xms128m -Xmx768m -jar /service/app.jar"
-              value: "java -Xms128m -Xmx768m -XX:+UseSerialGC -XX:MaxHeapFreeRatio=20 -XX:MinHeapFreeRatio=10 -Dlogging.appender.console.level=OFF -Dlogging.appender.file.level=DEBUG -jar /service/app.jar"
+            - name: JVM_OPTS
+              value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1"
+            - name: LOG_OPTS
+              value: "-Dlogging.appender.console.level=OFF -Dlogging.appender.file.level=DEBUG"
           resources:
             requests:
-              memory: 1Gi
+              memory: 256Mi
               cpu: 128m
             limits:
               memory: 1Gi
