@@ -1,9 +1,9 @@
-FROM openjdk:11.0-jdk-slim AS builder
+FROM openjdk:11.0.6-jdk-slim AS builder
 
 ARG MVN_VERSION=3.6.3
 
 RUN apt-get update -qq && \
-    apt-get install wget -y -qq && \
+    apt-get install wget -y -qq > /dev/null && \
     wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
     tar -xzf /opt/apache-maven-${MVN_VERSION}-bin.tar.gz -C /opt && \
     mv /opt/apache-maven-${MVN_VERSION} /opt/maven
@@ -18,7 +18,7 @@ RUN rm -rf /tmp/app/target/httpbin-*.*.*-sources.jar && \
     rm -rf /tmp/app/target/httpbin-*.*.*-javadoc.jar && \
     cp /tmp/app/target/httpbin-*.*.*.jar /tmp/app.jar
 
-FROM openjdk:11.0-jdk-slim AS packager
+FROM openjdk:11.0.6-jdk-slim AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 
@@ -26,11 +26,13 @@ COPY --from=builder /tmp/app.jar /service/app.jar
 
 
 
-RUN apt-get update -qq && \
-    apt-get install sudo -y -qq && \
-    apt-get install curl -y -qq && \
-    apt-get install procps -y -qq && \
-    groupadd -g 1000 appgroup && \
+
+
+#RUN apt-get update -qq && \
+#    apt-get install sudo -y -qq > /dev/null && \
+#    apt-get install curl -y -qq > /dev/null && \
+#    apt-get install procps -y -qq > /dev/null && \
+#    groupadd -g 1000 appgroup && \
     useradd -r -s /bin/bash -u 1000 -g appgroup -m appuser -p "$(openssl passwd -1 appuser)" && \
     usermod -aG sudo appuser
 

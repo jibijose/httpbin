@@ -28,11 +28,11 @@ ENV MAXRAMFRACTION=1
 ENV GCTIMERATIO=2
 ENV COMMAND "java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:MaxGCMinorPauseMillis=100 -XX:GCTimeRatio=2 -jar /service/app.jar"
 
-RUN apt-get update -qq && \
-    apt-get install sudo -y -qq && \
-    apt-get install curl -y -qq && \
-    apt-get install procps -y -qq && \
-    groupadd -g 1000 appgroup && \
+#RUN apt-get update -qq && \
+#    apt-get install sudo -y -qq > /dev/null && \
+#    apt-get install curl -y -qq > /dev/null && \
+#    apt-get install procps -y -qq > /dev/null && \
+RUN groupadd -g 1000 appgroup && \
     useradd -r -s /bin/bash -u 1000 -g appgroup -m appuser -p "$(openssl passwd -1 appuser)" && \
     usermod -aG sudo appuser
 
