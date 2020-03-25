@@ -10,6 +10,6 @@ public class HttpBinApplication {
   public static void main(String[] args) {
     log.debug("Starting httpbin application");
     SpringApplication.run(HttpBinApplication.class, args);
-    log.debug("Ending httpbin application");
+    log.debug("Started httpbin application");
   }
 }

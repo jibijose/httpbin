@@ -1,0 +1,31 @@
+https://static.rainfocus.com/oracle/oow19/sess/1552386026175001IH06/PF/CodeOne%202019%20-%20Choosing%20Right%20Garbage%20Collector%20to%20Increase%20Efficiency%20of%20Java%20Memory%20Usage%20_1568658939032001Gylt.pdf
+https://jelastic.com/blog/tuning-garbage-collector-java-memory-usage-optimization/
+https://www.javacodegeeks.com/2017/11/minimize-java-memory-usage-right-garbage-collector.html
+https://www.geekyhacker.com/2019/01/04/jvm-does-not-release-memory/
+https://www.slideshare.net/jelastic/elastic-jvm-automatic-vertical-scaling-of-the-java-heap
+
+https://manned.org/java-openjdk8/96567874
+https://stackoverflow.com/questions/33318688/will-openjdk-jvm-ever-give-heap-memory-back-to-linux
+
+
+https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-8
+https://stackoverflow.com/questions/30052984/how-to-make-jvm-release-memory-back-to-os
+https://stackoverflow.com/questions/5355933/encourage-the-jvm-to-gc-rather-than-grow-the-heap
+https://medium.com/adorsys/jvm-memory-settings-in-a-container-environment-64b0840e1d9e
+https://blog.csanchez.org/2017/05/31/running-a-jvm-in-a-container-without-getting-killed/
+
+
+
+java -XX:InitialHeapSize=256M -XX:MaxHeapSize=4G -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC -jar target/httpbin-1.0.0.jar
+java -XX:InitialHeapSize=256M -XX:MaxHeapSize=1G -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC -XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=30 -jar target/httpbin-1.0.0.jar
+java -XX:InitialHeapSize=256M -XX:MaxHeapSize=1G -XX:+UseParNewGC -jar target/httpbin-1.0.0.jar
+java -XX:InitialHeapSize=256M -XX:MaxHeapSize=1G -XX:+UseG1GC -jar target/httpbin-1.0.0.jar
+java -XX:InitialHeapSize=256M -XX:MaxHeapSize=1G -XX:+UseG1GC -XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=30 -jar target/httpbin-1.0.0.jar
+java -XX:InitialHeapSize=256M -XX:MaxHeapSize=1G -XX:+UseG1GC -XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=10 -jar target/httpbin-1.0.0.jar
+java -XX:+UseG1GC -XX:GCTimeRatio=19 -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=10 -jar target/httpbin-1.0.0.jar
+
+
+docker run -m 1GB openjdk:8u232 java -XshowSettings:vm -version
+docker run -m 1GB openjdk:8u232 java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XshowSettings:vm -version
+docker run -m 1GB openjdk:8u232 java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XshowSettings:vm -version
+

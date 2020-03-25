@@ -1,0 +1,8 @@
+
+gpg --import PublicKeyGPA.asc
+gpg --list-keys
+gpg --import PrivateKeyGPA.asc
+gpg --list-secret-keys
+
+
+https://dzone.com/articles/publish-your-artifacts-to-maven-centrals

@@ -16,11 +16,10 @@ public class DelayController {
 
   @ApiOperation(value = "Delay constant api", response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(value = "/{unit}/{time}", method = RequestMethod.GET)
   public void delayConstant(@PathVariable("unit") String unit, @PathVariable("time") Integer time) {
     if ("millis".equals(unit)) {
@@ -38,11 +37,10 @@ public class DelayController {
 
   @ApiOperation(value = "Delay random api", response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(value = "/random/{unit}/{time}", method = RequestMethod.GET)
   public void delayRandom(
       @ApiParam(value = "Unit of time", allowableValues = "millis, seconds, minutes")
@@ -54,11 +52,10 @@ public class DelayController {
 
   @ApiOperation(value = "Delay random range api", response = Void.class)
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 200, message = "Ok"),
-      @ApiResponse(code = 500, message = "Internal server error")
-    }
-  )
+      value = {
+        @ApiResponse(code = 200, message = "Ok"),
+        @ApiResponse(code = 500, message = "Internal server error")
+      })
   @RequestMapping(value = "/random/{unit}/range/{minTime}/{maxTime}", method = RequestMethod.GET)
   public void delayRandomRange(
       @ApiParam(value = "Unit of time", allowableValues = "millis, seconds, minutes")
