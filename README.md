@@ -1,8 +1,11 @@
-[Java HttpBin Api](https://jibijose.github.io/swagger)
+[Java HttpBin Swagger](https://jibijose.github.io/swagger)
+==================================
+[Java HttpBin Apidocs](https://jibijose.github.io/apidocs/httpbin)
 ==================================
 
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
 [![Build Status](https://travis-ci.org/jibijose/httpbin.svg?branch=master)](https://travis-ci.org/jibijose/httpbin)  
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.jibijose/httpbin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.jibijose/httpbin)   
 [![Coverage Status](http://img.shields.io/coveralls/jibijose/httpbin/master.svg?style=flat-square)](https://coveralls.io/r/jibijose/httpbin?branch=master)
 [![GitHub contributors](https://img.shields.io/github/contributors/jibijose/httpbin.svg)](https://github.com/jibijose/httpbin/graphs/contributors)[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)  
 [![](https://images.microbadger.com/badges/image/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
@@ -14,40 +17,43 @@
 
 * Java 8.x
 * Maven 3.0.0 or newer.
+* docker optional
 
 ### Run locally
-docker run -p 8080:8080 jibijose/httpbin  
-docker run -d -p 8080:8080 registry.hub.docker.com/jibijose/httpbin:latest
+./scripts/dockerRun.sh   
 
 ### Build locally
-git clone https://github.com/jibijose/httpbin  
-cd httpbin  
-mvn clean package  
-docker build -t jibijose/httpbin:latest .  
+./scripts/dockerBuild.sh   
 
 ### Cleanup
-docker stop $(docker ps -aq)  
-docker rm $(docker ps -aq)  
-docker rmi jibijose/httpin:latest  
-docker rmi registry.hub.docker.com/jibijose/httpbin:latest  
-rm -rf httpbin
+./scripts/ckeanup.sh  
 
 *************
-TODOs  
+### TODOs  
 upload to maven central  
 junit run parallel  
-host website somewhere, add external curl checkpoints  
-add gradle support  
+add external curl checkpoints  
+https://assertible.com/blog/testing-an-api-using-swagger    
 APIS. Cookies, Req/Resp Inspection.  
 hold/release endpoints  
-Network response big file.  
-Image/pdf/excel/doc etc responses  
-System ram/cpu/disk report api
 ram/cpu/disk speed api
-consumer disk speed api.
+consumer disk speed api.  
+Open Api Spec 3.0   
+Java api web page   
+Date Apis. add delete days/weeks/months/years    
+https://github.com/gregswindle/maven-code-quality-pom#437-mvn-pmdcheck   
 
-add gradle support  
-update jdk11 support  
-XML model response.  
-Swagger Model Beans  
-remove assertJ assert*  
+
+***************   
+#### OpenShift   
+https://console-openshift-console.apps.us-east-1.starter.openshift-online.com/console/command-line
+oc login --token=TOKEN --server=https://api.us-east-1.starter.openshift-online.com:6443
+oc config view
+
+oc get projects
+oc project httpbin
+
+oc apply -f openshift.yaml
+
+oc get svc
+oc get pods

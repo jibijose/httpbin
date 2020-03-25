@@ -5,10 +5,17 @@ language: java
 
 jdk:
   - openjdk8
+  - openjdk11
 
 install:
-  - mvn compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - ./mvnw clean compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn clean package
+  - ./mvnw clean
+  - ./mvnw fmt:check
+  - ./mvnw pmd:check pmd:cpd-check
+  - ./mvnw checkstyle:check
+  - ./mvnw package
+  - ./mvnw spotbugs:check
+  - ./mvnw site
 after_success:
-  - mvn coveralls:report
+  - ./mvnw coveralls:report
