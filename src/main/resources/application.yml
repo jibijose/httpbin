@@ -1,0 +1,5 @@
+application:
+  name: httpbin
+
+schedule:
+  gc: 0 */1 * * * ?
