@@ -321,7 +321,7 @@
                             <springmvc>true</springmvc>
                             <locations>com.jibi.controller</locations>
                             <schemes>http</schemes>
-                            <host>a03e2976afe0c11e9b28f12963f50b82-477664170.us-east-1.elb.amazonaws.com</host>
+                            <host>jibici.eastus.azurecontainer.io:8080</host>
                             <basePath />
                             <info>
                                 <title>Java httpbin apis</title>
