@@ -1,7 +1,7 @@
 <configuration>
     <contextName>WebContext</contextName>
-    <property name="BASE_PATH" value="/var/log" />
-    <property name="FILE_NAME" value="logFile" />
+    <property name="BASE_PATH" value="${logging.appender.file.base.path:-/tmp}" />
+    <property name="FILE_NAME" value="${logging.appender.file.name:-logFile}" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
