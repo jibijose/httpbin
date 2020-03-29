@@ -36,7 +36,7 @@ before_build:
   - mvnw pmd:check pmd:cpd-check -B
   - mvnw checkstyle:check -B
 build_script:
-  - gradlew -i assemble
+  - gradlew -i test assemble
   - mvnw package -B
 after_build:
   - mvnw spotbugs:check -B

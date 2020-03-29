@@ -60,7 +60,7 @@ script:
     fi
   - |
     if [ $GRADLEBUILD == "true" ]; then
-      ./gradlew -i assemble
+      ./gradlew -i test assemble
     fi
 
 after_success:
