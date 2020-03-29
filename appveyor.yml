@@ -4,7 +4,7 @@
 #---------------------------------#
 version: '{build}'
 skip_tags: true
-max_jobs: 1
+max_jobs: 8
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
