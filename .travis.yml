@@ -18,18 +18,13 @@ jdk:
   - openjdk8
   - openjdk11
 
+before_install:
+  - export MAVEN_OPTS=-Xmx1g
+  - export JAVA_OPTS=-Xmx1g
+before_script:
+  - java -version
+  - ./mvnw --version
+  - ./gradlew --version
 install:
-  - ./gradlew clean compileJava compileTestJava
-  - ./mvnw clean compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script:
-  - ./gradlew -i assemble
+  - ./gradlew clean
   - ./mvnw clean
-  - ./mvnw fmt:check
-  - ./mvnw pmd:check pmd:cpd-check
-  - ./mvnw checkstyle:check
-  - ./mvnw package
-  - ./mvnw spotbugs:check
-  - ./mvnw site
-after_success:
-  - ./gradlew -i -S check
-  - ./mvnw coveralls:report
