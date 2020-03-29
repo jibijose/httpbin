@@ -13,3 +13,62 @@ cache:
     - $HOME/.m2
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+jdk:
+  - openjdk8
+  - openjdk9
+  - openjdk10
+  - openjdk11
+env:
+  - MAVENBUILD=true GRADLEBUILD=false
+  - MAVENBUILD=false GRADLEBUILD=true
+
+before_install:
+  - export JAVA_OPTS=-Xmx1g
+  - export MAVEN_OPTS=-Xmx1g
+before_script:
+  - java -version
+  - |
+    if [ $MAVENBUILD == "true" ]; then
+      ./mvnw --version
+    fi
+  - |
+    if [ $GRADLEBUILD == "true" ]; then
+      ./gradlew --version
+    fi
+
+install:
+  - |
+    if [ $MAVENBUILD == "true" ]; then
+      ./mvnw clean compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    fi
+  - |
+    if [ $GRADLEBUILD == "true" ]; then
+      ./gradlew clean compileJava compileTestJava
+    fi
+
+script:
+  - |
+    if [ $MAVENBUILD == "true" ]; then
+      ./mvnw clean
+      ./mvnw fmt:check
+      ./mvnw pmd:check pmd:cpd-check
+      ./mvnw checkstyle:check
+      ./mvnw package
+      ./mvnw spotbugs:check
+      ./mvnw site
+    fi
+  - |
+    if [ $GRADLEBUILD == "true" ]; then
+      ./gradlew -i assemble
+    fi
+
+after_success:
+  - |
+    if [ $MAVENBUILD == "true" ]; then
+      ./mvnw coveralls:report
+    fi
+  - |
+    if [ $GRADLEBUILD == "true" ]; then
+      ./gradlew -i -S check
+    fi

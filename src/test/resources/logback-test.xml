@@ -8,12 +8,19 @@
         </encoder>
     </appender>
 
-    <logger name="com.jibi" level="DEBUG" additivity="false">
+    <logger name="com.jibi" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="com.jibi.schedule.Schedulers" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="com.jibi.common.Util" level="OFF" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 
+
     <root>
-        <level value="${logger.root.level:-WARN}"/>
+        <level value="${logger.root.level:-ERROR}"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 
