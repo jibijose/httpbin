@@ -2,7 +2,8 @@
 # http://docs.travis-ci.com/user/languages/java/
 
 language: java
-sudo: false
+os: linux
+dist: bionic
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
