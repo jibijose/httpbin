@@ -2,6 +2,10 @@
 # http://docs.travis-ci.com/user/languages/java/
 
 language: java
+sudo: false
+cache:
+  directories:
+    - $HOME/.m2
 
 jdk:
   - openjdk8
