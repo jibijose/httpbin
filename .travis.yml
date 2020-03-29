@@ -2,14 +2,27 @@
 # http://docs.travis-ci.com/user/languages/java/
 
 language: java
+os: linux
+dist: bionic
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 
 jdk:
   - openjdk8
   - openjdk11
 
 install:
+  - ./gradlew clean compileJava compileTestJava
   - ./mvnw clean compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
+  - ./gradlew -i assemble
   - ./mvnw clean
   - ./mvnw fmt:check
   - ./mvnw pmd:check pmd:cpd-check
@@ -18,4 +31,5 @@ script:
   - ./mvnw spotbugs:check
   - ./mvnw site
 after_success:
+  - ./gradlew -i -S check
   - ./mvnw coveralls:report

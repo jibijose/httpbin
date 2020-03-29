@@ -11,7 +11,7 @@ spec:
         version: v1
     spec:
       containers:
-        - image: registry.hub.docker.com/jibijose/httpbin:version-jdk8-1.0.0
+        - image: registry.hub.docker.com/jibijose/httpbin:jdk8-latest
           imagePullPolicy: IfNotPresent
           name: httpbin
           ports:
