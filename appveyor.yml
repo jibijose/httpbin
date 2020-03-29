@@ -29,7 +29,7 @@ install:
 #       build configuration       #
 #---------------------------------#
 build:
-  parallel: false
+  parallel: true
 before_build:
   - mvnw clean -B
   - mvnw fmt:check -B
