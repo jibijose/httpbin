@@ -31,7 +31,7 @@ jobs:
     <<: *shared
   jdk12:
     docker:
-      - image: circleci/openjdk:12-jdk
+      - image: openjdk:8u212-jdk-alpine
     <<: *shared
   jdk13:
     docker:
