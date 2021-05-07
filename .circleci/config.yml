@@ -5,12 +5,12 @@ shared: &shared
     - checkout
     - restore_cache:
         key: proguard-with-maven-example-{{ checksum "pom.xml" }}
-    - run: ./mvn dependency:go-offline
+    - run: ./mvnw dependency:go-offline
     - save_cache:
         paths:
           - ~/.m2
         key: proguard-with-maven-example-{{ checksum "pom.xml" }}
-    - run: ./mvn -DskipTests package
+    - run: ./mvnw -DskipTests package
 
 jobs:
   jdk8:
