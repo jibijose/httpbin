@@ -11,6 +11,7 @@ jacoco.exec
 .settings
 .classpath
 pom.xml.*
+bin
 
 oc.exe
 kubectl.exe
