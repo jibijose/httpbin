@@ -35,23 +35,23 @@ jobs:
     <<: *shared
   jdk13:
     docker:
-      - image: circleci/openjdk:13-jdk-slim
+      - image: openjdk:13-jdk-slim
     <<: *shared
   jdk14:
     docker:
-      - image: circleci/openjdk:14-jdk-slim
+      - image: openjdk:14-jdk-slim
     <<: *shared
   jdk15:
     docker:
-      - image: circleci/openjdk:15-jdk-slim
+      - image: openjdk:15-jdk-slim
     <<: *shared
   jdk16:
     docker:
-      - image: circleci/openjdk:16-jdk-slim
+      - image: openjdk:16-jdk-slim
     <<: *shared
   jdk17:
     docker:
-      - image: circleci/openjdk:17-jdk-slim
+      - image: openjdk:17-jdk-slim
     <<: *shared
 
 workflows:
