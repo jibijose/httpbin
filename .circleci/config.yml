@@ -6,6 +6,7 @@ shared:
       - checkout
       - restore_cache:
           key: proguard-with-maven-example-{{ checksum "pom.xml" }}
+      - run: ./mvnw -v
       - run: ./mvnw dependency:go-offline
       - save_cache:
           paths:
@@ -17,6 +18,7 @@ shared:
       - checkout
       - restore_cache:
           key: v1-dependencies-{{ checksum "build.gradle" }}
+      - run: ./gradlew -v
       - run: ./gradlew dependencies
       - save_cache:
           paths:
@@ -27,79 +29,24 @@ shared:
 jobs:
   jdk8-maven:
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    <<: *shared-maven
-  jdk9-maven:
-    docker:
-      - image: circleci/openjdk:9-jdk
-    <<: *shared-maven
-  jdk10-maven:
-    docker:
-      - image: circleci/openjdk:10-jdk
+      - image: openjdk:8-jdk-slim
     <<: *shared-maven
   jdk11-maven:
     docker:
-      - image: circleci/openjdk:11-jdk-stretch
-    <<: *shared-maven
-  jdk12-maven:
-    docker:
-      - image: openjdk:8u212-jdk-alpine
-    <<: *shared-maven
-  jdk13-maven:
-    docker:
-      - image: openjdk:13-jdk-slim
-    <<: *shared-maven
-  jdk14-maven:
-    docker:
-      - image: openjdk:14-jdk-slim
-    <<: *shared-maven
-  jdk15-maven:
-    docker:
-      - image: openjdk:15-jdk-slim
-    <<: *shared-maven
-  jdk16-maven:
-    docker:
-      - image: openjdk:16-jdk-slim
+      - image: openjdk:11-jdk-slim
     <<: *shared-maven
   jdk17-maven:
     docker:
       - image: openjdk:17-jdk-slim
     <<: *shared-maven
+
   jdk8-gradle:
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    <<: *shared-gradle
-  jdk9-gradle:
-    docker:
-      - image: circleci/openjdk:9-jdk
-    <<: *shared-gradle
-  jdk10-gradle:
-    docker:
-      - image: circleci/openjdk:10-jdk
+      - image: openjdk:8-jdk-slim
     <<: *shared-gradle
   jdk11-gradle:
     docker:
-      - image: circleci/openjdk:11-jdk-stretch
-    <<: *shared-gradle
-  jdk12-gradle:
-    docker:
-      - image: openjdk:8u212-jdk-alpine
-    <<: *shared-gradle
-  jdk13-gradle:
-    docker:
-      - image: openjdk:13-jdk-slim
-    <<: *shared-gradle
-  jdk14-gradle:
-    docker:
-      - image: openjdk:14-jdk-slim
-    <<: *shared-gradle
-  jdk15-gradle:
-    docker:
-      - image: openjdk:15-jdk-slim
-    <<: *shared-gradle
-  jdk16-gradle:
-    docker:
-      - image: openjdk:16-jdk-slim
+      - image: openjdk:11-jdk-slim
     <<: *shared-gradle
   jdk17-gradle:
     docker:
@@ -110,24 +57,10 @@ workflows:
   maven: 
     jobs:
       - jdk8-maven
-      - jdk9-maven
-      - jdk10-maven
       - jdk11-maven
-      - jdk12-maven
-      - jdk13-maven
-      - jdk14-maven
-      - jdk15-maven
-      - jdk16-maven
       - jdk17-maven
   gradle: 
     jobs:
       - jdk8-gradle
-      - jdk9-gradle
-      - jdk10-gradle
       - jdk11-gradle
-      - jdk12-gradle
-      - jdk13-gradle
-      - jdk14-gradle
-      - jdk15-gradle
-      - jdk16-gradle
       - jdk17-gradle
