@@ -16,9 +16,7 @@ shared:
     steps:
       - checkout
       - restore_cache:
-          key: 
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            - v1-dependencies-
+          key: v1-dependencies-{{ checksum "build.gradle" }}
       - run: ./gradlew dependencies
       - save_cache:
           paths:
