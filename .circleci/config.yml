@@ -12,6 +12,20 @@ shared: &shared-maven
         key: proguard-with-maven-example-{{ checksum "pom.xml" }}
     - run: ./mvnw clean
 
+shared: &shared-gradle
+  steps:
+    - checkout
+    - restore_cache:
+        key: 
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
+    - run: ./gradlew dependencies
+    - save_cache:
+        paths:
+          - ~/.gradle
+        key: v1-dependencies-{{ checksum "build.gradle" }}
+    - run: ./gradlew clean
+
 jobs:
   jdk8:
     docker:
@@ -56,6 +70,18 @@ jobs:
 
 workflows:
   maven: 
+    jobs:
+      - jdk8
+      - jdk9
+      - jdk10
+      - jdk11
+      - jdk12
+      - jdk13
+      - jdk14
+      - jdk15
+      - jdk16
+      - jdk17
+  gradle: 
     jobs:
       - jdk8
       - jdk9
