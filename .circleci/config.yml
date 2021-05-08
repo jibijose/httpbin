@@ -12,7 +12,7 @@ shared:
           paths:
             - ~/.m2
           key: proguard-with-maven-example-{{ checksum "pom.xml" }}
-      - run: ./mvnw clean
+      - run: ./mvnw package
   - &shared-gradle
     steps:
       - checkout
@@ -24,7 +24,7 @@ shared:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-      - run: ./gradlew clean
+      - run: ./gradlew assemble
 
 jobs:
   jdk8-maven:
