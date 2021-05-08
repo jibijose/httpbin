@@ -24,7 +24,7 @@ shared:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-      - run: ./gradlew assemble
+      - run: ./gradlew -i test assemble
 
 jobs:
   jdk8-maven:
