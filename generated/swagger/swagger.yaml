@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Java httpbin apis"
-  version: "1.0.0"
+  version: "1.2.0"
   title: "Java httpbin apis"
   termsOfService: "https://github.com/jibijose/httpbin"
   contact:
