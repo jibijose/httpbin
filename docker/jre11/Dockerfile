@@ -1,6 +1,6 @@
-FROM openjdk:11.0.6-jdk-slim AS builder
+FROM openjdk:11.0.11-jdk-slim AS builder
 
-ARG MVN_VERSION=3.6.3
+ARG MVN_VERSION=3.8.1
 
 RUN apt-get update -qq && \
     apt-get install wget -y -qq > /dev/null && \
@@ -18,7 +18,7 @@ RUN rm -rf /tmp/app/target/httpbin-*.*.*-sources.jar && \
     rm -rf /tmp/app/target/httpbin-*.*.*-javadoc.jar && \
     cp /tmp/app/target/httpbin-*.*.*.jar /tmp/app.jar
 
-FROM openjdk:11.0.6-jre-slim AS packager
+FROM openjdk:11.0.11-jre-slim AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 
