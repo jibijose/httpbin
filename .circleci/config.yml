@@ -1,6 +1,6 @@
 version: 2.1
 
-shared-maven: &shared
+shared-maven: &shared-maven
   steps:
     - checkout
     - restore_cache:
