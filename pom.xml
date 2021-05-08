@@ -99,7 +99,7 @@
         </jacoco.ut.execution.data.file>
         <maven.pmd.plugin.version>3.14.0</maven.pmd.plugin.version>
         <maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
-        <fmt.maven.plugin.version>2.10</fmt.maven.plugin.version>
+        <fmt.maven.plugin.version>2.9.1</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>1.5.0</duplicate.finder.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
