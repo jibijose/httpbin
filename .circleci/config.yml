@@ -2,29 +2,29 @@ version: 2.1
 
 shared: 
   - shared-maven
-  steps:
-    - checkout
-    - restore_cache:
-        key: proguard-with-maven-example-{{ checksum "pom.xml" }}
-    - run: ./mvnw dependency:go-offline
-    - save_cache:
-        paths:
-          - ~/.m2
-        key: proguard-with-maven-example-{{ checksum "pom.xml" }}
-    - run: ./mvnw clean
+    steps:
+      - checkout
+      - restore_cache:
+          key: proguard-with-maven-example-{{ checksum "pom.xml" }}
+      - run: ./mvnw dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: proguard-with-maven-example-{{ checksum "pom.xml" }}
+      - run: ./mvnw clean
   - shared-gradle
-  steps:
-    - checkout
-    - restore_cache:
-        key: 
-          - v1-dependencies-{{ checksum "build.gradle" }}
-          - v1-dependencies-
-    - run: ./gradlew dependencies
-    - save_cache:
-        paths:
-          - ~/.gradle
-        key: v1-dependencies-{{ checksum "build.gradle" }}
-    - run: ./gradlew clean
+    steps:
+      - checkout
+      - restore_cache:
+          key: 
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - run: ./gradlew dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+      - run: ./gradlew clean
 
 jobs:
   jdk8:
