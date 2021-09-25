@@ -27,10 +27,6 @@ shared:
       - run: ./gradlew -i test assemble
 
 jobs:
-  jdk8-maven:
-    docker:
-      - image: openjdk:8-jdk-slim
-    <<: *shared-maven
   jdk11-maven:
     docker:
       - image: openjdk:11-jdk-slim
@@ -40,10 +36,6 @@ jobs:
       - image: openjdk:17-jdk-slim
     <<: *shared-maven
 
-  jdk8-gradle:
-    docker:
-      - image: openjdk:8-jdk-slim
-    <<: *shared-gradle
   jdk11-gradle:
     docker:
       - image: openjdk:11-jdk-slim
@@ -56,11 +48,7 @@ jobs:
 workflows:
   maven: 
     jobs:
-      - jdk8-maven
       - jdk11-maven
-      #- jdk17-maven
   gradle: 
     jobs:
-      - jdk8-gradle
       - jdk11-gradle
-      #- jdk17-gradle
