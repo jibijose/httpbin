@@ -5,5 +5,5 @@
 ./mvnw pmd:check pmd:cpd-check
 ./mvnw checkstyle:check
 ./mvnw package
-./mvnw findbugs:check
+./mvnw spotbugs:check
 ./mvnw site

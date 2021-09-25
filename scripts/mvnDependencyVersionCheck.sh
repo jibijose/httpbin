@@ -1,5 +1,5 @@
 #!/bin/bash
 
-mvn versions:display-property-updates
-mvn versions:display-plugin-updates
-mvn versions:display-dependency-updates
+./mvnw versions:display-property-updates
+./mvnw versions:display-plugin-updates
+./mvnw versions:display-dependency-updates
