@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class Schedulers {
 
-    @Scheduled(cron = "${schedule.gc}")
-    public void performGCSchedule() {
-        log.debug("Invoking System GC");
-        System.gc();
-        log.info("Invoked System GC");
-    }
+  @Scheduled(cron = "${schedule.gc}")
+  public void performGCSchedule() {
+    log.debug("Invoking System GC");
+    System.gc();
+    log.info("Invoked System GC");
+  }
 }

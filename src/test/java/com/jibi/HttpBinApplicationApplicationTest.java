@@ -9,12 +9,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HttpBinApplicationApplicationTest {
 
-    @Test
-    public void contextLoads() throws Exception {
-    }
+  @Test
+  public void contextLoads() throws Exception {}
 
-    @Test
-    public void testMain() throws Exception {
-        HttpBinApplication.main(new String[]{});
-    }
+  @Test
+  public void testMain() throws Exception {
+    HttpBinApplication.main(new String[] {});
+  }
 }

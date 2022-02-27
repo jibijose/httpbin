@@ -21,26 +21,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/memory")
 @Slf4j
 public class MemoryController {
-    @Operation(
-            summary = "Memory api",
-            description = "Memory hold operation",
-            tags = {"memory"})
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Successful operation",
-                            content =
-                            @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
-            })
-    @Parameter(name = "bytes", schema = @Schema(description = "Bytes", type = "integer"))
-    @Parameter(name = "time", schema = @Schema(description = "Time in seconds", type = "integer"))
-    @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
-    public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
+  @Operation(
+      summary = "Memory api",
+      description = "Memory hold operation",
+      tags = {"memory"})
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+      })
+  @Parameter(name = "bytes", schema = @Schema(description = "Bytes", type = "integer"))
+  @Parameter(name = "time", schema = @Schema(description = "Time in seconds", type = "integer"))
+  @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
+  public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
 
-        String storeString = StringUtil.getRandomString(bytes / 2);
-        Util.sleepMillisSilent(time * 1000);
-        log.trace("Kept string of length {} in memory for {} seconds", storeString.length(), time);
-    }
+    String storeString = StringUtil.getRandomString(bytes / 2);
+    Util.sleepMillisSilent(time * 1000);
+    log.trace("Kept string of length {} in memory for {} seconds", storeString.length(), time);
+  }
 }
