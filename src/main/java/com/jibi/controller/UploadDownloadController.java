@@ -1,24 +1,40 @@
 package com.jibi.controller;
 
 import com.jibi.model.UploadInfoModel;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@Api(value = "Upload Download Api")
+@Tag(name = "Upload Download Api", description = "Upload Download Api")
 @RestController(value = "Upload Download Api")
 public class UploadDownloadController {
 
   @Autowired private FileController fileController;
 
-  @ApiOperation(value = "Upload api", response = UploadInfoModel.class)
+  @Operation(
+      summary = "Upload api",
+      description = "Upload api",
+      tags = {"uploaddownload"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(
+                    array =
+                        @ArraySchema(schema = @Schema(implementation = UploadInfoModel.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
   @RequestMapping(
       value = "/upload",
@@ -40,11 +56,18 @@ public class UploadDownloadController {
     return uploadInfoModel;
   }
 
-  @ApiOperation(value = "Download api", response = byte[].class)
+  @Operation(
+      summary = "Download api",
+      description = "Download api",
+      tags = {"uploaddownload"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = byte[].class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
   @RequestMapping(
       value = "/download",
@@ -54,23 +77,31 @@ public class UploadDownloadController {
     return fileController.otherFileType("txt");
   }
 
-  @ApiOperation(value = "Download Size api", response = byte[].class)
+  @Operation(
+      summary = "Download size api",
+      description = "Download size api",
+      tags = {"uploaddownload"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = byte[].class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(
+      name = "size",
+      schema =
+          @Schema(
+              description = "Size",
+              type = "string",
+              allowableValues = {"1B", "10B", "100B", "1KB", "10KB", "100KB", "1MB", "10MB"}))
   @RequestMapping(
       value = "/download/{size}",
       method = RequestMethod.GET,
       produces = MediaType.TEXT_PLAIN_VALUE)
-  public byte[] downloadSize(
-      @ApiParam(
-              value = "Txt file size",
-              allowableValues = "1B, 10B, 100B, 1KB, 10KB, 100KB, 1MB, 10MB")
-          @PathVariable("size")
-          String size)
-      throws IOException {
+  public byte[] downloadSize(@PathVariable("size") String size) throws IOException {
     return fileController.otherTxtSize(size);
   }
 }

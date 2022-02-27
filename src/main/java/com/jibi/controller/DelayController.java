@@ -1,25 +1,47 @@
 package com.jibi.controller;
 
 import com.jibi.common.Util;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "Delay Api")
+@Tag(name = "Delay Api", description = "Delay Api")
 @RestController(value = "Delay Api")
 @RequestMapping("/delay")
 @Slf4j
 public class DelayController {
 
-  @ApiOperation(value = "Delay constant api", response = Void.class)
+  @Operation(
+      summary = "Delay constant api",
+      description = "Delay constant api",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(
+      name = "unit",
+      schema =
+          @Schema(
+              description = "Unit",
+              type = "string",
+              allowableValues = {"MB", "GB"}))
+  @Parameter(name = "time", schema = @Schema(description = "Time", type = "integer"))
   @RequestMapping(value = "/{unit}/{time}", method = RequestMethod.GET)
   public void delayConstant(@PathVariable("unit") String unit, @PathVariable("time") Integer time) {
     if ("millis".equals(unit)) {
@@ -35,34 +57,57 @@ public class DelayController {
     }
   }
 
-  @ApiOperation(value = "Delay random api", response = Void.class)
+  @Operation(
+      summary = "Delay random api",
+      description = "Delay random api",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(
+      name = "unit",
+      schema =
+          @Schema(
+              description = "Unit of time",
+              type = "string",
+              allowableValues = {"millis", "seconds", "minutes"}))
+  @Parameter(name = "time", schema = @Schema(description = "Time", type = "integer"))
   @RequestMapping(value = "/random/{unit}/{time}", method = RequestMethod.GET)
-  public void delayRandom(
-      @ApiParam(value = "Unit of time", allowableValues = "millis, seconds, minutes")
-          @PathVariable("unit")
-          String unit,
-      @ApiParam(value = "Time") @PathVariable("time") Integer time) {
+  public void delayRandom(@PathVariable String unit, @PathVariable Integer time) {
     delayRandomRange(unit, 0, time);
   }
 
-  @ApiOperation(value = "Delay random range api", response = Void.class)
+  @Operation(
+      summary = "Delay random range api",
+      description = "Delay random range api",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(
+      name = "unit",
+      schema =
+          @Schema(
+              description = "Unit of time",
+              type = "string",
+              allowableValues = {"millis", "seconds", "minutes"}))
+  @Parameter(name = "minTime", schema = @Schema(description = "Minimum time", type = "integer"))
+  @Parameter(name = "maxTime", schema = @Schema(description = "Maximum time", type = "integer"))
   @RequestMapping(value = "/random/{unit}/range/{minTime}/{maxTime}", method = RequestMethod.GET)
   public void delayRandomRange(
-      @ApiParam(value = "Unit of time", allowableValues = "millis, seconds, minutes")
-          @PathVariable("unit")
-          String unit,
-      @ApiParam(value = "Minimum time") @PathVariable("minTime") Integer minTime,
-      @ApiParam(value = "Maximum time") @PathVariable("maxTime") Integer maxTime) {
+      @PathVariable String unit, @PathVariable Integer minTime, @PathVariable Integer maxTime) {
     int time = Util.randomNumber(minTime, maxTime);
     if ("millis".equals(unit)) {
       Util.sleepMillisSilent(time);

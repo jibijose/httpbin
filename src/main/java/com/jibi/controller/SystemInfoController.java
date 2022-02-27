@@ -4,10 +4,13 @@ import static com.jibi.common.Util.getFormattedSize;
 
 import com.jibi.model.SystemInfoModel;
 import com.sun.management.OperatingSystemMXBean;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
@@ -18,17 +21,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "System information Api")
+@Tag(name = "System information Api", description = "System information Api")
 @RestController(value = "System information Api")
 @RequestMapping("/system/info")
 @Slf4j
 public class SystemInfoController {
-
-  @ApiOperation(value = "System information api", response = SystemInfoModel.class)
+  @Operation(
+      summary = "System information api",
+      description = "System information api",
+      tags = {"system"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(
+                    array =
+                        @ArraySchema(schema = @Schema(implementation = SystemInfoModel.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
   @RequestMapping(
       method = RequestMethod.GET,

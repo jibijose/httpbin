@@ -1,6 +1,13 @@
 package com.jibi.controller;
 
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -13,40 +20,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "Status codes Api")
+@Tag(name = "Status code Api", description = "Status code Api")
 @RestController(value = "Status codes Api")
 @RequestMapping("/status")
 public class StatusCodesController {
-
-  @ApiOperation(
-      value = "Status code api",
-      notes = "Api to respond with the status code in uri",
-      response = Void.class)
+  @Operation(
+      summary = "Status code api",
+      description = "Api to respond with the status code in uri",
+      tags = {"status"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 400, message = "Bad request"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(name = "code", schema = @Schema(description = "Code", type = "integer"))
   @RequestMapping(value = "/{code}", method = RequestMethod.GET)
-  public ResponseEntity<Void> statusCode(
-      @ApiParam(value = "Status code of response", required = true) @PathVariable("code")
-          Integer code) {
+  public ResponseEntity<Void> statusCode(@PathVariable Integer code) {
     HttpStatus httpStatus = HttpStatus.valueOf(code);
     return new ResponseEntity<Void>(httpStatus);
   }
 
-  @ApiOperation(value = "Status random code api", response = Void.class)
+  @Operation(
+      summary = "Status code api",
+      description = "Status random code api",
+      tags = {"status"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 400, message = "Bad request"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(name = "codes", schema = @Schema(description = "Codes", type = "integer"))
   @RequestMapping(value = "/random/{codes}", method = RequestMethod.GET)
-  public ResponseEntity<Void> statusRandomCodes(
-      @ApiParam(value = "Comma separated status codes", required = true) @PathVariable("codes")
-          String strCodes) {
+  public ResponseEntity<Void> statusRandomCodes(@PathVariable("codes") String strCodes) {
     String[] arrayCodes = strCodes.split(",");
     List<Integer> codes =
         Arrays.stream(arrayCodes).map(str -> Integer.parseInt(str)).collect(Collectors.toList());

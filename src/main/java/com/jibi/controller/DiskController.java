@@ -1,10 +1,14 @@
 package com.jibi.controller;
 
 import com.jibi.common.Util;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "Disk Api")
+@Tag(name = "Disk Api", description = "Disk Api")
 @RestController(value = "Disk Api")
 @RequestMapping("/disk")
 @Slf4j
@@ -26,12 +30,27 @@ public class DiskController {
 
   private static volatile byte[] BYTES1MB = null;
 
-  @ApiOperation(value = "Disk write api", response = Void.class)
+  @Operation(
+      summary = "Disk write api",
+      description = "Disk write api",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(
+      name = "unit",
+      schema =
+          @Schema(
+              description = "Umit",
+              type = "string",
+              allowableValues = {"MB", "GB"}))
+  @Parameter(name = "count", schema = @Schema(description = "Count", type = "integer"))
   @RequestMapping(
       value = "/write/{unit}/{count}",
       method = RequestMethod.GET,
@@ -56,12 +75,27 @@ public class DiskController {
             });
   }
 
-  @ApiOperation(value = "Disk read api", response = Void.class)
+  @Operation(
+      summary = "Disk read api",
+      description = "Disk read api",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = Void.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(
+      name = "unit",
+      schema =
+          @Schema(
+              description = "Umit",
+              type = "string",
+              allowableValues = {"MB", "GB"}))
+  @Parameter(name = "count", schema = @Schema(description = "Count", type = "integer"))
   @RequestMapping(
       value = "/read/{unit}/{count}",
       method = RequestMethod.GET,

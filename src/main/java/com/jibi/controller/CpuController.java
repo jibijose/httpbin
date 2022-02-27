@@ -1,28 +1,38 @@
 package com.jibi.controller;
 
 import com.jibi.service.BusyService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "Cpu Api")
+@Tag(name = "Cpu Api", description = "Cpu Api")
 @RestController(value = "Cpu Api")
 @RequestMapping("/cpu")
 public class CpuController {
 
   @Autowired private BusyService busyService;
 
-  @ApiOperation(value = "Cpu all processors operation", response = String.class)
+  @Operation(
+      summary = "Cpu all processors operation",
+      description = "Cpu all processors operation",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
   @RequestMapping(value = "/all/{percentage}/{time}", method = RequestMethod.GET)
   public void cpuAllProcessors(
@@ -30,11 +40,18 @@ public class CpuController {
     busyService.runInAllProcessors(percentage, time);
   }
 
-  @ApiOperation(value = "Cpu single processors operation", response = String.class)
+  @Operation(
+      summary = "Cpu single processors operation",
+      description = "Cpu single processors operation",
+      tags = {"disk"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
   @RequestMapping(value = "/single/{percentage}/{time}", method = RequestMethod.GET)
   public void cpuSingleProcessor(

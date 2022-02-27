@@ -2,28 +2,40 @@ package com.jibi.controller;
 
 import com.jibi.common.StringUtil;
 import com.jibi.common.Util;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "Memory Api")
+@Tag(name = "Memory Api", description = "Memory Api")
 @RestController(value = "Memory Api")
 @RequestMapping("/memory")
 @Slf4j
 public class MemoryController {
-
-  @ApiOperation(value = "Memory hold operation", response = String.class)
+  @Operation(
+      summary = "Memory api",
+      description = "Memory hold operation",
+      tags = {"memory"})
   @ApiResponses(
       value = {
-        @ApiResponse(code = 200, message = "Ok"),
-        @ApiResponse(code = 500, message = "Internal server error")
+        @ApiResponse(
+            responseCode = "200",
+            description = "Successful operation",
+            content =
+                @Content(array = @ArraySchema(schema = @Schema(implementation = String.class)))),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
       })
+  @Parameter(name = "bytes", schema = @Schema(description = "Bytes", type = "integer"))
+  @Parameter(name = "time", schema = @Schema(description = "Time in seconds", type = "integer"))
   @RequestMapping(value = "/{bytes}/{time}", method = RequestMethod.GET)
   public void memoryHold(@PathVariable("bytes") Integer bytes, @PathVariable("time") Integer time) {
 
