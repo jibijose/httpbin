@@ -7,4 +7,5 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 @EnableScheduling
 @ComponentScan("com.jibi.schedule")
-public class ScheduledConfig {}
+public class ScheduledConfig {
+}

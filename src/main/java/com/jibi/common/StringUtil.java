@@ -5,20 +5,21 @@ import java.util.Random;
 
 public class StringUtil {
 
-  private static String ALPHASTRING =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
-  private static int ALPHASTRINGLENGTH = ALPHASTRING.length();
+    private static String ALPHASTRING =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
+    private static int ALPHASTRINGLENGTH = ALPHASTRING.length();
 
-  private static final Random random = new Random(new Date().getTime());
+    private static final Random random = new Random(new Date().getTime());
 
-  private StringUtil() {}
-
-  public static String getRandomString(int length) {
-    StringBuilder stringBuilder = new StringBuilder(length);
-    for (int i = 0; i < length; i++) {
-      int index = random.nextInt(ALPHASTRINGLENGTH);
-      stringBuilder.append(ALPHASTRING.charAt(index));
+    private StringUtil() {
     }
-    return stringBuilder.toString();
-  }
+
+    public static String getRandomString(int length) {
+        StringBuilder stringBuilder = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(ALPHASTRINGLENGTH);
+            stringBuilder.append(ALPHASTRING.charAt(index));
+        }
+        return stringBuilder.toString();
+    }
 }

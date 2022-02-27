@@ -14,14 +14,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MemoryControllerTest {
 
-  @LocalServerPort private int port;
+    @LocalServerPort
+    private int port;
 
-  @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-  @Test
-  public void testMemoryHold() throws Exception {
-    assertThat(
-        this.restTemplate.getForObject(
-            "http://localhost:" + port + "/memory/1024000/2", Void.class));
-  }
+    @Test
+    public void testMemoryHold() throws Exception {
+        assertThat(
+                this.restTemplate.getForObject(
+                        "http://localhost:" + port + "/memory/1024000/2", Void.class));
+    }
 }
