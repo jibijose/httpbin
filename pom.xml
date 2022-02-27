@@ -9,9 +9,43 @@
     <packaging>jar</packaging>
     <description><![CDATA[<h2>Java httpbin</h2>]]></description>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.4</version>
+        <relativePath/>
+    </parent>
+
     <name>httpbin</name>
     <url>https://jibijose.github.io/swagger</url>
     <inceptionYear>2019</inceptionYear>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <swagger.version>3.0.0</swagger.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <powermock.version>2.0.9</powermock.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <lombok.version>1.18.22</lombok.version>
+        <jacoco.version>0.8.7</jacoco.version>
+        <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
+        </jacoco.it.execution.data.file>
+        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
+        </jacoco.ut.execution.data.file>
+        <maven.pmd.plugin.version>3.16.0</maven.pmd.plugin.version>
+        <maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
+        <fmt.maven.plugin.version>2.13</fmt.maven.plugin.version>
+        <duplicate.finder.plugin.version>1.5.1</duplicate.finder.plugin.version>
+        <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
+        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
+        <commons.version>2.11.0</commons.version>
+        <mockito.version>4.3.1</mockito.version>
+    </properties>
+
     <organization>
         <name>httpbin</name>
         <url>https://github.com/jibijose/httpbin</url>
@@ -74,39 +108,6 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version>
-        <relativePath/>
-    </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <swagger.version>3.0.0</swagger.version>
-        <hamcrest.version>2.2</hamcrest.version>
-        <powermock.version>2.0.9</powermock.version>
-        <junit-jupiter.version>5.8.2</junit-jupiter.version>
-        <lombok.version>1.18.22</lombok.version>
-        <jacoco.version>0.8.7</jacoco.version>
-        <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
-        </jacoco.it.execution.data.file>
-        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
-        </jacoco.ut.execution.data.file>
-        <maven.pmd.plugin.version>3.15.0</maven.pmd.plugin.version>
-        <maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
-        <fmt.maven.plugin.version>2.13</fmt.maven.plugin.version>
-        <duplicate.finder.plugin.version>1.5.0</duplicate.finder.plugin.version>
-        <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
-        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
-        <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
-        <commons.version>2.11.0</commons.version>
-        <mockito.version>4.3.1</mockito.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -187,12 +188,6 @@
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-core</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
             <version>${powermock.version}</version>
             <scope>test</scope>
         </dependency>
@@ -331,7 +326,7 @@
                                     <name>Jibi Jose</name>
                                     <url>https://httpbin.org</url>
                                 </contact>
-                                <version>1.2.0</version>
+                                <version>1.2.2</version>
                                 <license>
                                     <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
                                     <name>Apache 2.0</name>
@@ -407,7 +402,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>enforce-maven</id>
@@ -426,7 +421,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>3.0.0-M2</version>
                 <executions>
                     <execution>
                         <id>default-deploy</id>
@@ -440,7 +435,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M4</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
@@ -463,7 +458,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.8</version>
+                <version>1.6.12</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
@@ -487,7 +482,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.2</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <doclint>none</doclint>
@@ -504,12 +499,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.9.1</version>
+                <version>3.11.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>3.2.2</version>
             </plugin>
         </plugins>
     </build>
