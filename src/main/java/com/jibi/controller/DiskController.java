@@ -28,7 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class DiskController {
 
-  private static volatile byte[] BYTES1MB = null;
+  private static byte[] BYTES1MB = null;
+
+  static {
+    BYTES1MB = getFileContent("1MB");
+  }
 
   @Operation(
       summary = "Disk write api",
@@ -67,7 +71,7 @@ public class DiskController {
     if ("GB".equals(unit)) {
       count = count * 1024;
     }
-    byte[] bytes = getCachedBytes1MB();
+    byte[] bytes = BYTES1MB;
     IntStream.range(0, count)
         .forEach(
             index -> {
@@ -119,27 +123,17 @@ public class DiskController {
     IntStream.range(0, count)
         .forEach(
             index -> {
-              try {
-                byte[] bytes = getFileContent("1MB");
-              } catch (IOException ioException) {
-                throw new RuntimeException("Read failed", ioException);
-              }
+              byte[] bytes = getFileContent("1MB");
             });
   }
 
-  private byte[] getCachedBytes1MB() throws IOException {
-    if (BYTES1MB == null) {
-      synchronized (this) {
-        BYTES1MB = getFileContent("1MB");
-      }
-    }
-    return BYTES1MB;
-  }
-
-  private byte[] getFileContent(String size) throws IOException {
-    try (InputStream in = getClass().getResourceAsStream("/file/other/txt/" + size + ".txt")) {
+  private static byte[] getFileContent(String size) {
+    try (InputStream in =
+        DiskController.class.getResourceAsStream("/file/other/txt/" + size + ".txt")) {
       byte[] fileData = IOUtils.toByteArray(in);
       return fileData;
+    } catch (IOException ioException) {
+      throw new RuntimeException("Read failed", ioException);
     }
   }
 

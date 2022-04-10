@@ -30,7 +30,7 @@
         <powermock.version>2.0.9</powermock.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <lombok.version>1.18.22</lombok.version>
-        <jacoco.version>0.8.7</jacoco.version>
+        <jacoco.version>0.8.8</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
         </jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
@@ -40,7 +40,7 @@
         <fmt.maven.plugin.version>2.13</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>1.5.1</duplicate.finder.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
-        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <surefire.plugin.version>3.0.0-M6</surefire.plugin.version>
         <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
         <commons.version>2.11.0</commons.version>
         <mockito.version>4.3.1</mockito.version>
@@ -358,7 +358,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.5.3.0</version>
+                <version>4.6.0.0</version>
                 <executions>
                     <execution>
                         <id>spotbugs</id>
