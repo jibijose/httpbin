@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=1.2.2
+VERSION=1.2.3
 
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)

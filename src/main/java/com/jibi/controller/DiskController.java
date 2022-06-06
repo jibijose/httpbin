@@ -66,7 +66,8 @@ public class DiskController {
   public void write(@PathVariable("unit") String unit, @PathVariable("count") Integer count)
       throws IOException {
     if (!"GB".equals(unit) && !"MB".equals(unit)) {
-      throw new RuntimeException("Unit must be MB or GB");
+      return;
+      // throw new RuntimeException("Unit must be MB or GB");
     }
     if ("GB".equals(unit)) {
       count = count * 1024;
@@ -78,7 +79,8 @@ public class DiskController {
               try {
                 writeAndDeleteTempFile(bytes);
               } catch (IOException ioException) {
-                throw new RuntimeException("Write failed", ioException);
+                log.error("Write failed", ioException);
+                // throw new RuntimeException("Write failed", ioException);
               }
             });
   }
@@ -114,7 +116,8 @@ public class DiskController {
       produces = {MediaType.TEXT_PLAIN_VALUE})
   public void read(@PathVariable("unit") String unit, @PathVariable("count") Integer count) {
     if (!"GB".equals(unit) && !"MB".equals(unit)) {
-      throw new RuntimeException("Unit must be MB or GB");
+      return;
+      // throw new RuntimeException("Unit must be MB or GB");
     }
     if ("GB".equals(unit)) {
       count = count * 1024;
@@ -128,13 +131,15 @@ public class DiskController {
   }
 
   private static byte[] getFileContent(String size) {
+    byte[] fileData = null;
     try (InputStream in =
         DiskController.class.getResourceAsStream("/file/other/txt/" + size + ".txt")) {
-      byte[] fileData = IOUtils.toByteArray(in);
-      return fileData;
+      fileData = IOUtils.toByteArray(in);
     } catch (IOException ioException) {
-      throw new RuntimeException("Read failed", ioException);
+      log.error("Read failed", ioException);
+      // throw new RuntimeException("Read failed", ioException);
     }
+    return fileData;
   }
 
   private void writeAndDeleteTempFile(byte[] bytes) throws IOException {

@@ -23,7 +23,7 @@ public class Util {
       Thread.sleep(milliSeconds);
     } catch (InterruptedException interruptedException) {
       log.error("Thread interrupted", interruptedException);
-      throw new RuntimeException("Thread interrupted", interruptedException);
+      // throw new RuntimeException("Thread interrupted", interruptedException);
     }
   }
 

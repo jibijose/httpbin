@@ -5,7 +5,7 @@
 
     <groupId>com.github.jibijose</groupId>
     <artifactId>httpbin</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description><![CDATA[<h2>Java httpbin</h2>]]></description>
 
@@ -28,14 +28,14 @@
         <swagger.version>3.0.0</swagger.version>
         <hamcrest.version>2.2</hamcrest.version>
         <powermock.version>2.0.9</powermock.version>
-        <junit-jupiter.version>5.8.2</junit-jupiter.version>
-        <lombok.version>1.18.22</lombok.version>
+        <junit-jupiter.version>5.9.0-M1</junit-jupiter.version>
+        <lombok.version>1.18.24</lombok.version>
         <jacoco.version>0.8.8</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
         </jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
         </jacoco.ut.execution.data.file>
-        <maven.pmd.plugin.version>3.16.0</maven.pmd.plugin.version>
+        <maven.pmd.plugin.version>3.17.0</maven.pmd.plugin.version>
         <maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
         <fmt.maven.plugin.version>2.13</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>1.5.1</duplicate.finder.plugin.version>
@@ -326,7 +326,7 @@
                                     <name>Jibi Jose</name>
                                     <url>https://httpbin.org</url>
                                 </contact>
-                                <version>1.2.2</version>
+                                <version>1.2.3</version>
                                 <license>
                                     <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
                                     <name>Apache 2.0</name>
@@ -358,7 +358,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.6.0.0</version>
+                <version>4.7.0.0</version>
                 <executions>
                     <execution>
                         <id>spotbugs</id>
@@ -458,7 +458,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.12</version>
+                <version>1.6.13</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
@@ -482,7 +482,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>3.4.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <doclint>none</doclint>
@@ -499,12 +499,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>4.0.0-M1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>3.3.0</version>
             </plugin>
         </plugins>
     </build>

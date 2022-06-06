@@ -6,6 +6,7 @@ docker rm $(docker ps -a -q)
 #docker rmi $(docker images -a -q)
 docker  rmi jibijose/httpbin:latest
 docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jre11-latest -f docker/jre11/Dockerfile .
-#docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jdk11-latest -f docker/jre11/Dockerfile .
+#docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jdk11-latest -f docker/jdk11/Dockerfile .
 
 #docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jre17-latest -f docker/jre17/Dockerfile .
+#docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jdk17-latest -f docker/jdk17/Dockerfile .
