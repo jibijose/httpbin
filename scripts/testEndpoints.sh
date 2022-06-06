@@ -14,7 +14,7 @@ docker stop $(docker ps -aq -f ancestor=jibijose/httpbin:latest)
 docker rm $(docker ps -aq -f ancestor=jibijose/httpbin:latest)
 
 docker  rmi jibijose/httpbin:latest
-docker build --build-arg MVN_VERSION=3.8.4 -t jibijose/httpbin:latest -f docker/jre11/Dockerfile .
+docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:latest -f docker/jre11/Dockerfile .
 docker run -p 8080:8080 jibijose/httpbin:latest
 
 curl -i http://localhost:8080/health
