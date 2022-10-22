@@ -28,7 +28,7 @@
         <swagger.version>3.0.0</swagger.version>
         <hamcrest.version>2.2</hamcrest.version>
         <powermock.version>2.0.9</powermock.version>
-        <junit-jupiter.version>5.9.0</junit-jupiter.version>
+        <junit-jupiter.version>5.9.1</junit-jupiter.version>
         <lombok.version>1.18.24</lombok.version>
         <jacoco.version>0.8.8</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
@@ -358,7 +358,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.7.2.0</version>
+                <version>4.7.2.1</version>
                 <executions>
                     <execution>
                         <id>spotbugs</id>
