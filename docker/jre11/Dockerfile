@@ -1,6 +1,6 @@
 FROM openjdk:11.0.14-jdk-slim AS builder
 
-ARG MVN_VERSION=3.8.5
+ARG MVN_VERSION=3.9.1
 
 RUN apt-get update -qq && \
     apt-get install wget -y -qq > /dev/null && \

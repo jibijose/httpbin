@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.5</version>
+        <version>2.7.10</version>
         <relativePath/>
     </parent>
 
@@ -40,6 +40,7 @@
         <fmt.maven.plugin.version>2.13</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>1.5.1</duplicate.finder.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
+        <swagger.codegen.maven.plugin>3.0.35</swagger.codegen.maven.plugin>
         <surefire.plugin.version>3.0.0</surefire.plugin.version>
         <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
         <commons.version>2.11.0</commons.version>
@@ -223,6 +224,20 @@
             <version>${fmt.maven.plugin.version}</version>
             <type>maven-plugin</type>
         </dependency>
+
+        <!-- API, java.xml.bind module -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+        <!-- Runtime, com.sun.xml.bind module -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -358,7 +373,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.7.3.0</version>
+                <version>4.7.3.3</version>
                 <executions>
                     <execution>
                         <id>spotbugs</id>
@@ -402,7 +417,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <id>enforce-maven</id>
@@ -421,7 +436,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.1.1</version>
                 <executions>
                     <execution>
                         <id>default-deploy</id>
@@ -435,7 +450,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.0.0</version>
                 <configuration>
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
@@ -482,7 +497,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>3.5.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <doclint>none</doclint>
@@ -499,12 +514,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M4</version>
+                <version>4.0.0-M5</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>3.4.2</version>
             </plugin>
         </plugins>
     </build>
