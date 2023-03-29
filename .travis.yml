@@ -10,7 +10,7 @@ before_cache:
   - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.m2
+    - $HOME/.m2 -> pom.xml
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
@@ -25,7 +25,7 @@ env:
 
 before_install:
   - export JAVA_OPTS=-Xmx1g
-  - export MAVEN_OPTS=-Xmx1g --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED 
+  - export MAVEN_OPTS=-Xmx1g --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
 before_script:
   - java -version
   - |
