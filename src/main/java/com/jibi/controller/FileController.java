@@ -14,7 +14,11 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "File Api", description = "File Api")
 @RestController(value = "File Api")
