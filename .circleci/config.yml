@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@3.2.5
-
 shared: 
   - &shared-maven
     steps:
@@ -57,7 +54,3 @@ workflows:
     jobs:
       - jdk11-gradle
       - jdk17-gradle
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
