@@ -10,6 +10,7 @@
 [![](https://images.microbadger.com/badges/image/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
 [![](https://img.shields.io/github/repo-size/jibijose/httpbin)](https://microbadger.com/images/jibijose/httpbin)
 [![](https://images.microbadger.com/badges/version/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
+[![CircleCI](https://circleci.com/gh/jibijose/httpbin.svg?style=svg)](https://circleci.com/gh/jibijose/httpbin)
 
     
 ### Requirements
