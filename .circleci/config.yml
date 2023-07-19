@@ -16,6 +16,7 @@ shared:
             - ~/.m2
           key: proguard-with-maven-example-{{ checksum "pom.xml" }}
       - run: ./mvnw package
+      - codecov/upload
   - &shared-gradle
     steps:
       - checkout
@@ -57,7 +58,3 @@ workflows:
     jobs:
       - jdk11-gradle
       - jdk17-gradle
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
