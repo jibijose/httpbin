@@ -49,6 +49,8 @@ workflows:
   maven: 
     jobs:
       - jdk11-maven
+      - jdk17-maven
   gradle: 
     jobs:
       - jdk11-gradle
+      - jdk17-gradle
