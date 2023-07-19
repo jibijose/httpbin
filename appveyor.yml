@@ -49,5 +49,3 @@ test_script:
   - mvnw test verify -B
 after_test:
   - mvnw site
-# to disable automatic builds
-build: off
