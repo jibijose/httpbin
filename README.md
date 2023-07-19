@@ -15,7 +15,7 @@
     
 ### Requirements
 
-* Java 8.x
+* Java 11+
 * Maven 3.0.0 or newer.
 * docker optional
 
