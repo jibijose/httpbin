@@ -15,5 +15,6 @@ bin
 
 oc.exe
 kubectl.exe
+codecov.exe
 
 release.properties

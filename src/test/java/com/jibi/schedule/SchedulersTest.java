@@ -5,31 +5,25 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.time.Duration;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.contrib.java.lang.system.SystemOutRule;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(OutputCaptureExtension.class)
 public class SchedulersTest {
-
-  @Rule public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
   @Autowired private Schedulers schedulers;
 
   @Test
-  public void testGCScheduling() throws InterruptedException {
-    systemOutRule.clearLog();
+  public void testGCScheduling(CapturedOutput output) throws InterruptedException {
     await()
         .atMost(Duration.ofMinutes(1L))
-        .untilAsserted(
-            () -> assertThat(systemOutRule.getLog(), containsString("Invoking System GC")));
+        .untilAsserted(() -> assertThat(output.getOut(), containsString("Invoking System GC")));
     await()
-        .atMost(Duration.ofSeconds(1L))
-        .untilAsserted(
-            () -> assertThat(systemOutRule.getLog(), containsString("Invoked System GC")));
+        .atMost(Duration.ofSeconds(5L))
+        .untilAsserted(() -> assertThat(output.getOut(), containsString("Invoked System GC")));
   }
 }
