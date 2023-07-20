@@ -5,12 +5,12 @@
   <servers>
     <server>
       <id>ossrh</id>
-      <username>OSSRH_USERNAME</username>
-      <password>OSSRH_TOKEN</password>
+      <username>${server-username}</username>
+      <password>${server-password}</password>
     </server>
   </servers>
-  
-  
+
+
   <profiles>
     <profile>
       <id>ossrh</id>
