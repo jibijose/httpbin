@@ -14,8 +14,8 @@ docker login registry.hub.docker.com
 
 echo "*****************************************************************************************"
 echo "Building docker repository"
-docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jre11-latest -f docker/jre11/Dockerfile .
-docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:jdk11-latest -f docker/jdk11/Dockerfile .
+docker build --build-arg MVN_VERSION=3.9.3 -t jibijose/httpbin:jre11-latest -f docker/jre11/Dockerfile .
+docker build --build-arg MVN_VERSION=3.9.3 -t jibijose/httpbin:jdk11-latest -f docker/jdk11/Dockerfile .
 
 docker tag jibijose/httpbin:jre11-latest jibijose/httpbin:jre11-${VERSION}
 docker tag jibijose/httpbin:jdk11-latest jibijose/httpbin:jdk11-${VERSION}
