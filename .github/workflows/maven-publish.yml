@@ -32,5 +32,4 @@ jobs:
       env:
         server-username: ${{ secrets.OSSRH_USERNAME }}
         server-password: ${{ secrets.OSSRH_TOKEN }}
-    - name: Publish to GitHub Packages Apache Maven
-      run: ./mvnw deploy -s ./settings.xml -DskipTests
+
