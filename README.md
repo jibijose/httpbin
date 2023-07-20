@@ -11,11 +11,13 @@
 [![](https://img.shields.io/github/repo-size/jibijose/httpbin)](https://microbadger.com/images/jibijose/httpbin)
 [![](https://images.microbadger.com/badges/version/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
 [![CircleCI](https://circleci.com/gh/jibijose/httpbin.svg?style=svg)](https://circleci.com/gh/jibijose/httpbin)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/jibijose/httpbin/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jibijose/httpbin/tree/master)
+
 
     
 ### Requirements
 
-* Java 8.x
+* Java 11+
 * Maven 3.0.0 or newer.
 * docker optional
 

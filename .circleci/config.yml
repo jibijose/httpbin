@@ -1,5 +1,11 @@
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@3.2.5
+
+codecov:
+  require_ci_to_pass: yes
+
 shared: 
   - &shared-maven
     steps:
@@ -13,6 +19,8 @@ shared:
             - ~/.m2
           key: proguard-with-maven-example-{{ checksum "pom.xml" }}
       - run: ./mvnw package
+      - run: apt update && apt install curl gpg -y
+      - codecov/upload
   - &shared-gradle
     steps:
       - checkout
