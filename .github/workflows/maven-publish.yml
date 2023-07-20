@@ -28,8 +28,12 @@ jobs:
     - name: CHECK1
       run: cat /home/runner/work/httpbin/httpbin/settings.xml
     - name: CHECK2
-      run: echo ${serverusername} + "   " +  ${serverpassword} >> /tmp/jj.txt && cat /tmp/jj.txt
+      run: echo '${serverusername}' >> /tmp/jj.txt && cat /tmp/jj.txt
       env:
-        serverusernamejj: ${{ secrets.OSSRH_USERNAME }}
+        serverusername: ${{ secrets.OSSRH_USERNAME }}
         serverpassword: ${{ secrets.OSSRH_TOKEN }}
-
+    - name: Publish to GitHub Packages Apache Maven
+      run: ./mvnw deploy -s ./settings.xml -D'server-username=${serverusername}' -D'server-password=${serverpassword}' -DskipTests
+      env:
+        serverusername: ${{ secrets.OSSRH_USERNAME }}
+        serverpassword: ${{ secrets.OSSRH_TOKEN }}
