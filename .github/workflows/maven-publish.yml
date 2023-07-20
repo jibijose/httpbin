@@ -24,7 +24,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: maven
+        server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
+        #settings-path: ${{ github.workspace }} # location for the settings.xml file
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
     - name: CHECK1
       run: cat /home/runner/.m2/settings.xml
     - name: CHECK2
@@ -32,4 +35,8 @@ jobs:
     - name: CHECK3
       run: pwd
     - name: Publish to GitHub Packages Apache Maven
-      run: ./mvnw -X package -DskipTests
+      run: ./mvnw -X clean -s ./settings.xml -D'server-username=hahahaha' -D'server-password=hehehehe' -DskipTests
+      env:
+        server-username: ${{ secrets.OSSRH_USERNAME }}
+        #GITHUB_TOKEN: ${{ github.token }}
+        server-password: ${{ secrets.OSSRH_TOKEN }}
