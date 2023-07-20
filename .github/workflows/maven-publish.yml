@@ -36,7 +36,3 @@ jobs:
       run: pwd
     - name: Publish to GitHub Packages Apache Maven
       run: ./mvnw -X clean -s ./settings.xml -D'server-username=hahahaha' -D'server-password=hehehehe' -DskipTests
-      env:
-        server-username: ${{ secrets.OSSRH_USERNAME }}
-        #GITHUB_TOKEN: ${{ github.token }}
-        server-password: ${{ secrets.OSSRH_TOKEN }}
