@@ -24,7 +24,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        cache: maven
     - name: CHECK1
       run: cat /home/runner/work/httpbin/httpbin/settings.xml
     - name: Publish to GitHub Packages Apache Maven
-      run: ./mvnw -X clean -s ./settings.xml -DskipTests
+      run: ./mvnw -B clean 
