@@ -32,4 +32,4 @@ jobs:
     - name: CHECK3
       run: pwd
     - name: Publish to GitHub Packages Apache Maven
-      run: ./mvnw -X deploy -s ./settings.xml -D'server-username=hahahaha' -D'server-password=hehehehe' -DskipTests
+      run: ./mvnw -X package -DskipTests
