@@ -30,6 +30,6 @@ jobs:
     - name: CHECK2
       run: echo ${serverusername} + "   " +  ${serverpassword} >> /tmp/jj.txt && cat /tmp/jj.txt
       env:
-        serverusername: ${{ secrets.OSSRH_USERNAME }}
+        serverusernamejj: ${{ secrets.OSSRH_USERNAME }}
         serverpassword: ${{ secrets.OSSRH_TOKEN }}
 
