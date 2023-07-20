@@ -33,6 +33,6 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
-        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        server-username: ${{ secrets.OSSRH_USERNAME }}
         #GITHUB_TOKEN: ${{ github.token }}
-        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        server-password: ${{ secrets.OSSRH_TOKEN }}
