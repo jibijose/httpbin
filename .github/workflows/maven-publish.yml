@@ -28,7 +28,7 @@ jobs:
     - name: CHECK1
       run: cat /home/runner/work/httpbin/httpbin/settings.xml
     - name: CHECK2
-      run: echo "HHHHHHHHHHHHHHHHHHHHHHHHHHH [" + ${server-username} + "] KKKKKKKKKKKKKK"
+      run: echo "HHHHHHHHHHHHHHHHHHHHHHHHHHH [" + ${server-username} + "] KKKKKKKKKKKKKK [" + ${server-password} + "] LLLLL"
       env:
         server-username: ${{ secrets.OSSRH_USERNAME }}
         server-password: ${{ secrets.OSSRH_TOKEN }}
