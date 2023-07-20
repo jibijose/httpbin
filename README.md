@@ -14,6 +14,13 @@
 [![DeepSource](https://app.deepsource.com/gh/jibijose/httpbin.svg/?label=active+issues&show_trend=true&token=HRlJTew-PUsNzGUPIGoQBCq_)](https://app.deepsource.com/gh/jibijose/httpbin/?ref=repository-badge)
 
 
+.\mvnw nexus-staging:drop
+https://dzone.com/articles/deploy-maven-central
+https://stackoverflow.com/questions/28846802/how-to-manually-publish-jar-to-maven-central
+https://jenkov.com/tutorials/maven/publish-to-central-maven-repository.html
+https://central.sonatype.org/publish/publish-maven/#performing-a-release-deployment
+https://central.sonatype.org/publish/publish-maven/#releasing-to-central
+
     
 ### Requirements
 
