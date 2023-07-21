@@ -14,24 +14,6 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: JDK11_Maven_Run
-  displayName: 'JDK11-Maven-Run'
-  timeoutInMinutes: 10
-  pool:
-   vmImage: 'ubuntu-latest'
-  steps:
-   - task: JavaToolInstaller@0
-     displayName: Install jdk
-     inputs:
-       versionSpec: '11'
-       jdkArchitectureOption: 'x64'
-       jdkSourceOption: 'PreInstalled'
-   - task: Bash@3
-     displayName: Run jdk11 maven
-     inputs:
-       targetType: 'inline'
-       script: |
-         ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
 - job: JDK17_Maven_Run
   displayName: 'JDK17-Maven-Run'
   timeoutInMinutes: 10
@@ -50,8 +32,8 @@ jobs:
         targetType: 'inline'
         script: |
           ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
-- job: JDK11_Gradle_Run
-  displayName: 'JDK11-Gradle-Run'
+- job: JDK19_Maven_Run
+  displayName: 'JDK19-Maven-Run'
   timeoutInMinutes: 10
   pool:
     vmImage: 'ubuntu-latest'
@@ -59,15 +41,15 @@ jobs:
     - task: JavaToolInstaller@0
       displayName: Install jdk
       inputs:
-        versionSpec: '11'
+        versionSpec: '19'
         jdkArchitectureOption: 'x64'
         jdkSourceOption: 'PreInstalled'
     - task: Bash@3
-      displayName: Run jdk11 gradle
+      displayName: Run jdk19 maven
       inputs:
         targetType: 'inline'
         script: |
-          ./gradlew clean build
+          ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
 - job: JDK17_Gradle_Run
   displayName: 'JDK17-Gradle-Run'
   timeoutInMinutes: 10
@@ -82,6 +64,24 @@ jobs:
         jdkSourceOption: 'PreInstalled'
     - task: Bash@3
       displayName: Run jdk17 gradle
+      inputs:
+        targetType: 'inline'
+        script: |
+          ./gradlew clean build
+- job: JDK19_Gradle_Run
+  displayName: 'JDK19-Gradle-Run'
+  timeoutInMinutes: 10
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+    - task: JavaToolInstaller@0
+      displayName: Install jdk
+      inputs:
+        versionSpec: '19'
+        jdkArchitectureOption: 'x64'
+        jdkSourceOption: 'PreInstalled'
+    - task: Bash@3
+      displayName: Run jdk19 gradle
       inputs:
         targetType: 'inline'
         script: |
