@@ -21,7 +21,21 @@ jobs:
    vmImage: 'ubuntu-latest'
   steps:
    - task: JavaToolInstaller@0
+     displayName: Install jdk
      inputs:
        versionSpec: '11'
        jdkArchitectureOption: 'x64'
        jdkSourceOption: 'PreInstalled'
+   - task: Bash@3
+     displayName: Run jdk11 maven
+     inputs:
+       targetType: 'inline'
+       script: |
+         ./mvnw -version
+         echo 'doneeeeeeeeeee'
+   - task: Bash@3
+     displayName: Run java maven
+     inputs:
+       targetType: 'inline'
+       script: |
+         java -version
