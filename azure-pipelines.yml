@@ -13,7 +13,12 @@ pr:
 pool:
   vmImage: ubuntu-latest
 
-steps:
+jobs:
+- job: JDK11-Maven
+  displayName: 'JDK11-Maven'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
   - task: Maven@3
     inputs:
       mavenPomFile: 'pom.xml'
@@ -24,6 +29,12 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       goals: 'package'
+
+- job: JDK11-Gradle
+  displayName: 'JDK11-Gradle'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
   - task: Gradle@2
     inputs:
       workingDirectory: ''
