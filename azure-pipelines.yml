@@ -14,72 +14,14 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: JDK11_Maven
-  displayName: 'JDK11-Maven'
+- job: JDK11_Run
+  displayName: 'JDK11-Run'
   timeoutInMinutes: 10
   pool:
-    vmImage: 'ubuntu-latest'
+   vmImage: 'ubuntu-latest'
   steps:
-  - task: Maven@3
-    inputs:
-      mavenPomFile: 'pom.xml'
-      mavenOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '11'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean'
-
-- job: JDK17_Maven
-  displayName: 'JDK17-Maven'
-  timeoutInMinutes: 10
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-    - task: Maven@3
-      inputs:
-        mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '17'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'clean'
-
-- job: JDK11_Gradle
-  displayName: 'JDK11-Gradle'
-  timeoutInMinutes: 10
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - task: Gradle@2
-    inputs:
-      workingDirectory: ''
-      gradleWrapperFile: 'gradlew'
-      gradleOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '11'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      tasks: 'clean'
-
-- job: JDK17_Gradle
-  displayName: 'JDK17-Gradle'
-  timeoutInMinutes: 10
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-    - task: Gradle@2
-      inputs:
-        workingDirectory: ''
-        gradleWrapperFile: 'gradlew'
-        gradleOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '17'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/TEST-*.xml'
-        tasks: 'clean'
+   - task: JavaToolInstaller@0
+     inputs:
+       versionSpec: '11'
+       jdkArchitectureOption: 'x64'
+       jdkSourceOption: 'PreInstalled'
