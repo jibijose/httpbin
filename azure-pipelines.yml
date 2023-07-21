@@ -14,7 +14,7 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: JDK11-Maven
+- job: JDK11_Maven
   displayName: 'JDK11-Maven'
   pool:
     vmImage: 'ubuntu-latest'
@@ -30,7 +30,7 @@ jobs:
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       goals: 'package'
 
-- job: JDK11-Gradle
+- job: JDK11_Gradle
   displayName: 'JDK11-Gradle'
   pool:
     vmImage: 'ubuntu-latest'
