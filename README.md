@@ -10,9 +10,16 @@
 [![](https://images.microbadger.com/badges/image/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
 [![](https://img.shields.io/github/repo-size/jibijose/httpbin)](https://microbadger.com/images/jibijose/httpbin)
 [![](https://images.microbadger.com/badges/version/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
-[![CircleCI](https://circleci.com/gh/jibijose/httpbin.svg?style=svg)](https://circleci.com/gh/jibijose/httpbin)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/jibijose/httpbin/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jibijose/httpbin/tree/master)
+[![DeepSource](https://app.deepsource.com/gh/jibijose/httpbin.svg/?label=active+issues&show_trend=true&token=HRlJTew-PUsNzGUPIGoQBCq_)](https://app.deepsource.com/gh/jibijose/httpbin/?ref=repository-badge)
 
+
+.\mvnw nexus-staging:drop
+https://dzone.com/articles/deploy-maven-central
+https://stackoverflow.com/questions/28846802/how-to-manually-publish-jar-to-maven-central
+https://jenkov.com/tutorials/maven/publish-to-central-maven-repository.html
+https://central.sonatype.org/publish/publish-maven/#performing-a-release-deployment
+https://central.sonatype.org/publish/publish-maven/#releasing-to-central
 
     
 ### Requirements
