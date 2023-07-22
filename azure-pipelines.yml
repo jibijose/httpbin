@@ -34,8 +34,8 @@ jobs:
           #sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
           #sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk-19/bin/javac 1919
           #sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk-19/bin/jar 1919
-          sudo update-alternatives -s jdk-19
-          sudo update-alternatives --config java
+          sudo update-alternatives --auto
+          #sudo update-alternatives --config java
           echo "-----------------------------------------------------------------"
           java -version
           echo "-----------------------------------------------------------------"
