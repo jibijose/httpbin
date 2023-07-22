@@ -20,12 +20,6 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-    - task: JavaToolInstaller@0
-      displayName: Install jdk
-      inputs:
-        versionSpec: '19'
-        jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
     - task: Bash@3
       displayName: Run jdk19 maven
       inputs:
