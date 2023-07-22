@@ -44,6 +44,12 @@ jobs:
           targetType: 'inline'
           script: |
             echo "-------------------------------------------------------"
+            echo $JAVA_HOME
+            echo "-------------------------------------------------------"
+            export JAVA_HOME=/usr/lib/jvm/jdk-19
+            echo "-------------------------------------------------------"
+            echo $JAVA_HOME
+            echo "-------------------------------------------------------"
             ./mvnw -v
             echo "-------------------------------------------------------"
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
