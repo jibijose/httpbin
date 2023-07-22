@@ -125,3 +125,28 @@ jobs:
           script: |
             export JAVA_HOME=/usr/lib/jvm/jdk-19
             ./gradlew clean build
+  - job: JDK20_Gradle_Run
+    displayName: 'JDK20-Gradle-Run'
+    timeoutInMinutes: 10
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Bash@3
+        displayName: Install jdk20
+        inputs:
+          targetType: 'inline'
+          script: |
+            wget -q https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.deb
+            sudo apt-get -qqy install ./jdk-20_linux-x64_bin.deb
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-20/bin/java 2020
+            sudo update-alternatives --auto java
+            export JAVA_HOME=/usr/lib/jvm/jdk-20
+            java -version
+            ./gradlew -v
+      - task: Bash@3
+        displayName: Run jdk20 gradle
+        inputs:
+          targetType: 'inline'
+          script: |
+            export JAVA_HOME=/usr/lib/jvm/jdk-20
+            ./gradlew clean build
