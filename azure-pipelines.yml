@@ -25,16 +25,26 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
+            echo "-------------------------------------------------------"
             wget -q https://download.oracle.com/java/19/archive/jdk-19.0.2_linux-x64_bin.deb
             sudo apt-get -qqy install ./jdk-19.0.2_linux-x64_bin.deb
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
             sudo update-alternatives --auto java
-            export JAVA_HOME=/usr/bin/java
+            echo "-------------------------------------------------------"
+            export JAVA_HOME=/usr/lib/jvm/jdk-19
+            echo $JAVA_HOME
+            echo "-------------------------------------------------------"
             java -version
+            echo "-------------------------------------------------------"
             ./mvnw -v
+            echo "-------------------------------------------------------"
       - task: Bash@3
         displayName: Run jdk19 maven
         inputs:
           targetType: 'inline'
           script: |
+            echo "-------------------------------------------------------"
+            ./mvnw -v
+            echo "-------------------------------------------------------"
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
+            echo "-------------------------------------------------------"
