@@ -28,11 +28,11 @@ jobs:
           wget -q https://download.oracle.com/java/19/archive/jdk-19.0.2_linux-x64_bin.deb
           sudo apt-get -qqy install ./jdk-19.0.2_linux-x64_bin.deb
           sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
-          echo "----------------------------------------------------------------"
+          echo "-----------------------------------------------------------------"
           java -version
-          echo "----------------------------------------------------------------"
+          echo "-----------------------------------------------------------------"
           ./mvnw -v
-          echo "----------------------------------------------------------------"
+          echo "-----------------------------------------------------------------"
     - task: Bash@3
       displayName: Run jdk19 maven
       inputs:
