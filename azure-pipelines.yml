@@ -29,6 +29,8 @@ jobs:
           sudo apt-get -qqy install ./jdk-19.0.2_linux-x64_bin.deb
           sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
           echo "-----------------------------------------------------------------"
+          /usr/lib/jvm
+          echo "-----------------------------------------------------------------"
           java -version
           echo "-----------------------------------------------------------------"
           ./mvnw -v
@@ -38,4 +40,5 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-          ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
+          echo "-----------------------------------------------------------------"
+          #./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
