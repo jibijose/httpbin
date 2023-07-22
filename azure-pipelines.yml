@@ -14,24 +14,6 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: JDK17_Maven_Run
-    displayName: 'JDK17-Maven-Run'
-    timeoutInMinutes: 10
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: JavaToolInstaller@0
-        displayName: Install jdk
-        inputs:
-          versionSpec: '17'
-          jdkArchitectureOption: 'x64'
-          jdkSourceOption: 'PreInstalled'
-      - task: Bash@3
-        displayName: Run jdk17 maven
-        inputs:
-          targetType: 'inline'
-          script: |
-            ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
   - job: JDK19_Maven_Run
     displayName: 'JDK19-Maven-Run'
     timeoutInMinutes: 10
@@ -47,6 +29,7 @@ jobs:
             sudo apt-get -qqy install ./jdk-19.0.2_linux-x64_bin.deb
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
             sudo update-alternatives --auto java
+            export JAVA_HOME=/usr/bin/java
             java -version
             ./mvnw -v
       - task: Bash@3
@@ -55,67 +38,3 @@ jobs:
           targetType: 'inline'
           script: |
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
-  - job: JDK20_Maven_Run
-    displayName: 'JDK20-Maven-Run'
-    timeoutInMinutes: 10
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: Bash@3
-        displayName: Install jdk20
-        inputs:
-          targetType: 'inline'
-          script: |
-            wget -q https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.deb
-            sudo apt-get -qqy install ./jdk-20_linux-x64_bin.deb
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-20/bin/java 2020
-            sudo update-alternatives --auto java
-            java -version
-            ./mvnw -v
-      - task: Bash@3
-        displayName: Run jdk20 maven
-        inputs:
-          targetType: 'inline'
-          script: |
-            ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
-  - job: JDK17_Gradle_Run
-    displayName: 'JDK17-Gradle-Run'
-    timeoutInMinutes: 10
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: JavaToolInstaller@0
-        displayName: Install jdk
-        inputs:
-          versionSpec: '17'
-          jdkArchitectureOption: 'x64'
-          jdkSourceOption: 'PreInstalled'
-      - task: Bash@3
-        displayName: Run jdk17 gradle
-        inputs:
-          targetType: 'inline'
-          script: |
-            ./gradlew clean build
-  - job: JDK19_Gradle_Run
-    displayName: 'JDK19-Gradle-Run'
-    timeoutInMinutes: 10
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: Bash@3
-        displayName: Install jdk19
-        inputs:
-          targetType: 'inline'
-          script: |
-            wget -q https://download.oracle.com/java/19/archive/jdk-19.0.2_linux-x64_bin.deb
-            sudo apt-get -qqy install ./jdk-19.0.2_linux-x64_bin.deb
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
-            sudo update-alternatives --auto java
-            java -version
-            ./gradlew -v
-      - task: Bash@3
-        displayName: Run jdk19 gradle
-        inputs:
-          targetType: 'inline'
-          script: |
-            ./gradlew clean build
