@@ -28,12 +28,12 @@ jobs:
           wget -q https://download.oracle.com/java/19/archive/jdk-19.0.2_linux-x64_bin.deb
           sudo apt-get -qqy install ./jdk-19.0.2_linux-x64_bin.deb
           sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
-          echo "-----------------------------------------------------------------"
-          ls -al /usr/lib/jvm/jdk-19
-          /usr/lib/jvm/jdk-19/bin/java -version
-          sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
-          sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk-19/bin/javac 1919
-          sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk-19/bin/jar 1919
+          #echo "-----------------------------------------------------------------"
+          #ls -al /usr/lib/jvm/jdk-19
+          #/usr/lib/jvm/jdk-19/bin/java -version
+          #sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
+          #sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk-19/bin/javac 1919
+          #sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk-19/bin/jar 1919
           #sudo update-alternatives --config java
           echo "-----------------------------------------------------------------"
           java -version
