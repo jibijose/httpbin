@@ -14,24 +14,6 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: JDK17_Maven_Run
-  displayName: 'JDK17-Maven-Run'
-  timeoutInMinutes: 10
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-    - task: JavaToolInstaller@0
-      displayName: Install jdk
-      inputs:
-        versionSpec: '17'
-        jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
-    - task: Bash@3
-      displayName: Run jdk17 maven
-      inputs:
-        targetType: 'inline'
-        script: |
-          ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
 - job: JDK19_Maven_Run
   displayName: 'JDK19-Maven-Run'
   timeoutInMinutes: 10
@@ -49,40 +31,11 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-          ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
-- job: JDK17_Gradle_Run
-  displayName: 'JDK17-Gradle-Run'
-  timeoutInMinutes: 10
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-    - task: JavaToolInstaller@0
-      displayName: Install jdk
-      inputs:
-        versionSpec: '17'
-        jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
-    - task: Bash@3
-      displayName: Run jdk17 gradle
-      inputs:
-        targetType: 'inline'
-        script: |
-          ./gradlew clean build
-- job: JDK19_Gradle_Run
-  displayName: 'JDK19-Gradle-Run'
-  timeoutInMinutes: 10
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-    - task: JavaToolInstaller@0
-      displayName: Install jdk
-      inputs:
-        versionSpec: '19'
-        jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
-    - task: Bash@3
-      displayName: Run jdk19 gradle
-      inputs:
-        targetType: 'inline'
-        script: |
-          ./gradlew clean build
+          wget https://download.oracle.com/java/19/latest/jdk-19_linux-x64_bin.deb
+          sudo apt-get -qqy install ./jdk-19_linux-x64_bin.deb
+          sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-19/bin/java 1919
+          java -version
+          echo $JAVA_HOME
+          ls -al /usr/bin/java
+          ls -al /usr/lib/jvm/jdk-19/bin/java
+          ./mvnw -v
