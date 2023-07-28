@@ -8,7 +8,7 @@ PORT=8080
 
 ./scripts/mvnAllSteps.sh
 ./scripts/gradleAllSteps.sh
-java -jar target/httpbin-1.2.3-SNAPSHOT.jar
+java -jar target/httpbin-1.2.3.jar
 
 docker stop $(docker ps -aq -f ancestor=jibijose/httpbin:latest)
 docker rm $(docker ps -aq -f ancestor=jibijose/httpbin:latest)

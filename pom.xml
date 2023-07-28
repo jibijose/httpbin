@@ -5,7 +5,7 @@
 
     <groupId>com.github.jibijose</groupId>
     <artifactId>httpbin</artifactId>
-    <version>1.2.3-SNAPSHOT</version>
+    <version>1.2.3</version>
     <packaging>jar</packaging>
     <description><![CDATA[<h2>Java httpbin</h2>]]></description>
 
