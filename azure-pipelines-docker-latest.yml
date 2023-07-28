@@ -3,6 +3,10 @@ trigger:
     include:
       - master
 
+pr:
+  exclude:
+    - '*'
+
 strategy:
   matrix:
     'jdk11-latest':
