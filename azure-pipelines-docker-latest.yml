@@ -6,8 +6,14 @@ trigger:
 strategy:
   matrix:
     'jdk11-latest':
+      javaversion: 'jdk11'
       buildversion: 'latest'
-      jdkversion: '11'
+    'jre11-latest':
+      javaversion: 'jre11'
+      buildversion: 'latest'
+    'jdk17-latest':
+      javaversion: 'jdk17'
+      buildversion: 'latest'
 
 variables:
   mvnversion: '3.9.3'
@@ -20,10 +26,10 @@ steps:
     inputs:
       command: build
       containerRegistry: DockerHub
-      dockerfile: '$(Build.SourcesDirectory)/docker/jdk$(jdkversion)/Dockerfile'
+      dockerfile: '$(Build.SourcesDirectory)/docker/$(javaversion)/Dockerfile'
       buildContext: '$(Build.Repository.LocalPath)'
       repository: 'jibijose/httpbin'
-      tags: 'jdk$(jdkversion)-$(buildversion)'
+      tags: '$(javaversion)-$(buildversion)'
       arguments: '--build-arg MVN_VERSION=$(mvnversion)'
   - task: Bash@3
     displayName: docker build info
@@ -42,7 +48,7 @@ steps:
       containerRegistry : 'DockerHub'
       command: 'push'
       repository: 'jibijose/httpbin'
-      tags: 'jdk$(jdkversion)-$(buildversion)'
+      tags: '$(javaversion)-$(buildversion)'
   - task: Docker@2
     displayName: 'Logout from Docker Hub'
     inputs:
