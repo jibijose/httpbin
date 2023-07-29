@@ -25,8 +25,20 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Publish to GitHub Packages Apache Maven
-      run: ./mvnw deploy -s ./settings.xml -D'server-username=${serverusername}' -D'server-password=${serverpassword}' -DskipTests
+    - name: Confirm gpg setup
+      run: |
+        gpg --version
+        #gpg --gen-key
+        #gpg --keyserver hkp://keyserver.ubuntu.com --send-keys 5A840505AA887D72BE6E86A9B1B6CDC7FBDD3ADB
+        gpg --list-keys
+        echo "${gpgpvtkey}" | base64 -d | gpg --batch --passphrase ${gpgpvtpass} --import
+        gpg --list-keys
+      env:
+        gpgpvtkey: ${{ secrets.GPG_PVT_KEY }}
+        gpgpvtpass: ${{ secrets.GPG_PVT_PASS }}
+    - name: Publish packages to Maven
+      run: ./mvnw deploy -s ./settings.xml -D'server-username=${serverusername}' -D'server-password=${serverpassword}' -D'gpg-password=${gpgpvtpass}' -DskipTests
       env:
         serverusername: ${{ secrets.OSSRH_USERNAME }}
         serverpassword: ${{ secrets.OSSRH_TOKEN }}
+        gpgpvtpass: ${{ secrets.GPG_PVT_PASS }}
