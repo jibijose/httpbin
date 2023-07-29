@@ -3,6 +3,7 @@
 [Java HttpBin Apidocs](https://jibijose.github.io/apidocs/httpbin)
 ==================================
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4025a710dc3747efa20e607cf3616045)](https://app.codacy.com/gh/jibijose/httpbin?utm_source=github.com&utm_medium=referral&utm_content=jibijose/httpbin&utm_campaign=Badge_Grade)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.jibijose/httpbin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.jibijose/httpbin)   
 [![Coverage Status](http://img.shields.io/coveralls/jibijose/httpbin/master.svg?style=flat-square)](https://coveralls.io/r/jibijose/httpbin?branch=master)
