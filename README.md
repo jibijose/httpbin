@@ -6,12 +6,28 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/jibijose/httpbin?branch=master&svg=true)](https://ci.appveyor.com/project/jibijose/httpbin)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.jibijose/httpbin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.jibijose/httpbin)   
 [![Coverage Status](http://img.shields.io/coveralls/jibijose/httpbin/master.svg?style=flat-square)](https://coveralls.io/r/jibijose/httpbin?branch=master)
-[![GitHub contributors](https://img.shields.io/github/contributors/jibijose/httpbin.svg)](https://github.com/jibijose/httpbin/graphs/contributors)[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)  
-[![](https://images.microbadger.com/badges/image/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
+[![GitHub contributors](https://img.shields.io/github/contributors/jibijose/httpbin.svg)](https://github.com/jibijose/httpbin/graphs/contributors)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![](https://img.shields.io/github/repo-size/jibijose/httpbin)](https://microbadger.com/images/jibijose/httpbin)
-[![](https://images.microbadger.com/badges/version/jibijose/httpbin.svg)](https://microbadger.com/images/jibijose/httpbin)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/jibijose/httpbin/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jibijose/httpbin/tree/master)
 [![DeepSource](https://app.deepsource.com/gh/jibijose/httpbin.svg/?label=active+issues&show_trend=true&token=HRlJTew-PUsNzGUPIGoQBCq_)](https://app.deepsource.com/gh/jibijose/httpbin/?ref=repository-badge)
+
+###Github actions   
+[![Java CI with Gradle](https://github.com/jibijose/httpbin/actions/workflows/gradle.yml/badge.svg)](https://github.com/jibijose/httpbin/actions/workflows/gradle.yml)
+[![Java CI with Maven](https://github.com/jibijose/httpbin/actions/workflows/maven.yml/badge.svg)](https://github.com/jibijose/httpbin/actions/workflows/maven.yml)
+[![Maven Package](https://github.com/jibijose/httpbin/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/jibijose/httpbin/actions/workflows/maven-publish.yml)
+   
+###SonarCloud   
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jibijose_httpbin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jibijose_httpbin)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=jibijose_httpbin)](https://sonarcloud.io/summary/new_code?id=jibijose_httpbin)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=jibijose_httpbin)   
+   
+###Codacy   
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3f8367a560224497ab89320a7fcc5bb2)](https://app.codacy.com/gh/jibijose/httpbin/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)   
+
+   
+
+
 
 
 .\mvnw nexus-staging:drop
