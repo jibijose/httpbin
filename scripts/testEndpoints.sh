@@ -8,13 +8,13 @@ PORT=8080
 
 ./scripts/mvnAllSteps.sh
 ./scripts/gradleAllSteps.sh
-java -jar target/httpbin-1.2.3.jar
+java -jar target/httpbin-2.0.0-SNAPSHOT.jar
 
 docker stop $(docker ps -aq -f ancestor=jibijose/httpbin:latest)
 docker rm $(docker ps -aq -f ancestor=jibijose/httpbin:latest)
 
 docker  rmi jibijose/httpbin:latest
-docker build --build-arg MVN_VERSION=3.8.5 -t jibijose/httpbin:latest -f docker/jre11/Dockerfile .
+docker build --build-arg MVN_VERSION=3.9.3 -t jibijose/httpbin:latest -f docker/jre11/Dockerfile .
 docker run -p 8080:8080 jibijose/httpbin:latest
 
 curl -i http://localhost:8080/health
