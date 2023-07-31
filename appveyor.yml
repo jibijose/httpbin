@@ -48,4 +48,4 @@ test_script:
   - gradlew -i -S check
   - mvnw test verify -B
 after_test:
-  - mvnw site -DskipDeploy
+  - mvnw site -s ./settings.xml -D'gpg-password=password' -DskipDeploy
