@@ -1,4 +1,4 @@
-FROM openjdk:11.0.14-jdk-slim AS builder
+FROM openjdk:11.0.16-jdk-slim AS builder
 
 ARG MVN_VERSION=3.9.3
 
@@ -18,7 +18,7 @@ RUN rm -rf /tmp/app/target/httpbin-*.*.*-sources.jar && \
     rm -rf /tmp/app/target/httpbin-*.*.*-javadoc.jar && \
     cp /tmp/app/target/httpbin-*.*.*.jar /tmp/app.jar
 
-FROM openjdk:11.0.14-jdk-slim AS packager
+FROM openjdk:11.0.16-jdk-slim AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 

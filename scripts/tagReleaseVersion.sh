@@ -1,8 +1,12 @@
 #!/bin/bash
 
-VERSION=1.2.3
+VERSION=2.0.0-SNAPSHOT
 
 echo "*****************************************************************************************"
+echo "force deleting existing tag"
+git tag -d v${VERSION}
+git push --delete origin v${VERSION}
+
 echo "Tagging git repository"
 git tag -a v${VERSION} -m "Version ${VERSION}"
 git push origin v${VERSION}
