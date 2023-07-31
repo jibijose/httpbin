@@ -10,16 +10,6 @@
 
   <profiles>
     <profile>
-      <id>ossrh</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <gpg.executable>gpg2</gpg.executable>
-        <gpg.passphrase>passphrase</gpg.passphrase>
-      </properties>
-    </profile>
-    <profile>
       <id>sign</id>
       <activation>
         <activeByDefault>true</activeByDefault>
