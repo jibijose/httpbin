@@ -10,7 +10,7 @@ name: Generate ApiDocs
 
 on:
   push:
-    branches: [ "master", "swagger-auto" ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -28,13 +28,35 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: jibijose/jibijose.github.io
-          path: githubio
-      - name: Checking files
+          persist-credentials: false
+      - name: Checkout httpbin
+        uses: actions/checkout@v3
+        with:
+          repository: jibijose/httpbin
+          path: githubhttpbin
+          persist-credentials: false
+      - name: Generating apidocs
         run: |
-          pwd
-          git remote -v
-          ls -al .
-          ls -al githubio
-          cd githubio
-          git remote -v
-
+          cd githubhttpbin
+          ./mvnw clean javadoc:javadoc
+          cd ..
+      - name: Copying apidocs
+        run: |
+          rm -rf apidocs/httpbin/*
+          cp -rf githubhttpbin/target/site/apidocs/* apidocs/httpbin/
+          rm -rf githubhttpbin
+      - name: Commit changes
+        run: |
+          git config --local user.name "${gitapidocsname}"
+          git config --local user.email "${gitapidocsemail}"
+          git add apidocs/httpbin/*
+          CURRENTDATE=`date +"%Y-%m-%d %T"`
+          git commit -m "auto-build-${CURRENTDATE}"
+        env:
+          gitapidocsname: ${{ secrets.GIT_APIDOCS_NAME }}
+          gitapidocsemail: ${{ secrets.GIT_APIDOCS_EMAIL }}
+      - name: Push to github
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_APIDOCS_PAT }}
+          repository: jibijose/jibijose.github.io
