@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Codacy coverage
+name: Generate ApiDocs
 
 on:
   push:
@@ -22,11 +22,19 @@ jobs:
         java: [ 11 ]
       fail-fast: false
       max-parallel: 2
-    name: Codacy coverage ${{ matrix.java }}, ${{ matrix.os }}
+    name: Generate ApiDocs ${{ matrix.java }}, ${{ matrix.os }}
     steps:
-      - name: Checkout tools repo
+      - name: Checkout github.io
         uses: actions/checkout@v3
         with:
           repository: jibijose/jibijose.github.io
-          path: my-tools
+          path: githubio
+      - name: Checking files
+        run: |
+          pwd
+          git remote -v
+          ls -al .
+          ls -al githubio
+          cd githubio
+          git remote -v
 
