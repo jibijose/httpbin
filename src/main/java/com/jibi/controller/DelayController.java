@@ -15,22 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * The type Delay controller.
- */
+/** The type Delay controller. */
 @Tag(name = "Delay Api", description = "Delay Api")
 @RestController(value = "Delay Api")
 @RequestMapping("/delay")
 @Slf4j
 public class DelayController {
 
-    /**
-     * Delay constant.
-     *
-     * @param unit the unit
-     * @param time the time
-     */
-    @Operation(
+  /**
+   * Delay constant.
+   *
+   * @param unit the unit
+   * @param time the time
+   */
+  @Operation(
       summary = "Delay constant api",
       description = "Delay constant api",
       tags = {"disk"})
@@ -66,13 +64,13 @@ public class DelayController {
     }
   }
 
-    /**
-     * Delay random.
-     *
-     * @param unit the unit
-     * @param time the time
-     */
-    @Operation(
+  /**
+   * Delay random.
+   *
+   * @param unit the unit
+   * @param time the time
+   */
+  @Operation(
       summary = "Delay random api",
       description = "Delay random api",
       tags = {"disk"})
@@ -98,14 +96,14 @@ public class DelayController {
     delayRandomRange(unit, 0, time);
   }
 
-    /**
-     * Delay random range.
-     *
-     * @param unit    the unit
-     * @param minTime the min time
-     * @param maxTime the max time
-     */
-    @Operation(
+  /**
+   * Delay random range.
+   *
+   * @param unit the unit
+   * @param minTime the min time
+   * @param maxTime the max time
+   */
+  @Operation(
       summary = "Delay random range api",
       description = "Delay random range api",
       tags = {"disk"})

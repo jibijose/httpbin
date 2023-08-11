@@ -11,9 +11,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.util.MultiValueMap;
 
-/**
- * The type Health controller test.
- */
+/** The type Health controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HealthControllerTest {
 
@@ -21,12 +19,12 @@ public class HealthControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
-    /**
-     * Test json health.
-     *
-     * @throws Exception the exception
-     */
-    @Test
+  /**
+   * Test json health.
+   *
+   * @throws Exception the exception
+   */
+  @Test
   public void testJsonHealth() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -46,12 +44,12 @@ public class HealthControllerTest {
     Assert.assertEquals("Status should be up", "up", response.getBody().getStatus());
   }
 
-    /**
-     * Test xml health.
-     *
-     * @throws Exception the exception
-     */
-    @Test
+  /**
+   * Test xml health.
+   *
+   * @throws Exception the exception
+   */
+  @Test
   public void testXmlHealth() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));

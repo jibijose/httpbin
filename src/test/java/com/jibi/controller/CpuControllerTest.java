@@ -8,9 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 
-/**
- * The type Cpu controller test.
- */
+/** The type Cpu controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CpuControllerTest {
 
@@ -18,23 +16,23 @@ public class CpuControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
-    /**
-     * Test cpu all processors.
-     *
-     * @throws Exception the exception
-     */
-    @Test
+  /**
+   * Test cpu all processors.
+   *
+   * @throws Exception the exception
+   */
+  @Test
   public void testCpuAllProcessors() throws Exception {
     assertThat(
         this.restTemplate.getForObject("http://localhost:" + port + "/cpu/all/20/2", Void.class));
   }
 
-    /**
-     * Test cpu single processor.
-     *
-     * @throws Exception the exception
-     */
-    @Test
+  /**
+   * Test cpu single processor.
+   *
+   * @throws Exception the exception
+   */
+  @Test
   public void testCpuSingleProcessor() throws Exception {
     assertThat(
         this.restTemplate.getForObject(

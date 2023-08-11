@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * The type Cpu controller.
- */
+/** The type Cpu controller. */
 @Tag(name = "Cpu Api", description = "Cpu Api")
 @RestController(value = "Cpu Api")
 @RequestMapping("/cpu")
@@ -24,13 +22,13 @@ public class CpuController {
 
   @Autowired private BusyService busyService;
 
-    /**
-     * Cpu all processors.
-     *
-     * @param percentage the percentage
-     * @param time       the time
-     */
-    @Operation(
+  /**
+   * Cpu all processors.
+   *
+   * @param percentage the percentage
+   * @param time the time
+   */
+  @Operation(
       summary = "Cpu all processors operation",
       description = "Cpu all processors operation",
       tags = {"disk"})
@@ -49,13 +47,13 @@ public class CpuController {
     busyService.runInAllProcessors(percentage, time);
   }
 
-    /**
-     * Cpu single processor.
-     *
-     * @param percentage the percentage
-     * @param time       the time
-     */
-    @Operation(
+  /**
+   * Cpu single processor.
+   *
+   * @param percentage the percentage
+   * @param time the time
+   */
+  @Operation(
       summary = "Cpu single processors operation",
       description = "Cpu single processors operation",
       tags = {"disk"})

@@ -12,9 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 
-/**
- * The type Request controller test.
- */
+/** The type Request controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RequestControllerTest {
 
@@ -22,12 +20,12 @@ public class RequestControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
-    /**
-     * Test request headers json.
-     *
-     * @throws Exception the exception
-     */
-    @Test
+  /**
+   * Test request headers json.
+   *
+   * @throws Exception the exception
+   */
+  @Test
   public void testRequestHeadersJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.set("Accept", "application/json");

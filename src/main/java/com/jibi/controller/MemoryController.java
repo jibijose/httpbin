@@ -16,21 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * The type Memory controller.
- */
+/** The type Memory controller. */
 @Tag(name = "Memory Api", description = "Memory Api")
 @RestController(value = "Memory Api")
 @RequestMapping("/memory")
 @Slf4j
 public class MemoryController {
-    /**
-     * Memory hold.
-     *
-     * @param bytes the bytes
-     * @param time  the time
-     */
-    @Operation(
+  /**
+   * Memory hold.
+   *
+   * @param bytes the bytes
+   * @param time the time
+   */
+  @Operation(
       summary = "Memory api",
       description = "Memory hold operation",
       tags = {"memory"})

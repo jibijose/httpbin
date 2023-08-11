@@ -20,21 +20,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * The type File controller.
- */
+/** The type File controller. */
 @Tag(name = "File Api", description = "File Api")
 @RestController(value = "File Api")
 @RequestMapping("/file")
 public class FileController {
-    /**
-     * The Filegrouptypes.
-     */
-    static final Map<String, List<String>> FILEGROUPTYPES = new HashMap<>();
-    /**
-     * The Filetypesizes.
-     */
-    static final Map<String, List<String>> FILETYPESIZES = new HashMap<>();
+  /** The Filegrouptypes. */
+  static final Map<String, List<String>> FILEGROUPTYPES = new HashMap<>();
+  /** The Filetypesizes. */
+  static final Map<String, List<String>> FILETYPESIZES = new HashMap<>();
 
   private static List<String> IMAGETYPES = Arrays.asList("jpg", "gif", "png", "tiff", "ico");
   private static List<String> VIDEOTYPES = Arrays.asList("avi", "mov", "mp4", "ogg", "wmv");
@@ -159,14 +153,14 @@ public class FileController {
     return getFileContentInternal(fileGroup, fileTypeName, size);
   }
 
-    /**
-     * *********************************************************************************************************************************************
-     *
-     * @param fileType the file type
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * *********************************************************************************************************************************************
+   *
+   * @param fileType the file type
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File image file operation",
       tags = {"file"})
@@ -200,14 +194,14 @@ public class FileController {
     return getFileContent("image", fileType);
   }
 
-    /**
-     * Video file type byte [ ].
-     *
-     * @param fileType the file type
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Video file type byte [ ].
+   *
+   * @param fileType the file type
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File video file operation",
       tags = {"file"})
@@ -235,14 +229,14 @@ public class FileController {
     return getFileContent("video", fileType);
   }
 
-    /**
-     * Audio file type byte [ ].
-     *
-     * @param fileType the file type
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Audio file type byte [ ].
+   *
+   * @param fileType the file type
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File audio file operation",
       tags = {"file"})
@@ -270,14 +264,14 @@ public class FileController {
     return getFileContent("audio", fileType);
   }
 
-    /**
-     * Document file type byte [ ].
-     *
-     * @param fileType the file type
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document file type byte [ ].
+   *
+   * @param fileType the file type
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document file operation",
       tags = {"file"})
@@ -316,14 +310,14 @@ public class FileController {
     return getFileContent("document", fileType);
   }
 
-    /**
-     * Other file type byte [ ].
-     *
-     * @param fileType the file type
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Other file type byte [ ].
+   *
+   * @param fileType the file type
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File other file operation",
       tags = {"file"})
@@ -351,14 +345,14 @@ public class FileController {
     return getFileContent("other", fileType);
   }
 
-    /**
-     * *********************************************************************************************************************************************
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * *********************************************************************************************************************************************
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File image jpg file operation",
       tags = {"file"})
@@ -386,14 +380,14 @@ public class FileController {
     return getFileContent("image", "jpg", size);
   }
 
-    /**
-     * Image gif size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Image gif size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File image gif file operation",
       tags = {"file"})
@@ -421,14 +415,14 @@ public class FileController {
     return getFileContent("image", "gif", size);
   }
 
-    /**
-     * Image png size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Image png size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File image png file operation",
       tags = {"file"})
@@ -456,14 +450,14 @@ public class FileController {
     return getFileContent("image", "png", size);
   }
 
-    /**
-     * Image tiff size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Image tiff size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File image tiff file operation",
       tags = {"file"})
@@ -491,14 +485,14 @@ public class FileController {
     return getFileContent("image", "tiff", size);
   }
 
-    /**
-     * Image ico size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Image ico size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File image ico file operation",
       tags = {"file"})
@@ -526,14 +520,14 @@ public class FileController {
     return getFileContent("image", "ico", size);
   }
 
-    /**
-     * *********************************************************************************************************************************************
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * *********************************************************************************************************************************************
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File video avi file operation",
       tags = {"file"})
@@ -561,14 +555,14 @@ public class FileController {
     return getFileContent("video", "avi", size);
   }
 
-    /**
-     * Video mov size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Video mov size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File video mov file operation",
       tags = {"file"})
@@ -596,14 +590,14 @@ public class FileController {
     return getFileContent("video", "mov", size);
   }
 
-    /**
-     * Video mp 4 size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Video mp 4 size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File video mp4 file operation",
       tags = {"file"})
@@ -631,14 +625,14 @@ public class FileController {
     return getFileContent("video", "mp4", size);
   }
 
-    /**
-     * Video ogg size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Video ogg size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File video ogg file operation",
       tags = {"file"})
@@ -666,14 +660,14 @@ public class FileController {
     return getFileContent("video", "ogg", size);
   }
 
-    /**
-     * Video wmv size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Video wmv size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File video wmv file operation",
       tags = {"file"})
@@ -701,14 +695,14 @@ public class FileController {
     return getFileContent("video", "wmv", size);
   }
 
-    /**
-     * *********************************************************************************************************************************************
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * *********************************************************************************************************************************************
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File audio mp3 file operation",
       tags = {"file"})
@@ -736,14 +730,14 @@ public class FileController {
     return getFileContent("audio", "mp3", size);
   }
 
-    /**
-     * Audio wav size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Audio wav size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File audio wav file operation",
       tags = {"file"})
@@ -771,14 +765,14 @@ public class FileController {
     return getFileContent("audio", "wav", size);
   }
 
-    /**
-     * Audio ogg size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Audio ogg size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File audio ogg file operation",
       tags = {"file"})
@@ -806,14 +800,14 @@ public class FileController {
     return getFileContent("audio", "ogg", size);
   }
 
-    /**
-     * *********************************************************************************************************************************************
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * *********************************************************************************************************************************************
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document doc file operation",
       tags = {"file"})
@@ -841,14 +835,14 @@ public class FileController {
     return getFileContent("document", "doc", size);
   }
 
-    /**
-     * Document docx size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document docx size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document docx file operation",
       tags = {"file"})
@@ -876,14 +870,14 @@ public class FileController {
     return getFileContent("document", "docx", size);
   }
 
-    /**
-     * Document xls size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document xls size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document xls file operation",
       tags = {"file"})
@@ -911,14 +905,14 @@ public class FileController {
     return getFileContent("document", "xls", size);
   }
 
-    /**
-     * Document xlsx size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document xlsx size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document xlsx file operation",
       tags = {"file"})
@@ -946,14 +940,14 @@ public class FileController {
     return getFileContent("document", "xlsx", size);
   }
 
-    /**
-     * Document ppt size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document ppt size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document ppt file operation",
       tags = {"file"})
@@ -981,14 +975,14 @@ public class FileController {
     return getFileContent("document", "ppt", size);
   }
 
-    /**
-     * Document pdf size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document pdf size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document pdf file operation",
       tags = {"file"})
@@ -1016,14 +1010,14 @@ public class FileController {
     return getFileContent("document", "pdf", size);
   }
 
-    /**
-     * Document odp size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document odp size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document odp file operation",
       tags = {"file"})
@@ -1051,14 +1045,14 @@ public class FileController {
     return getFileContent("document", "odp", size);
   }
 
-    /**
-     * Document ods size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document ods size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document ods file operation",
       tags = {"file"})
@@ -1086,14 +1080,14 @@ public class FileController {
     return getFileContent("document", "ods", size);
   }
 
-    /**
-     * Document odt size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document odt size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document odt file operation",
       tags = {"file"})
@@ -1121,14 +1115,14 @@ public class FileController {
     return getFileContent("document", "odt", size);
   }
 
-    /**
-     * Document rtf size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Document rtf size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File document rtf file operation",
       tags = {"file"})
@@ -1156,14 +1150,14 @@ public class FileController {
     return getFileContent("document", "rtf", size);
   }
 
-    /**
-     * *********************************************************************************************************************************************
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * *********************************************************************************************************************************************
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File other csv file operation",
       tags = {"file"})
@@ -1191,14 +1185,14 @@ public class FileController {
     return getFileContent("other", "csv", size);
   }
 
-    /**
-     * Other html size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Other html size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File other html file operation",
       tags = {"file"})
@@ -1226,14 +1220,14 @@ public class FileController {
     return getFileContent("other", "html", size);
   }
 
-    /**
-     * Other txt size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Other txt size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File other txt file operation",
       tags = {"file"})
@@ -1261,14 +1255,14 @@ public class FileController {
     return getFileContent("other", "txt", size);
   }
 
-    /**
-     * Other zip size byte [ ].
-     *
-     * @param size the size
-     * @return the byte [ ]
-     * @throws IOException the io exception
-     */
-    @Operation(
+  /**
+   * Other zip size byte [ ].
+   *
+   * @param size the size
+   * @return the byte [ ]
+   * @throws IOException the io exception
+   */
+  @Operation(
       summary = "File api",
       description = "File other zip file operation",
       tags = {"file"})

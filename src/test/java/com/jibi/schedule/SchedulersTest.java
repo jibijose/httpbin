@@ -12,11 +12,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 
+/** The type Schedulers test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(OutputCaptureExtension.class)
 public class SchedulersTest {
   @Autowired private Schedulers schedulers;
 
+  /**
+   * Test gc scheduling.
+   *
+   * @param output the output
+   * @throws InterruptedException the interrupted exception
+   */
   @Test
   public void testGCScheduling(CapturedOutput output) throws InterruptedException {
     await()
