@@ -18,13 +18,7 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 @ExtendWith(OutputCaptureExtension.class)
 class SchedulersTest {
   @Autowired private Schedulers schedulers;
-
-  /** Test gc scheduling. */
-  @Test
-  void testDummy() {
-    Assert.assertEquals("", "");
-  }
-
+  
   /**
    * Test gc scheduling.
    *
