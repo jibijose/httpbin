@@ -10,7 +10,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 /** The type Cpu controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CpuControllerTest {
+class CpuControllerTest {
 
   @LocalServerPort private int port;
 
@@ -22,7 +22,7 @@ public class CpuControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testCpuAllProcessors() throws Exception {
+  void testCpuAllProcessors() throws Exception {
     assertThat(
         this.restTemplate.getForObject("http://localhost:" + port + "/cpu/all/20/2", Void.class));
   }
@@ -33,7 +33,7 @@ public class CpuControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testCpuSingleProcessor() throws Exception {
+  void testCpuSingleProcessor() throws Exception {
     assertThat(
         this.restTemplate.getForObject(
             "http://localhost:" + port + "/cpu/single/20/2", Void.class));

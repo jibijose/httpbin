@@ -10,7 +10,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 /** The type Memory controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MemoryControllerTest {
+class MemoryControllerTest {
 
   @LocalServerPort private int port;
 
@@ -22,7 +22,7 @@ public class MemoryControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testMemoryHold() throws Exception {
+  void testMemoryHold() throws Exception {
     assertThat(
         this.restTemplate.getForObject(
             "http://localhost:" + port + "/memory/1024000/2", Void.class));

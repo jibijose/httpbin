@@ -15,7 +15,7 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 /** The type Schedulers test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(OutputCaptureExtension.class)
-public class SchedulersTest {
+class SchedulersTest {
   @Autowired private Schedulers schedulers;
 
   /**
@@ -25,7 +25,7 @@ public class SchedulersTest {
    * @throws InterruptedException the interrupted exception
    */
   @Test
-  public void testGCScheduling(CapturedOutput output) throws InterruptedException {
+  void testGCScheduling(CapturedOutput output) throws InterruptedException {
     await()
         .atMost(Duration.ofMinutes(1L))
         .untilAsserted(() -> assertThat(output.getOut(), containsString("Invoking System GC")));

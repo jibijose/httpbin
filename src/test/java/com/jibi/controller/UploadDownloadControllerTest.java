@@ -19,7 +19,7 @@ import org.springframework.util.MultiValueMap;
 
 /** The type Upload download controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UploadDownloadControllerTest {
+class UploadDownloadControllerTest {
 
   @LocalServerPort private int port;
 
@@ -31,7 +31,7 @@ public class UploadDownloadControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testUploadJson() throws Exception {
+  void testUploadJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -59,7 +59,7 @@ public class UploadDownloadControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testUploadXml() throws Exception {
+  void testUploadXml() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
     headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -87,7 +87,7 @@ public class UploadDownloadControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testDownload() throws Exception {
+  void testDownload() throws Exception {
     byte[] bytes =
         this.restTemplate.getForObject("http://localhost:" + port + "/download", byte[].class);
     assertThat(
@@ -109,7 +109,7 @@ public class UploadDownloadControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testDownloadSize() throws Exception {
+  void testDownloadSize() throws Exception {
     byte[] bytes = null;
     bytes =
         this.restTemplate.getForObject("http://localhost:" + port + "/download/1B", byte[].class);

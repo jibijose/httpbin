@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 
 /** The type File controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class FileControllerTest {
+class FileControllerTest {
 
   @LocalServerPort private int port;
 
@@ -24,7 +24,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileImage() throws Exception {
+  void testFileImage() throws Exception {
     fileTypeTests("image");
   }
 
@@ -34,7 +34,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileVideo() throws Exception {
+  void testFileVideo() throws Exception {
     fileTypeTests("video");
   }
 
@@ -44,7 +44,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileAudio() throws Exception {
+  void testFileAudio() throws Exception {
     fileTypeTests("audio");
   }
 
@@ -54,7 +54,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocument() throws Exception {
+  void testFileDocument() throws Exception {
     fileTypeTests("document");
   }
 
@@ -64,7 +64,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileOther() throws Exception {
+  void testFileOther() throws Exception {
     fileTypeTests("other");
   }
 
@@ -74,7 +74,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileImageJpgSize() throws Exception {
+  void testFileImageJpgSize() throws Exception {
     fileTypeSizeTests("image", "jpg");
   }
 
@@ -84,7 +84,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileImageGifSize() throws Exception {
+  void testFileImageGifSize() throws Exception {
     fileTypeSizeTests("image", "gif");
   }
 
@@ -94,7 +94,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileImagePngSize() throws Exception {
+  void testFileImagePngSize() throws Exception {
     fileTypeSizeTests("image", "png");
   }
 
@@ -104,7 +104,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileImageTiffSize() throws Exception {
+  void testFileImageTiffSize() throws Exception {
     fileTypeSizeTests("image", "tiff");
   }
 
@@ -114,7 +114,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileImageIcoSize() throws Exception {
+  void testFileImageIcoSize() throws Exception {
     fileTypeSizeTests("image", "ico");
   }
 
@@ -124,7 +124,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileVideoAviSize() throws Exception {
+  void testFileVideoAviSize() throws Exception {
     fileTypeSizeTests("video", "avi");
   }
 
@@ -134,7 +134,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileVideoMovSize() throws Exception {
+  void testFileVideoMovSize() throws Exception {
     fileTypeSizeTests("video", "mov");
   }
 
@@ -144,7 +144,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileVideoMp4Size() throws Exception {
+  void testFileVideoMp4Size() throws Exception {
     fileTypeSizeTests("video", "mp4");
   }
 
@@ -154,7 +154,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileVideoOggSize() throws Exception {
+  void testFileVideoOggSize() throws Exception {
     fileTypeSizeTests("video", "ogg");
   }
 
@@ -164,7 +164,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileVideoWmvSize() throws Exception {
+  void testFileVideoWmvSize() throws Exception {
     fileTypeSizeTests("video", "wmv");
   }
 
@@ -174,7 +174,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileAudioMp3Size() throws Exception {
+  void testFileAudioMp3Size() throws Exception {
     fileTypeSizeTests("audio", "mp3");
   }
 
@@ -184,7 +184,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileAudioWavSize() throws Exception {
+  void testFileAudioWavSize() throws Exception {
     fileTypeSizeTests("audio", "wav");
   }
 
@@ -194,7 +194,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileAudioOggSize() throws Exception {
+  void testFileAudioOggSize() throws Exception {
     fileTypeSizeTests("audio", "ogg");
   }
 
@@ -204,7 +204,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentDocSize() throws Exception {
+  void testFileDocumentDocSize() throws Exception {
     fileTypeSizeTests("document", "doc");
   }
 
@@ -214,7 +214,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentDocxSize() throws Exception {
+  void testFileDocumentDocxSize() throws Exception {
     fileTypeSizeTests("document", "docx");
   }
 
@@ -224,7 +224,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentXlsSize() throws Exception {
+  void testFileDocumentXlsSize() throws Exception {
     fileTypeSizeTests("document", "xls");
   }
 
@@ -234,7 +234,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentXlsxSize() throws Exception {
+  void testFileDocumentXlsxSize() throws Exception {
     fileTypeSizeTests("document", "xlsx");
   }
 
@@ -244,7 +244,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentPptSize() throws Exception {
+  void testFileDocumentPptSize() throws Exception {
     fileTypeSizeTests("document", "ppt");
   }
 
@@ -254,7 +254,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentPdfSize() throws Exception {
+  void testFileDocumentPdfSize() throws Exception {
     fileTypeSizeTests("document", "pdf");
   }
 
@@ -264,7 +264,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentOdpSize() throws Exception {
+  void testFileDocumentOdpSize() throws Exception {
     fileTypeSizeTests("document", "odp");
   }
 
@@ -274,7 +274,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentOdsSize() throws Exception {
+  void testFileDocumentOdsSize() throws Exception {
     fileTypeSizeTests("document", "ods");
   }
 
@@ -284,7 +284,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentOdtSize() throws Exception {
+  void testFileDocumentOdtSize() throws Exception {
     fileTypeSizeTests("document", "odt");
   }
 
@@ -294,7 +294,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileDocumentRtfSize() throws Exception {
+  void testFileDocumentRtfSize() throws Exception {
     fileTypeSizeTests("document", "rtf");
   }
 
@@ -304,7 +304,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileOtherCsvSize() throws Exception {
+  void testFileOtherCsvSize() throws Exception {
     fileTypeSizeTests("other", "csv");
   }
 
@@ -314,7 +314,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileOtherHtmlSize() throws Exception {
+  void testFileOtherHtmlSize() throws Exception {
     fileTypeSizeTests("other", "html");
   }
 
@@ -324,7 +324,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileOtherTxtSize() throws Exception {
+  void testFileOtherTxtSize() throws Exception {
     fileTypeSizeTests("other", "txt");
   }
 
@@ -334,7 +334,7 @@ public class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testFileOtherZipSize() throws Exception {
+  void testFileOtherZipSize() throws Exception {
     fileTypeSizeTests("other", "zip");
   }
 

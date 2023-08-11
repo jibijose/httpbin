@@ -14,7 +14,7 @@ import org.springframework.http.*;
 
 /** The type Request controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class RequestControllerTest {
+class RequestControllerTest {
 
   @LocalServerPort private int port;
 
@@ -26,7 +26,7 @@ public class RequestControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testRequestHeadersJson() throws Exception {
+  void testRequestHeadersJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.set("Accept", "application/json");
     HttpEntity entity = new HttpEntity(headers);

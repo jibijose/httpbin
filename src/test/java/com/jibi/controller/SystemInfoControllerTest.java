@@ -13,7 +13,7 @@ import org.springframework.util.MultiValueMap;
 
 /** The type System info controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SystemInfoControllerTest {
+class SystemInfoControllerTest {
 
   @LocalServerPort private int port;
 
@@ -25,7 +25,7 @@ public class SystemInfoControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testSystemInfoJson() throws Exception {
+  void testSystemInfoJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(headers);
@@ -54,7 +54,7 @@ public class SystemInfoControllerTest {
    * @throws Exception the exception
    */
   @Test
-  public void testSystemInfoXml() throws Exception {
+  void testSystemInfoXml() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
     HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(headers);
