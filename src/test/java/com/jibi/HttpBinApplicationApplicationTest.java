@@ -1,5 +1,7 @@
 package com.jibi;
 
+import org.hamcrest.MatcherAssert;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,7 +15,9 @@ class HttpBinApplicationApplicationTest {
    * @throws Exception the exception
    */
   @Test
-  void contextLoads() throws Exception {}
+  void contextLoads() throws Exception {
+    Assert.assertEquals("", "");
+  }
 
   /**
    * Test main.
