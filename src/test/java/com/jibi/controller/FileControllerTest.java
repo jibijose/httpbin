@@ -25,12 +25,10 @@ class FileControllerTest {
   /**
    * *********************************************************************************************************************************************
    * Test file.
-   *
-   * @throws Exception the exception
    */
   @ParameterizedTest
   @ValueSource(strings = {"video", "image", "audio", "document", "other"})
-  void testFile(String input, ApplicationContext context) throws Exception {
+  void testFile(String input, ApplicationContext context) {
     fileTypeTests(input);
     assertNotNull(context);
   }
@@ -38,50 +36,39 @@ class FileControllerTest {
   /**
    * *********************************************************************************************************************************************
    * Test file image size.
-   *
-   * @throws Exception the exception
    */
   @ParameterizedTest
   @CsvSource({"image,jpg", "image,gif", "image,png", "image,tiff", "image,ico"})
-  void testFileImageSize(String fileGroup, String fileType, ApplicationContext context)
-      throws Exception {
-    fileTypeSizeTests(fileGroup, fileType);
-    assertNotNull(context);
+  void testFileImageSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
    * Test file video size.
-   *
-   * @throws Exception the exception
    */
   @ParameterizedTest
   @CsvSource({"video,avi", "video,mov", "video,mp4", "video,ogg", "video,wmv"})
-  void testFileVideoSize(String fileGroup, String fileType, ApplicationContext context)
-      throws Exception {
-    fileTypeSizeTests(fileGroup, fileType);
-    assertNotNull(context);
+  void testFileVideoSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
    * Test file audio wav size.
-   *
-   * @throws Exception the exception
    */
   @ParameterizedTest
   @CsvSource({"audio,mp3", "audio,wav", "audio,ogg"})
-  void testFileAudioSize(String fileGroup, String fileType, ApplicationContext context)
-      throws Exception {
-    fileTypeSizeTests("audio", "wav");
-    assertNotNull(context);
+  void testFileAudioSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
    * Test file document size.
-   *
-   * @throws Exception the exception
    */
   @ParameterizedTest
   @CsvSource({
@@ -96,24 +83,20 @@ class FileControllerTest {
     "document,odt",
     "document,rtf"
   })
-  void testFileDocumentSize(String fileGroup, String fileType, ApplicationContext context)
-      throws Exception {
-    fileTypeSizeTests(fileGroup, fileType);
-    assertNotNull(context);
+  void testFileDocumentSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
    * Test file other size.
-   *
-   * @throws Exception the exception
    */
   @ParameterizedTest
   @CsvSource({"other,csv", "other,html", "other,txt", "other,zip"})
-  void testFileOtherSize(String fileGroup, String fileType, ApplicationContext context)
-      throws Exception {
-    fileTypeSizeTests(fileGroup, fileType);
-    assertNotNull(context);
+  void testFileOtherSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
