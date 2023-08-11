@@ -13,8 +13,7 @@ class HttpBinApplicationApplicationTest {
    * @throws Exception the exception
    */
   @Test
-  void contextLoads() throws Exception {
-  }
+  void contextLoads() throws Exception {}
 
   /**
    * Test main.
