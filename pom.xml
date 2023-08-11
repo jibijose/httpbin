@@ -45,7 +45,7 @@
         <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
         <commons.version>2.13.0</commons.version>
         <mockito.version>4.3.1</mockito.version>
-        <jackson.version>2.13.5</jackson.version>
+        <jackson-bom.version>2.15.2</jackson-bom.version>
     </properties>
 
     <organization>
@@ -174,7 +174,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-            <version>${jackson.version}</version>
+            <version>${jackson-bom.version}</version>
         </dependency>
 
         <dependency>
