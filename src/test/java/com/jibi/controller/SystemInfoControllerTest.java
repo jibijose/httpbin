@@ -1,5 +1,7 @@
 package com.jibi.controller;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.jibi.model.SystemInfoModel;
 import java.util.Arrays;
 import org.junit.Assert;
@@ -42,10 +44,10 @@ class SystemInfoControllerTest {
         MediaType.APPLICATION_JSON,
         response.getHeaders().getContentType());
 
-    Assert.assertNotNull(response.getBody().getCpu());
-    Assert.assertNotNull(response.getBody().getOs());
-    Assert.assertNotNull(response.getBody().getMemory());
-    Assert.assertNotNull(response.getBody().getDisks());
+    assertNotNull(response.getBody().getCpu());
+    assertNotNull(response.getBody().getOs());
+    assertNotNull(response.getBody().getMemory());
+    assertNotNull(response.getBody().getDisks());
   }
 
   /**
@@ -71,9 +73,9 @@ class SystemInfoControllerTest {
         MediaType.APPLICATION_XML,
         response.getHeaders().getContentType());
 
-    Assert.assertNotNull(response.getBody().getCpu());
-    Assert.assertNotNull(response.getBody().getOs());
-    Assert.assertNotNull(response.getBody().getMemory());
-    Assert.assertNotNull(response.getBody().getDisks());
+    assertNotNull(response.getBody().getCpu());
+    assertNotNull(response.getBody().getOs());
+    assertNotNull(response.getBody().getMemory());
+    assertNotNull(response.getBody().getDisks());
   }
 }

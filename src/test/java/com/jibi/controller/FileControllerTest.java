@@ -1,8 +1,8 @@
 package com.jibi.controller;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +28,7 @@ class FileControllerTest {
   @Test
   void testFileImage(ApplicationContext context) throws Exception {
     fileTypeTests("image");
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 
   /**
@@ -39,7 +39,7 @@ class FileControllerTest {
   @Test
   void testFileVideo(ApplicationContext context) throws Exception {
     fileTypeTests("video");
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 
   /**
@@ -50,7 +50,7 @@ class FileControllerTest {
   @Test
   void testFileAudio(ApplicationContext context) throws Exception {
     fileTypeTests("audio");
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 
   /**
@@ -61,7 +61,7 @@ class FileControllerTest {
   @Test
   void testFileDocument(ApplicationContext context) throws Exception {
     fileTypeTests("document");
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 
   /**
@@ -72,7 +72,7 @@ class FileControllerTest {
   @Test
   void testFileOther(ApplicationContext context) throws Exception {
     fileTypeTests("other");
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 
   /**
@@ -81,8 +81,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileImageJpgSize() throws Exception {
+  void testFileImageJpgSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("image", "jpg");
+    assertNotNull(context);
   }
 
   /**
@@ -91,8 +92,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileImageGifSize() throws Exception {
+  void testFileImageGifSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("image", "gif");
+    assertNotNull(context);
   }
 
   /**
@@ -101,8 +103,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileImagePngSize() throws Exception {
+  void testFileImagePngSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("image", "png");
+    assertNotNull(context);
   }
 
   /**
@@ -111,8 +114,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileImageTiffSize() throws Exception {
+  void testFileImageTiffSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("image", "tiff");
+    assertNotNull(context);
   }
 
   /**
@@ -121,8 +125,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileImageIcoSize() throws Exception {
+  void testFileImageIcoSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("image", "ico");
+    assertNotNull(context);
   }
 
   /**
@@ -131,8 +136,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileVideoAviSize() throws Exception {
+  void testFileVideoAviSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("video", "avi");
+    assertNotNull(context);
   }
 
   /**
@@ -141,8 +147,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileVideoMovSize() throws Exception {
+  void testFileVideoMovSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("video", "mov");
+    assertNotNull(context);
   }
 
   /**
@@ -151,8 +158,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileVideoMp4Size() throws Exception {
+  void testFileVideoMp4Size(ApplicationContext context) throws Exception {
     fileTypeSizeTests("video", "mp4");
+    assertNotNull(context);
   }
 
   /**
@@ -161,8 +169,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileVideoOggSize() throws Exception {
+  void testFileVideoOggSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("video", "ogg");
+    assertNotNull(context);
   }
 
   /**
@@ -171,8 +180,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileVideoWmvSize() throws Exception {
+  void testFileVideoWmvSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("video", "wmv");
+    assertNotNull(context);
   }
 
   /**
@@ -181,8 +191,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileAudioMp3Size() throws Exception {
+  void testFileAudioMp3Size(ApplicationContext context) throws Exception {
     fileTypeSizeTests("audio", "mp3");
+    assertNotNull(context);
   }
 
   /**
@@ -191,8 +202,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileAudioWavSize() throws Exception {
+  void testFileAudioWavSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("audio", "wav");
+    assertNotNull(context);
   }
 
   /**
@@ -201,8 +213,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileAudioOggSize() throws Exception {
+  void testFileAudioOggSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("audio", "ogg");
+    assertNotNull(context);
   }
 
   /**
@@ -211,8 +224,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentDocSize() throws Exception {
+  void testFileDocumentDocSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "doc");
+    assertNotNull(context);
   }
 
   /**
@@ -221,8 +235,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentDocxSize() throws Exception {
+  void testFileDocumentDocxSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "docx");
+    assertNotNull(context);
   }
 
   /**
@@ -231,8 +246,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentXlsSize() throws Exception {
+  void testFileDocumentXlsSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "xls");
+    assertNotNull(context);
   }
 
   /**
@@ -241,8 +257,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentXlsxSize() throws Exception {
+  void testFileDocumentXlsxSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "xlsx");
+    assertNotNull(context);
   }
 
   /**
@@ -251,8 +268,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentPptSize() throws Exception {
+  void testFileDocumentPptSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "ppt");
+    assertNotNull(context);
   }
 
   /**
@@ -261,8 +279,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentPdfSize() throws Exception {
+  void testFileDocumentPdfSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "pdf");
+    assertNotNull(context);
   }
 
   /**
@@ -271,8 +290,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentOdpSize() throws Exception {
+  void testFileDocumentOdpSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "odp");
+    assertNotNull(context);
   }
 
   /**
@@ -281,8 +301,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentOdsSize() throws Exception {
+  void testFileDocumentOdsSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "ods");
+    assertNotNull(context);
   }
 
   /**
@@ -291,8 +312,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentOdtSize() throws Exception {
+  void testFileDocumentOdtSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "odt");
+    assertNotNull(context);
   }
 
   /**
@@ -301,8 +323,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocumentRtfSize() throws Exception {
+  void testFileDocumentRtfSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("document", "rtf");
+    assertNotNull(context);
   }
 
   /**
@@ -311,8 +334,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileOtherCsvSize() throws Exception {
+  void testFileOtherCsvSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("other", "csv");
+    assertNotNull(context);
   }
 
   /**
@@ -321,8 +345,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileOtherHtmlSize() throws Exception {
+  void testFileOtherHtmlSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("other", "html");
+    assertNotNull(context);
   }
 
   /**
@@ -331,8 +356,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileOtherTxtSize() throws Exception {
+  void testFileOtherTxtSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("other", "txt");
+    assertNotNull(context);
   }
 
   /**
@@ -341,8 +367,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileOtherZipSize() throws Exception {
+  void testFileOtherZipSize(ApplicationContext context) throws Exception {
     fileTypeSizeTests("other", "zip");
+    assertNotNull(context);
   }
 
   /**

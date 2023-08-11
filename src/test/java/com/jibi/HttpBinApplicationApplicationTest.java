@@ -1,6 +1,7 @@
 package com.jibi;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +17,7 @@ class HttpBinApplicationApplicationTest {
    */
   @Test
   void contextLoads(ApplicationContext context) throws Exception {
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 
   /**
@@ -27,6 +28,6 @@ class HttpBinApplicationApplicationTest {
   @Test
   void testMain(ApplicationContext context) throws Exception {
     HttpBinApplication.main(new String[] {});
-    Assert.assertNotNull(context);
+    assertNotNull(context);
   }
 }
