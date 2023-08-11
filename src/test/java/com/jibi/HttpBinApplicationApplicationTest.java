@@ -1,6 +1,5 @@
 package com.jibi;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,7 +14,6 @@ class HttpBinApplicationApplicationTest {
    */
   @Test
   void contextLoads() throws Exception {
-    Assert.assertEquals("", "");
   }
 
   /**
