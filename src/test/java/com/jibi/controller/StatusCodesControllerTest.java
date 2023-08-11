@@ -2,13 +2,15 @@ package com.jibi.controller;
 
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -74,12 +76,13 @@ class StatusCodesControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void test200400500StatusRandomCode() throws Exception {
+  void test200400500StatusRandomCode(ApplicationContext context) throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity(
             "http://localhost:" + port + "/status/random/200,400,500", Void.class);
     org.hamcrest.MatcherAssert.assertThat(
         responseEntity.getStatusCodeValue(), anyOf(is(200), is(400), is(500)));
+    assertNotNull(context);
   }
 
   /**

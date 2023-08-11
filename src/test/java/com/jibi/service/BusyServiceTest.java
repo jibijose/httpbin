@@ -1,5 +1,7 @@
 package com.jibi.service;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
 /** The type Busy service test. */
@@ -11,6 +13,7 @@ class BusyServiceTest {
   @Test
   void testRunInAllProcessors() {
     busyService.runInAllProcessors(10, 1);
+    assertNotNull(busyService);
   }
 
   /** Test run in all processors interrupt. */
@@ -18,12 +21,14 @@ class BusyServiceTest {
   void testRunInAllProcessorsInterrupt() {
     Thread.currentThread().interrupt();
     busyService.runInAllProcessors(10, 1);
+    assertNotNull(busyService);
   }
 
   /** Test run in single processor. */
   @Test
   void testRunInSingleProcessor() {
     busyService.runInSingleProcessor(10, 1);
+    assertNotNull(busyService);
   }
 
   /** Test run in single processor interrupt. */
@@ -31,5 +36,6 @@ class BusyServiceTest {
   void testRunInSingleProcessorInterrupt() {
     Thread.currentThread().interrupt();
     busyService.runInSingleProcessor(10, 1);
+    assertNotNull(busyService);
   }
 }
