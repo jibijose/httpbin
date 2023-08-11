@@ -26,6 +26,5 @@ class HttpBinApplicationApplicationTest {
   @Test
   void testMain() throws Exception {
     HttpBinApplication.main(new String[] {});
-    Assert.assertEquals("", "");
   }
 }
