@@ -60,10 +60,7 @@ public class BusyService {
       this.seconds = seconds;
     }
 
-    /**
-     * Run processor.
-     *
-     */
+    /** Run processor. */
     @Override
     public void run() {
       long runSlotMillis = percentage * seconds * 1000 / SLOTS / 100;
