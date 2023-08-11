@@ -44,6 +44,7 @@ public class BusyService {
     new BusyProcessor(percentage, seconds).run();
   }
 
+  /** The type Busy Processor. */
   private static class BusyProcessor implements Runnable {
     private int percentage;
     private int seconds;
@@ -59,6 +60,10 @@ public class BusyService {
       this.seconds = seconds;
     }
 
+    /**
+     * Run processor.
+     *
+     */
     @Override
     public void run() {
       long runSlotMillis = percentage * seconds * 1000 / SLOTS / 100;
