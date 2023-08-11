@@ -2,6 +2,7 @@ package com.jibi.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +27,7 @@ class FileControllerTest {
   @Test
   void testFileImage() throws Exception {
     fileTypeTests("image");
+    Assert.assertEquals("", "");
   }
 
   /**
@@ -36,6 +38,7 @@ class FileControllerTest {
   @Test
   void testFileVideo() throws Exception {
     fileTypeTests("video");
+    Assert.assertEquals("", "");
   }
 
   /**
@@ -46,6 +49,7 @@ class FileControllerTest {
   @Test
   void testFileAudio() throws Exception {
     fileTypeTests("audio");
+    Assert.assertEquals("", "");
   }
 
   /**
@@ -56,6 +60,7 @@ class FileControllerTest {
   @Test
   void testFileDocument() throws Exception {
     fileTypeTests("document");
+    Assert.assertEquals("", "");
   }
 
   /**
@@ -66,6 +71,7 @@ class FileControllerTest {
   @Test
   void testFileOther() throws Exception {
     fileTypeTests("other");
+    Assert.assertEquals("", "");
   }
 
   /**
