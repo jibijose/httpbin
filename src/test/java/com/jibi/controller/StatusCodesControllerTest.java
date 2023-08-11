@@ -76,13 +76,13 @@ class StatusCodesControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void test200400500StatusRandomCode(ApplicationContext context) throws Exception {
+  void test200400500StatusRandomCode(ApplicationContext ctx) throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity(
             "http://localhost:" + port + "/status/random/200,400,500", Void.class);
     org.hamcrest.MatcherAssert.assertThat(
         responseEntity.getStatusCodeValue(), anyOf(is(200), is(400), is(500)));
-    assertNotNull(context);
+    assertNotNull(ctx);
   }
 
   /**
