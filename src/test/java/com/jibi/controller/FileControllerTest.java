@@ -2,11 +2,13 @@ package com.jibi.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -24,8 +26,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileImage() throws Exception {
+  void testFileImage(ApplicationContext context) throws Exception {
     fileTypeTests("image");
+    Assert.assertNotNull(context);
   }
 
   /**
@@ -34,8 +37,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileVideo() throws Exception {
+  void testFileVideo(ApplicationContext context) throws Exception {
     fileTypeTests("video");
+    Assert.assertNotNull(context);
   }
 
   /**
@@ -44,8 +48,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileAudio() throws Exception {
+  void testFileAudio(ApplicationContext context) throws Exception {
     fileTypeTests("audio");
+    Assert.assertNotNull(context);
   }
 
   /**
@@ -54,8 +59,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileDocument() throws Exception {
+  void testFileDocument(ApplicationContext context) throws Exception {
     fileTypeTests("document");
+    Assert.assertNotNull(context);
   }
 
   /**
@@ -64,8 +70,9 @@ class FileControllerTest {
    * @throws Exception the exception
    */
   @Test
-  void testFileOther() throws Exception {
+  void testFileOther(ApplicationContext context) throws Exception {
     fileTypeTests("other");
+    Assert.assertNotNull(context);
   }
 
   /**

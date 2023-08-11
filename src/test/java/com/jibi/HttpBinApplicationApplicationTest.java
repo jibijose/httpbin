@@ -25,7 +25,8 @@ class HttpBinApplicationApplicationTest {
    * @throws Exception the exception
    */
   @Test
-  void testMain() throws Exception {
+  void testMain(ApplicationContext context) throws Exception {
     HttpBinApplication.main(new String[] {});
+    Assert.assertNotNull(context);
   }
 }
