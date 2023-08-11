@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.time.Duration;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,6 @@ class SchedulersTest {
     await()
         .atMost(Duration.ofSeconds(5L))
         .untilAsserted(() -> assertThat(output.getOut(), containsString("Invoked System GC")));
+    Assert.assertNotNull(output);
   }
 }
