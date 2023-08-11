@@ -8,6 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 
+/**
+ * The type Memory controller test.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MemoryControllerTest {
 
@@ -15,7 +18,12 @@ public class MemoryControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
-  @Test
+    /**
+     * Test memory hold.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testMemoryHold() throws Exception {
     assertThat(
         this.restTemplate.getForObject(

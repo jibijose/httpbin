@@ -5,9 +5,15 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type String util test.
+ */
 public class StringUtilTest {
 
-  @Test
+    /**
+     * Test get random string.
+     */
+    @Test
   public void testGetRandomString() {
     assertEquals(
         "Should return random string of expected length",
@@ -15,7 +21,10 @@ public class StringUtilTest {
         StringUtil.getRandomString(10).length());
   }
 
-  @Test
+    /**
+     * Test get different random strings.
+     */
+    @Test
   public void testGetDifferentRandomStrings() {
     String randomString1 = StringUtil.getRandomString(10);
     String randomString2 = StringUtil.getRandomString(10);

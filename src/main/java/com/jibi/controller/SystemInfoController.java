@@ -21,12 +21,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type System info controller.
+ */
 @Tag(name = "System information Api", description = "System information Api")
 @RestController(value = "System information Api")
 @RequestMapping("/system/info")
 @Slf4j
 public class SystemInfoController {
-  @Operation(
+    /**
+     * System info system info model.
+     *
+     * @return the system info model
+     */
+    @Operation(
       summary = "System information api",
       description = "System information api",
       tags = {"system"})

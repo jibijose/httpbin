@@ -4,22 +4,38 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Health model.
+ */
 @Getter
 @Setter
 public class HealthModel {
   private String status;
   private Date date;
 
-  public HealthModel() {
+    /**
+     * Instantiates a new Health model.
+     */
+    public HealthModel() {
     status = "up";
     date = new Date();
   }
 
-  public Date getDate() {
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
+    public Date getDate() {
     return new Date(this.date.getTime());
   }
 
-  public void setDate(Date date) {
+    /**
+     * Sets date.
+     *
+     * @param date the date
+     */
+    public void setDate(Date date) {
     this.date = new Date(date.getTime());
   }
 }

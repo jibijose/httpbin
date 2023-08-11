@@ -10,6 +10,9 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+/**
+ * The type File controller test.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FileControllerTest {
 
@@ -17,180 +20,322 @@ public class FileControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
-  /**
-   * *********************************************************************************************************************************************
-   */
-  @Test
+    /**
+     * *********************************************************************************************************************************************
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileImage() throws Exception {
     fileTypeTests("image");
   }
 
-  @Test
+    /**
+     * Test file video.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileVideo() throws Exception {
     fileTypeTests("video");
   }
 
-  @Test
+    /**
+     * Test file audio.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileAudio() throws Exception {
     fileTypeTests("audio");
   }
 
-  @Test
+    /**
+     * Test file document.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocument() throws Exception {
     fileTypeTests("document");
   }
 
-  @Test
+    /**
+     * Test file other.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileOther() throws Exception {
     fileTypeTests("other");
   }
 
-  /**
-   * *********************************************************************************************************************************************
-   */
-  @Test
+    /**
+     * *********************************************************************************************************************************************
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileImageJpgSize() throws Exception {
     fileTypeSizeTests("image", "jpg");
   }
 
-  @Test
+    /**
+     * Test file image gif size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileImageGifSize() throws Exception {
     fileTypeSizeTests("image", "gif");
   }
 
-  @Test
+    /**
+     * Test file image png size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileImagePngSize() throws Exception {
     fileTypeSizeTests("image", "png");
   }
 
-  @Test
+    /**
+     * Test file image tiff size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileImageTiffSize() throws Exception {
     fileTypeSizeTests("image", "tiff");
   }
 
-  @Test
+    /**
+     * Test file image ico size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileImageIcoSize() throws Exception {
     fileTypeSizeTests("image", "ico");
   }
 
-  /**
-   * *********************************************************************************************************************************************
-   */
-  @Test
+    /**
+     * *********************************************************************************************************************************************
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileVideoAviSize() throws Exception {
     fileTypeSizeTests("video", "avi");
   }
 
-  @Test
+    /**
+     * Test file video mov size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileVideoMovSize() throws Exception {
     fileTypeSizeTests("video", "mov");
   }
 
-  @Test
+    /**
+     * Test file video mp 4 size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileVideoMp4Size() throws Exception {
     fileTypeSizeTests("video", "mp4");
   }
 
-  @Test
+    /**
+     * Test file video ogg size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileVideoOggSize() throws Exception {
     fileTypeSizeTests("video", "ogg");
   }
 
-  @Test
+    /**
+     * Test file video wmv size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileVideoWmvSize() throws Exception {
     fileTypeSizeTests("video", "wmv");
   }
 
-  /**
-   * *********************************************************************************************************************************************
-   */
-  @Test
+    /**
+     * *********************************************************************************************************************************************
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileAudioMp3Size() throws Exception {
     fileTypeSizeTests("audio", "mp3");
   }
 
-  @Test
+    /**
+     * Test file audio wav size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileAudioWavSize() throws Exception {
     fileTypeSizeTests("audio", "wav");
   }
 
-  @Test
+    /**
+     * Test file audio ogg size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileAudioOggSize() throws Exception {
     fileTypeSizeTests("audio", "ogg");
   }
 
-  /**
-   * *********************************************************************************************************************************************
-   */
-  @Test
+    /**
+     * *********************************************************************************************************************************************
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentDocSize() throws Exception {
     fileTypeSizeTests("document", "doc");
   }
 
-  @Test
+    /**
+     * Test file document docx size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentDocxSize() throws Exception {
     fileTypeSizeTests("document", "docx");
   }
 
-  @Test
+    /**
+     * Test file document xls size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentXlsSize() throws Exception {
     fileTypeSizeTests("document", "xls");
   }
 
-  @Test
+    /**
+     * Test file document xlsx size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentXlsxSize() throws Exception {
     fileTypeSizeTests("document", "xlsx");
   }
 
-  @Test
+    /**
+     * Test file document ppt size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentPptSize() throws Exception {
     fileTypeSizeTests("document", "ppt");
   }
 
-  @Test
+    /**
+     * Test file document pdf size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentPdfSize() throws Exception {
     fileTypeSizeTests("document", "pdf");
   }
 
-  @Test
+    /**
+     * Test file document odp size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentOdpSize() throws Exception {
     fileTypeSizeTests("document", "odp");
   }
 
-  @Test
+    /**
+     * Test file document ods size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentOdsSize() throws Exception {
     fileTypeSizeTests("document", "ods");
   }
 
-  @Test
+    /**
+     * Test file document odt size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentOdtSize() throws Exception {
     fileTypeSizeTests("document", "odt");
   }
 
-  @Test
+    /**
+     * Test file document rtf size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileDocumentRtfSize() throws Exception {
     fileTypeSizeTests("document", "rtf");
   }
 
-  /**
-   * *********************************************************************************************************************************************
-   */
-  @Test
+    /**
+     * *********************************************************************************************************************************************
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileOtherCsvSize() throws Exception {
     fileTypeSizeTests("other", "csv");
   }
 
-  @Test
+    /**
+     * Test file other html size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileOtherHtmlSize() throws Exception {
     fileTypeSizeTests("other", "html");
   }
 
-  @Test
+    /**
+     * Test file other txt size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileOtherTxtSize() throws Exception {
     fileTypeSizeTests("other", "txt");
   }
 
-  @Test
+    /**
+     * Test file other zip size.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testFileOtherZipSize() throws Exception {
     fileTypeSizeTests("other", "zip");
   }

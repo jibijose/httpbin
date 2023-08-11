@@ -11,6 +11,9 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.util.MultiValueMap;
 
+/**
+ * The type System info controller test.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SystemInfoControllerTest {
 
@@ -18,7 +21,12 @@ public class SystemInfoControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
-  @Test
+    /**
+     * Test system info json.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testSystemInfoJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -42,7 +50,12 @@ public class SystemInfoControllerTest {
     Assert.assertNotNull(response.getBody().getDisks());
   }
 
-  @Test
+    /**
+     * Test system info xml.
+     *
+     * @throws Exception the exception
+     */
+    @Test
   public void testSystemInfoXml() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type System info model.
+ */
 @NoArgsConstructor
 public class SystemInfoModel {
 
@@ -15,43 +18,86 @@ public class SystemInfoModel {
   private MemoryInfoModel memory;
   private Map<String, DiskInfoModel> disks;
 
-  public void setCpu(CpuInfoModel cpu) {
+    /**
+     * Sets cpu.
+     *
+     * @param cpu the cpu
+     */
+    public void setCpu(CpuInfoModel cpu) {
     this.cpu = cpu.clone();
   }
 
-  public void setOs(OsInfoModel os) {
+    /**
+     * Sets os.
+     *
+     * @param os the os
+     */
+    public void setOs(OsInfoModel os) {
     this.os = os.clone();
   }
 
-  public void setMemory(MemoryInfoModel memory) {
+    /**
+     * Sets memory.
+     *
+     * @param memory the memory
+     */
+    public void setMemory(MemoryInfoModel memory) {
     this.memory = memory.clone();
   }
 
-  public void setDisks(Map<String, DiskInfoModel> disks) {
+    /**
+     * Sets disks.
+     *
+     * @param disks the disks
+     */
+    public void setDisks(Map<String, DiskInfoModel> disks) {
     Map<String, DiskInfoModel> disksCopy = new HashMap<>();
     disksCopy.putAll(disks);
     this.disks = disksCopy;
   }
 
-  public CpuInfoModel getCpu() {
+    /**
+     * Gets cpu.
+     *
+     * @return the cpu
+     */
+    public CpuInfoModel getCpu() {
     return cpu.clone();
   }
 
-  public OsInfoModel getOs() {
+    /**
+     * Gets os.
+     *
+     * @return the os
+     */
+    public OsInfoModel getOs() {
     return os.clone();
   }
 
-  public MemoryInfoModel getMemory() {
+    /**
+     * Gets memory.
+     *
+     * @return the memory
+     */
+    public MemoryInfoModel getMemory() {
     return memory.clone();
   }
 
-  public Map<String, DiskInfoModel> getDisks() {
+    /**
+     * Gets disks.
+     *
+     * @return the disks
+     */
+    public Map<String, DiskInfoModel> getDisks() {
     Map<String, DiskInfoModel> disksCopy = new HashMap<>();
     disksCopy.putAll(disks);
     return disksCopy;
   }
 
-  @Setter
+    /**
+     * The type Cpu info model.
+     */
+    @Setter
   @Getter
   @AllArgsConstructor
   @NoArgsConstructor
@@ -67,7 +113,10 @@ public class SystemInfoModel {
     }
   }
 
-  @Setter
+    /**
+     * The type Os info model.
+     */
+    @Setter
   @Getter
   @AllArgsConstructor
   @NoArgsConstructor
@@ -83,7 +132,10 @@ public class SystemInfoModel {
     }
   }
 
-  @Setter
+    /**
+     * The type Memory info model.
+     */
+    @Setter
   @Getter
   @AllArgsConstructor
   @NoArgsConstructor
@@ -111,7 +163,10 @@ public class SystemInfoModel {
     }
   }
 
-  @Setter
+    /**
+     * The type Disk info model.
+     */
+    @Setter
   @Getter
   @AllArgsConstructor
   @NoArgsConstructor

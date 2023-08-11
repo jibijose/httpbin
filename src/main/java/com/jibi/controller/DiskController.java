@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Disk controller.
+ */
 @Tag(name = "Disk Api", description = "Disk Api")
 @RestController(value = "Disk Api")
 @RequestMapping("/disk")
@@ -34,7 +37,14 @@ public class DiskController {
     BYTES1MB = getFileContent("1MB");
   }
 
-  @Operation(
+    /**
+     * Write.
+     *
+     * @param unit  the unit
+     * @param count the count
+     * @throws IOException the io exception
+     */
+    @Operation(
       summary = "Disk write api",
       description = "Disk write api",
       tags = {"disk"})
@@ -85,7 +95,13 @@ public class DiskController {
             });
   }
 
-  @Operation(
+    /**
+     * Read.
+     *
+     * @param unit  the unit
+     * @param count the count
+     */
+    @Operation(
       summary = "Disk read api",
       description = "Disk read api",
       tags = {"disk"})

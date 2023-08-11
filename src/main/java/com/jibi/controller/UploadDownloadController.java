@@ -19,13 +19,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * The type Upload download controller.
+ */
 @Tag(name = "Upload Download Api", description = "Upload Download Api")
 @RestController(value = "Upload Download Api")
 public class UploadDownloadController {
 
   @Autowired private FileController fileController;
 
-  @Operation(
+    /**
+     * Upload upload info model.
+     *
+     * @param file the file
+     * @return the upload info model
+     * @throws IOException the io exception
+     */
+    @Operation(
       summary = "Upload api",
       description = "Upload api",
       tags = {"uploaddownload"})
@@ -60,7 +70,13 @@ public class UploadDownloadController {
     return uploadInfoModel;
   }
 
-  @Operation(
+    /**
+     * Download byte [ ].
+     *
+     * @return the byte [ ]
+     * @throws IOException the io exception
+     */
+    @Operation(
       summary = "Download api",
       description = "Download api",
       tags = {"uploaddownload"})
@@ -81,7 +97,14 @@ public class UploadDownloadController {
     return fileController.otherFileType("txt");
   }
 
-  @Operation(
+    /**
+     * Download size byte [ ].
+     *
+     * @param size the size
+     * @return the byte [ ]
+     * @throws IOException the io exception
+     */
+    @Operation(
       summary = "Download size api",
       description = "Download size api",
       tags = {"uploaddownload"})
