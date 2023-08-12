@@ -13,10 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/** The type Health controller. */
 @Tag(name = "Health Api", description = "Health Api")
 @RestController(value = "Health Api")
 @RequestMapping("/health")
 public class HealthController {
+  /**
+   * Health health model.
+   *
+   * @return the health model
+   */
   @Operation(
       summary = "Health api",
       description = "Health api",

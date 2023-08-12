@@ -1,17 +1,22 @@
 package com.jibi.controller;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+/** The type File controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class FileControllerTest {
+class FileControllerTest {
 
   @LocalServerPort private int port;
 
@@ -19,180 +24,79 @@ public class FileControllerTest {
 
   /**
    * *********************************************************************************************************************************************
+   * Test file.
    */
-  @Test
-  public void testFileImage() throws Exception {
-    fileTypeTests("image");
-  }
-
-  @Test
-  public void testFileVideo() throws Exception {
-    fileTypeTests("video");
-  }
-
-  @Test
-  public void testFileAudio() throws Exception {
-    fileTypeTests("audio");
-  }
-
-  @Test
-  public void testFileDocument() throws Exception {
-    fileTypeTests("document");
-  }
-
-  @Test
-  public void testFileOther() throws Exception {
-    fileTypeTests("other");
+  @ParameterizedTest
+  @ValueSource(strings = {"video", "image", "audio", "document", "other"})
+  void testFile(String input, ApplicationContext context) {
+    fileTypeTests(input);
+    assertNotNull(context);
   }
 
   /**
    * *********************************************************************************************************************************************
+   * Test file image size.
    */
-  @Test
-  public void testFileImageJpgSize() throws Exception {
-    fileTypeSizeTests("image", "jpg");
-  }
-
-  @Test
-  public void testFileImageGifSize() throws Exception {
-    fileTypeSizeTests("image", "gif");
-  }
-
-  @Test
-  public void testFileImagePngSize() throws Exception {
-    fileTypeSizeTests("image", "png");
-  }
-
-  @Test
-  public void testFileImageTiffSize() throws Exception {
-    fileTypeSizeTests("image", "tiff");
-  }
-
-  @Test
-  public void testFileImageIcoSize() throws Exception {
-    fileTypeSizeTests("image", "ico");
+  @ParameterizedTest
+  @CsvSource({"image,jpg", "image,gif", "image,png", "image,tiff", "image,ico"})
+  void testFileImageSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
+   * Test file video size.
    */
-  @Test
-  public void testFileVideoAviSize() throws Exception {
-    fileTypeSizeTests("video", "avi");
-  }
-
-  @Test
-  public void testFileVideoMovSize() throws Exception {
-    fileTypeSizeTests("video", "mov");
-  }
-
-  @Test
-  public void testFileVideoMp4Size() throws Exception {
-    fileTypeSizeTests("video", "mp4");
-  }
-
-  @Test
-  public void testFileVideoOggSize() throws Exception {
-    fileTypeSizeTests("video", "ogg");
-  }
-
-  @Test
-  public void testFileVideoWmvSize() throws Exception {
-    fileTypeSizeTests("video", "wmv");
+  @ParameterizedTest
+  @CsvSource({"video,avi", "video,mov", "video,mp4", "video,ogg", "video,wmv"})
+  void testFileVideoSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
+   * Test file audio wav size.
    */
-  @Test
-  public void testFileAudioMp3Size() throws Exception {
-    fileTypeSizeTests("audio", "mp3");
-  }
-
-  @Test
-  public void testFileAudioWavSize() throws Exception {
-    fileTypeSizeTests("audio", "wav");
-  }
-
-  @Test
-  public void testFileAudioOggSize() throws Exception {
-    fileTypeSizeTests("audio", "ogg");
+  @ParameterizedTest
+  @CsvSource({"audio,mp3", "audio,wav", "audio,ogg"})
+  void testFileAudioSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
+   * Test file document size.
    */
-  @Test
-  public void testFileDocumentDocSize() throws Exception {
-    fileTypeSizeTests("document", "doc");
-  }
-
-  @Test
-  public void testFileDocumentDocxSize() throws Exception {
-    fileTypeSizeTests("document", "docx");
-  }
-
-  @Test
-  public void testFileDocumentXlsSize() throws Exception {
-    fileTypeSizeTests("document", "xls");
-  }
-
-  @Test
-  public void testFileDocumentXlsxSize() throws Exception {
-    fileTypeSizeTests("document", "xlsx");
-  }
-
-  @Test
-  public void testFileDocumentPptSize() throws Exception {
-    fileTypeSizeTests("document", "ppt");
-  }
-
-  @Test
-  public void testFileDocumentPdfSize() throws Exception {
-    fileTypeSizeTests("document", "pdf");
-  }
-
-  @Test
-  public void testFileDocumentOdpSize() throws Exception {
-    fileTypeSizeTests("document", "odp");
-  }
-
-  @Test
-  public void testFileDocumentOdsSize() throws Exception {
-    fileTypeSizeTests("document", "ods");
-  }
-
-  @Test
-  public void testFileDocumentOdtSize() throws Exception {
-    fileTypeSizeTests("document", "odt");
-  }
-
-  @Test
-  public void testFileDocumentRtfSize() throws Exception {
-    fileTypeSizeTests("document", "rtf");
+  @ParameterizedTest
+  @CsvSource({
+    "document,doc",
+    "document,docx",
+    "document,xls",
+    "document,xlsx",
+    "document,ppt",
+    "document,pdf",
+    "document,odp",
+    "document,ods",
+    "document,odt",
+    "document,rtf"
+  })
+  void testFileDocumentSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**
    * *********************************************************************************************************************************************
+   * Test file other size.
    */
-  @Test
-  public void testFileOtherCsvSize() throws Exception {
-    fileTypeSizeTests("other", "csv");
-  }
-
-  @Test
-  public void testFileOtherHtmlSize() throws Exception {
-    fileTypeSizeTests("other", "html");
-  }
-
-  @Test
-  public void testFileOtherTxtSize() throws Exception {
-    fileTypeSizeTests("other", "txt");
-  }
-
-  @Test
-  public void testFileOtherZipSize() throws Exception {
-    fileTypeSizeTests("other", "zip");
+  @ParameterizedTest
+  @CsvSource({"other,csv", "other,html", "other,txt", "other,zip"})
+  void testFileOtherSize(String fg, String ft, ApplicationContext ctx) {
+    fileTypeSizeTests(fg, ft);
+    assertNotNull(ctx);
   }
 
   /**

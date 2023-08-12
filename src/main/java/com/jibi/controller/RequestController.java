@@ -14,10 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/** The type Request controller. */
 @Tag(name = "Request Api", description = "Request Api")
 @RestController(value = "Request Api")
 @RequestMapping("/request")
 public class RequestController {
+  /**
+   * Headers map.
+   *
+   * @param headers the headers
+   * @return the map
+   */
   @Operation(
       summary = "Request api",
       description = "Request headers operation",

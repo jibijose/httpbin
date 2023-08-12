@@ -20,13 +20,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/** The type Status codes controller. */
 @Tag(name = "Status code Api", description = "Status code Api")
 @RestController(value = "Status codes Api")
 @RequestMapping("/status")
 public class StatusCodesController {
 
+  /** The Random. */
   Random random = new Random(new Date().getTime());
 
+  /**
+   * Status code response entity.
+   *
+   * @param code the code
+   * @return the response entity
+   */
   @Operation(
       summary = "Status code api",
       description = "Api to respond with the status code in uri",
@@ -47,6 +55,12 @@ public class StatusCodesController {
     return new ResponseEntity<Void>(httpStatus);
   }
 
+  /**
+   * Status random codes response entity.
+   *
+   * @param strCodes the str codes
+   * @return the response entity
+   */
   @Operation(
       summary = "Status code api",
       description = "Status random code api",

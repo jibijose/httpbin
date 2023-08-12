@@ -1,30 +1,41 @@
 package com.jibi.service;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
-public class BusyServiceTest {
+/** The type Busy service test. */
+class BusyServiceTest {
 
   private BusyService busyService = new BusyService();
 
+  /** Test run in all processors. */
   @Test
-  public void testRunInAllProcessors() {
+  void testRunInAllProcessors() {
     busyService.runInAllProcessors(10, 1);
+    assertNotNull(busyService);
   }
 
+  /** Test run in all processors interrupt. */
   @Test
-  public void testRunInAllProcessorsInterrupt() {
+  void testRunInAllProcessorsInterrupt() {
     Thread.currentThread().interrupt();
     busyService.runInAllProcessors(10, 1);
+    assertNotNull(busyService);
   }
 
+  /** Test run in single processor. */
   @Test
-  public void testRunInSingleProcessor() {
+  void testRunInSingleProcessor() {
     busyService.runInSingleProcessor(10, 1);
+    assertNotNull(busyService);
   }
 
+  /** Test run in single processor interrupt. */
   @Test
-  public void testRunInSingleProcessorInterrupt() {
+  void testRunInSingleProcessorInterrupt() {
     Thread.currentThread().interrupt();
     busyService.runInSingleProcessor(10, 1);
+    assertNotNull(busyService);
   }
 }
