@@ -49,7 +49,7 @@ jobs:
         run: |
           git config --local user.name "${gitapidocsname}"
           git config --local user.email "${gitapidocsemail}"
-          git add apidocs/httpbin/*
+          git add httpbin/apidocs/*
           CURRENTDATE=`date +"%Y-%m-%d %T"`
           git commit -m "auto-build-${CURRENTDATE}"
         env:
