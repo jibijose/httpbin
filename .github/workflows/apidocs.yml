@@ -10,7 +10,7 @@ name: Generate ApiDocs
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "site-deploy" ]
 
 jobs:
   build:
@@ -42,8 +42,8 @@ jobs:
           cd ..
       - name: Copying apidocs
         run: |
-          rm -rf apidocs/httpbin/*
-          cp -rf githubhttpbin/target/site/apidocs/* apidocs/httpbin/
+          rm -rf httpbin/apidocs/*
+          cp -rf githubhttpbin/target/site/apidocs/* httpbin/apidocs/
           rm -rf githubhttpbin
       - name: Commit changes
         run: |
