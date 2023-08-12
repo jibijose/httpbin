@@ -6,15 +6,15 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Generate ApiDocs
+name: Generate Documentation
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "site-deploy" ]
 
 jobs:
-  build:
-
+  apidocs-publish:
+    timeout-minutes: 5
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -42,14 +42,14 @@ jobs:
           cd ..
       - name: Copying apidocs
         run: |
-          rm -rf apidocs/httpbin/*
-          cp -rf githubhttpbin/target/site/apidocs/* apidocs/httpbin/
+          rm -rf httpbin/apidocs/*
+          cp -rf githubhttpbin/target/site/apidocs/* httpbin/apidocs/
           rm -rf githubhttpbin
       - name: Commit changes
         run: |
           git config --local user.name "${gitapidocsname}"
           git config --local user.email "${gitapidocsemail}"
-          git add apidocs/httpbin/*
+          git add httpbin/apidocs/*
           CURRENTDATE=`date +"%Y-%m-%d %T"`
           git commit -m "auto-build-${CURRENTDATE}"
         env:
@@ -59,4 +59,52 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GIT_APIDOCS_PAT }}
+          repository: jibijose/jibijose.github.io
+  site-publish:
+    timeout-minutes: 10
+    runs-on: ${{ matrix.os }}
+    needs: [apidocs-publish]
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        java: [ 11 ]
+      fail-fast: false
+      max-parallel: 2
+    name: Generate Site ${{ matrix.java }}, ${{ matrix.os }}
+    steps:
+      - name: Checkout github.io
+        uses: actions/checkout@v3
+        with:
+          repository: jibijose/jibijose.github.io
+          persist-credentials: false
+      - name: Checkout httpbin
+        uses: actions/checkout@v3
+        with:
+          repository: jibijose/httpbin
+          path: githubhttpbin
+          persist-credentials: false
+      - name: Generating site
+        run: |
+          cd githubhttpbin
+          ./mvnw clean site
+          cd ..
+      - name: Copying site
+        run: |
+          rm -rf httpbin/site/*
+          cp -rf githubhttpbin/target/site/* httpbin/site/
+          rm -rf githubhttpbin
+      - name: Commit changes
+        run: |
+          git config --local user.name "${gitsitename}"
+          git config --local user.email "${gitsiteemail}"
+          git add httpbin/site/*
+          CURRENTDATE=`date +"%Y-%m-%d %T"`
+          git commit -m "auto-build-${CURRENTDATE}"
+        env:
+          gitsitename: ${{ secrets.GIT_SITE_NAME }}
+          gitsiteemail: ${{ secrets.GIT_SITE_EMAIL }}
+      - name: Push to github
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_SITE_PAT }}
           repository: jibijose/jibijose.github.io
