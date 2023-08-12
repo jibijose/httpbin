@@ -10,7 +10,7 @@ name: Generate Site
 
 on:
   push:
-    branches: [ "master", "site-deploy" ]
+    branches: [ "master" ]
 
 jobs:
   build:
