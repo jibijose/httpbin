@@ -51,7 +51,7 @@ jobs:
           git config --local user.email "${gitapidocsemail}"
           git add httpbin/apidocs/*
           CURRENTDATE=`date +"%Y-%m-%d %T"`
-          git commit -m "auto-build-${CURRENTDATE}"
+          git commit -m "auto-build-apidocs-${CURRENTDATE}"
         env:
           gitapidocsname: ${{ secrets.GIT_APIDOCS_NAME }}
           gitapidocsemail: ${{ secrets.GIT_APIDOCS_EMAIL }}
@@ -97,19 +97,11 @@ jobs:
         run: |
           git config --local user.name "${gitsitename}"
           git config --local user.email "${gitsiteemail}"
-          echo "*************************************"
-          git status
-          echo "*************************************"
           git add httpbin/site/*
-          echo "*************************************"
           #git add --all
-          echo "*************************************"
           #git add --force
-          echo "*************************************"
-          git status
-          echo "*************************************"
           CURRENTDATE=`date +"%Y-%m-%d %T"`
-          git commit -m "auto-build-${CURRENTDATE}"
+          git commit -m "auto-build-site-${CURRENTDATE}"
         env:
           gitsitename: ${{ secrets.GIT_SITE_NAME }}
           gitsiteemail: ${{ secrets.GIT_SITE_EMAIL }}
