@@ -1,5 +1,7 @@
 package com.jibi.controller;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.jibi.model.SystemInfoModel;
 import java.util.Arrays;
 import org.junit.Assert;
@@ -11,15 +13,21 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.util.MultiValueMap;
 
+/** The type System info controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SystemInfoControllerTest {
+class SystemInfoControllerTest {
 
   @LocalServerPort private int port;
 
   @Autowired private TestRestTemplate restTemplate;
 
+  /**
+   * Test system info json.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testSystemInfoJson() throws Exception {
+  void testSystemInfoJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(headers);
@@ -36,14 +44,19 @@ public class SystemInfoControllerTest {
         MediaType.APPLICATION_JSON,
         response.getHeaders().getContentType());
 
-    Assert.assertNotNull(response.getBody().getCpu());
-    Assert.assertNotNull(response.getBody().getOs());
-    Assert.assertNotNull(response.getBody().getMemory());
-    Assert.assertNotNull(response.getBody().getDisks());
+    assertNotNull(response.getBody().getCpu());
+    assertNotNull(response.getBody().getOs());
+    assertNotNull(response.getBody().getMemory());
+    assertNotNull(response.getBody().getDisks());
   }
 
+  /**
+   * Test system info xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testSystemInfoXml() throws Exception {
+  void testSystemInfoXml() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
     HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(headers);
@@ -60,9 +73,9 @@ public class SystemInfoControllerTest {
         MediaType.APPLICATION_XML,
         response.getHeaders().getContentType());
 
-    Assert.assertNotNull(response.getBody().getCpu());
-    Assert.assertNotNull(response.getBody().getOs());
-    Assert.assertNotNull(response.getBody().getMemory());
-    Assert.assertNotNull(response.getBody().getDisks());
+    assertNotNull(response.getBody().getCpu());
+    assertNotNull(response.getBody().getOs());
+    assertNotNull(response.getBody().getMemory());
+    assertNotNull(response.getBody().getDisks());
   }
 }

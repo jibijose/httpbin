@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/** The type System info model. */
 @NoArgsConstructor
 public class SystemInfoModel {
 
@@ -15,42 +16,83 @@ public class SystemInfoModel {
   private MemoryInfoModel memory;
   private Map<String, DiskInfoModel> disks;
 
+  /**
+   * Sets cpu.
+   *
+   * @param cpu the cpu
+   */
   public void setCpu(CpuInfoModel cpu) {
     this.cpu = cpu.clone();
   }
 
+  /**
+   * Sets os.
+   *
+   * @param os the os
+   */
   public void setOs(OsInfoModel os) {
     this.os = os.clone();
   }
 
+  /**
+   * Sets memory.
+   *
+   * @param memory the memory
+   */
   public void setMemory(MemoryInfoModel memory) {
     this.memory = memory.clone();
   }
 
+  /**
+   * Sets disks.
+   *
+   * @param disks the disks
+   */
   public void setDisks(Map<String, DiskInfoModel> disks) {
     Map<String, DiskInfoModel> disksCopy = new HashMap<>();
     disksCopy.putAll(disks);
     this.disks = disksCopy;
   }
 
+  /**
+   * Gets cpu.
+   *
+   * @return the cpu
+   */
   public CpuInfoModel getCpu() {
     return cpu.clone();
   }
 
+  /**
+   * Gets os.
+   *
+   * @return the os
+   */
   public OsInfoModel getOs() {
     return os.clone();
   }
 
+  /**
+   * Gets memory.
+   *
+   * @return the memory
+   */
   public MemoryInfoModel getMemory() {
     return memory.clone();
   }
 
+  /**
+   * Gets disks.
+   *
+   * @return the disks
+   */
   public Map<String, DiskInfoModel> getDisks() {
     Map<String, DiskInfoModel> disksCopy = new HashMap<>();
     disksCopy.putAll(disks);
     return disksCopy;
   }
 
+  /** The type Cpu info model. */
   @Setter
   @Getter
   @AllArgsConstructor
@@ -67,6 +109,7 @@ public class SystemInfoModel {
     }
   }
 
+  /** The type Os info model. */
   @Setter
   @Getter
   @AllArgsConstructor
@@ -83,6 +126,7 @@ public class SystemInfoModel {
     }
   }
 
+  /** The type Memory info model. */
   @Setter
   @Getter
   @AllArgsConstructor
@@ -111,6 +155,7 @@ public class SystemInfoModel {
     }
   }
 
+  /** The type Disk info model. */
   @Setter
   @Getter
   @AllArgsConstructor

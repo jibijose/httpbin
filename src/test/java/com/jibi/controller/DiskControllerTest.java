@@ -11,15 +11,21 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+/** The type Disk controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DiskControllerTest {
+class DiskControllerTest {
 
   @LocalServerPort private int port;
 
   @Autowired private TestRestTemplate restTemplate;
 
+  /**
+   * Test write.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testWrite() throws Exception {
+  void testWrite() throws Exception {
     ResponseEntity<String> response = null;
 
     response =
@@ -38,8 +44,13 @@ public class DiskControllerTest {
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
   }
 
+  /**
+   * Test read.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testRead() throws Exception {
+  void testRead() throws Exception {
     ResponseEntity<String> response = null;
 
     response =

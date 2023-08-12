@@ -17,15 +17,21 @@ import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+/** The type Upload download controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UploadDownloadControllerTest {
+class UploadDownloadControllerTest {
 
   @LocalServerPort private int port;
 
   @Autowired private TestRestTemplate restTemplate;
 
+  /**
+   * Test upload json.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testUploadJson() throws Exception {
+  void testUploadJson() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -47,8 +53,13 @@ public class UploadDownloadControllerTest {
     Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
   }
 
+  /**
+   * Test upload xml.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testUploadXml() throws Exception {
+  void testUploadXml() throws Exception {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
     headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -70,8 +81,13 @@ public class UploadDownloadControllerTest {
     Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
   }
 
+  /**
+   * Test download.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testDownload() throws Exception {
+  void testDownload() throws Exception {
     byte[] bytes =
         this.restTemplate.getForObject("http://localhost:" + port + "/download", byte[].class);
     assertThat(
@@ -87,8 +103,13 @@ public class UploadDownloadControllerTest {
             is(1024 * 1024 * 10)));
   }
 
+  /**
+   * Test download size.
+   *
+   * @throws Exception the exception
+   */
   @Test
-  public void testDownloadSize() throws Exception {
+  void testDownloadSize() throws Exception {
     byte[] bytes = null;
     bytes =
         this.restTemplate.getForObject("http://localhost:" + port + "/download/1B", byte[].class);

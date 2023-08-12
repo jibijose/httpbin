@@ -3,6 +3,7 @@ package com.jibi.model;
 import lombok.Getter;
 import lombok.Setter;
 
+/** The type Upload info model. */
 @Getter
 @Setter
 public class UploadInfoModel {
