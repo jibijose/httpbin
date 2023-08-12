@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Generate ApiDocs
+name: Generate Documentation
 
 on:
   push:
