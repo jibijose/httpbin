@@ -7,9 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Util {
 
-  private static long KILOBYTES = 1024;
-  private static long MEGABYTES = 1024 * 1024;
-  private static long GIGABYTES = 1024 * 1024 * 1024;
+  public static final long KILOBYTES = 1024;
+  public static final long MEGABYTES = 1024 * 1024;
+  public static final long GIGABYTES = 1024 * 1024 * 1024;
 
   private Util() {}
 
