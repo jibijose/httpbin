@@ -60,7 +60,6 @@ public class DelayController {
     } else {
       String errorMessage = String.format("Unknown time unit %s", unit);
       log.warn(errorMessage);
-      // throw new RuntimeException(errorMessage);
     }
   }
 
@@ -138,7 +137,6 @@ public class DelayController {
     } else {
       String errorMessage = String.format("Unknown time unit %s", unit);
       log.warn(errorMessage);
-      // throw new RuntimeException(errorMessage);
     }
   }
 }

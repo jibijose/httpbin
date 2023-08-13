@@ -1,5 +1,6 @@
 package com.jibi;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
@@ -26,8 +27,7 @@ class HttpBinApplicationApplicationTest {
    * @throws Exception the exception
    */
   @Test
-  void testMain(ApplicationContext context) throws Exception {
-    HttpBinApplication.main(new String[] {});
-    assertNotNull(context);
+  void testMain() throws Exception {
+    assertDoesNotThrow(() -> HttpBinApplication.main(new String[] {}));
   }
 }
