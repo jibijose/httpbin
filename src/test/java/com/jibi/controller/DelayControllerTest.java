@@ -17,14 +17,16 @@ class DelayControllerTest {
   @LocalServerPort private int port;
 
   @Autowired private TestRestTemplate restTemplate;
-  private String baseUrl = "http://localhost";
+
+  private String hostUrl = "http://localhost";
 
   /** Test delay constant. */
   @ParameterizedTest
   @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
   void testDelayConstant(String unit, int time) {
-    String url = baseUrl + ":" + port + "/delay/" + unit + "/" + time;
-    ResponseEntity<Void> response = this.restTemplate.getForEntity(url, Void.class);
+    String baseUrl = hostUrl + ":" + port + "/delay/";
+    String url = baseUrl + unit + "/" + time;
+    ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 
@@ -32,8 +34,9 @@ class DelayControllerTest {
   @ParameterizedTest
   @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
   void testDelayRandom(String unit, int time) {
-    String url = baseUrl + ":" + port + "/delay/random/" + unit + "/" + time;
-    ResponseEntity<Void> response = this.restTemplate.getForEntity(url, Void.class);
+    String baseUrl = hostUrl + ":" + port + "/delay/";
+    String url = baseUrl + "/random/" + unit + "/" + time;
+    ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 
@@ -41,8 +44,9 @@ class DelayControllerTest {
   @ParameterizedTest
   @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
   void testDelayRandomRange(String unit, int maxTime) {
-    String url = baseUrl + ":" + port + "/delay/random/" + unit + "/range/0/" + maxTime;
-    ResponseEntity<Void> response = this.restTemplate.getForEntity(url, Void.class);
+    String baseUrl = hostUrl + ":" + port + "/delay/";
+    String url = baseUrl + "/random/" + unit + "/range/0/" + maxTime;
+    ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 }
