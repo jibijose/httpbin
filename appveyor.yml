@@ -9,6 +9,10 @@ max_jobs: 1
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
+branches:
+  only:
+    - master
+    - spring3x
 clone_depth: 30
 environment:
   matrix:
