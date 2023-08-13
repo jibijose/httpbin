@@ -17,13 +17,13 @@ class DelayControllerTest {
   @LocalServerPort private int port;
 
   @Autowired private TestRestTemplate restTemplate;
-  private String baseUrl = "http://localhost:" + port;
+  private String baseUrl = "http://localhost";
 
   /** Test delay constant. */
   @ParameterizedTest
   @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
   void testDelayConstant(String unit, int time) {
-    String url = baseUrl + "/delay/" + unit + "/" + time;
+    String url = baseUrl + ":" + port + "/delay/" + unit + "/" + time;
     ResponseEntity<Void> response = this.restTemplate.getForEntity(url, Void.class);
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
@@ -32,7 +32,7 @@ class DelayControllerTest {
   @ParameterizedTest
   @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
   void testDelayRandom(String unit, int time) {
-    String url = baseUrl + "/delay/random/" + unit + "/" + time;
+    String url = baseUrl + ":" + port + "/delay/random/" + unit + "/" + time;
     ResponseEntity<Void> response = this.restTemplate.getForEntity(url, Void.class);
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
@@ -41,7 +41,7 @@ class DelayControllerTest {
   @ParameterizedTest
   @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
   void testDelayRandomRange(String unit, int maxTime) {
-    String url = baseUrl + "/delay/random/" + unit + "/range/0/" + maxTime;
+    String url = baseUrl + ":" + port + "/delay/random/" + unit + "/range/0/" + maxTime;
     ResponseEntity<Void> response = this.restTemplate.getForEntity(url, Void.class);
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
