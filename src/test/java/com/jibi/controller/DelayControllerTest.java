@@ -1,6 +1,7 @@
 package com.jibi.controller;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,6 +28,7 @@ class DelayControllerTest {
         this.restTemplate.getForEntity(
             "http://localhost:" + port + "/delay/" + unit + "/" + time, Void.class);
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
+    assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 
   /** Test delay random. */
@@ -37,6 +39,7 @@ class DelayControllerTest {
         this.restTemplate.getForEntity(
             "http://localhost:" + port + "/delay/random/" + unit + "/" + time, Void.class);
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
+    assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 
   /** Test delay random range. */
@@ -48,5 +51,6 @@ class DelayControllerTest {
             "http://localhost:" + port + "/delay/random/" + unit + "/range/0/" + maxTime,
             Void.class);
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
+    assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 }
