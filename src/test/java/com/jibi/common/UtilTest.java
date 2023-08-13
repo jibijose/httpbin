@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /** The type Util test. */
-public class UtilTest {
+class UtilTest {
 
   /** Test sleep millis. */
   @Test

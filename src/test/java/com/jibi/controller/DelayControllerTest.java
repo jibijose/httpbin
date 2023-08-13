@@ -3,7 +3,8 @@ package com.jibi.controller;
 import static org.hamcrest.core.Is.is;
 
 import org.hamcrest.MatcherAssert;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -19,76 +20,33 @@ class DelayControllerTest {
   @Autowired private TestRestTemplate restTemplate;
 
   /** Test delay constant. */
-  @Test
-  void testDelayConstant() {
-    ResponseEntity<Void> response;
-
-    response =
-        this.restTemplate.getForEntity("http://localhost:" + port + "/delay/millis/10", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity("http://localhost:" + port + "/delay/seconds/1", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity("http://localhost:" + port + "/delay/minutes/0", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity("http://localhost:" + port + "/delay/unknown/1", Void.class);
+  @ParameterizedTest
+  @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
+  void testDelayConstant(String unit, int time) {
+    ResponseEntity<Void> response =
+        this.restTemplate.getForEntity(
+            "http://localhost:" + port + "/delay/" + unit + "/" + time, Void.class);
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
   }
 
   /** Test delay random. */
-  @Test
-  void testDelayRandom() {
-    ResponseEntity<Void> response;
-
-    response =
+  @ParameterizedTest
+  @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
+  void testDelayRandom(String unit, int time) {
+    ResponseEntity<Void> response =
         this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/millis/10", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/seconds/1", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/minutes/0", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/unknown/1", Void.class);
+            "http://localhost:" + port + "/delay/random/" + unit + "/" + time, Void.class);
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
   }
 
   /** Test delay random range. */
-  @Test
-  void testDelayRandomRange() {
-    ResponseEntity<Void> response;
-
-    response =
+  @ParameterizedTest
+  @CsvSource({"millis,10", "seconds,1", "minutes,0", "unknown,1"})
+  void testDelayRandomRange(String unit, int maxTime) {
+    ResponseEntity<Void> response =
         this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/millis/range/0/10", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/seconds/range/0/1", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/minutes/range/0/0", Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-    response =
-        this.restTemplate.getForEntity(
-            "http://localhost:" + port + "/delay/random/unknown/range/0/1", Void.class);
+            "http://localhost:" + port + "/delay/random/" + unit + "/range/0/" + maxTime,
+            Void.class);
     MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
   }
 }
