@@ -1,5 +1,6 @@
 package com.jibi.common;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,7 +13,7 @@ class UtilTest {
   /** Test sleep millis. */
   @Test
   void testSleepMillis() {
-    Util.sleepMillis(10);
+    assertDoesNotThrow(() -> Util.sleepMillis(10));
   }
 
   /** Test sleep millis silent. */
@@ -20,13 +21,13 @@ class UtilTest {
   void testSleepMillisSilent() {
     Thread myRunThread = new Thread(() -> Util.sleepMillisSilent(10));
     myRunThread.start();
-    myRunThread.interrupt();
+    assertDoesNotThrow(myRunThread::interrupt);
   }
 
   /** Test sleep seconds. */
   @Test
   void testSleepSeconds() {
-    Util.sleepSeconds(1);
+    assertDoesNotThrow(() -> Util.sleepSeconds(1));
   }
 
   /** Test sleep seconds silent. */
@@ -34,13 +35,13 @@ class UtilTest {
   void testSleepSecondsSilent() {
     Thread myRunThread = new Thread(() -> Util.sleepSecondsSilent(1));
     myRunThread.start();
-    myRunThread.interrupt();
+    assertDoesNotThrow(myRunThread::interrupt);
   }
 
   /** Test sleep minutes. */
   @Test
   void testSleepMinutes() {
-    Util.sleepMinutes(0);
+    assertDoesNotThrow(() -> Util.sleepMinutes(0));
   }
 
   /** Test sleep minutes silent. */
@@ -48,7 +49,7 @@ class UtilTest {
   void testSleepMinutesSilent() {
     Thread myRunThread = new Thread(() -> Util.sleepMinutesSilent(1));
     myRunThread.start();
-    myRunThread.interrupt();
+    assertDoesNotThrow(myRunThread::interrupt);
   }
 
   /** Test check null or blank. */
