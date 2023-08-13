@@ -1,9 +1,7 @@
 package com.jibi.controller;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,6 @@ class DelayControllerTest {
     ResponseEntity<Void> response =
         this.restTemplate.getForEntity(
             "http://localhost:" + port + "/delay/" + unit + "/" + time, Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 
@@ -38,7 +35,6 @@ class DelayControllerTest {
     ResponseEntity<Void> response =
         this.restTemplate.getForEntity(
             "http://localhost:" + port + "/delay/random/" + unit + "/" + time, Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 
@@ -50,7 +46,6 @@ class DelayControllerTest {
         this.restTemplate.getForEntity(
             "http://localhost:" + port + "/delay/random/" + unit + "/range/0/" + maxTime,
             Void.class);
-    MatcherAssert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
     assertEquals(response.getStatusCode(), HttpStatus.OK);
   }
 }
