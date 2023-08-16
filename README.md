@@ -75,9 +75,7 @@ https://central.sonatype.org/publish/publish-maven/#releasing-to-central
 ./scripts/ckeanup.sh  
 
 *************
-### TODOs  
-upload to maven central  
-junit run parallel  
+### TODOs
 add external curl checkpoints  
 https://assertible.com/blog/testing-an-api-using-swagger    
 APIS. Cookies, Req/Resp Inspection.  
@@ -85,9 +83,7 @@ hold/release endpoints
 ram/cpu/disk speed api
 consumer disk speed api.  
 Open Api Spec 3.0   
-Java api web page   
-Date Apis. add delete days/weeks/months/years    
-https://github.com/gregswindle/maven-code-quality-pom#437-mvn-pmdcheck   
+Java api web page
 
 
 ***************   
