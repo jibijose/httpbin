@@ -34,6 +34,9 @@
 [![codecov](https://codecov.io/gh/jibijose/httpbin/branch/master/graph/badge.svg?token=RRMRR3NPX8)](https://codecov.io/gh/jibijose/httpbin)   
 
 ###Azure Pipeline   
+[![Build Status](https://dev.azure.com/jibijose/github-code/_apis/build/status%2Fmaven-gradle-builds?branchName=master)](https://dev.azure.com/jibijose/github-code/_build/latest?definitionId=1&branchName=master)   
+[![Build Status](https://dev.azure.com/jibijose/github-code/_apis/build/status%2Fdocker-hub-latest-builds?branchName=master)](https://dev.azure.com/jibijose/github-code/_build/latest?definitionId=5&branchName=master)   
+[![Build Status](https://dev.azure.com/jibijose/github-code/_apis/build/status%2Fdocker-hub-latest-builds?branchName=master)](https://dev.azure.com/jibijose/github-code/_build/latest?definitionId=5&branchName=master)   
 [![Board Status](https://dev.azure.com/jibijose/a3f2ecf6-e0d2-46d6-9747-b55e2c91e994/26b23ffb-8e3a-4c7c-9b06-075ff7767df4/_apis/work/boardbadge/9e5a6988-351e-4a6d-8639-b93679f3a09b)](https://dev.azure.com/jibijose/a3f2ecf6-e0d2-46d6-9747-b55e2c91e994/_boards/board/t/26b23ffb-8e3a-4c7c-9b06-075ff7767df4/Microsoft.RequirementCategory/)
 [![Board Status](https://dev.azure.com/jibijose/a3f2ecf6-e0d2-46d6-9747-b55e2c91e994/26b23ffb-8e3a-4c7c-9b06-075ff7767df4/_apis/work/boardbadge/9e5a6988-351e-4a6d-8639-b93679f3a09b?columnOptions=1)](https://dev.azure.com/jibijose/a3f2ecf6-e0d2-46d6-9747-b55e2c91e994/_boards/board/t/26b23ffb-8e3a-4c7c-9b06-075ff7767df4/Microsoft.RequirementCategory/)   
 
