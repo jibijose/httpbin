@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FileController {
   /** The Filegrouptypes. */
   static final Map<String, List<String>> FILEGROUPTYPES = new HashMap<>();
+
   /** The Filetypesizes. */
   static final Map<String, List<String>> FILETYPESIZES = new HashMap<>();
 
