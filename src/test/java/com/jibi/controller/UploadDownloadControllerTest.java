@@ -3,10 +3,11 @@ package com.jibi.controller;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.jibi.model.UploadInfoModel;
 import java.util.Arrays;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,13 +45,10 @@ class UploadDownloadControllerTest {
     ResponseEntity<UploadInfoModel> response =
         this.restTemplate.postForEntity(
             "http://localhost:" + port + "/upload", requestEntity, UploadInfoModel.class);
-    Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
-    Assert.assertEquals(
-        "Content type should be json",
-        MediaType.APPLICATION_JSON,
-        response.getHeaders().getContentType());
-    Assert.assertNotNull(response.getBody());
-    Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
+    assertNotNull(response.getBody());
+    assertEquals("success", response.getBody().getStatus());
   }
 
   /**
@@ -72,13 +70,10 @@ class UploadDownloadControllerTest {
     ResponseEntity<UploadInfoModel> response =
         this.restTemplate.postForEntity(
             "http://localhost:" + port + "/upload", requestEntity, UploadInfoModel.class);
-    Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
-    Assert.assertEquals(
-        "Content type should be xml",
-        MediaType.APPLICATION_XML,
-        response.getHeaders().getContentType());
-    Assert.assertNotNull(response.getBody());
-    Assert.assertEquals("Status should be success", "success", response.getBody().getStatus());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(MediaType.APPLICATION_XML, response.getHeaders().getContentType());
+    assertNotNull(response.getBody());
+    assertEquals("success", response.getBody().getStatus());
   }
 
   /**

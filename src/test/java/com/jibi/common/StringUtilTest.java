@@ -1,7 +1,7 @@
 package com.jibi.common;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +11,7 @@ class StringUtilTest {
   /** Test get random string. */
   @Test
   void testGetRandomString() {
-    assertEquals(
-        "Should return random string of expected length",
-        10,
-        StringUtil.getRandomString(10).length());
+    assertEquals(10, StringUtil.getRandomString(10).length());
   }
 
   /** Test get different random strings. */

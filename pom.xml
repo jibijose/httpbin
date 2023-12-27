@@ -28,24 +28,24 @@
         <swagger.version>3.0.0</swagger.version>
         <hamcrest.version>2.2</hamcrest.version>
         <powermock.version>2.0.9</powermock.version>
-        <junit-jupiter.version>5.10.0</junit-jupiter.version>
+        <junit-jupiter.version>5.10.1</junit-jupiter.version>
         <lombok.version>1.18.30</lombok.version>
-        <jacoco.version>0.8.10</jacoco.version>
+        <jacoco.version>0.8.11</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
         </jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
         </jacoco.ut.execution.data.file>
-        <maven.pmd.plugin.version>3.21.0</maven.pmd.plugin.version>
-        <maven.checkstyle.plugin.version>3.3.0</maven.checkstyle.plugin.version>
+        <maven.pmd.plugin.version>3.21.2</maven.pmd.plugin.version>
+        <maven.checkstyle.plugin.version>3.3.1</maven.checkstyle.plugin.version>
         <fmt.maven.plugin.version>2.21.1</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>2.0.1</duplicate.finder.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
         <swagger.codegen.maven.plugin>3.0.35</swagger.codegen.maven.plugin>
-        <surefire.plugin.version>3.1.2</surefire.plugin.version>
+        <surefire.plugin.version>3.2.3</surefire.plugin.version>
         <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
-        <commons.version>2.14.0</commons.version>
+        <commons.version>2.15.1</commons.version>
         <mockito.version>4.3.1</mockito.version>
-        <jackson-bom.version>2.15.2</jackson-bom.version>
+        <jackson-bom.version>2.16.1</jackson-bom.version>
     </properties>
 
     <organization>
