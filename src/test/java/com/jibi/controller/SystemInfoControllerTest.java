@@ -1,10 +1,10 @@
 package com.jibi.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.jibi.model.SystemInfoModel;
 import java.util.Arrays;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,11 +38,8 @@ class SystemInfoControllerTest {
             HttpMethod.GET,
             requestEntity,
             SystemInfoModel.class);
-    Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
-    Assert.assertEquals(
-        "Content type should be json",
-        MediaType.APPLICATION_JSON,
-        response.getHeaders().getContentType());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
 
     assertNotNull(response.getBody().getCpu());
     assertNotNull(response.getBody().getOs());
@@ -67,11 +64,8 @@ class SystemInfoControllerTest {
             HttpMethod.GET,
             requestEntity,
             SystemInfoModel.class);
-    Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
-    Assert.assertEquals(
-        "Content type should be xml",
-        MediaType.APPLICATION_XML,
-        response.getHeaders().getContentType());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(MediaType.APPLICATION_XML, response.getHeaders().getContentType());
 
     assertNotNull(response.getBody().getCpu());
     assertNotNull(response.getBody().getOs());

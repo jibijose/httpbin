@@ -1,8 +1,9 @@
 package com.jibi.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.jibi.model.HealthModel;
 import java.util.Arrays;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,12 +37,9 @@ class HealthControllerTest {
             HttpMethod.GET,
             requestEntity,
             HealthModel.class);
-    Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
-    Assert.assertEquals(
-        "Content type should be json",
-        MediaType.APPLICATION_JSON,
-        response.getHeaders().getContentType());
-    Assert.assertEquals("Status should be up", "up", response.getBody().getStatus());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
+    assertEquals("up", response.getBody().getStatus());
   }
 
   /**
@@ -61,11 +59,8 @@ class HealthControllerTest {
             HttpMethod.GET,
             requestEntity,
             HealthModel.class);
-    Assert.assertEquals("http code should be ok", HttpStatus.OK, response.getStatusCode());
-    Assert.assertEquals(
-        "Content type should be xml",
-        MediaType.APPLICATION_XML,
-        response.getHeaders().getContentType());
-    Assert.assertEquals("Status should be up", "up", response.getBody().getStatus());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(MediaType.APPLICATION_XML, response.getHeaders().getContentType());
+    assertEquals("up", response.getBody().getStatus());
   }
 }
