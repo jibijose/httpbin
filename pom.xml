@@ -39,6 +39,7 @@
         <maven.checkstyle.plugin.version>3.3.1</maven.checkstyle.plugin.version>
         <fmt.maven.plugin.version>2.21.1</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>2.0.1</duplicate.finder.plugin.version>
+        <maven.compiler.plugin.version>3.12.1</maven.compiler.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
         <swagger.codegen.maven.plugin>3.0.35</swagger.codegen.maven.plugin>
         <surefire.plugin.version>3.2.3</surefire.plugin.version>
@@ -235,6 +236,15 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <debug>true</debug>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>com.spotify.fmt</groupId>
                     <artifactId>fmt-maven-plugin</artifactId>
