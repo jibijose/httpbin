@@ -1,5 +1,5 @@
 plugins {
-     id 'org.springframework.boot' version '2.7.13'
+     id 'org.springframework.boot' version '3.1.4'
     id 'io.spring.dependency-management' version '1.1.1'
     id 'java-library'
 }
@@ -7,18 +7,25 @@ plugins {
 group = 'com.jibi'
 version = '2.0.0-SNAPSHOT'
 description = 'Java httpbin'
-sourceCompatibility = '11'
-targetCompatibility = '11'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 repositories {
     mavenCentral()
 }
 
+ext['jakarta-servlet.version'] = '5.0.0'
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jetty'
+    implementation("org.springframework.boot:spring-boot-starter-jetty")
+    modules {
+        module("org.springframework.boot:spring-boot-starter-tomcat") {
+            replacedBy("org.springframework.boot:spring-boot-starter-jetty", "Use Jetty instead of Tomcat")
+        }
+    }
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.30'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version:'1.18.30'

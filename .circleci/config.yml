@@ -35,30 +35,29 @@ shared:
       - run: ./gradlew -i test assemble
 
 jobs:
-  jdk11-maven:
-    docker:
-      - image: openjdk:11-jdk-slim
-    <<: *shared-maven
   jdk17-maven:
     docker:
       - image: openjdk:17-jdk-slim
     <<: *shared-maven
-
-  jdk11-gradle:
+  jdk19-maven:
     docker:
-      - image: openjdk:11-jdk-slim
-    <<: *shared-gradle
+      - image: openjdk:19-jdk-slim
+    <<: *shared-maven
   jdk17-gradle:
     docker:
       - image: openjdk:17-jdk-slim
+    <<: *shared-gradle
+  jdk19-gradle:
+    docker:
+      - image: openjdk:19-jdk-slim
     <<: *shared-gradle
 
 workflows:
   maven: 
     jobs:
-      - jdk11-maven
       - jdk17-maven
+      - jdk19-maven
   gradle: 
     jobs:
-      - jdk11-gradle
       - jdk17-gradle
+      - jdk19-gradle
