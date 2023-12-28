@@ -46,6 +46,7 @@
         <commons.version>2.15.1</commons.version>
         <mockito.version>4.3.1</mockito.version>
         <jackson-bom.version>2.16.1</jackson-bom.version>
+        <logback.version>1.2.13</logback.version>
     </properties>
 
     <organization>
@@ -135,6 +136,11 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
