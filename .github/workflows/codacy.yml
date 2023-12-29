@@ -10,7 +10,7 @@ name: Codacy coverage
 
 on:
   push:
-    branches: [ "master", "spring3x" ]
+    branches: [ "master" ]
 
 jobs:
   build:

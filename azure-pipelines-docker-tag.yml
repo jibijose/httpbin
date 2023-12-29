@@ -10,15 +10,13 @@ pr: none
 
 strategy:
   matrix:
-    'jdk11-latest':
-      javaversion: 'jdk11'
-    'jre11-latest':
-      javaversion: 'jre11'
+    'jre17-latest':
+      javaversion: 'jre17'
     'jdk17-latest':
       javaversion: 'jdk17'
 
 variables:
-  mvnversion: '3.9.4'
+  mvnversion: '3.9.6'
 
 pool:
   vmImage: ubuntu-latest

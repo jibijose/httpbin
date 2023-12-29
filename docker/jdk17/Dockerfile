@@ -1,6 +1,6 @@
 FROM openjdk:17.0.2-jdk-slim AS builder
 
-ARG MVN_VERSION=3.9.4
+ARG MVN_VERSION=3.9.6
 
 RUN apt-get update -qq && \
     apt-get install wget -y -qq > /dev/null && \
