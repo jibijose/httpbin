@@ -68,7 +68,7 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            wget -q https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.deb
+            wget -q https://download.oracle.com/java/20/archive/jdk-20_linux-x64_bin.deb
             sudo apt-get -qqy install ./jdk-20_linux-x64_bin.deb
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-20/bin/java 2020
             sudo update-alternatives --auto java
@@ -136,7 +136,7 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            wget -q https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.deb
+            wget -q https://download.oracle.com/java/20/archive/jdk-20_linux-x64_bin.deb
             sudo apt-get -qqy install ./jdk-20_linux-x64_bin.deb
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-20/bin/java 2020
             sudo update-alternatives --auto java
