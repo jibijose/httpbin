@@ -18,7 +18,7 @@ jdk:
   #- openjdk8
   #- openjdk9
   #- openjdk10
-  - openjdk11
+  - openjdk17
 env:
   - MAVENBUILD=true GRADLEBUILD=false
   - MAVENBUILD=false GRADLEBUILD=true
