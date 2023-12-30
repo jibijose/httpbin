@@ -50,24 +50,6 @@ jobs:
           targetType: 'inline'
           script: |
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
-  - job: JDK23_Maven_Run
-    displayName: 'JDK23-Maven-Run'
-    timeoutInMinutes: 10
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: JavaToolInstaller@0
-        displayName: Install jdk23
-        inputs:
-          versionSpec: '23'
-          jdkArchitectureOption: 'x64'
-          jdkSourceOption: 'PreInstalled'
-      - task: Bash@3
-        displayName: Run jdk23 maven
-        inputs:
-          targetType: 'inline'
-          script: |
-            ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
   - job: JDK17_Gradle_Run
     displayName: 'JDK17-Gradle-Run'
     timeoutInMinutes: 10
@@ -100,24 +82,6 @@ jobs:
           jdkSourceOption: 'PreInstalled'
       - task: Bash@3
         displayName: Run jdk21 gradle
-        inputs:
-          targetType: 'inline'
-          script: |
-            ./gradlew clean build
-  - job: JDK23_Gradle_Run
-    displayName: 'JDK23-Gradle-Run'
-    timeoutInMinutes: 10
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - task: JavaToolInstaller@0
-        displayName: Install jdk23
-        inputs:
-          versionSpec: '23'
-          jdkArchitectureOption: 'x64'
-          jdkSourceOption: 'PreInstalled'
-      - task: Bash@3
-        displayName: Run jdk23 gradle
         inputs:
           targetType: 'inline'
           script: |
