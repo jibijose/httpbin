@@ -1,9 +1,8 @@
-FROM openjdk:11.0.16-jdk-slim AS builder
+FROM openjdk:21-oracle AS builder
 
 ARG MVN_VERSION=3.9.6
 
-RUN apt-get update -qq && \
-    apt-get install wget -y -qq > /dev/null && \
+RUN microdnf install wget && \
     wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
     tar -xzf /opt/apache-maven-${MVN_VERSION}-bin.tar.gz -C /opt && \
     mv /opt/apache-maven-${MVN_VERSION} /opt/maven
@@ -18,7 +17,7 @@ RUN rm -rf /tmp/app/target/httpbin-*.*.*-sources.jar && \
     rm -rf /tmp/app/target/httpbin-*.*.*-javadoc.jar && \
     cp /tmp/app/target/httpbin-*.*.*.jar /tmp/app.jar
 
-FROM openjdk:11.0.16-jdk-slim AS packager
+FROM openjdk:21-oracle AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 
@@ -28,8 +27,7 @@ ENV JVM_OPTS "-XX:+UnlockExperimentalVMOptions -XX:MaxRAMFraction=1"
 ENV LOG_OPTS ""
 
 RUN groupadd -g 1000 appgroup && \
-    useradd -r -s /bin/bash -u 1000 -g appgroup -m appuser -p "$(openssl passwd -1 appuser)" && \
-    usermod -aG sudo appuser
+    useradd -r -s /bin/bash -u 1000 -g appgroup -m appuser
 
 USER appuser
 ENTRYPOINT java ${JVM_OPTS} ${LOG_OPTS} -jar /service/app.jar

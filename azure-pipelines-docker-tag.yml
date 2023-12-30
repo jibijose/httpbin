@@ -10,8 +10,6 @@ pr: none
 
 strategy:
   matrix:
-    'jre17-latest':
-      javaversion: 'jre17'
     'jdk17-latest':
       javaversion: 'jdk17'
 

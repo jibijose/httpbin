@@ -10,6 +10,12 @@ strategy:
     'jdk17-latest':
       javaversion: 'jdk17'
       buildversion: 'latest'
+    'jdk21-latest':
+      javaversion: 'jdk21'
+      buildversion: 'latest'
+    'jdk23-latest':
+      javaversion: 'jdk23'
+      buildversion: 'latest'
 
 variables:
   mvnversion: '3.9.6'
