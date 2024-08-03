@@ -140,7 +140,7 @@ public class DiskController {
     IntStream.range(0, count)
         .forEach(
             index -> {
-              byte[] bytes = getFileContent("1MB");
+              getFileContent("1MB");
             });
   }
 
@@ -158,7 +158,7 @@ public class DiskController {
 
   private void writeAndDeleteTempFile(byte[] bytes) throws IOException {
     File file = null;
-    try (InputStream inputStream = getClass().getResourceAsStream("/file/other/txt/1MB.txt")) {
+    try {
       file = new File("temp" + Util.randomNumber(0, Integer.MAX_VALUE) + ".txt");
       FileUtils.writeByteArrayToFile(file, bytes);
     } finally {
