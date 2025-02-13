@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.2</version>
+        <version>3.4.2</version>
         <relativePath/>
     </parent>
 
@@ -28,25 +28,25 @@
         <swagger.version>3.0.0</swagger.version>
         <hamcrest.version>3.0</hamcrest.version>
         <powermock.version>2.0.9</powermock.version>
-        <junit-jupiter.version>5.11.0-RC1</junit-jupiter.version>
-        <lombok.version>1.18.34</lombok.version>
+        <junit-jupiter.version>5.12.0-RC2</junit-jupiter.version>
+        <lombok.version>1.18.36</lombok.version>
         <jacoco.version>0.8.12</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
         </jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec
         </jacoco.ut.execution.data.file>
-        <maven.pmd.plugin.version>3.24.0</maven.pmd.plugin.version>
-        <maven.checkstyle.plugin.version>3.4.0</maven.checkstyle.plugin.version>
-        <fmt.maven.plugin.version>2.23</fmt.maven.plugin.version>
+        <maven.pmd.plugin.version>3.26.0</maven.pmd.plugin.version>
+        <maven.checkstyle.plugin.version>3.6.0</maven.checkstyle.plugin.version>
+        <fmt.maven.plugin.version>2.25</fmt.maven.plugin.version>
         <duplicate.finder.plugin.version>2.0.1</duplicate.finder.plugin.version>
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
         <swagger.codegen.maven.plugin>3.0.35</swagger.codegen.maven.plugin>
-        <surefire.plugin.version>3.3.1</surefire.plugin.version>
+        <surefire.plugin.version>3.5.2</surefire.plugin.version>
         <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
-        <commons.version>2.16.1</commons.version>
+        <commons.version>2.18.0</commons.version>
         <mockito.version>4.3.1</mockito.version>
-        <jackson-bom.version>2.17.2</jackson-bom.version>
+        <jackson-bom.version>2.18.2</jackson-bom.version>
     </properties>
 
     <organization>
