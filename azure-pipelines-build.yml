@@ -43,5 +43,5 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            ./mvnw clean
+            ./mvnw clean package
 
