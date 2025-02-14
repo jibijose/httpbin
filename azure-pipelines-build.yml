@@ -14,7 +14,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  MAVEN_CACHE_FOLDER: $HOME/.m2/repository
+  MAVEN_CACHE_FOLDER: $(System.WorkFolder)/../.m2/repository
   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
 
 jobs:
@@ -44,6 +44,4 @@ jobs:
           targetType: 'inline'
           script: |
             ./mvnw clean
-            ls -al $(System.WorkFolder)
-            ls -al $(Pipeline.Workspace)
 
