@@ -20,7 +20,7 @@ variables:
 jobs:
   - job: JDK17_Maven_Run
     displayName: 'JDK17-Maven-Run'
-    timeoutInMinutes: 10
+    timeoutInMinutes: 100
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -46,7 +46,7 @@ jobs:
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
   - job: JDK21_Maven_Run
     displayName: 'JDK21-Maven-Run'
-    timeoutInMinutes: 10
+    timeoutInMinutes: 100
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -72,7 +72,7 @@ jobs:
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
   - job: JDK17_Gradle_Run
     displayName: 'JDK17-Gradle-Run'
-    timeoutInMinutes: 10
+    timeoutInMinutes: 100
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -90,7 +90,7 @@ jobs:
             ./gradlew clean build
   - job: JDK21_Gradle_Run
     displayName: 'JDK21-Gradle-Run'
-    timeoutInMinutes: 10
+    timeoutInMinutes: 100
     pool:
       vmImage: 'ubuntu-latest'
     steps:
