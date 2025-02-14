@@ -44,6 +44,7 @@ jobs:
           targetType: 'inline'
           script: |
             ./mvnw -v
+            ls -al /home/vsts
             ls -al /home/vsts/work
             ls -al /home/vsts/work/1
             ls -al /home/vsts/work/1/.m2
