@@ -43,7 +43,7 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            ./mvnw clean
+            ./mvnw -v
             ls -al /home/vsts/work
             ls -al /home/vsts/work/1
             ls -al /home/vsts/work/1/.m2
