@@ -44,4 +44,6 @@ jobs:
           targetType: 'inline'
           script: |
             ./mvnw clean
+            ls -al $(System.WorkFolder)
+            ls -al $(Pipeline.Workspace)
 
