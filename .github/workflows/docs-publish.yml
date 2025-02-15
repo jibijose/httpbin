@@ -49,7 +49,7 @@ jobs:
       - name: Copying apidocs
         run: |
           rm -rf httpbin/apidocs/*
-          cp -rf githubhttpbin/target/site/apidocs/* httpbin/apidocs/
+          cp -rf githubhttpbin/target/reports/apidocs/* httpbin/apidocs/
           rm -rf githubhttpbin
       - name: Commit changes
         run: |
