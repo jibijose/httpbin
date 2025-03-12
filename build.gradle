@@ -1,7 +1,8 @@
 plugins {
-     id 'org.springframework.boot' version '3.4.2'
+     id 'org.springframework.boot' version '3.4.3'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java-library'
+    id 'com.github.ben-manes.versions' version '0.52.0'
 }
 
 group = 'com.jibi'
@@ -32,18 +33,18 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version:'2.18.0'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version:'3.0.0'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version:'3.0.0'
-    implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2', version:'2.2.28'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2', version:'2.2.29'
     implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version:'2.1.1'
     implementation group: 'jakarta.servlet', name: 'jakarta.servlet-api', version:'6.1.0'
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version:'2.18.2'
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version:'2.18.3'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version:'5.12.0-RC2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version:'5.12.0'
     testImplementation group: 'org.powermock', name: 'powermock-core', version:'2.0.9'
     testImplementation group: 'org.powermock', name: 'powermock-api-mockito2', version:'2.0.9'
     testImplementation group: 'org.powermock', name: 'powermock-module-junit4', version:'2.0.9'
     testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version:'3.0'
-    testImplementation group: 'org.awaitility', name: 'awaitility', version:'4.2.2'
+    testImplementation group: 'org.awaitility', name: 'awaitility', version:'4.3.0'
 }
 
 test {
