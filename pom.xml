@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.3</version>
+        <version>3.4.4</version>
         <relativePath />
     </parent>
 
@@ -28,7 +28,7 @@
         <hamcrest.version>3.0</hamcrest.version>
         <powermock.version>2.0.9</powermock.version>
         <junit-jupiter.version>5.12.0</junit-jupiter.version>
-        <lombok.version>1.18.36</lombok.version>
+        <lombok.version>1.18.38</lombok.version>
         <jacoco.version>0.8.12</jacoco.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec
         </jacoco.it.execution.data.file>
@@ -41,7 +41,7 @@
         <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <kongchen.swagger.plugin.version>3.1.8</kongchen.swagger.plugin.version>
         <swagger.codegen.maven.plugin>3.0.35</swagger.codegen.maven.plugin>
-        <surefire.plugin.version>3.5.2</surefire.plugin.version>
+        <surefire.plugin.version>3.5.3</surefire.plugin.version>
         <coveralls.plugin.version>4.3.0</coveralls.plugin.version>
         <commons.version>2.18.0</commons.version>
         <mockito.version>4.3.1</mockito.version>

@@ -15,3 +15,6 @@
 #################################################################################
 ./gradlew clean build
 #./gradlew clean fmt:check pmdMain checkstyle:check build findBugsMain site
+
+
+./gradlew clean spotlessCheck check build

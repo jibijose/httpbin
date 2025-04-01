@@ -1,5 +1,5 @@
 plugins {
-     id 'org.springframework.boot' version '3.4.3'
+     id 'org.springframework.boot' version '3.4.4'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java-library'
     id 'com.github.ben-manes.versions' version '0.52.0'
@@ -28,7 +28,7 @@ dependencies {
         }
     }
 
-    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.36'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.38'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version:'1.18.36'
     implementation group: 'commons-io', name: 'commons-io', version:'2.18.0'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version:'3.0.0'
