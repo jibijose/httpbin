@@ -19,3 +19,8 @@ docker run -p 8080:8080 jibijose/httpbin:latest
 
 curl -D http://localhost:8080/health
 curl -D http://localhost:8080/cpu/all/50/10
+---------------------------------------------------
+docker build --build-arg MVN_VERSION=3.9.9 -t jibijose/httpbin:jdk24-latest -f docker/jdk24/Dockerfile .
+docker run -p 8080:8080 jibijose/httpbin:jdk24-latest
+
+docker run -it jibijose/httpbin:jdk24-latest /bin/bash

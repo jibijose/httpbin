@@ -23,7 +23,7 @@ EXPOSE 8080
 
 COPY --from=builder /tmp/app.jar /service/app.jar
 
-ENV JVM_OPTS "-XX:+UnlockExperimentalVMOptions -XX:MaxRAMFraction=1"
+ENV JVM_OPTS "-XX:+UnlockExperimentalVMOptions -XX:MaxRAMPercentage=75.0"
 ENV LOG_OPTS ""
 
 RUN groupadd -g 1000 appgroup && \
