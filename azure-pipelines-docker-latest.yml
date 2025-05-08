@@ -13,12 +13,12 @@ strategy:
     'jdk21-latest':
       javaversion: 'jdk21'
       buildversion: 'latest'
-    'jdk23-latest':
-      javaversion: 'jdk23'
+    'jdk24-latest':
+      javaversion: 'jdk24'
       buildversion: 'latest'
 
 variables:
-  mvnversion: '3.9.6'
+  mvnversion: '3.9.9'
 
 pool:
   vmImage: ubuntu-latest

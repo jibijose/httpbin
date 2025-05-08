@@ -18,16 +18,16 @@ docker login registry.hub.docker.com
 
 echo "*****************************************************************************************"
 echo "Building docker repository"
-docker build --build-arg MVN_VERSION=3.9.6 -t jibijose/httpbin:jre11-latest -f docker/jre11/Dockerfile .
-docker build --build-arg MVN_VERSION=3.9.6 -t jibijose/httpbin:jdk11-latest -f docker/jdk11/Dockerfile .
+docker build --build-arg MVN_VERSION=3.9.9 -t jibijose/httpbin:jre17-latest -f docker/jre17/Dockerfile .
+docker build --build-arg MVN_VERSION=3.9.9 -t jibijose/httpbin:jdk17-latest -f docker/jdk17/Dockerfile .
 
-docker tag jibijose/httpbin:jre11-latest jibijose/httpbin:jre11-${VERSION}
-docker tag jibijose/httpbin:jdk11-latest jibijose/httpbin:jdk11-${VERSION}
+docker tag jibijose/httpbin:jre17-latest jibijose/httpbin:jre17-${VERSION}
+docker tag jibijose/httpbin:jdk17-latest jibijose/httpbin:jdk17-${VERSION}
 
 echo "*****************************************************************************************"
 echo "Pushing docker repository"
-docker push jibijose/httpbin:jre11-${VERSION}
-docker push jibijose/httpbin:jdk11-${VERSION}
+docker push jibijose/httpbin:jre17-${VERSION}
+docker push jibijose/httpbin:jdk17-${VERSION}
 
-docker push jibijose/httpbin:jre11-latest
-docker push jibijose/httpbin:jdk11-latest
+docker push jibijose/httpbin:jre17-latest
+docker push jibijose/httpbin:jdk17-latest

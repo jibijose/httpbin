@@ -1,6 +1,6 @@
-FROM openjdk:23-oracle AS builder
+FROM openjdk:24-oracle AS builder
 
-ARG MVN_VERSION=3.9.8
+ARG MVN_VERSION=3.9.9
 
 RUN microdnf install wget && \
     wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
@@ -17,7 +17,7 @@ RUN rm -rf /tmp/app/target/httpbin-*.*.*-sources.jar && \
     rm -rf /tmp/app/target/httpbin-*.*.*-javadoc.jar && \
     cp /tmp/app/target/httpbin-*.*.*.jar /tmp/app.jar
 
-FROM openjdk:23-oracle AS packager
+FROM openjdk:24-oracle AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 

@@ -14,7 +14,7 @@ strategy:
       javaversion: 'jdk17'
 
 variables:
-  mvnversion: '3.9.6'
+  mvnversion: '3.9.9'
 
 pool:
   vmImage: ubuntu-latest

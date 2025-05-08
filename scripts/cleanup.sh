@@ -8,11 +8,11 @@ docker rm $(docker ps -aq)
 docker rmi jibijose/httpin:latest
 docker rmi jibijose/httpbin:latest
 
-docker rmi jibijose/httpbin:jre11-latest
-docker rmi jibijose/httpbin:jdk11-latest
+docker rmi jibijose/httpbin:jre17-latest
+docker rmi jibijose/httpbin:jdk17-latest
 
-docker rmi jibijose/httpbin:jre11-${VERSION}
-docker rmi jibijose/httpbin:jdk11-${VERSION}
+docker rmi jibijose/httpbin:jre17-${VERSION}
+docker rmi jibijose/httpbin:jdk17-${VERSION}
 
 ./mvnw clean
 ./gradlew clean

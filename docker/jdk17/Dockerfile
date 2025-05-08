@@ -1,6 +1,6 @@
 FROM openjdk:17-oracle AS builder
 
-ARG MVN_VERSION=3.9.8
+ARG MVN_VERSION=3.9.9
 
 RUN microdnf install wget && \
     wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
