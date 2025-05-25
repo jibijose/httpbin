@@ -5,7 +5,7 @@
 ./mvnw versions:display-plugin-updates
 ./mvnw versions:display-dependency-updates
 ./mvnw versions:use-latest-versions
-./mvnw release:update-versions
+###./mvnw release:update-versions
 #################################################################################
 ./gradlew wrapper
 ./gradlew dependencyUpdates
