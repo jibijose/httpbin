@@ -4,7 +4,7 @@
 
     <groupId>com.github.jibijose</groupId>
     <artifactId>httpbin</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>1.2.5</version>
     <packaging>jar</packaging>
     <description><![CDATA[<h2>Java httpbin</h2>]]></description>
 
