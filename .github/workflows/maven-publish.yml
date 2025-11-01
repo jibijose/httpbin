@@ -29,7 +29,7 @@ jobs:
       run: |
         gpg --version
         #gpg --gen-key
-        #gpg --keyserver hkp://keyserver.ubuntu.com --send-keys 5A840505AA887D72BE6E86A9B1B6CDC7FBDD3ADB
+        #gpg --keyserver hkp://keyserver.ubuntu.com --send-keys AE870F1522D403D2E0D15AE090DB3BC6863DB59D
         gpg --list-keys
         echo "${gpgpvtkey}" | base64 -d | gpg --batch --passphrase ${gpgpvtpass} --import
         gpg --list-keys

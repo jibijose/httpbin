@@ -1,25 +1,15 @@
 <settings>
   <servers>
     <server>
-      <id>ossrh</id>
+      <id>central</id>
       <username>${server-username}</username>
       <password>${server-password}</password>
     </server>
+
+      <!-- GPG Passphrase -->
+      <server>
+          <id>gpg.passphrase</id>
+          <passphrase>${gpg-password}</passphrase>
+      </server>
   </servers>
-
-
-  <profiles>
-    <profile>
-      <id>sign</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <gpg.executable>gpg</gpg.executable>
-        <gpg.passphrase>${gpg-password}</gpg.passphrase>
-      </properties>
-    </profile>
-  </profiles>
-
-
 </settings> 
