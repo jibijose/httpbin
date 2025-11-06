@@ -70,6 +70,32 @@ jobs:
           targetType: 'inline'
           script: |
             ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
+  - job: JDK25_Maven_Run
+    displayName: 'JDK25-Maven-Run'
+    timeoutInMinutes: 20
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Cache@2
+        inputs:
+          key: 'maven | "$(Agent.OS)" | **/pom.xml'
+          restoreKeys: |
+            maven | "$(Agent.OS)"
+            maven
+          path: $(MAVEN_CACHE_FOLDER)
+        displayName: Cache Maven local repo
+      - task: JavaToolInstaller@0
+        displayName: Install jdk25
+        inputs:
+          versionSpec: '25'
+          jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'PreInstalled'
+      - task: Bash@3
+        displayName: Run jdk25 maven
+        inputs:
+          targetType: 'inline'
+          script: |
+            ./mvnw clean fmt:check pmd:check pmd:cpd-check checkstyle:check package spotbugs:check site
   - job: JDK17_Gradle_Run
     displayName: 'JDK17-Gradle-Run'
     timeoutInMinutes: 5
@@ -102,6 +128,24 @@ jobs:
           jdkSourceOption: 'PreInstalled'
       - task: Bash@3
         displayName: Run jdk21 gradle
+        inputs:
+          targetType: 'inline'
+          script: |
+            ./gradlew clean build
+  - job: JDK25_Gradle_Run
+    displayName: 'JDK25-Gradle-Run'
+    timeoutInMinutes: 5
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: JavaToolInstaller@0
+        displayName: Install jdk25
+        inputs:
+          versionSpec: '25'
+          jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'PreInstalled'
+      - task: Bash@3
+        displayName: Run jdk25 gradle
         inputs:
           targetType: 'inline'
           script: |

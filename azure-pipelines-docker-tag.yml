@@ -12,9 +12,13 @@ strategy:
   matrix:
     'jdk17-latest':
       javaversion: 'jdk17'
+    'jdk21-latest':
+      javaversion: 'jdk21'
+    'jdk25-latest':
+      javaversion: 'jdk25'
 
 variables:
-  mvnversion: '3.9.9'
+  mvnversion: '3.9.11'
 
 pool:
   vmImage: ubuntu-latest

@@ -13,8 +13,8 @@ strategy:
     'jdk21-latest':
       javaversion: 'jdk21'
       buildversion: 'latest'
-    'jdk24-latest':
-      javaversion: 'jdk24'
+    'jdk25-latest':
+      javaversion: 'jdk25'
       buildversion: 'latest'
 
 variables:
