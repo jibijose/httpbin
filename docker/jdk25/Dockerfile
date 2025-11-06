@@ -1,10 +1,11 @@
-FROM eclipse-temurin:24-jdk AS builder
+FROM eclipse-temurin:25-jdk AS builder
 
 ARG MVN_VERSION=3.9.11
 
-RUN wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
-        tar -xzf /opt/apache-maven-${MVN_VERSION}-bin.tar.gz -C /opt && \
-        mv /opt/apache-maven-${MVN_VERSION} /opt/maven
+RUN apt-get update && apt-get install wget -y && \
+    wget https://downloads.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz --quiet -O /opt/apache-maven-${MVN_VERSION}-bin.tar.gz && \
+    tar -xzf /opt/apache-maven-${MVN_VERSION}-bin.tar.gz -C /opt && \
+    mv /opt/apache-maven-${MVN_VERSION} /opt/maven
 
 COPY src /tmp/app/src/
 COPY templates /tmp/app/templates/
@@ -16,7 +17,7 @@ RUN rm -rf /tmp/app/target/httpbin-*.*.*-sources.jar && \
     rm -rf /tmp/app/target/httpbin-*.*.*-javadoc.jar && \
     cp /tmp/app/target/httpbin-*.*.*.jar /tmp/app.jar
 
-FROM eclipse-temurin:24-jdk AS packager
+FROM eclipse-temurin:25-jdk AS packager
 LABEL maintainer=jibijose@yahoo.com
 EXPOSE 8080
 

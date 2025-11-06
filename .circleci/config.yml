@@ -19,7 +19,7 @@ shared:
             - ~/.m2
           key: proguard-with-maven-example-{{ checksum "pom.xml" }}
       - run: ./mvnw package
-      - run: apt update && apt install curl gpg -y
+      - run: sudo apt update && sudo apt install curl gpg -y
       - codecov/upload
   - &shared-gradle
     steps:
