@@ -37,27 +37,27 @@ shared:
 jobs:
   jdk17-maven:
     docker:
-      - image: openjdk:17-jdk-slim
+      - image: cimg/openjdk:17.0
     <<: *shared-maven
-  jdk19-maven:
+  jdk21-maven:
     docker:
-      - image: openjdk:19-jdk-slim
+      - image: cimg/openjdk:21.0
     <<: *shared-maven
   jdk17-gradle:
     docker:
-      - image: openjdk:17-jdk-slim
+      - image: cimg/openjdk:17.0
     <<: *shared-gradle
-  jdk19-gradle:
+  jdk21-gradle:
     docker:
-      - image: openjdk:19-jdk-slim
+      - image: cimg/openjdk:21.0
     <<: *shared-gradle
 
 workflows:
   maven: 
     jobs:
       - jdk17-maven
-      - jdk19-maven
+      - jdk21-maven
   gradle: 
     jobs:
       - jdk17-gradle
-      - jdk19-gradle
+      - jdk21-gradle
