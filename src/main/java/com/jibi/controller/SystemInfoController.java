@@ -69,8 +69,8 @@ public class SystemInfoController {
     SystemInfoModel.CpuInfoModel cpuInfoModel = new SystemInfoModel.CpuInfoModel();
     cpuInfoModel.setProcessCpuLoad(Double.toString(operatingSystemMXBean.getProcessCpuLoad()));
     cpuInfoModel.setProcessCpuTime(Double.toString(operatingSystemMXBean.getProcessCpuTime()));
-    cpuInfoModel.setSystemCpuLoad(Double.toString(operatingSystemMXBean.getSystemCpuLoad()));
-    cpuInfoModel.setSystemLoadAverage(Double.toString(operatingSystemMXBean.getSystemCpuLoad()));
+    cpuInfoModel.setSystemCpuLoad(Double.toString(operatingSystemMXBean.getCpuLoad()));
+    cpuInfoModel.setSystemLoadAverage(Double.toString(operatingSystemMXBean.getCpuLoad()));
     return cpuInfoModel;
   }
 

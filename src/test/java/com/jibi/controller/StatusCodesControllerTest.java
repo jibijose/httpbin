@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 /** The type Status codes controller test. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -20,7 +20,7 @@ class StatusCodesControllerTest {
 
   @LocalServerPort private int port;
 
-  @Autowired private TestRestTemplate restTemplate;
+  @Autowired private RestTemplate restTemplate;
 
   /**
    * Test 200 status code.
@@ -31,7 +31,7 @@ class StatusCodesControllerTest {
   void test200StatusCode() throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity("http://localhost:" + port + "/status/200", Void.class);
-    assertEquals(HttpStatus.OK.value(), responseEntity.getStatusCodeValue());
+    assertEquals(HttpStatus.OK.value(), responseEntity.getStatusCode().value());
   }
 
   /**
@@ -43,7 +43,7 @@ class StatusCodesControllerTest {
   void test400StatusCode() throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity("http://localhost:" + port + "/status/400", Void.class);
-    assertEquals(HttpStatus.BAD_REQUEST.value(), responseEntity.getStatusCodeValue());
+    assertEquals(HttpStatus.BAD_REQUEST.value(), responseEntity.getStatusCode().value());
   }
 
   /**
@@ -55,7 +55,7 @@ class StatusCodesControllerTest {
   void test500StatusCode() throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity("http://localhost:" + port + "/status/500", Void.class);
-    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
+    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCode().value());
   }
 
   /**
@@ -67,7 +67,7 @@ class StatusCodesControllerTest {
   void testIncorrectStatusCode() throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity("http://localhost:" + port + "/status/999", Void.class);
-    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
+    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCode().value());
   }
 
   /**
@@ -81,7 +81,7 @@ class StatusCodesControllerTest {
         restTemplate.getForEntity(
             "http://localhost:" + port + "/status/random/200,400,500", Void.class);
     org.hamcrest.MatcherAssert.assertThat(
-        responseEntity.getStatusCodeValue(), anyOf(is(200), is(400), is(500)));
+        responseEntity.getStatusCode().value(), anyOf(is(200), is(400), is(500)));
     assertNotNull(ctx);
   }
 
@@ -94,6 +94,6 @@ class StatusCodesControllerTest {
   void test999StatusRandomCode() throws Exception {
     ResponseEntity<Void> responseEntity =
         restTemplate.getForEntity("http://localhost:" + port + "/status/random/999", Void.class);
-    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCodeValue());
+    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), responseEntity.getStatusCode().value());
   }
 }
