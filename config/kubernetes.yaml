@@ -14,7 +14,7 @@ spec:
         version: v1
     spec:
       containers:
-        - image: registry.hub.docker.com/jibijose/httpbin:jdk11-latest
+        - image: registry.hub.docker.com/jibijose/httpbin:jdk17-latest
           imagePullPolicy: IfNotPresent
           name: httpbin
           ports:
@@ -54,7 +54,7 @@ spec:
   selector:
     app: httpbin
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: httpbin
